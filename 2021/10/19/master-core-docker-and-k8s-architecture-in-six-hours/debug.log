@@ -1,0 +1,4 @@
+[1020/025822:WARNING:dns_config_service_win.cc(674)] Failed to read DnsConfig.
+[1020/112421:WARNING:dns_config_service_win.cc(674)] Failed to read DnsConfig.
+[1020/204514:WARNING:dns_config_service_win.cc(674)] Failed to read DnsConfig.
+[1020/223351:ERROR:tcp_socket_win.cc(647)] closesocket: 应用程序没有调用 WSAStartup，或者 WSAStartup 失败。 (0x276D)

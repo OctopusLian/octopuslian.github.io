@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>不会飞的章鱼</title>
+  <icon>https://octopuslian.github.io/icon.png</icon>
+  <subtitle>熟能生巧，勤能补拙；念念不忘，必有回响。</subtitle>
+  <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://octopuslian.github.io/"/>
+  <updated>2022-04-27T15:13:25.211Z</updated>
+  <id>https://octopuslian.github.io/</id>
+  
+  <author>
+    <name>Neo Zhang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo NexT主题7.8.0新版本美化</title>
+    <link href="https://octopuslian.github.io/2022/04/27/hexo-next-7-8-0-theme-beautify/"/>
+    <id>https://octopuslian.github.io/2022/04/27/hexo-next-7-8-0-theme-beautify/</id>
+    <published>2022-04-27T13:33:06.000Z</published>
+    <updated>2022-04-27T15:13:25.211Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;崩溃的边缘&quot;&gt;&lt;a href=&quot;#崩溃的边缘&quot; class=&quot;headerlink&quot; title=&quot;崩溃的边缘&quot;&gt;&lt;/a&gt;崩溃的边缘&lt;/h1&gt;&lt;p&gt;前天晚上，我使用我的电脑准备更新一下博客内容，结果发现报错：&lt;code&gt;Ignoring local @import of &amp;quot;font-embedded.css&lt;/code&gt;，网上查了下，说是要更新&lt;code&gt;Next&lt;/code&gt;版本到最新即可。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/04/27/hexo-next-7-8-0-theme-beautify/bug.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;因此，痛定思痛，决定先整我的博客。  &lt;/p&gt;
+&lt;h1 id=&quot;准备阶段&quot;&gt;&lt;a href=&quot;#准备阶段&quot; class=&quot;headerlink&quot; title=&quot;准备阶段&quot;&gt;&lt;/a&gt;准备阶段&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="Solution-notes" scheme="https://octopuslian.github.io/categories/Solution-notes/"/>
+    
+    
+    <category term="Hexo" scheme="https://octopuslian.github.io/tags/Hexo/"/>
+    
+    <category term="Next" scheme="https://octopuslian.github.io/tags/Next/"/>
+    
+    <category term="美化" scheme="https://octopuslian.github.io/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>四季予你</title>
+    <link href="https://octopuslian.github.io/2022/03/31/happy-26-birthday-four-seasons-for-you/"/>
+    <id>https://octopuslian.github.io/2022/03/31/happy-26-birthday-four-seasons-for-you/</id>
+    <published>2022-03-30T17:38:05.000Z</published>
+    <updated>2022-04-27T13:15:14.431Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;世间的本质，用眼睛是看不到的，那一刻我才明白这句话的真正含义。我是个盲人，但那又如何呢，世界不会因为我看不到而不再美丽；我不是侠岚，但那又怎样呢，我手中有属于我自己的侠岚印。 ——《风语咒》  &lt;/p&gt;
+&lt;p&gt;十年之约，已走过十分之一。  &lt;/p&gt;
+&lt;p&gt;这一年，你是否离自己的目标更近了一些，是否摆脱了内心的桎梏，重获新生？  &lt;/p&gt;
+&lt;h1 id=&quot;三月的春风&quot;&gt;&lt;a href=&quot;#三月的春风&quot; class=&quot;headerlink&quot; title=&quot;三月的春风&quot;&gt;&lt;/a&gt;三月的春风&lt;/h1&gt;&lt;p&gt;三月，你意气风发，自信满满，觉得未来前途一切光明，朋友L交代给你的事情，你觉得百分百可以搞定。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Happy-Birthday" scheme="https://octopuslian.github.io/categories/Happy-Birthday/"/>
+    
+    
+    <category term="成长" scheme="https://octopuslian.github.io/tags/%E6%88%90%E9%95%BF/"/>
+    
+    <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
+    
+    <category term="随笔" scheme="https://octopuslian.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="挫折" scheme="https://octopuslian.github.io/tags/%E6%8C%AB%E6%8A%98/"/>
+    
+    <category term="痛苦" scheme="https://octopuslian.github.io/tags/%E7%97%9B%E8%8B%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubeadm join原理</title>
+    <link href="https://octopuslian.github.io/2022/03/05/kubeadm-join-principle/"/>
+    <id>https://octopuslian.github.io/2022/03/05/kubeadm-join-principle/</id>
+    <published>2022-03-05T13:59:08.000Z</published>
+    <updated>2022-04-27T13:15:14.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;join：将node加入集群&quot;&gt;&lt;a href=&quot;#join：将node加入集群&quot; class=&quot;headerlink&quot; title=&quot;join：将node加入集群&quot;&gt;&lt;/a&gt;join：将node加入集群&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;join前检查 </summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>kubeadm init流程概览</title>
+    <link href="https://octopuslian.github.io/2022/03/05/kubeadm-init-process-overview/"/>
+    <id>https://octopuslian.github.io/2022/03/05/kubeadm-init-process-overview/</id>
+    <published>2022-03-05T10:27:53.000Z</published>
+    <updated>2022-04-27T13:15:14.439Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;kubeadm-init流程&quot;&gt;&lt;a href=&quot;#kubeadm-init流程&quot; class=&quot;headerlink&quot; title=&quot;kubeadm init流程&quot;&gt;&lt;/a&gt;kubeadm init流程&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;1，引导前的检查  &lt;/li&gt;
+&lt;li&gt;2，生成私钥和数字证书  &lt;/li&gt;
+&lt;li&gt;3，生成控制平面组件kubeconfig文件  &lt;/li&gt;
+&lt;li&gt;4，生成控制平面组件manifest文件  &lt;/li&gt;
+&lt;li&gt;5，下载镜像，等待控制平面启动  &lt;/li&gt;
+&lt;li&gt;6，保存MasterConfiguration  &lt;/li&gt;
+&lt;li&gt;7，设定Master标志  &lt;/li&gt;
+&lt;li&gt;8，进行基于TLS的安全引导相关配置  &lt;/li&gt;
+&lt;li&gt;9，安装DNS和kube-proxy插件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;引导前检查&quot;&gt;&lt;a href=&quot;#引导前检查&quot; class=&quot;headerlink&quot; title=&quot;引导前检查&quot;&gt;&lt;/a&gt;引导前检查&lt;/h1&gt;&lt;p&gt;kubeadm init pre-flight check：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kubeadm版本与要安装的kubernetes版本的比对检查  &lt;/li&gt;
+&lt;li&gt;kubernetes安装的系统需求检查  &lt;/li&gt;
+&lt;li&gt;其他检查：用户、主机、端口、swap、工具等&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LintCode Python教程 练习题答案</title>
+    <link href="https://octopuslian.github.io/2022/03/05/lintcode-learn-python/"/>
+    <id>https://octopuslian.github.io/2022/03/05/lintcode-learn-python/</id>
+    <published>2022-03-05T07:42:42.000Z</published>
+    <updated>2022-04-27T13:15:14.467Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;LEVEL-1&quot;&gt;&lt;a href=&quot;#LEVEL-1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL 1&quot;&gt;&lt;/a&gt;LEVEL 1&lt;/h1&gt;&lt;h2 id=&quot;2274-·-第一个-Python-程序：打印-Hello-World&quot;&gt;&lt;a href=&quot;#2274-·-第一个-Python-程序：打印-Hello-World&quot; class=&quot;headerlink&quot; title=&quot;2274 · 第一个 Python 程序：打印 Hello World&quot;&gt;&lt;/a&gt;2274 · 第一个 Python 程序：打印 Hello World&lt;/h2&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Your first python code&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# print Hello World to console&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;2920-·-获取输入数据并打印它&quot;&gt;&lt;a href=&quot;#2920-·-获取输入数据并打印它&quot; class=&quot;headerlink&quot; title=&quot;2920 · 获取输入数据并打印它&quot;&gt;&lt;/a&gt;2920 · 获取输入数据并打印它&lt;/h2&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Please write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;built_in&quot;&gt;input&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(name)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnPython" scheme="https://octopuslian.github.io/categories/LearnPython/"/>
+    
+    
+    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
+    
+    <category term="python" scheme="https://octopuslian.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes弹性伸缩</title>
+    <link href="https://octopuslian.github.io/2022/03/01/kubernetes-hpa/"/>
+    <id>https://octopuslian.github.io/2022/03/01/kubernetes-hpa/</id>
+    <published>2022-03-01T15:27:35.000Z</published>
+    <updated>2022-04-27T13:15:14.507Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;传统弹性伸缩的困境&quot;&gt;&lt;a href=&quot;#传统弹性伸缩的困境&quot; class=&quot;headerlink&quot; title=&quot;传统弹性伸缩的困境&quot;&gt;&lt;/a&gt;传统弹性伸缩的困境&lt;/h1&gt;&lt;p&gt;从传统意义上，弹性伸缩主要解决的问题是容量规划与实践负载的矛盾。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/03/01/kubernetes-hpa/scaling-vs.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;蓝色水位线表示集群资源容量随着负载的增加不断扩容，红色曲线表示集群资源实际负载变化。  &lt;/p&gt;
+&lt;p&gt;弹性伸缩就是要解决当实际负载增大，而集群资源容量没来得及反应的问题。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Learn-Kubernetes" scheme="https://octopuslian.github.io/categories/Learn-Kubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="弹性伸缩" scheme="https://octopuslian.github.io/tags/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes集群网络</title>
+    <link href="https://octopuslian.github.io/2022/03/01/kubernetes-cluster-network/"/>
+    <id>https://octopuslian.github.io/2022/03/01/kubernetes-cluster-network/</id>
+    <published>2022-03-01T14:46:33.000Z</published>
+    <updated>2022-04-27T13:15:14.507Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;网络基础知识&quot;&gt;&lt;a href=&quot;#网络基础知识&quot; class=&quot;headerlink&quot; title=&quot;网络基础知识&quot;&gt;&lt;/a&gt;网络基础知识&lt;/h1&gt;&lt;h2 id=&quot;公司网络架构&quot;&gt;&lt;a href=&quot;#公司网络架构&quot; class=&quot;headerlink&quot; title=&quot;公司网络架构&quot;&gt;&lt;/a&gt;公司网络架构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2022/03/01/kubernetes-cluster-network/network-arch1.png&quot;&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;路由器：网络出口  &lt;/li&gt;
+&lt;li&gt;核心层：主要完成数据高效转发、链路备份等  &lt;/li&gt;
+&lt;li&gt;汇聚层：网络策略、安全、工作站交换机的接入、VLAN之间通信等功能  &lt;/li&gt;
+&lt;li&gt;接入层：工作站的接入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;交换技术&quot;&gt;&lt;a href=&quot;#交换技术&quot; class=&quot;headerlink&quot; title=&quot;交换技术&quot;&gt;&lt;/a&gt;交换技术&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="Learn-Kubernetes" scheme="https://octopuslian.github.io/categories/Learn-Kubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="网络" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>30分钟部署一个kubernetes集群</title>
+    <link href="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/"/>
+    <id>https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/</id>
+    <published>2022-02-27T07:46:53.000Z</published>
+    <updated>2022-04-27T13:15:14.363Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Kubernetes架构&quot;&gt;&lt;a href=&quot;#Kubernetes架构&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes架构&quot;&gt;&lt;/a&gt;Kubernetes架构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84.png&quot;&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Master：负责集群的管理  &lt;/li&gt;
+&lt;li&gt;Node：计算节点，负责跑任务  &lt;/li&gt;
+&lt;li&gt;kubelet：相当于master的agent  &lt;/li&gt;
+&lt;li&gt;kube-proxy：网络  &lt;/li&gt;
+&lt;li&gt;Docker Engine：运行管理容器  &lt;/li&gt;
+&lt;li&gt;Etcd Cluster：存储k8s的数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84%E5%9B%BEmn.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="集群" scheme="https://octopuslian.github.io/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一天入门Kubernetes</title>
+    <link href="https://octopuslian.github.io/2022/02/27/one-day-to-know-kubernetes/"/>
+    <id>https://octopuslian.github.io/2022/02/27/one-day-to-know-kubernetes/</id>
+    <published>2022-02-27T07:42:28.000Z</published>
+    <updated>2022-04-27T13:15:14.475Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;快速搭建一个Kubernetes集群&quot;&gt;&lt;a href=&quot;#快速搭建一个Kubernetes集群&quot; class=&quot;headerlink&quot; title=&quot;快速搭建一个Kubernetes集群&quot;&gt;&lt;/a&gt;快速搭建一个Kubernetes集群&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://&quot;&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;kubectl命令行管理工具&quot;&gt;&lt;a href=&quot;#kubectl命令行管理工具&quot; class=&quot;headerlink&quot; title=&quot;kubectl命令行管理工具&quot;&gt;&lt;/a&gt;kubectl命令行管理工具&lt;/h2&gt;&lt;p&gt;基础命令  &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;create&lt;/td&gt;
+&lt;td&gt;通过文件名或标准输入创建资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;expose&lt;/td&gt;
+&lt;td&gt;将一个资源公开为一个新的Service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;run&lt;/td&gt;
+&lt;td&gt;在集群中运行一个特定的镜像&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;set&lt;/td&gt;
+&lt;td&gt;在对象上设置特定的功能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;get&lt;/td&gt;
+&lt;td&gt;显示一个或多个资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;explain&lt;/td&gt;
+&lt;td&gt;文档参考资料&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;edit&lt;/td&gt;
+&lt;td&gt;使用默认的编辑器编辑一个资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;delete&lt;/td&gt;
+&lt;td&gt;通过文件名、标准输入、资源名称或标签选择器来删除资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一天掌握Docker</title>
+    <link href="https://octopuslian.github.io/2022/02/27/one-day-to-know-docker/"/>
+    <id>https://octopuslian.github.io/2022/02/27/one-day-to-know-docker/</id>
+    <published>2022-02-27T05:32:35.000Z</published>
+    <updated>2022-04-27T13:15:14.507Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Docker介绍与安装&quot;&gt;&lt;a href=&quot;#Docker介绍与安装&quot; class=&quot;headerlink&quot; title=&quot;Docker介绍与安装&quot;&gt;&lt;/a&gt;Docker介绍与安装&lt;/h1&gt;&lt;h2 id=&quot;Docker是什么&quot;&gt;&lt;a href=&quot;#Docker是什么&quot; class=&quot;headerlink&quot; title=&quot;Docker是什么&quot;&gt;&lt;/a&gt;Docker是什么&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;使用最广泛的开源容器引擎  &lt;/li&gt;
+&lt;li&gt;一种操作系统级的虚拟化技术  &lt;/li&gt;
+&lt;li&gt;依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制）  &lt;/li&gt;
+&lt;li&gt;一个简单的应用程序打包工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Docker设计目标&quot;&gt;&lt;a href=&quot;#Docker设计目标&quot; class=&quot;headerlink&quot; title=&quot;Docker设计目标&quot;&gt;&lt;/a&gt;Docker设计目标&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;提供简单的应用程序打包工具  &lt;/li&gt;
+&lt;li&gt;开发人员和运维人员职责逻辑分离  &lt;/li&gt;
+&lt;li&gt;多环境保持一致性&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
+    
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+    <category term="Docker" scheme="https://octopuslian.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>YApi的安装与部署</title>
+    <link href="https://octopuslian.github.io/2022/02/14/yapi-install-and-deploy/"/>
+    <id>https://octopuslian.github.io/2022/02/14/yapi-install-and-deploy/</id>
+    <published>2022-02-14T11:16:17.000Z</published>
+    <updated>2022-04-27T13:15:14.499Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是Yapi&quot;&gt;&lt;a href=&quot;#什么是Yapi&quot; class=&quot;headerlink&quot; title=&quot;什么是Yapi&quot;&gt;&lt;/a&gt;什么是Yapi&lt;/h1&gt;&lt;p&gt;YApi 是由去哪儿移动架构组推出的一款开源项目，是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。  &lt;/p&gt;
+&lt;p&gt;官网：&lt;a href=&quot;https://yapi.ymfe.org/%EF%BC%8CYapi%E5%85%B7%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7&quot;&gt;https://yapi.ymfe.org/，Yapi具有以下功能特性&lt;/a&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;权限管理&quot;&gt;&lt;a href=&quot;#权限管理&quot; class=&quot;headerlink&quot; title=&quot;权限管理&quot;&gt;&lt;/a&gt;权限管理&lt;/h2&gt;&lt;p&gt;扁平化权限设计，即保证了大型企业级项目的管理，又保证了易用性。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Work" scheme="https://octopuslian.github.io/categories/Work/"/>
+    
+    
+    <category term="接口管理" scheme="https://octopuslian.github.io/tags/%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="yapi" scheme="https://octopuslian.github.io/tags/yapi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes 入门</title>
+    <link href="https://octopuslian.github.io/2022/02/10/kubernetes-get-start/"/>
+    <id>https://octopuslian.github.io/2022/02/10/kubernetes-get-start/</id>
+    <published>2022-02-10T12:05:58.000Z</published>
+    <updated>2022-04-27T13:15:14.443Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;k8s基本介绍&quot;&gt;&lt;a href=&quot;#k8s基本介绍&quot; class=&quot;headerlink&quot; title=&quot;k8s基本介绍&quot;&gt;&lt;/a&gt;k8s基本介绍&lt;/h1&gt;&lt;h2 id=&quot;什么是k8s&quot;&gt;&lt;a href=&quot;#什么是k8s&quot; class=&quot;headerlink&quot; title=&quot;什么是k8s&quot;&gt;&lt;/a&gt;什么是k8s&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;k8s是谷歌开源的容器集群管理系统  &lt;/li&gt;
+&lt;li&gt;可以简化应用程序的工作流，加快开发速度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;为什么需要k8s&quot;&gt;&lt;a href=&quot;#为什么需要k8s&quot; class=&quot;headerlink&quot; title=&quot;为什么需要k8s&quot;&gt;&lt;/a&gt;为什么需要k8s&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;真正的生产型应用会涉及多个容器  &lt;/li&gt;
+&lt;li&gt;容器必须跨多个服务器主机进行部署  &lt;/li&gt;
+&lt;li&gt;借助k8s构建多个容器的应用服务、跨集群调度、扩展这些容器&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Learn-Kubernetes" scheme="https://octopuslian.github.io/categories/Learn-Kubernetes/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Nebula Graph 使用常用 nGQL（CRUD 命令）</title>
+    <link href="https://octopuslian.github.io/2022/01/23/nebula-graph-db-usual-cmd/"/>
+    <id>https://octopuslian.github.io/2022/01/23/nebula-graph-db-usual-cmd/</id>
+    <published>2022-01-23T07:44:17.000Z</published>
+    <updated>2022-04-27T13:15:14.507Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Nebula Graph 是一款开源的、分布式的、易扩展的原生图数据库，能够承载数千亿个点和数万亿条边的超大规模数据集，并且提供毫秒级查询。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/01/23/nebula-graph-db-usual-cmd/nebula-graph.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;图数据库是专门存储庞大的图形网络并从中检索信息的数据库。它可以将图中的数据高效存储为点（Vertex）和边（Edge），还可以将属性（Property）附加到点和边上。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/01/23/nebula-graph-db-usual-cmd/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93.png&quot;&gt;  &lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用Swagger生成API文档</title>
+    <link href="https://octopuslian.github.io/2022/01/16/how-to-use-swagger-make-api-doc/"/>
+    <id>https://octopuslian.github.io/2022/01/16/how-to-use-swagger-make-api-doc/</id>
+    <published>2022-01-16T06:07:43.000Z</published>
+    <updated>2022-04-27T13:15:14.435Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Swagger-介绍&quot;&gt;&lt;a href=&quot;#Swagger-介绍&quot; class=&quot;headerlink&quot; title=&quot;Swagger 介绍&quot;&gt;&lt;/a&gt;Swagger 介绍&lt;/h1&gt;&lt;p&gt;Swagger 是一套围绕 OpenAPI 规范构建的开源工具，可以设计、构建、编写和使用REST API。Swagger 包含很多工具，其中主要的 Swagger 工具包括：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Swagger 编辑器：基于浏览器的编辑器，可以在其中编写 OpenAPI 规范，并实时预览API 文档。&lt;a href=&quot;https://editor.swagger.io/&quot;&gt;https://editor.swagger.io&lt;/a&gt; 就是一个 Swagger 编辑器，你可以尝试在其中编辑和预览 API 文档。  &lt;/li&gt;
+&lt;li&gt;Swagger UI：将 OpenAPI 规范呈现为交互式 API 文档，并可以在浏览器中尝试 API调用。  &lt;/li&gt;
+&lt;li&gt;Swagger Codegen：根据 OpenAPI 规范，生成服务器存根和客户端代码库，目前已涵盖了 40 多种语言。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Swagger-和-OpenAPI-的区别&quot;&gt;&lt;a href=&quot;#Swagger-和-OpenAPI-的区别&quot; class=&quot;headerlink&quot; title=&quot;Swagger 和 OpenAPI 的区别&quot;&gt;&lt;/a&gt;Swagger 和 OpenAPI 的区别&lt;/h1&gt;&lt;p&gt;OpenAPI 是一个 API 规范，它的前身叫 Swagger 规范，通过定义一种用来描述 API 格式或 API 定义的语言，来规范 RESTful 服务开发过程，目前最新的 OpenAPI 规范是OpenAPI 3.0（也就是 Swagger 2.0 规范）。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnSwagger" scheme="https://octopuslian.github.io/categories/LearnSwagger/"/>
+    
+    
+    <category term="规范" scheme="https://octopuslian.github.io/tags/%E8%A7%84%E8%8C%83/"/>
+    
+    <category term="文档" scheme="https://octopuslian.github.io/tags/%E6%96%87%E6%A1%A3/"/>
+    
+    <category term="swagger" scheme="https://octopuslian.github.io/tags/swagger/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>容器技术概念入门</title>
+    <link href="https://octopuslian.github.io/2022/01/15/introduction-to-container-technology-concepts/"/>
+    <id>https://octopuslian.github.io/2022/01/15/introduction-to-container-technology-concepts/</id>
+    <published>2022-01-15T15:46:38.000Z</published>
+    <updated>2022-04-27T13:15:14.439Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;从进程说开去&quot;&gt;&lt;a href=&quot;#从进程说开去&quot; class=&quot;headerlink&quot; title=&quot;从进程说开去&quot;&gt;&lt;/a&gt;从进程说开去&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;容器本身没有价值，有价值的是“容器编排”。&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;先启动一个容器  &lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker run -it busybox /bin/sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Unable to find image &amp;#x27;busybox:latest&amp;#x27; locally&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;latest: Pulling from library/busybox&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5cc84ad355aa: Pull complete &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Digest: sha256:5acba83a746c7608ed544dc1533b87c737a0b0fb730301639a0179f9344b1678&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Status: Downloaded newer image for busybox:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/ # &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这段语句的含义是：请帮我启动一个容器，在容器里执行&amp;#x2F;bin&amp;#x2F;sh，并且给我分配一个命令行终端跟这个容器交互。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnCloudNative" scheme="https://octopuslian.github.io/categories/LearnCloudNative/"/>
+    
+    
+    <category term="云原生" scheme="https://octopuslian.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LintCode Java教程 练习题答案</title>
+    <link href="https://octopuslian.github.io/2022/01/07/lintcode-learn-java/"/>
+    <id>https://octopuslian.github.io/2022/01/07/lintcode-learn-java/</id>
+    <published>2022-01-07T02:22:12.000Z</published>
+    <updated>2022-04-27T13:15:14.467Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;LEVEL-1&quot;&gt;&lt;a href=&quot;#LEVEL-1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL 1&quot;&gt;&lt;/a&gt;LEVEL 1&lt;/h1&gt;&lt;p&gt;2814.ASCII码对应的字符（Java 版）  &lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.*;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Main&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;Scanner&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;sc&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Scanner&lt;/span&gt;(System.in);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; sc.nextInt();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(num&amp;lt;&lt;span class=&quot;number&quot;&gt;128&lt;/span&gt; &amp;amp;&amp;amp; num &amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				System.out.println(num&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;?(&lt;span class=&quot;type&quot;&gt;char&lt;/span&gt;)num:&lt;span class=&quot;string&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;);	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        sc.close();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;2759 · Integer 的取值范围  &lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Solution&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;equivalence&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer a, Integer b)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a.equals(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnJava" scheme="https://octopuslian.github.io/categories/LearnJava/"/>
+    
+    
+    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
+    
+    <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Gin+Casbin实现权限管理</title>
+    <link href="https://octopuslian.github.io/2022/01/06/go-use-gin-casbin-to-auth-management/"/>
+    <id>https://octopuslian.github.io/2022/01/06/go-use-gin-casbin-to-auth-management/</id>
+    <published>2022-01-06T12:52:52.000Z</published>
+    <updated>2022-04-27T13:15:14.415Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;关于Casbin&quot;&gt;&lt;a href=&quot;#关于Casbin&quot; class=&quot;headerlink&quot; title=&quot;关于Casbin&quot;&gt;&lt;/a&gt;关于Casbin&lt;/h1&gt;&lt;p&gt;Casbin是用于Golang项目的功能强大且高效的开源访问控制库。&lt;br&gt;&lt;a href=&quot;https://casbin.org/docs/zh-CN/overview&quot;&gt;casbin中文官方文档&lt;/a&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;Casbin的作用&quot;&gt;&lt;a href=&quot;#Casbin的作用&quot; class=&quot;headerlink&quot; title=&quot;Casbin的作用&quot;&gt;&lt;/a&gt;Casbin的作用&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;以经典{subject, object, action}形式或您定义的自定义形式实施策略，同时支持允许和拒绝授权。  &lt;/li&gt;
+&lt;li&gt;处理访问控制模型及其策略的存储。  &lt;/li&gt;
+&lt;li&gt;管理角色用户映射和角色角色映射（RBAC中的角色层次结构）。  &lt;/li&gt;
+&lt;li&gt;支持内置的超级用户，例如root或administrator。超级用户可以在没有显式权限的情况下执行任何操作。  &lt;/li&gt;
+&lt;li&gt;多个内置运算符支持规则匹配。例如，keyMatch可以将资源键映射&amp;#x2F;foo&amp;#x2F;bar到模式&amp;#x2F;foo*。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Casbin不执行的操作&quot;&gt;&lt;a href=&quot;#Casbin不执行的操作&quot; class=&quot;headerlink&quot; title=&quot;Casbin不执行的操作&quot;&gt;&lt;/a&gt;Casbin不执行的操作&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="Learn-go" scheme="https://octopuslian.github.io/categories/Learn-go/"/>
+    
+    
+    <category term="golang" scheme="https://octopuslian.github.io/tags/golang/"/>
+    
+    <category term="Gin框架" scheme="https://octopuslian.github.io/tags/Gin%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="Casbin框架" scheme="https://octopuslian.github.io/tags/Casbin%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="权限管理" scheme="https://octopuslian.github.io/tags/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LintCode SQL教程 练习题答案</title>
+    <link href="https://octopuslian.github.io/2022/01/06/lintcode-learn-sql/"/>
+    <id>https://octopuslian.github.io/2022/01/06/lintcode-learn-sql/</id>
+    <published>2022-01-06T06:52:34.000Z</published>
+    <updated>2022-04-27T13:15:14.467Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;SQL 教程链接：&lt;a href=&quot;https://www.lintcode.com/learn&quot;&gt;https://www.lintcode.com/learn&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;LEVEL1&quot;&gt;&lt;a href=&quot;#LEVEL1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL1:&quot;&gt;&lt;/a&gt;LEVEL1:&lt;/h1&gt;&lt;p&gt;2045 · Output Hello LintCode&lt;br&gt;SELECT “Hello LintCode!”;&lt;/p&gt;
+&lt;p&gt;2013 · Check the name of the teacher&lt;br&gt;SELECT &lt;code&gt;name&lt;/code&gt; FROM &lt;code&gt;teachers&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2007 · Check course name and class size&lt;br&gt;SELECT &lt;code&gt;name&lt;/code&gt;,&lt;code&gt;student_count&lt;/code&gt; FROM courses&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnSQL" scheme="https://octopuslian.github.io/categories/LearnSQL/"/>
+    
+    
+    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
+    
+    <category term="sql" scheme="https://octopuslian.github.io/tags/sql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 322. Coin Change | 零钱兑换</title>
+    <link href="https://octopuslian.github.io/2022/01/04/leetcode-322-coin-change/"/>
+    <id>https://octopuslian.github.io/2022/01/04/leetcode-322-coin-change/</id>
+    <published>2022-01-04T11:26:48.000Z</published>
+    <updated>2022-04-27T13:15:14.455Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot; title=&quot;题目链接&quot;&gt;&lt;/a&gt;题目链接&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/coin-change/&quot;&gt;322. 零钱兑换&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;解法一：贪心算法&quot;&gt;&lt;a href=&quot;#解法一：贪心算法&quot; class=&quot;headerlink&quot; title=&quot;解法一：贪心算法&quot;&gt;&lt;/a&gt;解法一：贪心算法&lt;/h1&gt;&lt;p&gt;贪心算法，就是指它的每一步计算作出的都是在当前看起来最好的选择，也就是说它所作出的选择只是在某种意义上的局部最优选择，并不从整体最优考虑。  &lt;/p&gt;
+&lt;p&gt;基本思路：&lt;br&gt;1，根据问题来建立数学模型，一般面试题会定义一个简单模型；&lt;br&gt;2，把待求解问题划分成若干个子问题，对每个子问题进行求解，得到子问题的局部最优解；&lt;br&gt;3，把子问题的局部最优解进行合并，得到最后基于局部最优解的一个解，即原问题的答案。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LeetCode-Solutions" scheme="https://octopuslian.github.io/categories/LeetCode-Solutions/"/>
+    
+    
+    <category term="leetcode" scheme="https://octopuslian.github.io/tags/leetcode/"/>
+    
+    <category term="动态规划" scheme="https://octopuslian.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码之丑</title>
+    <link href="https://octopuslian.github.io/2022/01/04/the-ugly-code/"/>
+    <id>https://octopuslian.github.io/2022/01/04/the-ugly-code/</id>
+    <published>2022-01-04T02:40:35.000Z</published>
+    <updated>2022-04-27T13:15:14.483Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;坏味道&quot;&gt;&lt;a href=&quot;#坏味道&quot; class=&quot;headerlink&quot; title=&quot;坏味道&quot;&gt;&lt;/a&gt;坏味道&lt;/h1&gt;&lt;h2 id=&quot;缺乏业务含义的命名&quot;&gt;&lt;a href=&quot;#缺乏业务含义的命名&quot; class=&quot;headerlink&quot; title=&quot;缺乏业务含义的命名&quot;&gt;&lt;/a&gt;缺乏业务含义的命名&lt;/h2&gt;&lt;h3 id=&quot;错误命名&quot;&gt;&lt;a href=&quot;#错误命名&quot; class=&quot;headerlink&quot; title=&quot;错误命名&quot;&gt;&lt;/a&gt;错误命名&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;宽泛的命名  &lt;/li&gt;
+&lt;li&gt;用技术术语命名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;命名遵循的原则&quot;&gt;&lt;a href=&quot;#命名遵循的原则&quot; class=&quot;headerlink&quot; title=&quot;命名遵循的原则&quot;&gt;&lt;/a&gt;命名遵循的原则&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="Code" scheme="https://octopuslian.github.io/categories/Code/"/>
+    
+    
+    <category term="规范" scheme="https://octopuslian.github.io/tags/%E8%A7%84%E8%8C%83/"/>
+    
+    <category term="代码风格" scheme="https://octopuslian.github.io/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+  </entry>
+  
+</feed>
