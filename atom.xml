@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-04-27T15:13:25.211Z</updated>
+  <updated>2022-04-27T15:13:34.620Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://octopuslian.github.io/2022/04/27/hexo-next-7-8-0-theme-beautify/"/>
     <id>https://octopuslian.github.io/2022/04/27/hexo-next-7-8-0-theme-beautify/</id>
     <published>2022-04-27T13:33:06.000Z</published>
-    <updated>2022-04-27T15:13:25.211Z</updated>
+    <updated>2022-04-27T15:13:34.620Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;崩溃的边缘&quot;&gt;&lt;a href=&quot;#崩溃的边缘&quot; class=&quot;headerlink&quot; title=&quot;崩溃的边缘&quot;&gt;&lt;/a&gt;崩溃的边缘&lt;/h1&gt;&lt;p&gt;前天晚上，我使用我的电脑准备更新一下博客内容，结果发现报错：&lt;code&gt;Ignoring local @import of &amp;quot;font-embedded.css&lt;/code&gt;，网上查了下，说是要更新&lt;code&gt;Next&lt;/code&gt;版本到最新即可。  &lt;/p&gt;
