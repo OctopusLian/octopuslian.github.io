@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-04-27T15:13:34.620Z</updated>
+  <updated>2022-05-05T12:14:03.262Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一文搞懂算法复杂度分析</title>
+    <link href="https://octopuslian.github.io/2022/05/05/complexity-analysis/"/>
+    <id>https://octopuslian.github.io/2022/05/05/complexity-analysis/</id>
+    <published>2022-05-05T06:22:08.000Z</published>
+    <updated>2022-05-05T12:14:03.262Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;为什么要懂复杂度分析&quot;&gt;&lt;a href=&quot;#为什么要懂复杂度分析&quot; class=&quot;headerlink&quot; title=&quot;为什么要懂复杂度分析&quot;&gt;&lt;/a&gt;为什么要懂复杂度分析&lt;/h1&gt;&lt;p&gt;我们都知道，数据结构和算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，执行效率是算法一个非常重要的考量指标。那如何来衡量你编写的算法代码的执行效率呢？  &lt;/p&gt;
+&lt;p&gt;你可能会有些疑惑，我把代码跑一遍，通过统计、监控，就能得到算法执行的时间和占用的内存大小。为什么还要做时间、空间复杂度分析呢？这种分析方法能比我实实在在跑一遍得到的数据更准确吗？  &lt;/p&gt;
+&lt;p&gt;首先，我可以肯定地说，你这种评估算法执行效率的方法是正确的。很多数据结构和算法书籍还给这种方法起了一个名字，叫&lt;strong&gt;事后统计法&lt;/strong&gt;。但是，这种统计方法有非常大的局限性。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;测试结果非常依赖测试环境&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;测试结果受数据规模的影响很大&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Learn-Algorithms" scheme="https://octopuslian.github.io/categories/Learn-Algorithms/"/>
+    
+    
+    <category term="算法" scheme="https://octopuslian.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="复杂度" scheme="https://octopuslian.github.io/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo NexT主题7.8.0新版本美化</title>
@@ -546,31 +579,6 @@
     <category term="leetcode" scheme="https://octopuslian.github.io/tags/leetcode/"/>
     
     <category term="动态规划" scheme="https://octopuslian.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代码之丑</title>
-    <link href="https://octopuslian.github.io/2022/01/04/the-ugly-code/"/>
-    <id>https://octopuslian.github.io/2022/01/04/the-ugly-code/</id>
-    <published>2022-01-04T02:40:35.000Z</published>
-    <updated>2022-04-27T13:15:14.483Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;坏味道&quot;&gt;&lt;a href=&quot;#坏味道&quot; class=&quot;headerlink&quot; title=&quot;坏味道&quot;&gt;&lt;/a&gt;坏味道&lt;/h1&gt;&lt;h2 id=&quot;缺乏业务含义的命名&quot;&gt;&lt;a href=&quot;#缺乏业务含义的命名&quot; class=&quot;headerlink&quot; title=&quot;缺乏业务含义的命名&quot;&gt;&lt;/a&gt;缺乏业务含义的命名&lt;/h2&gt;&lt;h3 id=&quot;错误命名&quot;&gt;&lt;a href=&quot;#错误命名&quot; class=&quot;headerlink&quot; title=&quot;错误命名&quot;&gt;&lt;/a&gt;错误命名&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;宽泛的命名  &lt;/li&gt;
-&lt;li&gt;用技术术语命名&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;命名遵循的原则&quot;&gt;&lt;a href=&quot;#命名遵循的原则&quot; class=&quot;headerlink&quot; title=&quot;命名遵循的原则&quot;&gt;&lt;/a&gt;命名遵循的原则&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="Code" scheme="https://octopuslian.github.io/categories/Code/"/>
-    
-    
-    <category term="规范" scheme="https://octopuslian.github.io/tags/%E8%A7%84%E8%8C%83/"/>
-    
-    <category term="代码风格" scheme="https://octopuslian.github.io/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
     
   </entry>
   
