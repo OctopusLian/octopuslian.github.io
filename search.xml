@@ -2953,7 +2953,7 @@
 <p><a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/PriorityQueue.html">Priority Queue Java 12 doc</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>数据结构</tag>
@@ -2977,7 +2977,7 @@
 <p><a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Map.html">Map Java 12 doc</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>哈希表</tag>
@@ -2998,7 +2998,7 @@
 <p><img src="/2021/01/23/geekbang-gatc-08-divide-conquer-and-backtracking/back-baidu.png">  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -3027,7 +3027,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://visualgo.net/en">https://visualgo.net/en</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>BFS</tag>
@@ -3053,7 +3053,7 @@
 <h2 id="实战题目"><a href="#实战题目" class="headerlink" title="实战题目"></a>实战题目</h2><p><a href>leetcode-322.Coin Change</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>贪心算法</tag>
@@ -3070,7 +3070,7 @@
 
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>二分查找</tag>
@@ -3088,7 +3088,7 @@
 <h2 id="顺推模板"><a href="#顺推模板" class="headerlink" title="顺推模板"></a>顺推模板</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">fuction DP():</span><br><span class="line">    dp = [][] <span class="comment">#二维情况</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0.</span>.M &#123;</span><br><span class="line">        <span class="keyword">for</span> j = <span class="number">0.</span>.N &#123;</span><br><span class="line">            dp[i][j] = _Fuction(dp[i<span class="string">&#x27;][j&#x27;</span>]...)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[M][N]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>动态规划</tag>
@@ -3123,7 +3123,7 @@
 <h2 id="相关题目解析"><a href="#相关题目解析" class="headerlink" title="相关题目解析"></a>相关题目解析</h2><p><a href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/">leetcode-208.实现Trie</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>Trie树</tag>
@@ -3160,7 +3160,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://nikcheerla.github.io/deeplearningschool/2018/01/01/AlphaZero-Explained/">AlphaZero Explained</a><br><a href="https://en.wikipedia.org/wiki/Game_complexity">棋类复杂度</a><br><a href="https://shimo.im/docs/CXvjHyWhpQcxXjcw/read">A*代码模板</a><br><a href="https://dataaspirant.com/2015/04/11/five-most-popular-similarity-measures-implementation-in-python/">相似度测量方法</a><br><a href="https://leetcode.com/problems/shortest-path-in-binary-matrix/discuss/313347/A*-search-in-Python">二进制矩阵中的最短路径的 A* 解法</a><br><a href="https://zxi.mytechroad.com/blog/searching/8-puzzles-bidirectional-astar-vs-bidirectional-bfs/">8 puzzles 解法比较</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>剪枝</tag>
@@ -3211,7 +3211,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://zh.wikipedia.org/wiki/AVL%E6%A0%91">wiki-AVL树</a><br><a href="https://zhuanlan.zhihu.com/p/63272157">leetcode刷题(十）：树（红黑树，B树）</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>红黑树</tag>
@@ -3229,7 +3229,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://zh.wikihow.com/%E4%BB%8E%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6">如何从十进制转换为二进制</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>位运算</tag>
@@ -3263,7 +3263,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.cnblogs.com/cpselvis/p/6265825.html">布隆过滤器(Bloom Filter)的原理和实现</a><br><a href="https://blog.csdn.net/tianyaleixiaowu/article/details/74721877">使用BloomFilter布隆过滤器解决缓存击穿、垃圾邮件识别、集合判重</a><br><a href="https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/">Bloom Filters – Introduction and Implementation</a><br><a href="https://github.com/jhgg/pybloof">Github-Pybloof</a><br><a href="https://github.com/lovasoa/bloomfilter/blob/master/src/main/java/BloomFilter.java">布隆过滤器Java实现示例1</a><br><a href="https://github.com/Baqend/Orestes-Bloomfilter">布隆过滤器Java实现示例2</a><br><a href="https://www.sqlpassion.at/archive/2018/01/06/understanding-the-meltdown-exploit-in-my-own-simple-words/">Understanding the Meltdown exploit – in my own simple words</a><br><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies">Cache replacement policies</a><br><a href="https://shimo.im/docs/tTxRkGwJpXG6WkGY/read">LRU Cache Python代码</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>布隆过滤器</tag>
@@ -3307,7 +3307,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.cnblogs.com/onepixel/p/7674659.html">十大经典排序算法（动图演示）</a><br><a href="https://shimo.im/docs/98KjvGwwGpTpYGKy/read">快速排序算法示例</a><br><a href="https://shimo.im/docs/YqgG6vtdKwkXJkWx/">归并排序算法示例</a><br><a href="https://shimo.im/docs/6kRVHRphpgjHgCtx/">堆排序代码示例</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>排序算法</tag>
@@ -3325,7 +3325,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/solution/yi-ge-tong-yong-fang-fa-tuan-mie-6-dao-gu-piao-w-5/">一个通用方法团灭 6 道股票问题</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>动态规划</tag>
@@ -3389,7 +3389,7 @@
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://lemire.me/blog/2017/07/07/are-your-strings-immutable/">不可变字符串</a><br><a href="https://shimo.im/docs/KkDKkpWxjjrJXdpY/read">Atoi 代码示例</a><br><a href="http://xn--https-ni33a/www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">Boyer-Moore 算法</a><br><a href="https://blog.csdn.net/u012505432/article/details/52210975">Sunday 算法</a><br><a href="https://shimo.im/docs/dQDxQW8yXPXxh3Hg/read">字符串匹配暴力法代码示例</a><br><a href="https://shimo.im/docs/KXDdkT99TVtXvTXP/read">Rabin-Karp 代码示例</a><br><a href="https://www.bilibili.com/video/av11866460?from=search&seid=17425875345653862171">KMP 字符串匹配算法视频</a><br><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">字符串匹配的 KMP 算法</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>字符串</tag>
@@ -3400,13 +3400,13 @@
   <entry>
     <title>算法训练营总结和收获</title>
     <url>/2021/03/03/geekbang-gatc-gain/</url>
-    <content><![CDATA[<p>花了将近一个月终于刷完了<code>GATC</code>，让我系统学习了算法与数据结构的知识，尤其是后面接触的字典树、并查集、布隆过滤器、<code>AVL Tree</code>、<code>Red black Tree</code>这种高级数据结构，让我不得不感人类思想的伟大。  </p>
+    <content><![CDATA[<p>花了将近一个月终于刷完了算法训练营，让我系统学习了算法与数据结构的知识，尤其是后面接触的字典树、并查集、布隆过滤器、<code>AVL Tree</code>、红黑树这种高级数据结构，让我不得不感人类思想的伟大。  </p>
 <p>字符串算法和排序算法很重要，面试经常考，要及时掌握，同时不能放弃刷题，要时刻保持做题手感，同时要时刻借鉴别人优秀的解题思路。这样编程能力以及算法的基本功会慢慢得到提升。  </p>
 <p>加油！^_^  </p>
 <h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="https://octopuslian.github.io/categories/GATC/">GATC</a><br><a href="https://octopuslian.github.io/2020/11/29/geekbang-live-a-week-algo-training-camp-1-time-space-complex-analyze/">时间复杂度和空间复杂度分析</a><br><a href="https://octopuslian.github.io/2020/11/30/geekbang-live-a-week-algo-training-camp-2-array-linked-list-skip-list/">数组、链表、跳表</a><br><a href="https://octopuslian.github.io/2020/12/01/geekbang-live-a-week-algo-training-camp-3-tree-binary-tree-and-binary-search-tree/">树、二叉树、二叉搜索树</a><br><a href="https://octopuslian.github.io/2020/12/02/geekbang-live-a-week-algo-training-camp-4-recursive/">递归</a><br><a href="https://octopuslian.github.io/2020/12/03/geekbang-live-a-week-algo-training-camp-5-test/">算法体验营-结课考试题</a><br><a href="https://octopuslian.github.io/2021/01/22/geekbang-gatc-04-stack-and-queue/">栈和队列</a><br><a href="https://octopuslian.github.io/2021/01/22/geekbang-gatc-12-dynamic-programming/">动态规划</a><br><a href="https://octopuslian.github.io/2021/01/22/geekbang-gatc-13-dictionary-tree-and-union-loopup/">Trie树、并查集</a><br><a href="https://octopuslian.github.io/2021/01/22/geekbang-gatc-16-bit-operation/">位运算基础</a><br><a href="https://octopuslian.github.io/2021/01/22/geekbang-gatc-05-hashmap-and-set/">哈希表、映射、集合</a><br><a href="https://octopuslian.github.io/2021/01/23/geekbang-gatc-08-divide-conquer-and-backtracking/">分治、回溯</a><br><a href="https://octopuslian.github.io/2021/01/23/geekbang-gatc-09-dfs-and-bfs/">深度优先搜索、广度优先搜索</a><br><a href="https://octopuslian.github.io/2021/02/23/geekbang-gatc-10-greedy-algo/">贪心算法</a><br><a href="https://octopuslian.github.io/2021/02/23/geekbang-gatc-11-binary-search/">二分查找</a><br><a href="https://octopuslian.github.io/2021/02/24/geekbang-gatc-18-sort-algo/">初级排序和高级排序</a><br><a href="https://octopuslian.github.io/2021/02/24/geekbang-gatc-20-string-algo/">字符串基础知识、高级字符串算法、字符串匹配算法</a><br><a href="https://octopuslian.github.io/2021/03/01/geekbang-gatc-14-advanced-search/">高级搜索</a><br><a href="https://octopuslian.github.io/2021/03/01/geekbang-gatc-15-red-black-tree-and-avl-tree/">AVL树和红黑树</a><br><a href="https://octopuslian.github.io/2021/03/02/geekbang-gatc-17-bloom-filter-and-lru-cache/">布隆过滤器、LRUCache</a><br><a href="https://octopuslian.github.io/2021/03/02/geekbang-gatc-19-advanced-dynamic-programming/">动态规划、状态转移方程</a></p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -3538,7 +3538,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.zhihu.com/question/21387264/answer/422323594">知乎_如何理解算法时间复杂度的表示法，例如 O(n²)、O(n)、O(1)、O(nlogn) 等？</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -3583,7 +3583,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.jianshu.com/p/b1ab4a170c3c">简书_LRU缓存算法</a><br><a href="https://leetcode-cn.com/problems/lru-cache/">leetcode-146. LRU 缓存机制</a><br><a href="https://www.zhihu.com/question/20202931/answer/30983057">为啥 redis 使用跳表(skiplist)而不是使用 red-black？</a>  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>数组</tag>
@@ -3615,7 +3615,7 @@
 <h2 id="个人感受"><a href="#个人感受" class="headerlink" title="个人感受"></a>个人感受</h2><p>树这个数据结构在项目中经常被使用，面试也经常被问到二叉树相关的题目，所以要熟悉它的流程，多刷题，争取掌握它！  </p>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>二叉树</tag>
@@ -3639,7 +3639,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>递归</tag>
@@ -3835,7 +3835,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>GATC</category>
+        <category>Learn-Algorithms</category>
       </categories>
       <tags>
         <tag>测试</tag>
@@ -8944,7 +8944,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#46;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#46;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -10504,7 +10504,6 @@
     <title>剑指 Offer 07. 重建二叉树</title>
     <url>/2021/03/05/leetcode-lcof-07-zhong-jian-er-cha-shu/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">力扣-剑指 Offer 07. 重建二叉树</a>  </p>
-<p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。  </p>
 <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
 <li>二叉树的遍历顺序</li>
 </ul>
@@ -10548,6 +10547,62 @@
       <tags>
         <tag>二叉树</tag>
         <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 09. 用两个栈实现队列</title>
+    <url>/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/">剑指 Offer 09. 用两个栈实现队列</a>  </p>
+<p>我的复述：  </p>
+<table>
+<thead>
+<tr>
+<th align="left">函数操作</th>
+<th align="center">CQueue</th>
+<th align="right">deleteHead</th>
+<th align="right">appendTail</th>
+<th align="right">appendTail</th>
+<th align="right">deleteHead</th>
+<th align="right">deleteHead</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">入参</td>
+<td align="center">[]</td>
+<td align="right">[]</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">[]</td>
+<td align="right">[]</td>
+</tr>
+<tr>
+<td align="left">返回结果</td>
+<td align="center">null</td>
+<td align="right">-1</td>
+<td align="right">null</td>
+<td align="right">null</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+</tbody></table>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>队列的特点：先进先出  </li>
+<li>栈的特点：先进后出</li>
+</ul>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ul>
+<li>1，<code>CQueue</code>：直接初始化两个栈；  </li>
+<li>2，<code>appendTail</code>：往<code>stack1</code>里压入元素；  </li>
+<li>3，<code>deleteHead</code>：先判断<code>stack2</code>若不为空，直接弹出元素；若<code>stack1</code>和<code>stack2</code>都为空，根据题意返回-1；如果<code>stack1</code>不为空，循环里面的元素，把<code>stack1</code>弹出的元素压入<code>stack2</code>，这样stack2的栈顶元素就是stack1的栈底元素。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CQueue</span> &#123;</span><br><span class="line">    <span class="comment">//创建栈 stack1 用来充当队列</span></span><br><span class="line">    Stack&lt;Integer&gt; stack1;</span><br><span class="line">    <span class="comment">//创建栈 stack2 用来辅助 stack1 执行队列的一些复杂操作</span></span><br><span class="line">    Stack&lt;Integer&gt; stack2;</span><br><span class="line">    <span class="comment">//初始化队列</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CQueue</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//初始化 stack1</span></span><br><span class="line">        stack1 = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始化 stack2</span></span><br><span class="line">        stack2 = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在队列的尾部添加元素</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">appendTail</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        直接将元素放到 stack1 中</span></span><br><span class="line"><span class="comment">        比如原队列</span></span><br><span class="line"><span class="comment">        ---------------------</span></span><br><span class="line"><span class="comment">        队尾 1 2 3 4 5 队头</span></span><br><span class="line"><span class="comment">        --------------------</span></span><br><span class="line"><span class="comment">        当前 value 为 6</span></span><br><span class="line"><span class="comment">        那么由 stack1 和 stack2 组成的队列就是</span></span><br><span class="line"><span class="comment">        --------------------</span></span><br><span class="line"><span class="comment">        队尾 6 1 2 3 4 5 队头</span></span><br><span class="line"><span class="comment">        --------------------</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        stack1.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在队列的头部删除元素</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">deleteHead</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//1，如果 stack2 栈不为空，说明 stack2 里面已经存储了一些元素，并且stack 的栈顶元素就是两个栈中最早加入的元素</span></span><br><span class="line">        <span class="keyword">if</span> (!stack2.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">//返回 stack2 的栈顶元素，满足了队列先进先出的特点</span></span><br><span class="line">            <span class="keyword">return</span> stack2.pop();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2，如果 stack2 为空，并且发现stack1 也为空，说明 stack1和stack2 构建的队列中没有元素</span></span><br><span class="line">        <span class="keyword">if</span> (stack1.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">//直接返回-1</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3，如果stack2为空，但stack1不为空，那么需要将stack1中的元素依次 【倒序】 放入stack2中，</span></span><br><span class="line">        <span class="comment">//对于stack1 来说，越早加入的元素在 【栈顶】，越晚加入的元素在【栈顶】</span></span><br><span class="line">        <span class="comment">//由于队列是【先进先出】，所以删除的应该是stack1的【栈底】元素</span></span><br><span class="line">        <span class="keyword">while</span> (!stack1.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">//获取stack1的栈顶元素并将该元素从stack1弹出</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">topValue</span> <span class="operator">=</span> stack1.pop();</span><br><span class="line">            <span class="comment">//把该元素加入到stack2，这样stack2的栈顶元素就是stack1的栈底元素</span></span><br><span class="line">            stack2.push(topValue);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4，返回stack2的栈顶元素，满足了队列先进先出的特点</span></span><br><span class="line">        <span class="keyword">return</span> stack2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your CQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * CQueue obj = new CQueue();</span></span><br><span class="line"><span class="comment"> * obj.appendTail(value);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.deleteHead();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>队列</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -10830,7 +10885,7 @@
 <p>2011 · Search for information on courses with more than 1000 participants<br>SELECT * FROM <code>courses</code> WHERE <code>student_count</code>&gt;1000</p>
 <p>2012 · Find course information for the course named Artificial Intelligence<br>SELECT * FROM courses WHERE <code>name</code>&#x3D; ‘Artificial Intelligence’;</p>
 <p>2017 · Inserting SQL course information into the course table<br>INSERT INTO courses VALUES (14,”SQL”,200,”2021-02-25”,1)2021 · Insert teacher information into the specified column of the teachers table</p>
-<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#88;&#105;&#x61;&#x6f;&#70;&#x75;&#x40;&#x6c;&#105;&#110;&#x74;&#x63;&#x6f;&#x64;&#x65;&#x2e;&#99;&#111;&#x6d;">&#88;&#105;&#x61;&#x6f;&#70;&#x75;&#x40;&#x6c;&#105;&#110;&#x74;&#x63;&#x6f;&#x64;&#x65;&#x2e;&#99;&#111;&#x6d;</a>‘,20,’CN’);</p>
+<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#88;&#x69;&#x61;&#111;&#x46;&#x75;&#x40;&#x6c;&#x69;&#110;&#x74;&#99;&#x6f;&#x64;&#101;&#46;&#99;&#111;&#x6d;">&#88;&#x69;&#x61;&#111;&#x46;&#x75;&#x40;&#x6c;&#x69;&#110;&#x74;&#99;&#x6f;&#x64;&#101;&#46;&#99;&#111;&#x6d;</a>‘,20,’CN’);</p>
 <p>2020 · Update on the number of students choosing artificial intelligence<br>UPDATE <code>courses</code> SET <code>student_count</code>&#x3D;500 WHERE <code>name</code>&#x3D;’Artificial Intelligence’</p>
 <p>2004 · Delete all courses until 2020<br>DELETE FROM <code>courses</code> WHERE <code>created_at</code>&lt;’2020-1-1’</p>
 <p>2019 · Delete all rows in the table<br>DELETE FROM <code>courses</code></p>
@@ -12281,7 +12336,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Sword-offer-solutions</category>
+        <category>SwordToOffer</category>
       </categories>
       <tags>
         <tag>面试</tag>
@@ -12309,7 +12364,7 @@
 <p><a href="https://github.com/OctopusLian/CodingInterviewChinese2/blob/master/03_01_DuplicationInArray/FindDuplication.cpp">本题源代码</a></p>
 ]]></content>
       <categories>
-        <category>Sword-offer-solutions</category>
+        <category>SwordToOffer</category>
       </categories>
       <tags>
         <tag>面试</tag>

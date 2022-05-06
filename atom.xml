@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-05-05T12:14:03.262Z</updated>
+  <updated>2022-05-06T15:49:34.787Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指 Offer 09. 用两个栈实现队列</title>
+    <link href="https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/"/>
+    <id>https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/</id>
+    <published>2022-05-06T13:46:37.000Z</published>
+    <updated>2022-05-06T15:49:34.787Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/&quot;&gt;剑指 Offer 09. 用两个栈实现队列&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;我的复述：  &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;函数操作&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;CQueue&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;appendTail&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;appendTail&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;入参&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;[]&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;返回结果&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;null&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;-1&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;null&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;null&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h1 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="队列" scheme="https://octopuslian.github.io/tags/%E9%98%9F%E5%88%97/"/>
+    
+    <category term="栈" scheme="https://octopuslian.github.io/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>一文搞懂算法复杂度分析</title>
@@ -556,29 +610,6 @@
     <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
     
     <category term="sql" scheme="https://octopuslian.github.io/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 322. Coin Change | 零钱兑换</title>
-    <link href="https://octopuslian.github.io/2022/01/04/leetcode-322-coin-change/"/>
-    <id>https://octopuslian.github.io/2022/01/04/leetcode-322-coin-change/</id>
-    <published>2022-01-04T11:26:48.000Z</published>
-    <updated>2022-04-27T13:15:14.455Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot; title=&quot;题目链接&quot;&gt;&lt;/a&gt;题目链接&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/coin-change/&quot;&gt;322. 零钱兑换&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;解法一：贪心算法&quot;&gt;&lt;a href=&quot;#解法一：贪心算法&quot; class=&quot;headerlink&quot; title=&quot;解法一：贪心算法&quot;&gt;&lt;/a&gt;解法一：贪心算法&lt;/h1&gt;&lt;p&gt;贪心算法，就是指它的每一步计算作出的都是在当前看起来最好的选择，也就是说它所作出的选择只是在某种意义上的局部最优选择，并不从整体最优考虑。  &lt;/p&gt;
-&lt;p&gt;基本思路：&lt;br&gt;1，根据问题来建立数学模型，一般面试题会定义一个简单模型；&lt;br&gt;2，把待求解问题划分成若干个子问题，对每个子问题进行求解，得到子问题的局部最优解；&lt;br&gt;3，把子问题的局部最优解进行合并，得到最后基于局部最优解的一个解，即原问题的答案。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LeetCode-Solutions" scheme="https://octopuslian.github.io/categories/LeetCode-Solutions/"/>
-    
-    
-    <category term="leetcode" scheme="https://octopuslian.github.io/tags/leetcode/"/>
-    
-    <category term="动态规划" scheme="https://octopuslian.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
