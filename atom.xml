@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-05-06T15:49:34.787Z</updated>
+  <updated>2022-05-08T08:28:23.740Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指 Offer 11. 旋转数组的最小数字</title>
+    <link href="https://octopuslian.github.io/2022/05/08/leetcode-lcof-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-zi/"/>
+    <id>https://octopuslian.github.io/2022/05/08/leetcode-lcof-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-zi/</id>
+    <published>2022-05-08T05:57:11.000Z</published>
+    <updated>2022-05-08T08:28:23.740Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/&quot;&gt;剑指 Offer 11. 旋转数组的最小数字&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;双指针-二分查找&quot;&gt;&lt;a href=&quot;#双指针-二分查找&quot; class=&quot;headerlink&quot; title=&quot;双指针+二分查找&quot;&gt;&lt;/a&gt;双指针+二分查找&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//Java&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Solution&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;minArray&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;[] numbers)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//设置left，right指针分别指向 numbers 数组左右两端&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//left指向当前区间的最左边位置，所以初始化为0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//right指向当前区间的最右边位置，所以初始化为nums.length - 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; numbers.length - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//循环进行二分查找，直到左端点位置超过右端点&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (left &amp;lt; right) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//mid为中点&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;mid&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; (left + right) / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//当mid点所在元素大于数组末端的元素时，由于原来的数组是递增有序的，此时出现了异常，大的数在前面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//所以旋转点在[mid + 1,end]区间里面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (numbers[mid] &amp;gt; numbers[right]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//所以旋转点在[mid + 1,end]区间里面，更新left的位置为mid + 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                left = mid + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (numbers[mid] &amp;lt; numbers[right]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//当mid点所在元素小于数组末端的元素时，由于原来的数组是递增有序的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//所以旋转点在[left,mid]区间里面，更新right的位置为mid&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                right = mid;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//采取遍历的方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; findMin(numbers,left,right);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; numbers[left];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//从头到尾遍历numbers，获取最小值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;findMin&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;[] numbers,&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; left,&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; right)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//默认为数组的第一个元素为最小值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; numbers[left];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//从头到尾遍历numbers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; left;i &amp;lt;= right;i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//当发现此时遍历的元素值小于result&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (numbers[i] &amp;lt; result) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//更新result&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                result = numbers[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; result;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 10- I. 斐波那契数列</title>
+    <link href="https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/"/>
+    <id>https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/</id>
+    <published>2022-05-08T04:58:04.000Z</published>
+    <updated>2022-05-08T05:53:33.627Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/&quot;&gt;剑指 Offer 10- I. 斐波那契数列&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;我的复试：&lt;br&gt;&lt;img src=&quot;/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/yanshi.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;DP&quot;&gt;&lt;a href=&quot;#DP&quot; class=&quot;headerlink&quot; title=&quot;DP&quot;&gt;&lt;/a&gt;DP&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="数列" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指 Offer 09. 用两个栈实现队列</title>
     <link href="https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/"/>
     <id>https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/</id>
     <published>2022-05-06T13:46:37.000Z</published>
-    <updated>2022-05-06T15:49:34.787Z</updated>
+    <updated>2022-05-06T15:50:50.988Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/&quot;&gt;剑指 Offer 09. 用两个栈实现队列&lt;/a&gt;  &lt;/p&gt;
@@ -553,63 +594,6 @@
     <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
     
     <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Gin+Casbin实现权限管理</title>
-    <link href="https://octopuslian.github.io/2022/01/06/go-use-gin-casbin-to-auth-management/"/>
-    <id>https://octopuslian.github.io/2022/01/06/go-use-gin-casbin-to-auth-management/</id>
-    <published>2022-01-06T12:52:52.000Z</published>
-    <updated>2022-04-27T13:15:14.415Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;关于Casbin&quot;&gt;&lt;a href=&quot;#关于Casbin&quot; class=&quot;headerlink&quot; title=&quot;关于Casbin&quot;&gt;&lt;/a&gt;关于Casbin&lt;/h1&gt;&lt;p&gt;Casbin是用于Golang项目的功能强大且高效的开源访问控制库。&lt;br&gt;&lt;a href=&quot;https://casbin.org/docs/zh-CN/overview&quot;&gt;casbin中文官方文档&lt;/a&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;Casbin的作用&quot;&gt;&lt;a href=&quot;#Casbin的作用&quot; class=&quot;headerlink&quot; title=&quot;Casbin的作用&quot;&gt;&lt;/a&gt;Casbin的作用&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;以经典{subject, object, action}形式或您定义的自定义形式实施策略，同时支持允许和拒绝授权。  &lt;/li&gt;
-&lt;li&gt;处理访问控制模型及其策略的存储。  &lt;/li&gt;
-&lt;li&gt;管理角色用户映射和角色角色映射（RBAC中的角色层次结构）。  &lt;/li&gt;
-&lt;li&gt;支持内置的超级用户，例如root或administrator。超级用户可以在没有显式权限的情况下执行任何操作。  &lt;/li&gt;
-&lt;li&gt;多个内置运算符支持规则匹配。例如，keyMatch可以将资源键映射&amp;#x2F;foo&amp;#x2F;bar到模式&amp;#x2F;foo*。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Casbin不执行的操作&quot;&gt;&lt;a href=&quot;#Casbin不执行的操作&quot; class=&quot;headerlink&quot; title=&quot;Casbin不执行的操作&quot;&gt;&lt;/a&gt;Casbin不执行的操作&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="Learn-go" scheme="https://octopuslian.github.io/categories/Learn-go/"/>
-    
-    
-    <category term="golang" scheme="https://octopuslian.github.io/tags/golang/"/>
-    
-    <category term="Gin框架" scheme="https://octopuslian.github.io/tags/Gin%E6%A1%86%E6%9E%B6/"/>
-    
-    <category term="Casbin框架" scheme="https://octopuslian.github.io/tags/Casbin%E6%A1%86%E6%9E%B6/"/>
-    
-    <category term="权限管理" scheme="https://octopuslian.github.io/tags/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LintCode SQL教程 练习题答案</title>
-    <link href="https://octopuslian.github.io/2022/01/06/lintcode-learn-sql/"/>
-    <id>https://octopuslian.github.io/2022/01/06/lintcode-learn-sql/</id>
-    <published>2022-01-06T06:52:34.000Z</published>
-    <updated>2022-04-27T13:15:14.467Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;SQL 教程链接：&lt;a href=&quot;https://www.lintcode.com/learn&quot;&gt;https://www.lintcode.com/learn&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;LEVEL1&quot;&gt;&lt;a href=&quot;#LEVEL1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL1:&quot;&gt;&lt;/a&gt;LEVEL1:&lt;/h1&gt;&lt;p&gt;2045 · Output Hello LintCode&lt;br&gt;SELECT “Hello LintCode!”;&lt;/p&gt;
-&lt;p&gt;2013 · Check the name of the teacher&lt;br&gt;SELECT &lt;code&gt;name&lt;/code&gt; FROM &lt;code&gt;teachers&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2007 · Check course name and class size&lt;br&gt;SELECT &lt;code&gt;name&lt;/code&gt;,&lt;code&gt;student_count&lt;/code&gt; FROM courses&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnSQL" scheme="https://octopuslian.github.io/categories/LearnSQL/"/>
-    
-    
-    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
-    
-    <category term="sql" scheme="https://octopuslian.github.io/tags/sql/"/>
     
   </entry>
   
