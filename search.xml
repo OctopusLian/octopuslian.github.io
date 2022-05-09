@@ -5772,25 +5772,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Go高级工程师_作业2_channel⼀⻚中，找出所有红线报错在runtime中的位置</title>
-    <url>/2021/09/19/go-senior-engineer-test-2-channel-red-line-on-runtime/</url>
-    <content><![CDATA[<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><ul>
-<li>必做：channel ⼀⻚中，找出所有红线报错在 runtime 中的位置，使⽤ Go 1.14.12 版本  </li>
-<li>选做1：修复 <a href="https://golearn.coding.net/p/gonggongbanji/files/all/DF12">https://golearn.coding.net/p/gonggongbanji/files/all/DF12</a> 中的 test case  </li>
-<li>选做2：扩展其功能，增加更多的操作符号⽀持(随意发挥)  </li>
-<li>难度++选做：分析 Go 语⾔新版本的函数调⽤规约，将分析过程总结为 markdown ⽂档</li>
-</ul>
-]]></content>
-      <categories>
-        <category>GoSEC</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>channel</tag>
-        <tag>runtime</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Go高级工程师_作业1_使用调试工具查看Go语言函数执行流程</title>
     <url>/2021/09/19/go-senior-engineer-test-1-debug-tools/</url>
     <content><![CDATA[<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><ul>
@@ -5813,6 +5794,25 @@
         <tag>Go</tag>
         <tag>调试</tag>
         <tag>汇编</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go高级工程师_作业2_channel⼀⻚中，找出所有红线报错在runtime中的位置</title>
+    <url>/2021/09/19/go-senior-engineer-test-2-channel-red-line-on-runtime/</url>
+    <content><![CDATA[<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><ul>
+<li>必做：channel ⼀⻚中，找出所有红线报错在 runtime 中的位置，使⽤ Go 1.14.12 版本  </li>
+<li>选做1：修复 <a href="https://golearn.coding.net/p/gonggongbanji/files/all/DF12">https://golearn.coding.net/p/gonggongbanji/files/all/DF12</a> 中的 test case  </li>
+<li>选做2：扩展其功能，增加更多的操作符号⽀持(随意发挥)  </li>
+<li>难度++选做：分析 Go 语⾔新版本的函数调⽤规约，将分析过程总结为 markdown ⽂档</li>
+</ul>
+]]></content>
+      <categories>
+        <category>GoSEC</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>channel</tag>
+        <tag>runtime</tag>
       </tags>
   </entry>
   <entry>
@@ -8944,7 +8944,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#46;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9414,20 +9414,6 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode 141-linked-list-cycle | 环形链表</title>
-    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
-<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
-<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_1480_running-sum-of-1d-array | 一维数组的动态和</title>
     <url>/2020/07/03/leetcode-1480-running-sum-of-1d-array/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://leetcode-cn.com/problems/running-sum-of-1d-array/">leetcode中国</a>  </p>
@@ -9443,6 +9429,20 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>暴力</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode 141-linked-list-cycle | 环形链表</title>
+    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
+<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
+<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -10675,6 +10675,32 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 18. 删除链表的节点</title>
+    <url>/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/">剑指 Offer 18. 删除链表的节点</a>  </p>
+<p>我的复述：<br>假如有一个链表是<code>4-&gt;1-&gt;5-&gt;9</code>，指定删除节点5，那么返回新的链表为<code>4-&gt;1-&gt;9</code>。  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><ul>
+<li>定义<code>pre</code>和<code>cur</code>两个指针  </li>
+<li>当<code>cur</code>指向要删除的节点时，让<code>pre</code>直接指向<code>cur</code>指针的下一个节点即可</li>
+</ul>
+<p><img src="/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/two-pointers.png">  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteNode</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="comment">//特殊情况处理，删除的节点是头结点时</span></span><br><span class="line">        <span class="keyword">if</span> (head.val == val) <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="comment">//设置两个指针，一个指针指向当前的节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="comment">//一个指针指向当前节点的下一个节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="comment">//当cur为空或cur节点值等于val时跳出循环</span></span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="literal">null</span> &amp;&amp; cur.val != val) &#123;</span><br><span class="line">            <span class="comment">//两个指针不断的向前移动</span></span><br><span class="line">            <span class="comment">//pre来到cur的位置</span></span><br><span class="line">            pre = cur;</span><br><span class="line">            <span class="comment">//cur来到下一个节点位置</span></span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//相当于覆盖掉了cur的节点值</span></span><br><span class="line">        pre.next = cur.next;</span><br><span class="line">        <span class="comment">//最后返回链表头结点即可</span></span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行用时：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：40.8 MB, 在所有 Java 提交中击败了63.11%的用户</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Go</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteNode</span><span class="params">(head *ListNode, val <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">//特殊情况处理，删除的节点是头结点时</span></span><br><span class="line">    <span class="keyword">if</span> head.Val == val &#123;</span><br><span class="line">        <span class="keyword">return</span> head.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置两个指针，一个指针指向当前的节点</span></span><br><span class="line">    pre := head</span><br><span class="line">    <span class="comment">//一个指针指向当前节点的下一个节点</span></span><br><span class="line">    cur := head.Next</span><br><span class="line">    <span class="comment">//当cur为空或cur节点值等于val时跳出循环</span></span><br><span class="line">    <span class="keyword">for</span> cur != <span class="literal">nil</span> &amp;&amp; cur.Val != val &#123;</span><br><span class="line">        <span class="comment">//两个指针不断的向前移动</span></span><br><span class="line">        <span class="comment">//pre来到cur的位置</span></span><br><span class="line">        pre = cur</span><br><span class="line">        <span class="comment">//cur来到下一个节点位置</span></span><br><span class="line">        cur = cur.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除指定节点</span></span><br><span class="line">    pre.Next = cur.Next</span><br><span class="line">    <span class="comment">//最后返回链表头结点即可</span></span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>双百通过：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：2.7 MB, 在所有 Go 提交中击败了100.00%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetBook-binary-search | 二分查找</title>
     <url>/2021/01/23/leetcode-leetbook-binary-search/</url>
     <content><![CDATA[<h2 id="它是如何工作的？"><a href="#它是如何工作的？" class="headerlink" title="它是如何工作的？"></a>它是如何工作的？</h2><p>在最简单的形式中，二分查找对具有指定左索引和右索引的连续序列进行操作。这就是所谓的查找空间。二分查找维护查找空间的左、右和中间指示符，并比较查找目标或将查找条件应用于集合的中间值；如果条件不满足或值不相等，则清除目标不可能存在的那一半，并在剩下的一半上继续查找，直到成功为止。如果查以空的一半结束，则无法满足条件，并且无法找到目标。  </p>
@@ -10922,7 +10948,7 @@
 <p>2011 · Search for information on courses with more than 1000 participants<br>SELECT * FROM <code>courses</code> WHERE <code>student_count</code>&gt;1000</p>
 <p>2012 · Find course information for the course named Artificial Intelligence<br>SELECT * FROM courses WHERE <code>name</code>&#x3D; ‘Artificial Intelligence’;</p>
 <p>2017 · Inserting SQL course information into the course table<br>INSERT INTO courses VALUES (14,”SQL”,200,”2021-02-25”,1)2021 · Insert teacher information into the specified column of the teachers table</p>
-<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#88;&#x69;&#97;&#x6f;&#70;&#117;&#x40;&#x6c;&#x69;&#x6e;&#x74;&#99;&#x6f;&#x64;&#101;&#46;&#99;&#111;&#109;">&#88;&#x69;&#97;&#x6f;&#70;&#117;&#x40;&#x6c;&#x69;&#x6e;&#x74;&#99;&#x6f;&#x64;&#101;&#46;&#99;&#111;&#109;</a>‘,20,’CN’);</p>
+<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#88;&#105;&#x61;&#x6f;&#x46;&#x75;&#x40;&#x6c;&#105;&#110;&#116;&#x63;&#111;&#100;&#x65;&#46;&#x63;&#111;&#x6d;">&#88;&#105;&#x61;&#x6f;&#x46;&#x75;&#x40;&#x6c;&#105;&#110;&#116;&#x63;&#111;&#100;&#x65;&#46;&#x63;&#111;&#x6d;</a>‘,20,’CN’);</p>
 <p>2020 · Update on the number of students choosing artificial intelligence<br>UPDATE <code>courses</code> SET <code>student_count</code>&#x3D;500 WHERE <code>name</code>&#x3D;’Artificial Intelligence’</p>
 <p>2004 · Delete all courses until 2020<br>DELETE FROM <code>courses</code> WHERE <code>created_at</code>&lt;’2020-1-1’</p>
 <p>2019 · Delete all rows in the table<br>DELETE FROM <code>courses</code></p>
@@ -12961,6 +12987,33 @@
       </tags>
   </entry>
   <entry>
+    <title>乐山一日游</title>
+    <url>/2019/09/15/travel-le-shan-one-day/</url>
+    <content><![CDATA[<h2 id="启程准备"><a href="#启程准备" class="headerlink" title="启程准备"></a>启程准备</h2><p>启程时间：9月15日早上，从成都到乐山坐高铁只需要50分钟。<br>所需物品：手机，钱包（身份证，零钱，车票），充电宝，充电线，雨伞，水杯，零食  </p>
+<h2 id="开始旅行"><a href="#开始旅行" class="headerlink" title="开始旅行"></a>开始旅行</h2><p>到乐山站后，先导航去芳芳家翘脚牛肉店吃午饭，然而到那时正好到了饭点，门口排起了长队，我预估到我至少要两个小时以上，于是放弃，买了个烧饼吃，接着前往下一个小吃街。  </p>
+<span id="more"></span>
+
+<p>然而去了下一个小吃街，甜皮鸭店门口排起了长队，我看甜皮鸭以斤算价（一斤最便宜要30元），基本是按一只起卖，女朋友说太腻了，不排了，于是去四方豆腐店（排了三十多人）和小豆海棠（排了八个人），结果也排起了队，放弃。最后去了一家豆腐脑店，店了一碗牛肉粉，一晚牛肉豆腐脑，一碗水果冰粉，很好吃。  </p>
+<p>接下来坐车去乐山大佛，比较坑的是，乐山大佛的售票处离乐山大佛入口有一公里远，所以下次去的话，建议到乐山大佛入口处买票，成人价80元&#x2F;人。<br>进了乐山大佛入口后，先是一个大大的佛字映入眼帘，接着就是爬台阶，如果要听讲解的话，可以请个导游，或者扫旁边的二维码花10元买个语音讲解。爬了半个多小时到达山上，看大了乐山大佛的头，不得不说，场景确实让人震撼，不过更让我震撼的是许多人排队去走栈道，不知道是去干嘛，据说是近距离欣赏大佛，无奈我又选择了放弃。逛了一会，然后下山去吃晚饭。  </p>
+<p>坐公交抵达另一处小吃街，比较出名的是叶婆婆和黄鸡肉两家钵钵鸡店，但是门口排着队，我换了一家档次也算不错的在吃，期间也品尝了下烧麦，个人觉得就是饺子的缩小版。吃了六分饱后，去了张公桥小吃街，买了酥肉咔饼（感觉就是肉夹馍），叶儿粑，味道不错。  </p>
+<p>吃完这些已经是晚上八点，于是我和女朋友坐公交赶去乐山站坐回成都的高铁。结果在公交车上人太多，我转了个身发现一位老大爷从我后面快速把手缩了回去，我猜测可能是人太多把他手卡住了吧，但我觉得不对劲，把书包翻过来正手拿着，结果发现我书包被拉开了半个口，接着刚好到站了那位缩手回去的老大爷也下车了，我检查了下包内的东西，没有少。  </p>
+<h2 id="旅行收获"><a href="#旅行收获" class="headerlink" title="旅行收获"></a>旅行收获</h2><ul>
+<li>超过半小时需要步行到达的地方，最好选择共享单车或公交。  </li>
+<li>去看景点时如果不想请导游可以下个语音讲解。  </li>
+<li>防人之心不可无。  </li>
+<li>学会拍照很重要。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Travel-notes</category>
+      </categories>
+      <tags>
+        <tag>旅游</tag>
+        <tag>开心</tag>
+        <tag>美食</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>今天我换了一个新头像</title>
     <url>/2020/07/13/today-i-changed-a-new-avatar/</url>
     <content><![CDATA[<p>今天我换了一个新头像，是妹妹亲自用数位板画的，看着蛮可爱的，最下面附带一行小字——“勇敢的去面对把！Neo Zhang”。  </p>
@@ -12995,33 +13048,6 @@
         <tag>合伙</tag>
         <tag>事业</tag>
         <tag>挫败</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>乐山一日游</title>
-    <url>/2019/09/15/travel-le-shan-one-day/</url>
-    <content><![CDATA[<h2 id="启程准备"><a href="#启程准备" class="headerlink" title="启程准备"></a>启程准备</h2><p>启程时间：9月15日早上，从成都到乐山坐高铁只需要50分钟。<br>所需物品：手机，钱包（身份证，零钱，车票），充电宝，充电线，雨伞，水杯，零食  </p>
-<h2 id="开始旅行"><a href="#开始旅行" class="headerlink" title="开始旅行"></a>开始旅行</h2><p>到乐山站后，先导航去芳芳家翘脚牛肉店吃午饭，然而到那时正好到了饭点，门口排起了长队，我预估到我至少要两个小时以上，于是放弃，买了个烧饼吃，接着前往下一个小吃街。  </p>
-<span id="more"></span>
-
-<p>然而去了下一个小吃街，甜皮鸭店门口排起了长队，我看甜皮鸭以斤算价（一斤最便宜要30元），基本是按一只起卖，女朋友说太腻了，不排了，于是去四方豆腐店（排了三十多人）和小豆海棠（排了八个人），结果也排起了队，放弃。最后去了一家豆腐脑店，店了一碗牛肉粉，一晚牛肉豆腐脑，一碗水果冰粉，很好吃。  </p>
-<p>接下来坐车去乐山大佛，比较坑的是，乐山大佛的售票处离乐山大佛入口有一公里远，所以下次去的话，建议到乐山大佛入口处买票，成人价80元&#x2F;人。<br>进了乐山大佛入口后，先是一个大大的佛字映入眼帘，接着就是爬台阶，如果要听讲解的话，可以请个导游，或者扫旁边的二维码花10元买个语音讲解。爬了半个多小时到达山上，看大了乐山大佛的头，不得不说，场景确实让人震撼，不过更让我震撼的是许多人排队去走栈道，不知道是去干嘛，据说是近距离欣赏大佛，无奈我又选择了放弃。逛了一会，然后下山去吃晚饭。  </p>
-<p>坐公交抵达另一处小吃街，比较出名的是叶婆婆和黄鸡肉两家钵钵鸡店，但是门口排着队，我换了一家档次也算不错的在吃，期间也品尝了下烧麦，个人觉得就是饺子的缩小版。吃了六分饱后，去了张公桥小吃街，买了酥肉咔饼（感觉就是肉夹馍），叶儿粑，味道不错。  </p>
-<p>吃完这些已经是晚上八点，于是我和女朋友坐公交赶去乐山站坐回成都的高铁。结果在公交车上人太多，我转了个身发现一位老大爷从我后面快速把手缩了回去，我猜测可能是人太多把他手卡住了吧，但我觉得不对劲，把书包翻过来正手拿着，结果发现我书包被拉开了半个口，接着刚好到站了那位缩手回去的老大爷也下车了，我检查了下包内的东西，没有少。  </p>
-<h2 id="旅行收获"><a href="#旅行收获" class="headerlink" title="旅行收获"></a>旅行收获</h2><ul>
-<li>超过半小时需要步行到达的地方，最好选择共享单车或公交。  </li>
-<li>去看景点时如果不想请导游可以下个语音讲解。  </li>
-<li>防人之心不可无。  </li>
-<li>学会拍照很重要。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Travel-notes</category>
-      </categories>
-      <tags>
-        <tag>旅游</tag>
-        <tag>开心</tag>
-        <tag>美食</tag>
       </tags>
   </entry>
   <entry>

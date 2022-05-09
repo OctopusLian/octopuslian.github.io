@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-05-08T08:28:23.740Z</updated>
+  <updated>2022-05-09T15:22:22.049Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指 Offer 18. 删除链表的节点</title>
+    <link href="https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/"/>
+    <id>https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/</id>
+    <published>2022-05-09T15:04:49.000Z</published>
+    <updated>2022-05-09T15:22:22.049Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/&quot;&gt;剑指 Offer 18. 删除链表的节点&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;我的复述：&lt;br&gt;假如有一个链表是&lt;code&gt;4-&amp;gt;1-&amp;gt;5-&amp;gt;9&lt;/code&gt;，指定删除节点5，那么返回新的链表为&lt;code&gt;4-&amp;gt;1-&amp;gt;9&lt;/code&gt;。  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;双指针&quot;&gt;&lt;a href=&quot;#双指针&quot; class=&quot;headerlink&quot; title=&quot;双指针&quot;&gt;&lt;/a&gt;双指针&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="链表" scheme="https://octopuslian.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指 Offer 11. 旋转数组的最小数字</title>
     <link href="https://octopuslian.github.io/2022/05/08/leetcode-lcof-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-zi/"/>
     <id>https://octopuslian.github.io/2022/05/08/leetcode-lcof-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-zi/</id>
     <published>2022-05-08T05:57:11.000Z</published>
-    <updated>2022-05-08T08:28:23.740Z</updated>
+    <updated>2022-05-08T08:30:19.417Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/&quot;&gt;剑指 Offer 11. 旋转数组的最小数字&lt;/a&gt;  &lt;/p&gt;
@@ -41,7 +62,7 @@
     <link href="https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/"/>
     <id>https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/</id>
     <published>2022-05-08T04:58:04.000Z</published>
-    <updated>2022-05-08T05:53:33.627Z</updated>
+    <updated>2022-05-08T08:30:19.417Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/&quot;&gt;剑指 Offer 10- I. 斐波那契数列&lt;/a&gt;  &lt;/p&gt;
@@ -569,31 +590,6 @@
     <category term="云原生" scheme="https://octopuslian.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
     
     <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LintCode Java教程 练习题答案</title>
-    <link href="https://octopuslian.github.io/2022/01/07/lintcode-learn-java/"/>
-    <id>https://octopuslian.github.io/2022/01/07/lintcode-learn-java/</id>
-    <published>2022-01-07T02:22:12.000Z</published>
-    <updated>2022-04-27T13:15:14.467Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;LEVEL-1&quot;&gt;&lt;a href=&quot;#LEVEL-1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL 1&quot;&gt;&lt;/a&gt;LEVEL 1&lt;/h1&gt;&lt;p&gt;2814.ASCII码对应的字符（Java 版）  &lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.*;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Main&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;Scanner&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;sc&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Scanner&lt;/span&gt;(System.in);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; sc.nextInt();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(num&amp;lt;&lt;span class=&quot;number&quot;&gt;128&lt;/span&gt; &amp;amp;&amp;amp; num &amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				System.out.println(num&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;?(&lt;span class=&quot;type&quot;&gt;char&lt;/span&gt;)num:&lt;span class=&quot;string&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;);	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        sc.close();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;2759 · Integer 的取值范围  &lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Solution&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;equivalence&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer a, Integer b)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a.equals(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnJava" scheme="https://octopuslian.github.io/categories/LearnJava/"/>
-    
-    
-    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
-    
-    <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
     
   </entry>
   
