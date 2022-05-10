@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-05-09T15:22:22.049Z</updated>
+  <updated>2022-05-10T14:22:31.778Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指 Offer 21. 调整数组顺序使奇数位于偶数前面</title>
+    <link href="https://octopuslian.github.io/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/"/>
+    <id>https://octopuslian.github.io/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/</id>
+    <published>2022-05-10T13:56:02.000Z</published>
+    <updated>2022-05-10T14:22:31.778Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/&quot;&gt;剑指 Offer 21. 调整数组顺序使奇数位于偶数前面&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;我的复述：&lt;br&gt;&lt;img src=&quot;/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/jiou.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;双指针&quot;&gt;&lt;a href=&quot;#双指针&quot; class=&quot;headerlink&quot; title=&quot;双指针&quot;&gt;&lt;/a&gt;双指针&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="排序" scheme="https://octopuslian.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指 Offer 18. 删除链表的节点</title>
     <link href="https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/"/>
     <id>https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/</id>
     <published>2022-05-09T15:04:49.000Z</published>
-    <updated>2022-05-09T15:22:22.049Z</updated>
+    <updated>2022-05-09T15:23:14.443Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/&quot;&gt;剑指 Offer 18. 删除链表的节点&lt;/a&gt;  &lt;/p&gt;
@@ -565,31 +588,6 @@
     <category term="文档" scheme="https://octopuslian.github.io/tags/%E6%96%87%E6%A1%A3/"/>
     
     <category term="swagger" scheme="https://octopuslian.github.io/tags/swagger/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>容器技术概念入门</title>
-    <link href="https://octopuslian.github.io/2022/01/15/introduction-to-container-technology-concepts/"/>
-    <id>https://octopuslian.github.io/2022/01/15/introduction-to-container-technology-concepts/</id>
-    <published>2022-01-15T15:46:38.000Z</published>
-    <updated>2022-04-27T13:15:14.439Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;从进程说开去&quot;&gt;&lt;a href=&quot;#从进程说开去&quot; class=&quot;headerlink&quot; title=&quot;从进程说开去&quot;&gt;&lt;/a&gt;从进程说开去&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;容器本身没有价值，有价值的是“容器编排”。&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;先启动一个容器  &lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker run -it busybox /bin/sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Unable to find image &amp;#x27;busybox:latest&amp;#x27; locally&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;latest: Pulling from library/busybox&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5cc84ad355aa: Pull complete &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Digest: sha256:5acba83a746c7608ed544dc1533b87c737a0b0fb730301639a0179f9344b1678&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Status: Downloaded newer image for busybox:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/ # &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;这段语句的含义是：请帮我启动一个容器，在容器里执行&amp;#x2F;bin&amp;#x2F;sh，并且给我分配一个命令行终端跟这个容器交互。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnCloudNative" scheme="https://octopuslian.github.io/categories/LearnCloudNative/"/>
-    
-    
-    <category term="云原生" scheme="https://octopuslian.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
-    
-    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   

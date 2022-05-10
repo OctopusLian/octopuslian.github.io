@@ -8944,7 +8944,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#x2e;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9030,27 +9030,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>基于Kubernetes构建企业容器云_进阶提高篇</title>
-    <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/</url>
-    <content><![CDATA[<h1 id="使用Helm管理Kubernetes应用"><a href="#使用Helm管理Kubernetes应用" class="headerlink" title="使用Helm管理Kubernetes应用"></a>使用Helm管理Kubernetes应用</h1><h2 id="什么是Helm？"><a href="#什么是Helm？" class="headerlink" title="什么是Helm？"></a>什么是Helm？</h2><p>Helm是一个kubernetes应用的包管理工具，用来管理charts————预先配置好的安装包资源，有点类似于Ubuntu的APT和CentOS中的yum。  </p>
-<h2 id="Helm的三个组件"><a href="#Helm的三个组件" class="headerlink" title="Helm的三个组件"></a>Helm的三个组件</h2><ul>
-<li>Chart: 一系列 k8s 资源集合的命名，它包含一系列 k8s 资源配置文件的模板 与参数，可供灵活配置  </li>
-<li>Repo: 即 chart 的仓库，其中有很多个 chart 可供选择，如官方 helm&#x2F;charts  </li>
-<li>Release: 当一个 Chart 部署后生成一个 release</li>
-</ul>
-<h2 id="创建自己的Chart"><a href="#创建自己的Chart" class="headerlink" title="创建自己的Chart"></a>创建自己的Chart</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@linux-node1 ~]# helm create opencmdb </span><br><span class="line">Creating opencmdb </span><br><span class="line"></span><br><span class="line">[root@linux-node1 ~]# tree opencmdb/ </span><br><span class="line">opencmdb/ </span><br><span class="line">├── charts #存放依赖的Chart </span><br><span class="line">├── Chart.yaml </span><br><span class="line">├── templates # 模板目录，存放YAML的模板文件 </span><br><span class="line">│ ├── deployment.yaml </span><br><span class="line">│ ├── _helpers.tpl </span><br><span class="line">│ ├── ingress.yaml </span><br><span class="line">│ ├── NOTES.txt # </span><br><span class="line">│ └── service.yaml </span><br><span class="line">└── values.yaml #给模板里面的变量赋值 </span><br><span class="line"></span><br><span class="line">2 directories, 7 files</span><br></pre></td></tr></table></figure>
-
-<h2 id="制品仓库和Helm"><a href="#制品仓库和Helm" class="headerlink" title="制品仓库和Helm"></a>制品仓库和Helm</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/repo-helm.png">  </p>
-<h1 id="Kubernetes的认证和鉴权RBAC"><a href="#Kubernetes的认证和鉴权RBAC" class="headerlink" title="Kubernetes的认证和鉴权RBAC"></a>Kubernetes的认证和鉴权RBAC</h1><h1 id="深入理解Kubernetes的内部机制"><a href="#深入理解Kubernetes的内部机制" class="headerlink" title="深入理解Kubernetes的内部机制"></a>深入理解Kubernetes的内部机制</h1><h1 id="Kubernetes的高可用架构"><a href="#Kubernetes的高可用架构" class="headerlink" title="Kubernetes的高可用架构"></a>Kubernetes的高可用架构</h1><h1 id="基于Kubernetes的DevOps实践"><a href="#基于Kubernetes的DevOps实践" class="headerlink" title="基于Kubernetes的DevOps实践"></a>基于Kubernetes的DevOps实践</h1>]]></content>
-      <categories>
-        <category>Learn-Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>Kubernetes</tag>
-        <tag>容器云</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于Kubernetes构建企业容器云_企业实践篇</title>
     <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-practice-level/</url>
     <content><![CDATA[<h1 id="理解Kubernetes理念和架构"><a href="#理解Kubernetes理念和架构" class="headerlink" title="理解Kubernetes理念和架构"></a>理解Kubernetes理念和架构</h1><h2 id="传统部署VS虚拟化部署VS容器部署"><a href="#传统部署VS虚拟化部署VS容器部署" class="headerlink" title="传统部署VS虚拟化部署VS容器部署"></a>传统部署VS虚拟化部署VS容器部署</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-practice-level/tvc-deploy.png">  </p>
@@ -9112,6 +9091,27 @@
 <h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YAML my_key: my_value first_level_dict_key: second_level_dict_key:value_in_second_level_dict </span><br><span class="line"></span><br><span class="line">IN Python &#123;&#x27;my_key&#x27;: &#x27;my_value&#x27;&#125; &#123; &#x27;first_level_dict_key&#x27;: &#123; &#x27;second_level_dict_key&#x27;: &#x27;value_in_second_level_dict&#x27; &#125; &#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="管理Kubernetes中的应用"><a href="#管理Kubernetes中的应用" class="headerlink" title="管理Kubernetes中的应用"></a>管理Kubernetes中的应用</h1>]]></content>
+      <categories>
+        <category>Learn-Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
+        <tag>容器云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于Kubernetes构建企业容器云_进阶提高篇</title>
+    <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/</url>
+    <content><![CDATA[<h1 id="使用Helm管理Kubernetes应用"><a href="#使用Helm管理Kubernetes应用" class="headerlink" title="使用Helm管理Kubernetes应用"></a>使用Helm管理Kubernetes应用</h1><h2 id="什么是Helm？"><a href="#什么是Helm？" class="headerlink" title="什么是Helm？"></a>什么是Helm？</h2><p>Helm是一个kubernetes应用的包管理工具，用来管理charts————预先配置好的安装包资源，有点类似于Ubuntu的APT和CentOS中的yum。  </p>
+<h2 id="Helm的三个组件"><a href="#Helm的三个组件" class="headerlink" title="Helm的三个组件"></a>Helm的三个组件</h2><ul>
+<li>Chart: 一系列 k8s 资源集合的命名，它包含一系列 k8s 资源配置文件的模板 与参数，可供灵活配置  </li>
+<li>Repo: 即 chart 的仓库，其中有很多个 chart 可供选择，如官方 helm&#x2F;charts  </li>
+<li>Release: 当一个 Chart 部署后生成一个 release</li>
+</ul>
+<h2 id="创建自己的Chart"><a href="#创建自己的Chart" class="headerlink" title="创建自己的Chart"></a>创建自己的Chart</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@linux-node1 ~]# helm create opencmdb </span><br><span class="line">Creating opencmdb </span><br><span class="line"></span><br><span class="line">[root@linux-node1 ~]# tree opencmdb/ </span><br><span class="line">opencmdb/ </span><br><span class="line">├── charts #存放依赖的Chart </span><br><span class="line">├── Chart.yaml </span><br><span class="line">├── templates # 模板目录，存放YAML的模板文件 </span><br><span class="line">│ ├── deployment.yaml </span><br><span class="line">│ ├── _helpers.tpl </span><br><span class="line">│ ├── ingress.yaml </span><br><span class="line">│ ├── NOTES.txt # </span><br><span class="line">│ └── service.yaml </span><br><span class="line">└── values.yaml #给模板里面的变量赋值 </span><br><span class="line"></span><br><span class="line">2 directories, 7 files</span><br></pre></td></tr></table></figure>
+
+<h2 id="制品仓库和Helm"><a href="#制品仓库和Helm" class="headerlink" title="制品仓库和Helm"></a>制品仓库和Helm</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/repo-helm.png">  </p>
+<h1 id="Kubernetes的认证和鉴权RBAC"><a href="#Kubernetes的认证和鉴权RBAC" class="headerlink" title="Kubernetes的认证和鉴权RBAC"></a>Kubernetes的认证和鉴权RBAC</h1><h1 id="深入理解Kubernetes的内部机制"><a href="#深入理解Kubernetes的内部机制" class="headerlink" title="深入理解Kubernetes的内部机制"></a>深入理解Kubernetes的内部机制</h1><h1 id="Kubernetes的高可用架构"><a href="#Kubernetes的高可用架构" class="headerlink" title="Kubernetes的高可用架构"></a>Kubernetes的高可用架构</h1><h1 id="基于Kubernetes的DevOps实践"><a href="#基于Kubernetes的DevOps实践" class="headerlink" title="基于Kubernetes的DevOps实践"></a>基于Kubernetes的DevOps实践</h1>]]></content>
       <categories>
         <category>Learn-Kubernetes</category>
       </categories>
@@ -9266,6 +9266,19 @@
       </tags>
   </entry>
   <entry>
+    <title>leetcode 111-minimum-depth-of-binary-tree | 二叉树的最小深度</title>
+    <url>/2020/12/05/leetcode-111-minimum-depth-of-binary-tree/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/</a>  </p>
+<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    leftDepth := minDepth(root.Left)</span><br><span class="line">    rightDepth := minDepth(root.Right)</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightDepth</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftDepth</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(leftDepth,rightDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span><span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode 104-maximum-depth-of-binary-tree | 二叉树的最大深度</title>
     <url>/2020/12/02/leetcode-104-maximum-depth-of-binary-tree/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/</a>  </p>
@@ -9278,19 +9291,6 @@
         <tag>leetcode</tag>
         <tag>二叉树</tag>
         <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode 111-minimum-depth-of-binary-tree | 二叉树的最小深度</title>
-    <url>/2020/12/05/leetcode-111-minimum-depth-of-binary-tree/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/</a>  </p>
-<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    leftDepth := minDepth(root.Left)</span><br><span class="line">    rightDepth := minDepth(root.Right)</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightDepth</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftDepth</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(leftDepth,rightDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span><span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -9414,6 +9414,20 @@
       </tags>
   </entry>
   <entry>
+    <title>leetcode 141-linked-list-cycle | 环形链表</title>
+    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
+<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
+<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_1480_running-sum-of-1d-array | 一维数组的动态和</title>
     <url>/2020/07/03/leetcode-1480-running-sum-of-1d-array/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://leetcode-cn.com/problems/running-sum-of-1d-array/">leetcode中国</a>  </p>
@@ -9429,20 +9443,6 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>暴力</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode 141-linked-list-cycle | 环形链表</title>
-    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
-<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
-<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -10701,6 +10701,42 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 21. 调整数组顺序使奇数位于偶数前面</title>
+    <url>/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/">剑指 Offer 21. 调整数组顺序使奇数位于偶数前面</a>  </p>
+<p>我的复述：<br><img src="/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/jiou.png">  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><ul>
+<li><p>声明左指针<code>left</code>在数组的最左边，右指针<code>right</code>在数组的最右边；<br><img src="/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/tp1.png">  </p>
+</li>
+<li><p>左指针<code>left</code>指向的数字为1，是奇数，因此移动到下一个数字2；  </p>
+</li>
+<li><p>左指针指向的数字2位偶数，右指针指向的数字3位奇数，因此将两个指针指向的数字调换；<br><img src="/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/tp2.png"></p>
+</li>
+</ul>
+<p><img src="/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/tp3.png">  </p>
+<ul>
+<li>左指针指向下一个数字4，是偶数，需要调换，因此需要右指针<code>right</code>指向一个奇数，而此时的右指针指向的是数字6，也是偶数，所以将右指针向左移动一个位置，指向数字5；  </li>
+<li>当右指针指向数字5的时候，发现是奇数，因此与左指针<code>left</code>指向的数字4进行调换；  </li>
+<li>调换后，左指针继续向右边移动，当发现左右指针重合，遍历结束。<br><img src="/2022/05/10/leetcode-lcof-21-diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/tp4.png"></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] exchange(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="comment">//定义左指针left</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//定义右指针right</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//定义临时变量 tmp</span></span><br><span class="line">        <span class="type">int</span> tmp;</span><br><span class="line">        <span class="comment">//移动left 和 right，直到left在right右侧或者相遇为止</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="comment">//如果left指针指向的元素是奇数，那么说明元素在左侧了，观察其它元素，即让 left 向右移动</span></span><br><span class="line">            <span class="keyword">while</span> (left &lt; right &amp;&amp; (nums[left] &amp; <span class="number">1</span>) == <span class="number">1</span>) left++;</span><br><span class="line">            <span class="comment">//如果right指针指向的元素是偶数，那么说明元素在右侧了，观察其它元素，即让 right 向左移动</span></span><br><span class="line">            <span class="keyword">while</span> (left &lt; right &amp;&amp; (nums[right] &amp; <span class="number">1</span>) == <span class="number">0</span>) right--;</span><br><span class="line">            <span class="comment">//否则就说明，此时要么 left 指向的元素值为偶数，要么 right 指向的元素为奇数</span></span><br><span class="line">            <span class="comment">//交换这两个位置的元素</span></span><br><span class="line">            tmp = nums[left];</span><br><span class="line">            nums[left] = nums[right];</span><br><span class="line">            nums[right] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：48.9 MB, 在所有 Java 提交中击败了84.14%的用户</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exchange</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">//定义左指针left</span></span><br><span class="line">    left := <span class="number">0</span></span><br><span class="line">    <span class="comment">//定义右指针right</span></span><br><span class="line">    right := <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">    <span class="comment">//定义临时变量 tmp</span></span><br><span class="line">    <span class="keyword">var</span> tmp <span class="type">int</span></span><br><span class="line">    <span class="comment">//移动left 和 right，直到left在right右侧或者相遇为止</span></span><br><span class="line">    <span class="keyword">for</span> left &lt; right &#123;</span><br><span class="line">        <span class="comment">//如果left指针指向的元素是奇数，那么说明元素在左侧了，观察其它元素，即让 left 向右移动</span></span><br><span class="line">        <span class="keyword">for</span> left &lt; right &amp;&amp; (nums[left] &amp; <span class="number">1</span>) == <span class="number">1</span> &#123;</span><br><span class="line">            left++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果right指针指向的元素是偶数，那么说明元素在右侧了，观察其它元素，即让 right 向左移动</span></span><br><span class="line">        <span class="keyword">for</span> left &lt; right &amp;&amp; (nums[right] &amp; <span class="number">1</span>) == <span class="number">0</span> &#123;</span><br><span class="line">            right--</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//否则就说明，此时要么 left 指向的元素值为偶数，要么 right 指向的元素为奇数</span></span><br><span class="line">        <span class="comment">//交换这两个位置的元素</span></span><br><span class="line">        tmp = nums[left]</span><br><span class="line">        nums[left] = nums[right]</span><br><span class="line">        nums[right] = tmp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：16 ms, 在所有 Go 提交中击败了88.81%的用户</span><br><span class="line">内存消耗：6.4 MB, 在所有 Go 提交中击败了23.34%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetBook-binary-search | 二分查找</title>
     <url>/2021/01/23/leetcode-leetbook-binary-search/</url>
     <content><![CDATA[<h2 id="它是如何工作的？"><a href="#它是如何工作的？" class="headerlink" title="它是如何工作的？"></a>它是如何工作的？</h2><p>在最简单的形式中，二分查找对具有指定左索引和右索引的连续序列进行操作。这就是所谓的查找空间。二分查找维护查找空间的左、右和中间指示符，并比较查找目标或将查找条件应用于集合的中间值；如果条件不满足或值不相等，则清除目标不可能存在的那一半，并在剩下的一半上继续查找，直到成功为止。如果查以空的一半结束，则无法满足条件，并且无法找到目标。  </p>
@@ -10948,7 +10984,7 @@
 <p>2011 · Search for information on courses with more than 1000 participants<br>SELECT * FROM <code>courses</code> WHERE <code>student_count</code>&gt;1000</p>
 <p>2012 · Find course information for the course named Artificial Intelligence<br>SELECT * FROM courses WHERE <code>name</code>&#x3D; ‘Artificial Intelligence’;</p>
 <p>2017 · Inserting SQL course information into the course table<br>INSERT INTO courses VALUES (14,”SQL”,200,”2021-02-25”,1)2021 · Insert teacher information into the specified column of the teachers table</p>
-<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#88;&#105;&#x61;&#x6f;&#x46;&#x75;&#x40;&#x6c;&#105;&#110;&#116;&#x63;&#111;&#100;&#x65;&#46;&#x63;&#111;&#x6d;">&#88;&#105;&#x61;&#x6f;&#x46;&#x75;&#x40;&#x6c;&#105;&#110;&#116;&#x63;&#111;&#100;&#x65;&#46;&#x63;&#111;&#x6d;</a>‘,20,’CN’);</p>
+<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#x58;&#105;&#97;&#111;&#x46;&#117;&#x40;&#x6c;&#x69;&#110;&#x74;&#x63;&#111;&#100;&#101;&#x2e;&#x63;&#111;&#109;">&#x58;&#105;&#97;&#111;&#x46;&#117;&#x40;&#x6c;&#x69;&#110;&#x74;&#x63;&#111;&#100;&#101;&#x2e;&#x63;&#111;&#109;</a>‘,20,’CN’);</p>
 <p>2020 · Update on the number of students choosing artificial intelligence<br>UPDATE <code>courses</code> SET <code>student_count</code>&#x3D;500 WHERE <code>name</code>&#x3D;’Artificial Intelligence’</p>
 <p>2004 · Delete all courses until 2020<br>DELETE FROM <code>courses</code> WHERE <code>created_at</code>&lt;’2020-1-1’</p>
 <p>2019 · Delete all rows in the table<br>DELETE FROM <code>courses</code></p>
@@ -12987,6 +13023,25 @@
       </tags>
   </entry>
   <entry>
+    <title>今天我换了一个新头像</title>
+    <url>/2020/07/13/today-i-changed-a-new-avatar/</url>
+    <content><![CDATA[<p>今天我换了一个新头像，是妹妹亲自用数位板画的，看着蛮可爱的，最下面附带一行小字——“勇敢的去面对把！Neo Zhang”。  </p>
+<p>我想这个头像未来会陪伴我几年，甚至十几年，希望未来有一天这个头像可以当做一个计算机大佬象征性的标志（在此先立一个长远的Flag）。  </p>
+<p><img src="/2020/07/13/today-i-changed-a-new-avatar/neozhang.png">  </p>
+<p>另外今天收到了煎鱼哥和徐大两位写的书，总共有5个<code>Go</code>语言相关的项目，还有一章关于<code>Go</code>工具的讲解，我已经迫不及待想要翻阅了。  </p>
+<p><img src="/2020/07/13/today-i-changed-a-new-avatar/go-book.jpeg">  </p>
+<p><img src="/2020/07/13/today-i-changed-a-new-avatar/go-book2.jpeg"></p>
+<p>2020下半年，加油！  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>换新</tag>
+        <tag>头像</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>乐山一日游</title>
     <url>/2019/09/15/travel-le-shan-one-day/</url>
     <content><![CDATA[<h2 id="启程准备"><a href="#启程准备" class="headerlink" title="启程准备"></a>启程准备</h2><p>启程时间：9月15日早上，从成都到乐山坐高铁只需要50分钟。<br>所需物品：手机，钱包（身份证，零钱，车票），充电宝，充电线，雨伞，水杯，零食  </p>
@@ -13011,25 +13066,6 @@
         <tag>旅游</tag>
         <tag>开心</tag>
         <tag>美食</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>今天我换了一个新头像</title>
-    <url>/2020/07/13/today-i-changed-a-new-avatar/</url>
-    <content><![CDATA[<p>今天我换了一个新头像，是妹妹亲自用数位板画的，看着蛮可爱的，最下面附带一行小字——“勇敢的去面对把！Neo Zhang”。  </p>
-<p>我想这个头像未来会陪伴我几年，甚至十几年，希望未来有一天这个头像可以当做一个计算机大佬象征性的标志（在此先立一个长远的Flag）。  </p>
-<p><img src="/2020/07/13/today-i-changed-a-new-avatar/neozhang.png">  </p>
-<p>另外今天收到了煎鱼哥和徐大两位写的书，总共有5个<code>Go</code>语言相关的项目，还有一章关于<code>Go</code>工具的讲解，我已经迫不及待想要翻阅了。  </p>
-<p><img src="/2020/07/13/today-i-changed-a-new-avatar/go-book.jpeg">  </p>
-<p><img src="/2020/07/13/today-i-changed-a-new-avatar/go-book2.jpeg"></p>
-<p>2020下半年，加油！  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>换新</tag>
-        <tag>头像</tag>
       </tags>
   </entry>
   <entry>
