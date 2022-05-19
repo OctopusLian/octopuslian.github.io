@@ -4747,6 +4747,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Go导出Excel文件</title>
+    <url>/2022/05/11/go-download-excel-file/</url>
+    <content><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>业务上经常会遇到要导出查询结果的<code>Excel</code>文档，我平时会用<code>excelize</code>包来做。  </p>
+<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>安装  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> get github.com/<span class="number">360</span>EntSecGroup-Skylar/excelize</span><br></pre></td></tr></table></figure>
+
+<p>更新  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">go get -u github.com/360EntSecGroup-Skylar/excelize</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建Excel"><a href="#创建Excel" class="headerlink" title="创建Excel"></a>创建Excel</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/360EntSecGroup-Skylar/excelize&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//创建一个文件</span></span><br><span class="line">    f := excelize.NewFile()</span><br><span class="line">    <span class="comment">// 创建一个工作表</span></span><br><span class="line">    index := f.NewSheet(<span class="string">&quot;Sheet2&quot;</span>)</span><br><span class="line">    <span class="comment">// 合并单元格</span></span><br><span class="line">    f.MergeCell(<span class="string">&quot;Sheet1&quot;</span>, <span class="string">&quot;A1&quot;</span>, <span class="string">&quot;J1&quot;</span>)  </span><br><span class="line">    <span class="comment">// 设置单元格的值</span></span><br><span class="line">    f.SetCellValue(<span class="string">&quot;Sheet2&quot;</span>, <span class="string">&quot;A2&quot;</span>, <span class="string">&quot;Hello world.&quot;</span>)</span><br><span class="line">    f.SetCellValue(<span class="string">&quot;Sheet1&quot;</span>, <span class="string">&quot;B2&quot;</span>, <span class="number">100</span>)</span><br><span class="line">    <span class="comment">// 设置工作簿的默认工作表</span></span><br><span class="line">    f.SetActiveSheet(index)</span><br><span class="line">    <span class="comment">// 根据指定路径保存文件</span></span><br><span class="line">    err := f.SaveAs(<span class="string">&quot;./Book1.xlsx&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="读取Excel"><a href="#读取Excel" class="headerlink" title="读取Excel"></a>读取Excel</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/360EntSecGroup-Skylar/excelize&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    f, err := excelize.OpenFile(<span class="string">&quot;./Book1.xlsx&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取工作表中指定单元格的值</span></span><br><span class="line">    cell, err := f.GetCellValue(<span class="string">&quot;Sheet1&quot;</span>, <span class="string">&quot;B2&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(cell)</span><br><span class="line">    <span class="comment">// 获取 Sheet1 上所有单元格</span></span><br><span class="line">    rows, err := f.GetRows(<span class="string">&quot;Sheet1&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> _, row := <span class="keyword">range</span> rows &#123;</span><br><span class="line">        <span class="keyword">for</span> _, colCell := <span class="keyword">range</span> row &#123;</span><br><span class="line">            fmt.Print(colCell, <span class="string">&quot;\t&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.bookstack.cn/books/excelize-v2.0">Excelize v2.0 中文文档</a></p>
+]]></content>
+      <categories>
+        <category>Learn-go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>文件操作</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言的优点和缺点</title>
     <url>/2020/05/10/go-language-advantages-and-disadvantages/</url>
     <content><![CDATA[<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
@@ -8944,7 +8968,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#x2e;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x2e;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9030,6 +9054,27 @@
 ]]></content>
   </entry>
   <entry>
+    <title>基于Kubernetes构建企业容器云_进阶提高篇</title>
+    <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/</url>
+    <content><![CDATA[<h1 id="使用Helm管理Kubernetes应用"><a href="#使用Helm管理Kubernetes应用" class="headerlink" title="使用Helm管理Kubernetes应用"></a>使用Helm管理Kubernetes应用</h1><h2 id="什么是Helm？"><a href="#什么是Helm？" class="headerlink" title="什么是Helm？"></a>什么是Helm？</h2><p>Helm是一个kubernetes应用的包管理工具，用来管理charts————预先配置好的安装包资源，有点类似于Ubuntu的APT和CentOS中的yum。  </p>
+<h2 id="Helm的三个组件"><a href="#Helm的三个组件" class="headerlink" title="Helm的三个组件"></a>Helm的三个组件</h2><ul>
+<li>Chart: 一系列 k8s 资源集合的命名，它包含一系列 k8s 资源配置文件的模板 与参数，可供灵活配置  </li>
+<li>Repo: 即 chart 的仓库，其中有很多个 chart 可供选择，如官方 helm&#x2F;charts  </li>
+<li>Release: 当一个 Chart 部署后生成一个 release</li>
+</ul>
+<h2 id="创建自己的Chart"><a href="#创建自己的Chart" class="headerlink" title="创建自己的Chart"></a>创建自己的Chart</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@linux-node1 ~]# helm create opencmdb </span><br><span class="line">Creating opencmdb </span><br><span class="line"></span><br><span class="line">[root@linux-node1 ~]# tree opencmdb/ </span><br><span class="line">opencmdb/ </span><br><span class="line">├── charts #存放依赖的Chart </span><br><span class="line">├── Chart.yaml </span><br><span class="line">├── templates # 模板目录，存放YAML的模板文件 </span><br><span class="line">│ ├── deployment.yaml </span><br><span class="line">│ ├── _helpers.tpl </span><br><span class="line">│ ├── ingress.yaml </span><br><span class="line">│ ├── NOTES.txt # </span><br><span class="line">│ └── service.yaml </span><br><span class="line">└── values.yaml #给模板里面的变量赋值 </span><br><span class="line"></span><br><span class="line">2 directories, 7 files</span><br></pre></td></tr></table></figure>
+
+<h2 id="制品仓库和Helm"><a href="#制品仓库和Helm" class="headerlink" title="制品仓库和Helm"></a>制品仓库和Helm</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/repo-helm.png">  </p>
+<h1 id="Kubernetes的认证和鉴权RBAC"><a href="#Kubernetes的认证和鉴权RBAC" class="headerlink" title="Kubernetes的认证和鉴权RBAC"></a>Kubernetes的认证和鉴权RBAC</h1><h1 id="深入理解Kubernetes的内部机制"><a href="#深入理解Kubernetes的内部机制" class="headerlink" title="深入理解Kubernetes的内部机制"></a>深入理解Kubernetes的内部机制</h1><h1 id="Kubernetes的高可用架构"><a href="#Kubernetes的高可用架构" class="headerlink" title="Kubernetes的高可用架构"></a>Kubernetes的高可用架构</h1><h1 id="基于Kubernetes的DevOps实践"><a href="#基于Kubernetes的DevOps实践" class="headerlink" title="基于Kubernetes的DevOps实践"></a>基于Kubernetes的DevOps实践</h1>]]></content>
+      <categories>
+        <category>Learn-Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
+        <tag>容器云</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于Kubernetes构建企业容器云_企业实践篇</title>
     <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-practice-level/</url>
     <content><![CDATA[<h1 id="理解Kubernetes理念和架构"><a href="#理解Kubernetes理念和架构" class="headerlink" title="理解Kubernetes理念和架构"></a>理解Kubernetes理念和架构</h1><h2 id="传统部署VS虚拟化部署VS容器部署"><a href="#传统部署VS虚拟化部署VS容器部署" class="headerlink" title="传统部署VS虚拟化部署VS容器部署"></a>传统部署VS虚拟化部署VS容器部署</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-practice-level/tvc-deploy.png">  </p>
@@ -9091,27 +9136,6 @@
 <h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YAML my_key: my_value first_level_dict_key: second_level_dict_key:value_in_second_level_dict </span><br><span class="line"></span><br><span class="line">IN Python &#123;&#x27;my_key&#x27;: &#x27;my_value&#x27;&#125; &#123; &#x27;first_level_dict_key&#x27;: &#123; &#x27;second_level_dict_key&#x27;: &#x27;value_in_second_level_dict&#x27; &#125; &#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="管理Kubernetes中的应用"><a href="#管理Kubernetes中的应用" class="headerlink" title="管理Kubernetes中的应用"></a>管理Kubernetes中的应用</h1>]]></content>
-      <categories>
-        <category>Learn-Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>Kubernetes</tag>
-        <tag>容器云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于Kubernetes构建企业容器云_进阶提高篇</title>
-    <url>/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/</url>
-    <content><![CDATA[<h1 id="使用Helm管理Kubernetes应用"><a href="#使用Helm管理Kubernetes应用" class="headerlink" title="使用Helm管理Kubernetes应用"></a>使用Helm管理Kubernetes应用</h1><h2 id="什么是Helm？"><a href="#什么是Helm？" class="headerlink" title="什么是Helm？"></a>什么是Helm？</h2><p>Helm是一个kubernetes应用的包管理工具，用来管理charts————预先配置好的安装包资源，有点类似于Ubuntu的APT和CentOS中的yum。  </p>
-<h2 id="Helm的三个组件"><a href="#Helm的三个组件" class="headerlink" title="Helm的三个组件"></a>Helm的三个组件</h2><ul>
-<li>Chart: 一系列 k8s 资源集合的命名，它包含一系列 k8s 资源配置文件的模板 与参数，可供灵活配置  </li>
-<li>Repo: 即 chart 的仓库，其中有很多个 chart 可供选择，如官方 helm&#x2F;charts  </li>
-<li>Release: 当一个 Chart 部署后生成一个 release</li>
-</ul>
-<h2 id="创建自己的Chart"><a href="#创建自己的Chart" class="headerlink" title="创建自己的Chart"></a>创建自己的Chart</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@linux-node1 ~]# helm create opencmdb </span><br><span class="line">Creating opencmdb </span><br><span class="line"></span><br><span class="line">[root@linux-node1 ~]# tree opencmdb/ </span><br><span class="line">opencmdb/ </span><br><span class="line">├── charts #存放依赖的Chart </span><br><span class="line">├── Chart.yaml </span><br><span class="line">├── templates # 模板目录，存放YAML的模板文件 </span><br><span class="line">│ ├── deployment.yaml </span><br><span class="line">│ ├── _helpers.tpl </span><br><span class="line">│ ├── ingress.yaml </span><br><span class="line">│ ├── NOTES.txt # </span><br><span class="line">│ └── service.yaml </span><br><span class="line">└── values.yaml #给模板里面的变量赋值 </span><br><span class="line"></span><br><span class="line">2 directories, 7 files</span><br></pre></td></tr></table></figure>
-
-<h2 id="制品仓库和Helm"><a href="#制品仓库和Helm" class="headerlink" title="制品仓库和Helm"></a>制品仓库和Helm</h2><p><img src="/2021/09/21/kubernetes-build-enterprise-container-cloud-advance-improve-level/repo-helm.png">  </p>
-<h1 id="Kubernetes的认证和鉴权RBAC"><a href="#Kubernetes的认证和鉴权RBAC" class="headerlink" title="Kubernetes的认证和鉴权RBAC"></a>Kubernetes的认证和鉴权RBAC</h1><h1 id="深入理解Kubernetes的内部机制"><a href="#深入理解Kubernetes的内部机制" class="headerlink" title="深入理解Kubernetes的内部机制"></a>深入理解Kubernetes的内部机制</h1><h1 id="Kubernetes的高可用架构"><a href="#Kubernetes的高可用架构" class="headerlink" title="Kubernetes的高可用架构"></a>Kubernetes的高可用架构</h1><h1 id="基于Kubernetes的DevOps实践"><a href="#基于Kubernetes的DevOps实践" class="headerlink" title="基于Kubernetes的DevOps实践"></a>基于Kubernetes的DevOps实践</h1>]]></content>
       <categories>
         <category>Learn-Kubernetes</category>
       </categories>
@@ -9266,19 +9290,6 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode 111-minimum-depth-of-binary-tree | 二叉树的最小深度</title>
-    <url>/2020/12/05/leetcode-111-minimum-depth-of-binary-tree/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/</a>  </p>
-<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    leftDepth := minDepth(root.Left)</span><br><span class="line">    rightDepth := minDepth(root.Right)</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightDepth</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftDepth</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(leftDepth,rightDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span><span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>leetcode 104-maximum-depth-of-binary-tree | 二叉树的最大深度</title>
     <url>/2020/12/02/leetcode-104-maximum-depth-of-binary-tree/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/</a>  </p>
@@ -9291,6 +9302,19 @@
         <tag>leetcode</tag>
         <tag>二叉树</tag>
         <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode 111-minimum-depth-of-binary-tree | 二叉树的最小深度</title>
+    <url>/2020/12/05/leetcode-111-minimum-depth-of-binary-tree/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/</a>  </p>
+<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    leftDepth := minDepth(root.Left)</span><br><span class="line">    rightDepth := minDepth(root.Right)</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightDepth</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftDepth</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(leftDepth,rightDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span><span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -10737,6 +10761,46 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 22. 链表中倒数第k个节点</title>
+    <url>/2022/05/18/leetcode-lcof-22-lian-biao-zhong-dao-shu-di-kge-jie-dian/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/">剑指 Offer 22. 链表中倒数第k个节点</a>  </p>
+<p>我的复述：<br>假如有一个链表为：1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6，输入的k&#x3D;2，则输出为该链表倒数第2个节点，也就是正数第5个节点5。  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><ul>
+<li>新建<code>latter</code>和<code>former</code>两个快慢双指针；  </li>
+<li>先将<code>former</code>指针向前移动<code>k</code>个长度；  </li>
+<li>再同时将<code>latter</code>和<code>former</code>指针向链表尾部移动；  </li>
+<li>当<code>former</code>指针指向为<code>null</code>时，此时<code>latter</code>指针指向的就是要返回的值。</li>
+</ul>
+<p><img src="/2022/05/18/leetcode-lcof-22-lian-biao-zhong-dao-shu-di-kge-jie-dian/tp.png">  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getKthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">//初始化两个指针 former和latter，一开始都指向链表的头节点</span></span><br><span class="line">        <span class="comment">//指针former指向链表的头节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">former</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="comment">//指针latter指向列表的头结点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">latter</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="comment">//让former指针先向前走k步</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; k;i++) &#123;</span><br><span class="line">            former = former.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//让这两个指针former和latter同时向前移动，直到后指针former指向NULL</span></span><br><span class="line">        <span class="keyword">while</span> (former != <span class="literal">null</span>) &#123;</span><br><span class="line">            former = former.next;</span><br><span class="line">            latter = latter.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> latter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Go</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getKthFromEnd</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">//初始化两个指针 former和latter，一开始都指向链表的头节点</span></span><br><span class="line">    <span class="comment">//指针former指向链表的头节点</span></span><br><span class="line">    former := head</span><br><span class="line">    <span class="comment">//指针latter指向列表的头结点</span></span><br><span class="line">    latter := head</span><br><span class="line">    <span class="comment">//让former指针先向前走k步</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>;i &lt; k;i++ &#123;</span><br><span class="line">        former = former.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//让这两个指针former和latter同时向前移动，直到后指针former指向NULL</span></span><br><span class="line">    <span class="keyword">for</span> former != <span class="literal">nil</span> &#123;</span><br><span class="line">        former = former.Next</span><br><span class="line">        latter = latter.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> latter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 24. 反转链表</title>
+    <url>/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/">剑指 Offer 24. 反转链表</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>1，先递归到链表的尾部：<br><img src="/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/r1.png">  </p>
+<p>2，反转尾部，变为头部：<br><img src="/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/r2.png">  </p>
+<p>3，以此类推，完成反转：<br><img src="/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/r3.png">  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">//寻找递归终止条件</span></span><br><span class="line">        <span class="comment">//1、head指向的节点为null</span></span><br><span class="line">        <span class="comment">//2、head指向的节点的下一个节点为null</span></span><br><span class="line">        <span class="comment">//在这两种情况下，反转之后的结果还是它自己本身</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不断的通过递归调用，直到无法递归下去，递归的最小粒度是在最后一个节点</span></span><br><span class="line">        <span class="comment">//因为到最后一个节点的时候，由于当前节点的head的next节点是空，所以会直接返回head</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> reverseList(head.next);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//比如原链表为 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;null</span></span><br><span class="line">        <span class="comment">//5-&gt;4</span></span><br><span class="line">        <span class="comment">//第一次执行下面代码的时候，head为4，那么head.next = 5</span></span><br><span class="line">        <span class="comment">//那么head.next.next 就是 5.next，意思就是去设置5的下一个节点</span></span><br><span class="line">        <span class="comment">//等号右侧为head，意思就是设置5的下一个节点是4</span></span><br><span class="line">        head.next.next = head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//head原来的下一节点指向自己，所以head自己本身就不能再指向原来的下一节点了</span></span><br><span class="line">        head.next = <span class="literal">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//我们把每次反转后的结果传递给上一层</span></span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行用时：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：40.7 MB, 在所有 Java 提交中击败了71.89%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetBook-binary-search | 二分查找</title>
     <url>/2021/01/23/leetcode-leetbook-binary-search/</url>
     <content><![CDATA[<h2 id="它是如何工作的？"><a href="#它是如何工作的？" class="headerlink" title="它是如何工作的？"></a>它是如何工作的？</h2><p>在最简单的形式中，二分查找对具有指定左索引和右索引的连续序列进行操作。这就是所谓的查找空间。二分查找维护查找空间的左、右和中间指示符，并比较查找目标或将查找条件应用于集合的中间值；如果条件不满足或值不相等，则清除目标不可能存在的那一半，并在剩下的一半上继续查找，直到成功为止。如果查以空的一半结束，则无法满足条件，并且无法找到目标。  </p>
@@ -10928,7 +10992,9 @@
   <entry>
     <title>LintCode Java教程 练习题答案</title>
     <url>/2022/01/07/lintcode-learn-java/</url>
-    <content><![CDATA[<h1 id="LEVEL-1"><a href="#LEVEL-1" class="headerlink" title="LEVEL 1"></a>LEVEL 1</h1><p>2814.ASCII码对应的字符（Java 版）  </p>
+    <content><![CDATA[<h1 id="LEVEL-1"><a href="#LEVEL-1" class="headerlink" title="LEVEL 1"></a>LEVEL 1</h1><ul>
+<li>2814.ASCII码对应的字符（Java 版）</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">// write your code here</span></span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(num&lt;<span class="number">128</span> &amp;&amp; num &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(num&gt;<span class="number">0</span>?(<span class="type">char</span>)num:<span class="string">&quot;error&quot;</span>);	</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">        sc.close();</span><br><span class="line">        </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>2759 · Integer 的取值范围  </p>
@@ -10976,68 +11042,198 @@
     <title>LintCode SQL教程 练习题答案</title>
     <url>/2022/01/06/lintcode-learn-sql/</url>
     <content><![CDATA[<p>SQL 教程链接：<a href="https://www.lintcode.com/learn">https://www.lintcode.com/learn</a>  </p>
-<h1 id="LEVEL1"><a href="#LEVEL1" class="headerlink" title="LEVEL1:"></a>LEVEL1:</h1><p>2045 · Output Hello LintCode<br>SELECT “Hello LintCode!”;</p>
-<p>2013 · Check the name of the teacher<br>SELECT <code>name</code> FROM <code>teachers</code></p>
-<p>2007 · Check course name and class size<br>SELECT <code>name</code>,<code>student_count</code> FROM courses</p>
-<p>2009 · Query all teachers<br>SELECT * FROM <code>teachers</code></p>
-<p>1981 · Check the nationality of all teachers<br>SELECT DISTINCT country FROM teachers</p>
-<p>2011 · Search for information on courses with more than 1000 participants<br>SELECT * FROM <code>courses</code> WHERE <code>student_count</code>&gt;1000</p>
-<p>2012 · Find course information for the course named Artificial Intelligence<br>SELECT * FROM courses WHERE <code>name</code>&#x3D; ‘Artificial Intelligence’;</p>
-<p>2017 · Inserting SQL course information into the course table<br>INSERT INTO courses VALUES (14,”SQL”,200,”2021-02-25”,1)2021 · Insert teacher information into the specified column of the teachers table</p>
-<p>INSERT INTO <code>teachers</code> (<code>name</code>,<code>email</code>,<code>age</code>,<code>country</code>) VALUES<br>(‘XiaoFu’,‘<a href="mailto:&#x58;&#105;&#97;&#111;&#x46;&#117;&#x40;&#x6c;&#x69;&#110;&#x74;&#x63;&#111;&#100;&#101;&#x2e;&#x63;&#111;&#109;">&#x58;&#105;&#97;&#111;&#x46;&#117;&#x40;&#x6c;&#x69;&#110;&#x74;&#x63;&#111;&#100;&#101;&#x2e;&#x63;&#111;&#109;</a>‘,20,’CN’);</p>
-<p>2020 · Update on the number of students choosing artificial intelligence<br>UPDATE <code>courses</code> SET <code>student_count</code>&#x3D;500 WHERE <code>name</code>&#x3D;’Artificial Intelligence’</p>
-<p>2004 · Delete all courses until 2020<br>DELETE FROM <code>courses</code> WHERE <code>created_at</code>&lt;’2020-1-1’</p>
-<p>2019 · Delete all rows in the table<br>DELETE FROM <code>courses</code></p>
-<h1 id="LEVEL2："><a href="#LEVEL2：" class="headerlink" title="LEVEL2："></a>LEVEL2：</h1><p>1952 · Query teachers over 20 years old<br>SELECT * FROM <code>teachers</code> WHERE <code>age</code>&gt;20</p>
-<p>1953 · Query the name of the Chinese teacher<br>SELECT <code>name</code> FROM <code>teachers</code> WHERE <code>country</code>&#x3D;’CN’</p>
-<p>1957 · Inquire about courses starting before May 2020<br>SELECT <code>name</code>,<code>created_at</code> FROM <code>courses</code> WHERE <code>created_at</code>&gt;&#x3D;’2020-1-1’ AND <code>created_at</code>&lt;’2020-5-1’</p>
-<p>1958 · Query the courses that meet the conditions taught by the specified teacher<br>SELECT * FROM <code>courses</code> WHERE <code>teacher_id</code>&#x3D;4 AND <code>student_count</code>&gt;500</p>
-<p>2001 · Query the course information of ‘Web’ or ‘Big Data’<br>SELECT * FROM <code>courses</code>WHERE <code>name</code>&#x3D;’Web’ OR <code>name</code>&#x3D;’Big Data’;</p>
-<p>2040 · Search for courses with an instructor id of less than 3 and more than 800 students<br>SELECT * FROM <code>courses</code> WHERE (NOT <code>teacher_id</code>&#x3D;3) AND (<code>student_count</code>&gt;800);</p>
-<p>1960 · Query course information for a specific time<br>SELECT * FROM <code>courses</code> WHERE created_at IN (‘2021-1-1’,’2021-1-3’)</p>
-<p>1962 · Query courses with teacher id other than 1 and 3<br>SELECT <code>name</code> FROM courses WHERE <code>teacher_id</code> NOT IN(1,3)</p>
-<p>1964 · Query for course information about the number of students within the specified range<br>SELECT * FROM <code>courses</code> WHERE <code>student_count</code> BETWEEN 50 AND 55;</p>
-<p>1972 · Inquire about Chinese and Japanese teachers who have e-mail addresses<br>SELECT * FROM teachers WHERE (email IS NOT NULL) AND (<code>country</code>&#x3D;’CN’ OR <code>country</code>&#x3D;’JP’);</p>
-<p>1974 · Query teacher information by email<br>SELECT <code>name</code>,<code>email</code> FROM <code>teachers</code> WHERE <code>email</code> LIKE ‘%@qq.com’;</p>
-<p>1982 · Check the age of teachers and sort them in ascending order<br>SELECT DISTINCT <code>age</code> FROM <code>teachers</code> ORDER BY <code>age</code>;</p>
-<p>1977 · Sorted by age of Chinese teachers in descending order<br>SELECT * FROM <code>teachers</code> WHERE <code>country</code>&#x3D;’CN’ ORDER BY <code>age</code> DESC;</p>
-<p>1980 · Search for the oldest Chinese teacher<br>SELECT * FROM <code>teachers</code> WHERE <code>country</code>&#x3D;’CN’ ORDER BY <code>age</code> DESC LIMIT 1;</p>
-<h1 id="LEVEL3"><a href="#LEVEL3" class="headerlink" title="LEVEL3:"></a>LEVEL3:</h1><p>2034 · Check the average age of teachers at the end of the specified mailbox<br>SELECT AVG(<code>age</code>) AS <code>average_teacher_age</code> FROM <code>teachers</code> WHERE <code>email</code> LIKE(‘%@qq.com’)</p>
-<p>1987 · Find the age of the oldest Chinese teacher<br>SELECT MAX(<code>age</code>) AS ‘max_age’ FROM <code>teachers</code> WHERE <code>country</code>&#x3D;’CN’;</p>
-<p>1989 · Check the age of the youngest teacher<br>SELECT MIN(<code>age</code>) AS min_age FROM <code>teachers</code></p>
-<p>1991 · Count the total number of students for teacher #3<br>SELECT SUM(<code>student_count</code>) AS select_student_sum FROM <code>courses</code> WHERE <code>teacher_id</code>&#x3D;3;</p>
-<p>1995 · Check the average age of teachers over 20 years old<br>SELECT ROUND(AVG(<code>age</code>)) AS avg_teacher_age FROM <code>teachers</code> WHERE <code>age</code>&gt;20</p>
-<p>1997 · Check the information of teachers who do not have email and are older than 20 years old<br>SELECT * FROM <code>teachers</code> WHERE ISNULL(<code>email</code>) AND <code>age</code>&gt;20</p>
-<p>1985 · Number of teachers aged 20 to 28 who are Chinese and British nationals<br>SELECT COUNT(*) AS teacher_count FROM <code>teachers</code> WHERE <code>country</code> IN(‘CN’,’UK’) AND <code>age</code> BETWEEN 20 AND 28;</p>
-<p>2081 · Insert the current date into the table<br>INSERT INTO <code>records</code> VALUES (CURDATE());</p>
-<p>2037 · Search for course titles and course dates through August 2020<br>SELECT <code>name</code>,DATE(<code>created_at</code>) AS <code>created_date</code> FROM courses WHERE <code>created_at</code>&lt;’2020-8-1’</p>
-<p>2030 · Query the hours of all course creation times<br>SELECT <code>name</code>,EXTRACT(HOUR FROM <code>created_at</code>) AS <code>created_hour</code> FROM <code>courses</code></p>
-<p>2046 · The date the course was created is displayed in ‘year-month-day hour:minute:second’<br>SELECT DATE_FORMAT(<code>created_at</code>,’%Y-%m-%d %H:%i:%s’) AS <code>DATE_FORMAT</code> FROM courses</p>
-<p>2028 · Postpone all course creation dates by one day<br>SELECT <code>name</code>,DATE_ADD(<code>created_at</code>,INTERVAL 1 DAY) AS new_created FROM <code>courses</code></p>
-<p>2032 · Advance all course creation dates by one day<br>SELECT <code>id</code>,<code>name</code>,DATE_SUB(<code>created_at</code>, INTERVAL 1 FROM <code>courses</code> DAY) AS <code>new_created</code></p>
-<p>2029 · Calculate the number of days from 03&#x2F;26&#x2F;2019 to the course creation time<br>SELECT DATEDIFF(<code>created_at</code>,’2019-3-26’) AS date_diff FROM <code>courses</code></p>
-<p>2036 · Calculate the number of months difference between the start date and the current date of all courses in the schedule<br>SELECT TIMESTAMPDIFF(MONTH,<code>created_at</code>,’2020-4-22’) AS <code>MonthDiff</code> FROM <code>courses</code></p>
-<h1 id="LEVEL4："><a href="#LEVEL4：" class="headerlink" title="LEVEL4："></a>LEVEL4：</h1><p>2084 · Add primary key constraints to the course table courses<br>ALTER TABLE <code>courses</code> ADD PRIMARY KEY(<code>id</code>);</p>
-<p>2085 · Remove the primary key constraint from the course table <code>courses</code><br>ALTER TABLE <code>courses</code> DROP PRIMARY KEY;</p>
-<p>2091 · Adding Foreign Key Constraints to Course Tables<br>ALTER TABLE <code>courses</code> ADD FOREIGN KEY(<code>teacher_id</code>) REFERENCES teachers(<code>id</code>)</p>
-<p>2062 · Query the id and name of all courses taught by the specified teacher<br>SELECT <code>c</code>.<code>id</code>,<code>c</code>.<code>name</code> AS <code>course_name</code>, <code>t</code>.<code>name</code> AS <code>teacher_name</code> FROM <code>courses</code> <code>c</code> INNER JOIN <code>teachers</code> <code>t</code> ON <code>c</code>.<code>teacher_id</code>&#x3D;<code>t</code>.<code>id</code><br>WHERE <code>t</code>.<code>name</code>&#x3D;’Eastern Heretic’;</p>
-<p>2051 · Search for the names of teachers from China and the names of courses they taught<br>SELECT c.name AS course_name, t.name AS teacher_name FROM teachers t LEFT JOIN courses c ON t.id&#x3D;c.teacher_id WHERE <code>t</code>.<code>country</code>&#x3D;’CN’;</p>
-<p>2053 · Check the name, email and course name of the teacher from China<br>SELECT c.name AS course_name,t.name AS teacher_name,t.email AS teacher_email FROM courses c RIGHT JOIN teachers t ON t.id&#x3D;c.teacher_id WHERE t.country&#x3D;’CN’</p>
-<p>2055 · Search for all course names and their corresponding instructor names and nationalities<br>SELECT c.name AS course_name,t.name AS teacher_name,t.country AS teacher_country FROM courses c LEFT JOIN teachers t on c.teacher_id&#x3D;t.idUNION<br>SELECT c.name AS course_name,t.name AS teacher_name,t.country AS teacher_country FROM courses c RIGHT JOIN teachers t on c.teacher_id&#x3D;t.id</p>
-<h1 id="LEVEL5"><a href="#LEVEL5" class="headerlink" title="LEVEL5:"></a>LEVEL5:</h1><p>2078 · Find out the number of teachers of different ages<br>SELECT <code>age</code>,COUNT(<code>age</code>) AS age_count FROM <code>teachers</code> GROUP BY <code>age</code> ORDER BY <code>age</code> DESC</p>
-<p>2082 · Statistics on the number of courses taught by each teacher<br>SELECT t.name AS teacher_name,IFNULL(COUNT(c.id),0) AS course_count FROM teachers t LEFT JOIN courses c ON t.id&#x3D;c.teacher_id GROUP BY t.name ORDER BY course_count DESC, t.name</p>
-<p>2076 · Search for information on teachers of the same nationality whose average age is greater than the average age of all teachers<br>SELECT * FROM teachers WHERE country&#x3D;any(SELECT country FROM teachers GROUP BY <code>country</code> HAVING AVG(age)&gt;(SELECT AVG(age) FROM teachers));</p>
-<p>2060 · Search for the name of the teacher for the ‘Big Data’ course<br>SELECT <code>name</code> FROM teachers WHERE id&#x3D;(SELECT teacher_id FROM courses WHERE name&#x3D;’Big Data’)</p>
-<p>2056 · Copy the data in the teachers table that are older than 20 to another table<br>INSERT INTO <code>teachers_bkp</code> SELECT * FROM teachers WHERE age&gt;20;</p>
-<p>2057 · Modify course information created by instructor Eastern Heretic<br>UPDATE <code>courses</code> SET <code>name</code>&#x3D;’PHP’,student_count&#x3D;300 WHERE teacher_id&#x3D;(SELECT id FROM teachers WHERE name&#x3D;’Eastern Heretic’)</p>
-<p>2059 · Remove faculty who have created courses before 2020<br>DELETE FROM <code>teachers</code> WHERE id IN(SELECT teacher_id FROM courses WHERE created_at&lt;’2020-1-1’);</p>
-<p>2077 · Search for information on courses and instructors with the highest number of students<br>SELECT course_name,student_count,teacher_name FROM (SELECT <code>c</code>.<code>name</code> <code>course_name</code>, c.student_count AS <code>student_count</code>,<code>t</code>.<code>name</code> AS <code>teacher_name</code><br>FROM <code>teachers</code> <code>t</code> ASLEFT JOIN <code>courses</code> <code>c</code> ON <code>c</code>.<code>teacher_id</code> &#x3D; <code>t</code>.<code>id</code>) <code>T</code> WHERE student_count&#x3D;(SELECT MAX(student_count) FROM <code>courses</code>)</p>
-<p>2065 · Check the course names of all courses taught by all teachers who are older than 20 years old<br>SELECT name FROM <code>courses</code> WHERE teacher_id IN (SELECT id FROM <code>teachers</code> WHERE age&gt;20);</p>
-<p>2070 · Search for the name of a course created later than the creation time of any of the specified teacher’s courses<br>SELECT <code>name</code> FROM <code>courses</code> WHERE (<code>created_at</code>&gt;ANY(SELECT <code>created_at</code> FROM <code>courses</code> WHERE teacher_id&#x3D;(SELECT id FROM teachers WHERE name&#x3D;’Southern Emperor’))) AND teacher_id &lt;&gt; (SELECT id FROM teachers WHERE name&#x3D;’Southern Emperor’);</p>
-<p>2066 · Search for course information for courses with more students than the number of students in all courses of the oldest teacher<br>SELECT * FROM <code>courses</code> WHERE student_count&gt;ALL(SELECT student_count FROM <code>courses</code> WHERE teacher_id IN(SELECT id FROM <code>teachers</code> WHERE age&#x3D;(SELECT MAX(age) FROM teachers)));</p>
-<p>2069 · Search for the course name and number of students in the course with the highest number of students per instructor<br>SELECT name,student_count FROM <code>courses</code> WHERE (teacher_id,student_count) IN(SELECT teacher_id,MAX(student_count) FROM <code>courses</code> GROUP BY teacher_id)</p>
-<p>2086 · Search for the nationality of the teacher starting with ‘U’ and the total number of students between 2000 and 5000 and the total number of students of that nationality<br>SELECT t.country AS country,SUM(c.student_count) AS student_count FROM teachers t LEFT JOIN courses c ON t.id&#x3D;c.teacher_id GROUP BY country HAVING SUM(student_count) BETWEEN 2000 AND 5000 AND country LIKE ‘U%’;</p>
-<h1 id="LEVEL6："><a href="#LEVEL6：" class="headerlink" title="LEVEL6："></a>LEVEL6：</h1><h1 id="LEVEL7："><a href="#LEVEL7：" class="headerlink" title="LEVEL7："></a>LEVEL7：</h1>]]></content>
+<h1 id="LEVEL1"><a href="#LEVEL1" class="headerlink" title="LEVEL1:"></a>LEVEL1:</h1><ul>
+<li><p>2045 · Output Hello LintCode</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &quot;Hello LintCode!&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2013 · Check the name of the teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `teachers`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2007 · Check course name and class size</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,`student_count` <span class="keyword">FROM</span> courses</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2009 · Query all teachers</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `teachers`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1981 · Check the nationality of all teachers</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> country <span class="keyword">FROM</span> teachers</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2011.Search for information on courses with more than 1000 participants</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `student_count`<span class="operator">&gt;</span><span class="number">1000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2012 · Find course information for the course named Artificial Intelligence</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> courses <span class="keyword">WHERE</span> `name`<span class="operator">=</span> <span class="string">&#x27;Artificial Intelligence&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2017 · Inserting SQL course information into the course table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> courses <span class="keyword">VALUES</span> (<span class="number">14</span>,&quot;SQL&quot;,<span class="number">200</span>,&quot;2021-02-25&quot;,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2021 · Insert teacher information into the specified column of the teachers table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `teachers` (`name`,`email`,`age`,`country`) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">&#x27;XiaoFu&#x27;</span>,<span class="string">&#x27;XiaoFu@lintcode.com&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;CN&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2020 · Update on the number of students choosing artificial intelligence</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `courses` <span class="keyword">SET</span> `student_count`<span class="operator">=</span><span class="number">500</span> <span class="keyword">WHERE</span> `name`<span class="operator">=</span><span class="string">&#x27;Artificial Intelligence&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2004 · Delete all courses until 2020</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `created_at`<span class="operator">&lt;</span><span class="string">&#x27;2020-1-1&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2019 · Delete all rows in the table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `courses`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL2："><a href="#LEVEL2：" class="headerlink" title="LEVEL2："></a>LEVEL2：</h1><ul>
+<li><p>1952 · Query teachers over 20 years old</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `age`<span class="operator">&gt;</span><span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1953 · Query the name of the Chinese teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1957 · Inquire about courses starting before May 2020</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,`created_at` <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `created_at`<span class="operator">&gt;=</span><span class="string">&#x27;2020-1-1&#x27;</span> <span class="keyword">AND</span> `created_at`<span class="operator">&lt;</span><span class="string">&#x27;2020-5-1&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1958 · Query the courses that meet the conditions taught by the specified teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `teacher_id`<span class="operator">=</span><span class="number">4</span> <span class="keyword">AND</span> `student_count`<span class="operator">&gt;</span><span class="number">500</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2001 · Query the course information of ‘Web’ or ‘Big Data’</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses`<span class="keyword">WHERE</span> `name`<span class="operator">=</span><span class="string">&#x27;Web&#x27;</span> <span class="keyword">OR</span> `name`<span class="operator">=</span><span class="string">&#x27;Big Data&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2040 · Search for courses with an instructor id of less than 3 and more than 800 students</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> (<span class="keyword">NOT</span> `teacher_id`<span class="operator">=</span><span class="number">3</span>) <span class="keyword">AND</span> (`student_count`<span class="operator">&gt;</span><span class="number">800</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1960 · Query course information for a specific time</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> created_at <span class="keyword">IN</span> (<span class="string">&#x27;2021-1-1&#x27;</span>,<span class="string">&#x27;2021-1-3&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1962 · Query courses with teacher id other than 1 and 3</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> courses <span class="keyword">WHERE</span> `teacher_id` <span class="keyword">NOT</span> <span class="keyword">IN</span>(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1964 · Query for course information about the number of students within the specified range</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `student_count` <span class="keyword">BETWEEN</span> <span class="number">50</span> <span class="keyword">AND</span> <span class="number">55</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1972 · Inquire about Chinese and Japanese teachers who have e-mail addresses</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> (email <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>) <span class="keyword">AND</span> (`country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span> <span class="keyword">OR</span> `country`<span class="operator">=</span><span class="string">&#x27;JP&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1974 · Query teacher information by email</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,`email` <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `email` <span class="keyword">LIKE</span> <span class="string">&#x27;%@qq.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1982 · Check the age of teachers and sort them in ascending order</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> `age` <span class="keyword">FROM</span> `teachers` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `age`;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1977 · Sorted by age of Chinese teachers in descending order</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> `age` <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1980 · Search for the oldest Chinese teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> `age` <span class="keyword">DESC</span> LIMIT <span class="number">1</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL3"><a href="#LEVEL3" class="headerlink" title="LEVEL3:"></a>LEVEL3:</h1><ul>
+<li><p>2034 · Check the average age of teachers at the end of the specified mailbox</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(`age`) <span class="keyword">AS</span> `average_teacher_age` <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `email` <span class="keyword">LIKE</span>(<span class="string">&#x27;%@qq.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1987 · Find the age of the oldest Chinese teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(`age`) <span class="keyword">AS</span> <span class="string">&#x27;max_age&#x27;</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1989 · Check the age of the youngest teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MIN</span>(`age`) <span class="keyword">AS</span> min_age <span class="keyword">FROM</span> `teachers`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1991 · Count the total number of students for teacher #3</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(`student_count`) <span class="keyword">AS</span> select_student_sum <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> `teacher_id`<span class="operator">=</span><span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1995 · Check the average age of teachers over 20 years old</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ROUND(<span class="built_in">AVG</span>(`age`)) <span class="keyword">AS</span> avg_teacher_age <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `age`<span class="operator">&gt;</span><span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1997 · Check the information of teachers who do not have email and are older than 20 years old</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> ISNULL(`email`) <span class="keyword">AND</span> `age`<span class="operator">&gt;</span><span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1985 · Number of teachers aged 20 to 28 who are Chinese and British nationals</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> teacher_count <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> `country` <span class="keyword">IN</span>(<span class="string">&#x27;CN&#x27;</span>,<span class="string">&#x27;UK&#x27;</span>) <span class="keyword">AND</span> `age` <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">28</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2081 · Insert the current date into the table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `records` <span class="keyword">VALUES</span> (CURDATE());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2037 · Search for course titles and course dates through August 2020</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,<span class="type">DATE</span>(`created_at`) <span class="keyword">AS</span> `created_date` <span class="keyword">FROM</span> courses <span class="keyword">WHERE</span> `created_at`<span class="operator">&lt;</span><span class="string">&#x27;2020-8-1&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2030 · Query the hours of all course creation times</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,<span class="built_in">EXTRACT</span>(<span class="keyword">HOUR</span> <span class="keyword">FROM</span> `created_at`) <span class="keyword">AS</span> `created_hour` <span class="keyword">FROM</span> `courses`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2046 · The date the course was created is displayed in ‘year-month-day hour:minute:second’</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT(`created_at`,<span class="string">&#x27;%Y-%m-%d %H:%i:%s&#x27;</span>) <span class="keyword">AS</span> `DATE_FORMAT` <span class="keyword">FROM</span> courses;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2028 · Postpone all course creation dates by one day</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,DATE_ADD(`created_at`,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>) <span class="keyword">AS</span> new_created <span class="keyword">FROM</span> `courses`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2032 · Advance all course creation dates by one day</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `id`,`name`,DATE_SUB(`created_at`, <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">FROM</span> `courses` <span class="keyword">DAY</span>) <span class="keyword">AS</span> `new_created`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2029 · Calculate the number of days from 03&#x2F;26&#x2F;2019 to the course creation time</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATEDIFF(`created_at`,<span class="string">&#x27;2019-3-26&#x27;</span>) <span class="keyword">AS</span> date_diff <span class="keyword">FROM</span> `courses`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2036 · Calculate the number of months difference between the start date and the current date of all courses in the schedule</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TIMESTAMPDIFF(<span class="keyword">MONTH</span>,`created_at`,<span class="string">&#x27;2020-4-22&#x27;</span>) <span class="keyword">AS</span> `MonthDiff` <span class="keyword">FROM</span> `courses`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL4："><a href="#LEVEL4：" class="headerlink" title="LEVEL4："></a>LEVEL4：</h1><ul>
+<li><p>2084 · Add primary key constraints to the course table courses</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `courses` <span class="keyword">ADD</span> <span class="keyword">PRIMARY</span> KEY(`id`);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2085 · Remove the primary key constraint from the course table <code>courses</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `courses` <span class="keyword">DROP</span> <span class="keyword">PRIMARY</span> KEY;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2091 · Adding Foreign Key Constraints to Course Tables</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `courses` <span class="keyword">ADD</span> <span class="keyword">FOREIGN</span> KEY(`teacher_id`) <span class="keyword">REFERENCES</span> teachers(`id`)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2062 · Query the id and name of all courses taught by the specified teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `c`.`id`,`c`.`name` <span class="keyword">AS</span> `course_name`, `t`.`name` <span class="keyword">AS</span> `teacher_name` <span class="keyword">FROM</span> `courses` `c` <span class="keyword">INNER</span> <span class="keyword">JOIN</span> `teachers` `t` <span class="keyword">ON</span> `c`.`teacher_id`<span class="operator">=</span>`t`.`id` <span class="keyword">WHERE</span> `t`.`name`<span class="operator">=</span><span class="string">&#x27;Eastern Heretic&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2051 · Search for the names of teachers from China and the names of courses they taught</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c.name <span class="keyword">AS</span> course_name, t.name <span class="keyword">AS</span> teacher_name <span class="keyword">FROM</span> teachers t <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> courses c <span class="keyword">ON</span> t.id<span class="operator">=</span>c.teacher_id <span class="keyword">WHERE</span> `t`.`country`<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2053 · Check the name, email and course name of the teacher from China</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c.name <span class="keyword">AS</span> course_name,t.name <span class="keyword">AS</span> teacher_name,t.email <span class="keyword">AS</span> teacher_email <span class="keyword">FROM</span> courses c <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> teachers t <span class="keyword">ON</span> t.id<span class="operator">=</span>c.teacher_id <span class="keyword">WHERE</span> t.country<span class="operator">=</span><span class="string">&#x27;CN&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2055 · Search for all course names and their corresponding instructor names and nationalities</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> c.name <span class="keyword">AS</span> course_name,t.name <span class="keyword">AS</span> teacher_name,t.country <span class="keyword">AS</span> teacher_country <span class="keyword">FROM</span> courses c <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teachers t <span class="keyword">on</span> c.teacher_id<span class="operator">=</span>t.idUNION</span><br><span class="line"><span class="keyword">SELECT</span> c.name <span class="keyword">AS</span> course_name,t.name <span class="keyword">AS</span> teacher_name,t.country <span class="keyword">AS</span> teacher_country <span class="keyword">FROM</span> courses c <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> teachers t <span class="keyword">on</span> c.teacher_id<span class="operator">=</span>t.id</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL-5"><a href="#LEVEL-5" class="headerlink" title="LEVEL 5:"></a>LEVEL 5:</h1><ul>
+<li><p>2078 · Find out the number of teachers of different ages</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `age`,<span class="built_in">COUNT</span>(`age`) <span class="keyword">AS</span> age_count <span class="keyword">FROM</span> `teachers` <span class="keyword">GROUP</span> <span class="keyword">BY</span> `age` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `age` <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2082 · Statistics on the number of courses taught by each teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.name <span class="keyword">AS</span> teacher_name,IFNULL(<span class="built_in">COUNT</span>(c.id),<span class="number">0</span>) <span class="keyword">AS</span> course_count <span class="keyword">FROM</span> teachers t <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> courses c <span class="keyword">ON</span> t.id<span class="operator">=</span>c.teacher_id <span class="keyword">GROUP</span> <span class="keyword">BY</span> t.name <span class="keyword">ORDER</span> <span class="keyword">BY</span> course_count <span class="keyword">DESC</span>, t.name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2076 · Search for information on teachers of the same nationality whose average age is greater than the average age of all teachers</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> country<span class="operator">=</span><span class="keyword">any</span>(<span class="keyword">SELECT</span> country <span class="keyword">FROM</span> teachers <span class="keyword">GROUP</span> <span class="keyword">BY</span> `country` <span class="keyword">HAVING</span> <span class="built_in">AVG</span>(age)<span class="operator">&gt;</span>(<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(age) <span class="keyword">FROM</span> teachers));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2060 · Search for the name of the teacher for the ‘Big Data’ course</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> id<span class="operator">=</span>(<span class="keyword">SELECT</span> teacher_id <span class="keyword">FROM</span> courses <span class="keyword">WHERE</span> name<span class="operator">=</span><span class="string">&#x27;Big Data&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2056 · Copy the data in the teachers table that are older than 20 to another table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `teachers_bkp` <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> age<span class="operator">&gt;</span><span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2057 · Modify course information created by instructor Eastern Heretic</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `courses` <span class="keyword">SET</span> `name`<span class="operator">=</span><span class="string">&#x27;PHP&#x27;</span>,student_count<span class="operator">=</span><span class="number">300</span> <span class="keyword">WHERE</span> teacher_id<span class="operator">=</span>(<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> name<span class="operator">=</span><span class="string">&#x27;Eastern Heretic&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2059 · Remove faculty who have created courses before 2020</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> id <span class="keyword">IN</span>(<span class="keyword">SELECT</span> teacher_id <span class="keyword">FROM</span> courses <span class="keyword">WHERE</span> created_at<span class="operator">&lt;</span><span class="string">&#x27;2020-1-1&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2077 · Search for information on courses and instructors with the highest number of students</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> course_name,student_count,teacher_name <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> `c`.`name` `course_name`, c.student_count <span class="keyword">AS</span> `student_count`,`t`.`name` <span class="keyword">AS</span> `teacher_name`</span><br><span class="line"><span class="keyword">FROM</span> `teachers` `t` ASLEFT <span class="keyword">JOIN</span> `courses` `c` <span class="keyword">ON</span> `c`.`teacher_id` <span class="operator">=</span> `t`.`id`) `T` <span class="keyword">WHERE</span> student_count<span class="operator">=</span>(<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(student_count) <span class="keyword">FROM</span> `courses`)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2065 · Check the course names of all courses taught by all teachers who are older than 20 years old</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> teacher_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> age<span class="operator">&gt;</span><span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2070 · Search for the name of a course created later than the creation time of any of the specified teacher’s courses</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> (`created_at`<span class="operator">&gt;</span><span class="keyword">ANY</span>(<span class="keyword">SELECT</span> `created_at` <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> teacher_id<span class="operator">=</span>(<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> name<span class="operator">=</span><span class="string">&#x27;Southern Emperor&#x27;</span>))) <span class="keyword">AND</span> teacher_id <span class="operator">&lt;&gt;</span> (<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> teachers <span class="keyword">WHERE</span> name<span class="operator">=</span><span class="string">&#x27;Southern Emperor&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2066 · Search for course information for courses with more students than the number of students in all courses of the oldest teacher</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> student_count<span class="operator">&gt;</span><span class="keyword">ALL</span>(<span class="keyword">SELECT</span> student_count <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> teacher_id <span class="keyword">IN</span>(<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> `teachers` <span class="keyword">WHERE</span> age<span class="operator">=</span>(<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(age) <span class="keyword">FROM</span> teachers)));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2069 · Search for the course name and number of students in the course with the highest number of students per instructor</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,student_count <span class="keyword">FROM</span> `courses` <span class="keyword">WHERE</span> (teacher_id,student_count) <span class="keyword">IN</span>(<span class="keyword">SELECT</span> teacher_id,<span class="built_in">MAX</span>(student_count) <span class="keyword">FROM</span> `courses` <span class="keyword">GROUP</span> <span class="keyword">BY</span> teacher_id)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2086 · Search for the nationality of the teacher starting with ‘U’ and the total number of students between 2000 and 5000 and the total number of students of that nationality</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.country <span class="keyword">AS</span> country,<span class="built_in">SUM</span>(c.student_count) <span class="keyword">AS</span> student_count <span class="keyword">FROM</span> teachers t <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> courses c <span class="keyword">ON</span> t.id<span class="operator">=</span>c.teacher_id <span class="keyword">GROUP</span> <span class="keyword">BY</span> country <span class="keyword">HAVING</span> <span class="built_in">SUM</span>(student_count) <span class="keyword">BETWEEN</span> <span class="number">2000</span> <span class="keyword">AND</span> <span class="number">5000</span> <span class="keyword">AND</span> country <span class="keyword">LIKE</span> <span class="string">&#x27;U%&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL6："><a href="#LEVEL6：" class="headerlink" title="LEVEL6："></a>LEVEL6：</h1><ul>
+<li>2616 · Insert Kansas information into the teacher table  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入 Kansas 的信息 --</span></span><br><span class="line"><span class="comment">-- Write your SQL Query here --</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `teachers` (`name`, `age`, `country`)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Kansas&#x27;</span>, <span class="number">41</span>, <span class="string">&#x27;UK&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="LEVEL7："><a href="#LEVEL7：" class="headerlink" title="LEVEL7："></a>LEVEL7：</h1>]]></content>
       <categories>
         <category>LearnSQL</category>
       </categories>
@@ -11227,6 +11423,27 @@
       </tags>
   </entry>
   <entry>
+    <title>我的数学建模竞赛生涯</title>
+    <url>/2017/09/17/my-career-in-math-modeling-competition/</url>
+    <content><![CDATA[<p>2017年9月17日14点20分，我写下了这段话，同时距离2017年全国大学生数学建模竞赛截止还剩不到十个小时的时间。这次建模的结束，也将标志着我本科阶段的建模生涯画上了句号。  </p>
+<p>记得第一次参加建模时，与全国各地的大学生在同一时间开始竞赛，心中充满着激动与紧张。  </p>
+<p>每年建模竞赛时期，总会涌现出许多个建模赛题讨论群，刚开始大家会相互询问解题的思路，源程序解析，中间也有参杂着有偿贩卖建模数据或赛题思路的“小商人”。最后要在服务器上提交论文的时候，服务器总会不堪重压的奔溃掉，这仿佛成了历年比赛的固定套路。  </p>
+<p>“建模从选题到换题，从换题到瞎编，从瞎编到提交”，这应该是每年搞建模最喜欢自嘲的一段话。是的，从前年B题的滴滴打车，到去年A题的船舶停靠系统，再到今年B题的拍照赚钱方案，每一年的建模题目，A题总是专业性最强，也最能吓住队员的，相反B题看起来总是那么亲和，看起来好像是专门为自己量身打造的题目，然而当把B题深入探讨后，才发觉并不是那么容易的，毕竟命题人不是傻子。因为B题要考虑的附加因素太多，而且数据量总是那么庞大，队员在处理这些数据的时候，也逐渐地消耗着队员的耐心和精力，最后是打击信心。  </p>
+<p>建模最常用的软件，就是MATLAB、Lingo、SAS这三件套了，当然如果有需要还可以用R、Python去解决。在建模期间，最常见的模型算法就是灰色预测、主成分分析、聚类分析、BP神经网络、模拟退火算法等，还有Logistic回归预测、马尔代夫模型等。因为对这些模型的了解，让我发现数学在生活中的应用，同时也大概明白了为什么那些商场、运营商总是推出一些特别优惠的方案活动，反而生意更好，而不用担心他们破产——原来背后他们都已经用数学建立模型，预测好了收益和风险。  </p>
+<p>参加了三次数学建模国赛，几乎每年都像程序设定好了一样，在第二天中午精神崩溃，充满迷茫，心情压抑。可是，当我问我自己，既然这么累，为什么还要坚持参加呢？——我想是因为我享受这建模的过程。  </p>
+<p>和队友讨论问题的解决思路，制定合适的解决方案，再配合一定的科学计算更具有说服力。我很喜欢那种带着适当的压力，在网速比较好的机房，现学现卖一些要用到的算法和模型，因为这样我觉得我的效率比较高，也在学成之后更加有成就感。当然，有成就感也会伴随着失败，几乎每次比赛进行到中后期时，我都会感到离完成论文的目标遥不可及，有好几次想着中途放弃，但看到队友仍然在电脑前处理数据，尝试建模，演算过程，我就会不知不觉的坚持下去。或许这就是它的魅力所在，毕竟和一群小伙伴三天三夜共同做着一件事，也未尝不是一次心灵上的旅途。  </p>
+<p>三天三夜的时光转瞬即过，本科阶段的建模生涯就此结束。在这里我不仅锻炼了我的学习能力，与团队的沟通，领导能力，而且培养了我严谨的求学态度，也对论文的写作有了一定的热身练习。最重要的是，它让我懂得了，其实我们现在所走的路，总是在白夜中交替进行着，我们的能力也因此会在这希望与失望交织在一起的螺旋式楼梯上缓慢上升着。  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>成长</tag>
+        <tag>数学建模</tag>
+        <tag>竞赛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的编程竞赛生涯</title>
     <url>/2018/07/07/my-career-in-coding-competition/</url>
     <content><![CDATA[<p>##【初识编程】  </p>
@@ -11261,27 +11478,6 @@
         <tag>成长</tag>
         <tag>编程</tag>
         <tag>竞赛</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的数学建模竞赛生涯</title>
-    <url>/2017/09/17/my-career-in-math-modeling-competition/</url>
-    <content><![CDATA[<p>2017年9月17日14点20分，我写下了这段话，同时距离2017年全国大学生数学建模竞赛截止还剩不到十个小时的时间。这次建模的结束，也将标志着我本科阶段的建模生涯画上了句号。  </p>
-<p>记得第一次参加建模时，与全国各地的大学生在同一时间开始竞赛，心中充满着激动与紧张。  </p>
-<p>每年建模竞赛时期，总会涌现出许多个建模赛题讨论群，刚开始大家会相互询问解题的思路，源程序解析，中间也有参杂着有偿贩卖建模数据或赛题思路的“小商人”。最后要在服务器上提交论文的时候，服务器总会不堪重压的奔溃掉，这仿佛成了历年比赛的固定套路。  </p>
-<p>“建模从选题到换题，从换题到瞎编，从瞎编到提交”，这应该是每年搞建模最喜欢自嘲的一段话。是的，从前年B题的滴滴打车，到去年A题的船舶停靠系统，再到今年B题的拍照赚钱方案，每一年的建模题目，A题总是专业性最强，也最能吓住队员的，相反B题看起来总是那么亲和，看起来好像是专门为自己量身打造的题目，然而当把B题深入探讨后，才发觉并不是那么容易的，毕竟命题人不是傻子。因为B题要考虑的附加因素太多，而且数据量总是那么庞大，队员在处理这些数据的时候，也逐渐地消耗着队员的耐心和精力，最后是打击信心。  </p>
-<p>建模最常用的软件，就是MATLAB、Lingo、SAS这三件套了，当然如果有需要还可以用R、Python去解决。在建模期间，最常见的模型算法就是灰色预测、主成分分析、聚类分析、BP神经网络、模拟退火算法等，还有Logistic回归预测、马尔代夫模型等。因为对这些模型的了解，让我发现数学在生活中的应用，同时也大概明白了为什么那些商场、运营商总是推出一些特别优惠的方案活动，反而生意更好，而不用担心他们破产——原来背后他们都已经用数学建立模型，预测好了收益和风险。  </p>
-<p>参加了三次数学建模国赛，几乎每年都像程序设定好了一样，在第二天中午精神崩溃，充满迷茫，心情压抑。可是，当我问我自己，既然这么累，为什么还要坚持参加呢？——我想是因为我享受这建模的过程。  </p>
-<p>和队友讨论问题的解决思路，制定合适的解决方案，再配合一定的科学计算更具有说服力。我很喜欢那种带着适当的压力，在网速比较好的机房，现学现卖一些要用到的算法和模型，因为这样我觉得我的效率比较高，也在学成之后更加有成就感。当然，有成就感也会伴随着失败，几乎每次比赛进行到中后期时，我都会感到离完成论文的目标遥不可及，有好几次想着中途放弃，但看到队友仍然在电脑前处理数据，尝试建模，演算过程，我就会不知不觉的坚持下去。或许这就是它的魅力所在，毕竟和一群小伙伴三天三夜共同做着一件事，也未尝不是一次心灵上的旅途。  </p>
-<p>三天三夜的时光转瞬即过，本科阶段的建模生涯就此结束。在这里我不仅锻炼了我的学习能力，与团队的沟通，领导能力，而且培养了我严谨的求学态度，也对论文的写作有了一定的热身练习。最重要的是，它让我懂得了，其实我们现在所走的路，总是在白夜中交替进行着，我们的能力也因此会在这希望与失望交织在一起的螺旋式楼梯上缓慢上升着。  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>成长</tag>
-        <tag>竞赛</tag>
-        <tag>数学建模</tag>
       </tags>
   </entry>
   <entry>
