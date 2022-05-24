@@ -8968,7 +8968,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x2e;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#x2e;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -10792,7 +10792,27 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">//寻找递归终止条件</span></span><br><span class="line">        <span class="comment">//1、head指向的节点为null</span></span><br><span class="line">        <span class="comment">//2、head指向的节点的下一个节点为null</span></span><br><span class="line">        <span class="comment">//在这两种情况下，反转之后的结果还是它自己本身</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不断的通过递归调用，直到无法递归下去，递归的最小粒度是在最后一个节点</span></span><br><span class="line">        <span class="comment">//因为到最后一个节点的时候，由于当前节点的head的next节点是空，所以会直接返回head</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> reverseList(head.next);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//比如原链表为 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;null</span></span><br><span class="line">        <span class="comment">//5-&gt;4</span></span><br><span class="line">        <span class="comment">//第一次执行下面代码的时候，head为4，那么head.next = 5</span></span><br><span class="line">        <span class="comment">//那么head.next.next 就是 5.next，意思就是去设置5的下一个节点</span></span><br><span class="line">        <span class="comment">//等号右侧为head，意思就是设置5的下一个节点是4</span></span><br><span class="line">        head.next.next = head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//head原来的下一节点指向自己，所以head自己本身就不能再指向原来的下一节点了</span></span><br><span class="line">        head.next = <span class="literal">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//我们把每次反转后的结果传递给上一层</span></span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>leetcode-cn</code>执行用时：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：40.7 MB, 在所有 Java 提交中击败了71.89%的用户</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：40.7 MB, 在所有 Java 提交中击败了71.89%的用户</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Go</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseList</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">//寻找递归终止条件</span></span><br><span class="line">    <span class="comment">//1、head指向的节点为null</span></span><br><span class="line">    <span class="comment">//2、head指向的节点的下一个节点为null</span></span><br><span class="line">    <span class="comment">//在这两种情况下，反转之后的结果还是它自己本身</span></span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> ||head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//不断的通过递归调用，直到无法递归下去，递归的最小粒度是在最后一个节点</span></span><br><span class="line">    <span class="comment">//因为到最后一个节点的时候，由于当前节点的head的next节点是空，所以会直接返回head</span></span><br><span class="line">    cur := reverseList(head.Next)</span><br><span class="line">    <span class="comment">//比如原链表为 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;null</span></span><br><span class="line">    <span class="comment">//5-&gt;4</span></span><br><span class="line">    <span class="comment">//第一次执行下面代码的时候，head为4，那么head.next = 5</span></span><br><span class="line">    <span class="comment">//那么head.next.next 就是 5.next，意思就是去设置5的下一个节点</span></span><br><span class="line">    <span class="comment">//等号右侧为head，意思就是设置5的下一个节点是4</span></span><br><span class="line">    head.Next.Next = head</span><br><span class="line">    <span class="comment">//head原来的下一节点指向自己，所以head自己本身就不能再指向原来的下一节点了</span></span><br><span class="line">    head.Next = <span class="literal">nil</span></span><br><span class="line">    <span class="comment">//我们把每次反转后的结果传递给上一层</span></span><br><span class="line">    <span class="keyword">return</span> cur</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 25. 合并两个排序的链表</title>
+    <url>/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">剑指 Offer 25. 合并两个排序的链表</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p><img src="/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/p1.png">  </p>
+<p>合并后：<br><img src="/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/p2.png">  </p>
+<p>最后返回<code>dummy</code>节点的<code>Next</code>节点即可。  </p>
+<h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> &#123;</span><br><span class="line">        <span class="comment">//一开始设置一个虚拟节点，它的值为-1，它的值可以设置为任何的数，因为我们根本不需要使用它的值</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置一个指针，指向虚拟节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过一个循环，不断的比较 l1和l2 中当前的节点值的大小，直到 l1 或者 l2 遍历完毕为止</span></span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">null</span> &amp;&amp; l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">//如果l1当前节点的值小于等于l2当前节点的值</span></span><br><span class="line">            <span class="keyword">if</span> (l1.val &lt;= l2.val) &#123;</span><br><span class="line">                <span class="comment">//让pre指向节点的next指针指向这个更小值的节点</span></span><br><span class="line">                <span class="comment">//即指向l1</span></span><br><span class="line">                pre.next = l1;</span><br><span class="line">                <span class="comment">//让l1向后移动</span></span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//让pre指向节点的next指针指向这个更小值的节点</span></span><br><span class="line">                <span class="comment">//即指向l2</span></span><br><span class="line">                pre.next = l2;</span><br><span class="line">                <span class="comment">//让l2向后移动</span></span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//让pre向后移动</span></span><br><span class="line">            pre = pre.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//跳出循环后，l1或者l2中可能有剩余的节点没有被观察过</span></span><br><span class="line">        <span class="comment">//直接把剩下的节点加入到pre的next指针位置</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果l1中还有节点</span></span><br><span class="line">        <span class="keyword">if</span> (l1 != <span class="literal">null</span>) &#123;</span><br><span class="line">            pre.next = l1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">            pre.next = l2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：41 MB, 在所有 Java 提交中击败了95.58%的用户</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>SwordToOffer</category>
       </categories>
@@ -11039,6 +11059,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux下使用gcc调试c语言程序</title>
+    <url>/2020/05/03/linux-gcc-debug-c-program/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>看到一些用<code>C语言</code>写的数据结构的程序，很不错，想用<code>gcc</code>调试一下程序，增进记忆，本文记录学习和使用<code>gcc</code>调试<code>C程序</code>的过程。  </p>
+<h2 id="使用gcc"><a href="#使用gcc" class="headerlink" title="使用gcc"></a>使用gcc</h2><h3 id="1，生成可调试程序test"><a href="#1，生成可调试程序test" class="headerlink" title="1，生成可调试程序test"></a>1，生成可调试程序test</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o test -g BinarySortTree.c</span><br></pre></td></tr></table></figure>
+
+<h3 id="2，gdb开始调试"><a href="#2，gdb开始调试" class="headerlink" title="2，gdb开始调试"></a>2，gdb开始调试</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gdb test</span><br></pre></td></tr></table></figure>
+
+<h3 id="3，设置断点"><a href="#3，设置断点" class="headerlink" title="3，设置断点"></a>3，设置断点</h3><p>这里可以设置行数，或者函数名  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">break 118</span><br></pre></td></tr></table></figure>
+
+<h3 id="4，运行程序"><a href="#4，运行程序" class="headerlink" title="4，运行程序"></a>4，运行程序</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<h3 id="5，调试"><a href="#5，调试" class="headerlink" title="5，调试"></a>5，调试</h3><ul>
+<li>n，一行一行的执行  </li>
+<li>c，continue-执行到下一个断点处  </li>
+<li>print,打印出变量信息</li>
+</ul>
+<h3 id="6，退出调试"><a href="#6，退出调试" class="headerlink" title="6，退出调试"></a>6，退出调试</h3><p>quit</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">q</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>在<code>gdb</code>中如果遇到困惑，可以输入<code>help</code>获取相关帮助信息  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List of classes of commands:</span><br><span class="line"></span><br><span class="line">aliases -- Aliases of other commands</span><br><span class="line">breakpoints -- Making program stop at certain points</span><br><span class="line">data -- Examining data</span><br><span class="line">files -- Specifying and examining files</span><br><span class="line">internals -- Maintenance commands</span><br><span class="line">obscure -- Obscure features</span><br><span class="line">running -- Running the program</span><br><span class="line">stack -- Examining the stack</span><br><span class="line">status -- Status inquiries</span><br><span class="line">support -- Support facilities</span><br><span class="line">tracepoints -- Tracing of program execution without stopping the program</span><br><span class="line">user-defined -- User-defined commands</span><br><span class="line"></span><br><span class="line">Type &quot;help&quot; followed by a class name for a list of commands in that class.</span><br><span class="line">Type &quot;help all&quot; for the list of all commands.</span><br><span class="line">Type &quot;help&quot; followed by command name for full documentation.</span><br><span class="line">Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;.</span><br><span class="line">Command name abbreviations are allowed if unambiguous.</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文简单记录了使用<code>gdb</code>的常用命令，个人比较喜欢这种用命令行的方式去调试程序，当然也可以去<code>VSCode</code>等软件去做。</p>
+]]></content>
+      <categories>
+        <category>Learn-C</category>
+      </categories>
+      <tags>
+        <tag>Debug</tag>
+        <tag>gcc</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LintCode SQL教程 练习题答案</title>
     <url>/2022/01/06/lintcode-learn-sql/</url>
     <content><![CDATA[<p>SQL 教程链接：<a href="https://www.lintcode.com/learn">https://www.lintcode.com/learn</a>  </p>
@@ -11243,41 +11298,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下使用gcc调试c语言程序</title>
-    <url>/2020/05/03/linux-gcc-debug-c-program/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>看到一些用<code>C语言</code>写的数据结构的程序，很不错，想用<code>gcc</code>调试一下程序，增进记忆，本文记录学习和使用<code>gcc</code>调试<code>C程序</code>的过程。  </p>
-<h2 id="使用gcc"><a href="#使用gcc" class="headerlink" title="使用gcc"></a>使用gcc</h2><h3 id="1，生成可调试程序test"><a href="#1，生成可调试程序test" class="headerlink" title="1，生成可调试程序test"></a>1，生成可调试程序test</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o test -g BinarySortTree.c</span><br></pre></td></tr></table></figure>
-
-<h3 id="2，gdb开始调试"><a href="#2，gdb开始调试" class="headerlink" title="2，gdb开始调试"></a>2，gdb开始调试</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gdb test</span><br></pre></td></tr></table></figure>
-
-<h3 id="3，设置断点"><a href="#3，设置断点" class="headerlink" title="3，设置断点"></a>3，设置断点</h3><p>这里可以设置行数，或者函数名  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">break 118</span><br></pre></td></tr></table></figure>
-
-<h3 id="4，运行程序"><a href="#4，运行程序" class="headerlink" title="4，运行程序"></a>4，运行程序</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
-
-<h3 id="5，调试"><a href="#5，调试" class="headerlink" title="5，调试"></a>5，调试</h3><ul>
-<li>n，一行一行的执行  </li>
-<li>c，continue-执行到下一个断点处  </li>
-<li>print,打印出变量信息</li>
-</ul>
-<h3 id="6，退出调试"><a href="#6，退出调试" class="headerlink" title="6，退出调试"></a>6，退出调试</h3><p>quit</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">q</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>在<code>gdb</code>中如果遇到困惑，可以输入<code>help</code>获取相关帮助信息  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List of classes of commands:</span><br><span class="line"></span><br><span class="line">aliases -- Aliases of other commands</span><br><span class="line">breakpoints -- Making program stop at certain points</span><br><span class="line">data -- Examining data</span><br><span class="line">files -- Specifying and examining files</span><br><span class="line">internals -- Maintenance commands</span><br><span class="line">obscure -- Obscure features</span><br><span class="line">running -- Running the program</span><br><span class="line">stack -- Examining the stack</span><br><span class="line">status -- Status inquiries</span><br><span class="line">support -- Support facilities</span><br><span class="line">tracepoints -- Tracing of program execution without stopping the program</span><br><span class="line">user-defined -- User-defined commands</span><br><span class="line"></span><br><span class="line">Type &quot;help&quot; followed by a class name for a list of commands in that class.</span><br><span class="line">Type &quot;help all&quot; for the list of all commands.</span><br><span class="line">Type &quot;help&quot; followed by command name for full documentation.</span><br><span class="line">Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;.</span><br><span class="line">Command name abbreviations are allowed if unambiguous.</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文简单记录了使用<code>gdb</code>的常用命令，个人比较喜欢这种用命令行的方式去调试程序，当然也可以去<code>VSCode</code>等软件去做。</p>
-]]></content>
-      <categories>
-        <category>Learn-C</category>
-      </categories>
-      <tags>
-        <tag>Debug</tag>
-        <tag>gcc</tag>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>龙潭水乡半日游</title>
     <url>/2020/06/07/long-tan-shui-xiang-half-a-day-trip/</url>
     <content><![CDATA[<p>今天看了天气，不是很热，和女朋友计划去龙潭水乡玩一玩。  </p>
@@ -11423,27 +11443,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我的数学建模竞赛生涯</title>
-    <url>/2017/09/17/my-career-in-math-modeling-competition/</url>
-    <content><![CDATA[<p>2017年9月17日14点20分，我写下了这段话，同时距离2017年全国大学生数学建模竞赛截止还剩不到十个小时的时间。这次建模的结束，也将标志着我本科阶段的建模生涯画上了句号。  </p>
-<p>记得第一次参加建模时，与全国各地的大学生在同一时间开始竞赛，心中充满着激动与紧张。  </p>
-<p>每年建模竞赛时期，总会涌现出许多个建模赛题讨论群，刚开始大家会相互询问解题的思路，源程序解析，中间也有参杂着有偿贩卖建模数据或赛题思路的“小商人”。最后要在服务器上提交论文的时候，服务器总会不堪重压的奔溃掉，这仿佛成了历年比赛的固定套路。  </p>
-<p>“建模从选题到换题，从换题到瞎编，从瞎编到提交”，这应该是每年搞建模最喜欢自嘲的一段话。是的，从前年B题的滴滴打车，到去年A题的船舶停靠系统，再到今年B题的拍照赚钱方案，每一年的建模题目，A题总是专业性最强，也最能吓住队员的，相反B题看起来总是那么亲和，看起来好像是专门为自己量身打造的题目，然而当把B题深入探讨后，才发觉并不是那么容易的，毕竟命题人不是傻子。因为B题要考虑的附加因素太多，而且数据量总是那么庞大，队员在处理这些数据的时候，也逐渐地消耗着队员的耐心和精力，最后是打击信心。  </p>
-<p>建模最常用的软件，就是MATLAB、Lingo、SAS这三件套了，当然如果有需要还可以用R、Python去解决。在建模期间，最常见的模型算法就是灰色预测、主成分分析、聚类分析、BP神经网络、模拟退火算法等，还有Logistic回归预测、马尔代夫模型等。因为对这些模型的了解，让我发现数学在生活中的应用，同时也大概明白了为什么那些商场、运营商总是推出一些特别优惠的方案活动，反而生意更好，而不用担心他们破产——原来背后他们都已经用数学建立模型，预测好了收益和风险。  </p>
-<p>参加了三次数学建模国赛，几乎每年都像程序设定好了一样，在第二天中午精神崩溃，充满迷茫，心情压抑。可是，当我问我自己，既然这么累，为什么还要坚持参加呢？——我想是因为我享受这建模的过程。  </p>
-<p>和队友讨论问题的解决思路，制定合适的解决方案，再配合一定的科学计算更具有说服力。我很喜欢那种带着适当的压力，在网速比较好的机房，现学现卖一些要用到的算法和模型，因为这样我觉得我的效率比较高，也在学成之后更加有成就感。当然，有成就感也会伴随着失败，几乎每次比赛进行到中后期时，我都会感到离完成论文的目标遥不可及，有好几次想着中途放弃，但看到队友仍然在电脑前处理数据，尝试建模，演算过程，我就会不知不觉的坚持下去。或许这就是它的魅力所在，毕竟和一群小伙伴三天三夜共同做着一件事，也未尝不是一次心灵上的旅途。  </p>
-<p>三天三夜的时光转瞬即过，本科阶段的建模生涯就此结束。在这里我不仅锻炼了我的学习能力，与团队的沟通，领导能力，而且培养了我严谨的求学态度，也对论文的写作有了一定的热身练习。最重要的是，它让我懂得了，其实我们现在所走的路，总是在白夜中交替进行着，我们的能力也因此会在这希望与失望交织在一起的螺旋式楼梯上缓慢上升着。  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>成长</tag>
-        <tag>数学建模</tag>
-        <tag>竞赛</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的编程竞赛生涯</title>
     <url>/2018/07/07/my-career-in-coding-competition/</url>
     <content><![CDATA[<p>##【初识编程】  </p>
@@ -11478,6 +11477,27 @@
         <tag>成长</tag>
         <tag>编程</tag>
         <tag>竞赛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的数学建模竞赛生涯</title>
+    <url>/2017/09/17/my-career-in-math-modeling-competition/</url>
+    <content><![CDATA[<p>2017年9月17日14点20分，我写下了这段话，同时距离2017年全国大学生数学建模竞赛截止还剩不到十个小时的时间。这次建模的结束，也将标志着我本科阶段的建模生涯画上了句号。  </p>
+<p>记得第一次参加建模时，与全国各地的大学生在同一时间开始竞赛，心中充满着激动与紧张。  </p>
+<p>每年建模竞赛时期，总会涌现出许多个建模赛题讨论群，刚开始大家会相互询问解题的思路，源程序解析，中间也有参杂着有偿贩卖建模数据或赛题思路的“小商人”。最后要在服务器上提交论文的时候，服务器总会不堪重压的奔溃掉，这仿佛成了历年比赛的固定套路。  </p>
+<p>“建模从选题到换题，从换题到瞎编，从瞎编到提交”，这应该是每年搞建模最喜欢自嘲的一段话。是的，从前年B题的滴滴打车，到去年A题的船舶停靠系统，再到今年B题的拍照赚钱方案，每一年的建模题目，A题总是专业性最强，也最能吓住队员的，相反B题看起来总是那么亲和，看起来好像是专门为自己量身打造的题目，然而当把B题深入探讨后，才发觉并不是那么容易的，毕竟命题人不是傻子。因为B题要考虑的附加因素太多，而且数据量总是那么庞大，队员在处理这些数据的时候，也逐渐地消耗着队员的耐心和精力，最后是打击信心。  </p>
+<p>建模最常用的软件，就是MATLAB、Lingo、SAS这三件套了，当然如果有需要还可以用R、Python去解决。在建模期间，最常见的模型算法就是灰色预测、主成分分析、聚类分析、BP神经网络、模拟退火算法等，还有Logistic回归预测、马尔代夫模型等。因为对这些模型的了解，让我发现数学在生活中的应用，同时也大概明白了为什么那些商场、运营商总是推出一些特别优惠的方案活动，反而生意更好，而不用担心他们破产——原来背后他们都已经用数学建立模型，预测好了收益和风险。  </p>
+<p>参加了三次数学建模国赛，几乎每年都像程序设定好了一样，在第二天中午精神崩溃，充满迷茫，心情压抑。可是，当我问我自己，既然这么累，为什么还要坚持参加呢？——我想是因为我享受这建模的过程。  </p>
+<p>和队友讨论问题的解决思路，制定合适的解决方案，再配合一定的科学计算更具有说服力。我很喜欢那种带着适当的压力，在网速比较好的机房，现学现卖一些要用到的算法和模型，因为这样我觉得我的效率比较高，也在学成之后更加有成就感。当然，有成就感也会伴随着失败，几乎每次比赛进行到中后期时，我都会感到离完成论文的目标遥不可及，有好几次想着中途放弃，但看到队友仍然在电脑前处理数据，尝试建模，演算过程，我就会不知不觉的坚持下去。或许这就是它的魅力所在，毕竟和一群小伙伴三天三夜共同做着一件事，也未尝不是一次心灵上的旅途。  </p>
+<p>三天三夜的时光转瞬即过，本科阶段的建模生涯就此结束。在这里我不仅锻炼了我的学习能力，与团队的沟通，领导能力，而且培养了我严谨的求学态度，也对论文的写作有了一定的热身练习。最重要的是，它让我懂得了，其实我们现在所走的路，总是在白夜中交替进行着，我们的能力也因此会在这希望与失望交织在一起的螺旋式楼梯上缓慢上升着。  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>成长</tag>
+        <tag>竞赛</tag>
+        <tag>数学建模</tag>
       </tags>
   </entry>
   <entry>
