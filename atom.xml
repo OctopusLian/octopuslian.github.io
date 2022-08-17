@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-05-24T16:06:40.467Z</updated>
+  <updated>2022-08-17T15:37:43.479Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,129 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指 Offer 28. 对称的二叉树</title>
+    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-28-dui-cheng-de-er-cha-shu/"/>
+    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-28-dui-cheng-de-er-cha-shu/</id>
+    <published>2022-08-17T15:24:26.000Z</published>
+    <updated>2022-08-17T15:37:43.479Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/&quot;&gt;剑指 Offer 28. 对称的二叉树&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;1，从根节点出发，先判断左子树的值和右子树的是否相等；  &lt;/li&gt;
+&lt;li&gt;2，若相等，从左子树的节点递归出发，以及右子树的节点递归出发，继续判断是否相等；&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 27. 二叉树的镜像</title>
+    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/"/>
+    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/</id>
+    <published>2022-08-17T15:12:33.000Z</published>
+    <updated>2022-08-17T15:37:43.479Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof/&quot;&gt;剑指 Offer 27. 二叉树的镜像&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;相当于复制后做一下翻转，本来是左子树变为右子树，同理右子树变左子树：&lt;br&gt;&lt;img src=&quot;/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/1.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 26. 树的子结构</title>
+    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/"/>
+    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/</id>
+    <published>2022-08-17T14:57:51.000Z</published>
+    <updated>2022-08-17T15:37:43.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/&quot;&gt;剑指</summary>
+        
+      
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gin框架数据绑定和验证</title>
+    <link href="https://octopuslian.github.io/2022/06/12/gin-data-binding-and-validation/"/>
+    <id>https://octopuslian.github.io/2022/06/12/gin-data-binding-and-validation/</id>
+    <published>2022-06-12T09:23:36.000Z</published>
+    <updated>2022-08-17T15:37:43.479Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;数据绑定介绍&quot;&gt;&lt;a href=&quot;#数据绑定介绍&quot; class=&quot;headerlink&quot; title=&quot;数据绑定介绍&quot;&gt;&lt;/a&gt;数据绑定介绍&lt;/h1&gt;&lt;p&gt;Gin提供了两类绑定方法：  &lt;/p&gt;
+&lt;h2 id=&quot;Must-bind&quot;&gt;&lt;a href=&quot;#Must-bind&quot; class=&quot;headerlink&quot; title=&quot;Must bind&quot;&gt;&lt;/a&gt;Must bind&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Methods: Bind,BindJSON,BindXML,BindQuery,BindYAML  &lt;/li&gt;
+&lt;li&gt;这些方法属于MustBindWith的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind) 。响应状态码被设置为 400 并且Content-Type被设置为text&amp;#x2F;plain; charset&amp;#x3D;utf-8 。 如果您在此之后尝试设置响应状态码，Gin会输出日志[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422 。 如果您希望更好地控制绑定，考虑使用ShouldBind等效方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Should-bind&quot;&gt;&lt;a href=&quot;#Should-bind&quot; class=&quot;headerlink&quot; title=&quot;Should bind&quot;&gt;&lt;/a&gt;Should bind&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnGin" scheme="https://octopuslian.github.io/categories/LearnGin/"/>
+    
+    
+    <category term="Gin" scheme="https://octopuslian.github.io/tags/Gin/"/>
+    
+    <category term="数据绑定" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gin框架介绍</title>
+    <link href="https://octopuslian.github.io/2022/06/12/introduction-to-gin-framework/"/>
+    <id>https://octopuslian.github.io/2022/06/12/introduction-to-gin-framework/</id>
+    <published>2022-06-12T09:06:32.000Z</published>
+    <updated>2022-08-17T15:37:43.479Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;gin框架介绍&quot;&gt;&lt;a href=&quot;#gin框架介绍&quot; class=&quot;headerlink&quot; title=&quot;gin框架介绍&quot;&gt;&lt;/a&gt;gin框架介绍&lt;/h1&gt;&lt;p&gt;gin是用go语言开发的一个web框架，简单易用，是一个轻量级框架。  &lt;/p&gt;
+&lt;h2 id=&quot;为什么选择Gin&quot;&gt;&lt;a href=&quot;#为什么选择Gin&quot; class=&quot;headerlink&quot; title=&quot;为什么选择Gin&quot;&gt;&lt;/a&gt;为什么选择Gin&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;1.运行响应非常快  &lt;/li&gt;
+&lt;li&gt;2.快速开发  &lt;/li&gt;
+&lt;li&gt;3.文档齐全  &lt;/li&gt;
+&lt;li&gt;4.社区活跃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnGin" scheme="https://octopuslian.github.io/categories/LearnGin/"/>
+    
+    
+    <category term="框架" scheme="https://octopuslian.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="Gin" scheme="https://octopuslian.github.io/tags/Gin/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指 Offer 25. 合并两个排序的链表</title>
@@ -401,182 +524,6 @@
     <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
     
     <category term="python" scheme="https://octopuslian.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes弹性伸缩</title>
-    <link href="https://octopuslian.github.io/2022/03/01/kubernetes-hpa/"/>
-    <id>https://octopuslian.github.io/2022/03/01/kubernetes-hpa/</id>
-    <published>2022-03-01T15:27:35.000Z</published>
-    <updated>2022-04-27T13:15:14.507Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;传统弹性伸缩的困境&quot;&gt;&lt;a href=&quot;#传统弹性伸缩的困境&quot; class=&quot;headerlink&quot; title=&quot;传统弹性伸缩的困境&quot;&gt;&lt;/a&gt;传统弹性伸缩的困境&lt;/h1&gt;&lt;p&gt;从传统意义上，弹性伸缩主要解决的问题是容量规划与实践负载的矛盾。  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/03/01/kubernetes-hpa/scaling-vs.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;蓝色水位线表示集群资源容量随着负载的增加不断扩容，红色曲线表示集群资源实际负载变化。  &lt;/p&gt;
-&lt;p&gt;弹性伸缩就是要解决当实际负载增大，而集群资源容量没来得及反应的问题。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Learn-Kubernetes" scheme="https://octopuslian.github.io/categories/Learn-Kubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="弹性伸缩" scheme="https://octopuslian.github.io/tags/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes集群网络</title>
-    <link href="https://octopuslian.github.io/2022/03/01/kubernetes-cluster-network/"/>
-    <id>https://octopuslian.github.io/2022/03/01/kubernetes-cluster-network/</id>
-    <published>2022-03-01T14:46:33.000Z</published>
-    <updated>2022-04-27T13:15:14.507Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;网络基础知识&quot;&gt;&lt;a href=&quot;#网络基础知识&quot; class=&quot;headerlink&quot; title=&quot;网络基础知识&quot;&gt;&lt;/a&gt;网络基础知识&lt;/h1&gt;&lt;h2 id=&quot;公司网络架构&quot;&gt;&lt;a href=&quot;#公司网络架构&quot; class=&quot;headerlink&quot; title=&quot;公司网络架构&quot;&gt;&lt;/a&gt;公司网络架构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2022/03/01/kubernetes-cluster-network/network-arch1.png&quot;&gt;  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;路由器：网络出口  &lt;/li&gt;
-&lt;li&gt;核心层：主要完成数据高效转发、链路备份等  &lt;/li&gt;
-&lt;li&gt;汇聚层：网络策略、安全、工作站交换机的接入、VLAN之间通信等功能  &lt;/li&gt;
-&lt;li&gt;接入层：工作站的接入&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;交换技术&quot;&gt;&lt;a href=&quot;#交换技术&quot; class=&quot;headerlink&quot; title=&quot;交换技术&quot;&gt;&lt;/a&gt;交换技术&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="Learn-Kubernetes" scheme="https://octopuslian.github.io/categories/Learn-Kubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="网络" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>30分钟部署一个kubernetes集群</title>
-    <link href="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/"/>
-    <id>https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/</id>
-    <published>2022-02-27T07:46:53.000Z</published>
-    <updated>2022-04-27T13:15:14.363Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Kubernetes架构&quot;&gt;&lt;a href=&quot;#Kubernetes架构&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes架构&quot;&gt;&lt;/a&gt;Kubernetes架构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84.png&quot;&gt;  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Master：负责集群的管理  &lt;/li&gt;
-&lt;li&gt;Node：计算节点，负责跑任务  &lt;/li&gt;
-&lt;li&gt;kubelet：相当于master的agent  &lt;/li&gt;
-&lt;li&gt;kube-proxy：网络  &lt;/li&gt;
-&lt;li&gt;Docker Engine：运行管理容器  &lt;/li&gt;
-&lt;li&gt;Etcd Cluster：存储k8s的数据&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84%E5%9B%BEmn.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="集群" scheme="https://octopuslian.github.io/tags/%E9%9B%86%E7%BE%A4/"/>
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一天入门Kubernetes</title>
-    <link href="https://octopuslian.github.io/2022/02/27/one-day-to-know-kubernetes/"/>
-    <id>https://octopuslian.github.io/2022/02/27/one-day-to-know-kubernetes/</id>
-    <published>2022-02-27T07:42:28.000Z</published>
-    <updated>2022-04-27T13:15:14.475Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;快速搭建一个Kubernetes集群&quot;&gt;&lt;a href=&quot;#快速搭建一个Kubernetes集群&quot; class=&quot;headerlink&quot; title=&quot;快速搭建一个Kubernetes集群&quot;&gt;&lt;/a&gt;快速搭建一个Kubernetes集群&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://&quot;&gt;&lt;/a&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;kubectl命令行管理工具&quot;&gt;&lt;a href=&quot;#kubectl命令行管理工具&quot; class=&quot;headerlink&quot; title=&quot;kubectl命令行管理工具&quot;&gt;&lt;/a&gt;kubectl命令行管理工具&lt;/h2&gt;&lt;p&gt;基础命令  &lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;命令&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;create&lt;/td&gt;
-&lt;td&gt;通过文件名或标准输入创建资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;expose&lt;/td&gt;
-&lt;td&gt;将一个资源公开为一个新的Service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;run&lt;/td&gt;
-&lt;td&gt;在集群中运行一个特定的镜像&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;set&lt;/td&gt;
-&lt;td&gt;在对象上设置特定的功能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;get&lt;/td&gt;
-&lt;td&gt;显示一个或多个资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;explain&lt;/td&gt;
-&lt;td&gt;文档参考资料&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;edit&lt;/td&gt;
-&lt;td&gt;使用默认的编辑器编辑一个资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;delete&lt;/td&gt;
-&lt;td&gt;通过文件名、标准输入、资源名称或标签选择器来删除资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一天掌握Docker</title>
-    <link href="https://octopuslian.github.io/2022/02/27/one-day-to-know-docker/"/>
-    <id>https://octopuslian.github.io/2022/02/27/one-day-to-know-docker/</id>
-    <published>2022-02-27T05:32:35.000Z</published>
-    <updated>2022-04-27T13:15:14.507Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Docker介绍与安装&quot;&gt;&lt;a href=&quot;#Docker介绍与安装&quot; class=&quot;headerlink&quot; title=&quot;Docker介绍与安装&quot;&gt;&lt;/a&gt;Docker介绍与安装&lt;/h1&gt;&lt;h2 id=&quot;Docker是什么&quot;&gt;&lt;a href=&quot;#Docker是什么&quot; class=&quot;headerlink&quot; title=&quot;Docker是什么&quot;&gt;&lt;/a&gt;Docker是什么&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;使用最广泛的开源容器引擎  &lt;/li&gt;
-&lt;li&gt;一种操作系统级的虚拟化技术  &lt;/li&gt;
-&lt;li&gt;依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制）  &lt;/li&gt;
-&lt;li&gt;一个简单的应用程序打包工具&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Docker设计目标&quot;&gt;&lt;a href=&quot;#Docker设计目标&quot; class=&quot;headerlink&quot; title=&quot;Docker设计目标&quot;&gt;&lt;/a&gt;Docker设计目标&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;提供简单的应用程序打包工具  &lt;/li&gt;
-&lt;li&gt;开发人员和运维人员职责逻辑分离  &lt;/li&gt;
-&lt;li&gt;多环境保持一致性&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
-    
-    
-    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-    <category term="Docker" scheme="https://octopuslian.github.io/tags/Docker/"/>
     
   </entry>
   

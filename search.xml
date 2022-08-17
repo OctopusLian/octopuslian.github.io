@@ -4696,6 +4696,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Gin框架数据绑定和验证</title>
+    <url>/2022/06/12/gin-data-binding-and-validation/</url>
+    <content><![CDATA[<h1 id="数据绑定介绍"><a href="#数据绑定介绍" class="headerlink" title="数据绑定介绍"></a>数据绑定介绍</h1><p>Gin提供了两类绑定方法：  </p>
+<h2 id="Must-bind"><a href="#Must-bind" class="headerlink" title="Must bind"></a>Must bind</h2><ul>
+<li>Methods: Bind,BindJSON,BindXML,BindQuery,BindYAML  </li>
+<li>这些方法属于MustBindWith的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind) 。响应状态码被设置为 400 并且Content-Type被设置为text&#x2F;plain; charset&#x3D;utf-8 。 如果您在此之后尝试设置响应状态码，Gin会输出日志[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422 。 如果您希望更好地控制绑定，考虑使用ShouldBind等效方法。</li>
+</ul>
+<h2 id="Should-bind"><a href="#Should-bind" class="headerlink" title="Should bind"></a>Should bind</h2><ul>
+<li>Methods: ShouldBind,ShouldBindJSON,ShouldBindXML,ShouldBindQuery,ShouldBindYAML  </li>
+<li>这些方法属于ShouldBindWith的具体调用。 如果发生绑定错误，Gin 会返回错误并由开发者处理错误和请求。</li>
+</ul>
+<h1 id="数据绑定-Should-bind"><a href="#数据绑定-Should-bind" class="headerlink" title="数据绑定-Should bind"></a>数据绑定-Should bind</h1><p>可以绑定Form、QueryString、Json，uri<br>form标签：Form、QueryString<br>json标签：Json<br>uri标签：uri</p>
+<p>form的绑定示例代码：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 结构体</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int</span> <span class="string">`form:&quot;id&quot; json:&quot;id&quot;`</span></span><br><span class="line">    Name <span class="type">string</span> <span class="string">`form:&quot;name&quot; json:&quot;name&quot;`</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意：structTag：指定字段名称，不用使用首字母大写的</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定</span></span><br><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">context.ShouldBind(&amp;user)</span><br><span class="line">fmt.Println(user)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前端</span></span><br><span class="line">&lt;form action=<span class="string">&quot;/dobind&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;name&quot;</span>&gt;&lt;br&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;age&quot;</span>&gt;&lt;br&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;提交&quot;</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>QueryString的绑定示例代码：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 结构体中structTag的form起作用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">context.ShouldBind(&amp;user)</span><br><span class="line">fmt.Println(user)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">访问：http:<span class="comment">//127.0.0.1:8080/tobind?name=zhiliao&amp;age=110</span></span><br></pre></td></tr></table></figure>
+
+<p>json的绑定示例代码  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 结构体中structTag的json起作用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoBind</span><span class="params">(context *gin.Context)</span></span>  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> user User</span><br><span class="line">    context.ShouldBind(&amp;user)</span><br><span class="line"></span><br><span class="line">    fmt.Println(user)</span><br><span class="line"></span><br><span class="line">    context.JSON(<span class="number">200</span>,gin.H&#123;</span><br><span class="line">        <span class="string">&quot;msg&quot;</span>:<span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="string">&quot;code&quot;</span>:<span class="number">200</span>,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">前端：ajax</span><br><span class="line"></span><br><span class="line">&lt;form&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;name&quot;</span> id=<span class="string">&quot;name&quot;</span>&gt;&lt;br&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;age&quot;</span> id=<span class="string">&quot;age&quot;</span>&gt;&lt;br&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;提交&quot;</span> id=<span class="string">&quot;btn_add&quot;</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> btn_add = document.getElementById(<span class="string">&quot;btn_add&quot;</span>);</span><br><span class="line">    btn_add.onclick = function (ev) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = document.getElementById(<span class="string">&quot;name&quot;</span>).value;</span><br><span class="line">        <span class="keyword">var</span> age = document.getElementById(<span class="string">&quot;age&quot;</span>).value;</span><br><span class="line"></span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url:<span class="string">&quot;/dobind&quot;</span>,</span><br><span class="line">            <span class="keyword">type</span>:<span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            contentType: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">            dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">            data:JSON.stringify(&#123;</span><br><span class="line">                <span class="string">&quot;name&quot;</span>:name,</span><br><span class="line">                <span class="string">&quot;age&quot;</span>:Number(age)</span><br><span class="line">            &#125;),</span><br><span class="line">            success:function (data) &#123;</span><br><span class="line">                console.log(data);</span><br><span class="line">            &#125;,</span><br><span class="line">            fail:function (data) &#123;</span><br><span class="line">                console.log(data);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<br>contentType: “application&#x2F;json; charset&#x3D;utf-8”,<br>dataType: “json”,<br>“age”:Number(age)<br>age是个int类型，必须得转成int类型才可以直接绑定  </p>
+<h1 id="数据绑定–Must-bind"><a href="#数据绑定–Must-bind" class="headerlink" title="数据绑定–Must bind"></a>数据绑定–Must bind</h1><h2 id="Bind"><a href="#Bind" class="headerlink" title="Bind"></a>Bind</h2><p>可以绑定Form、QueryString、Json等</p>
+<p>和ShouldBind的区别在于，ShouldBind没有绑定成功不报错，就是空值，Bind会报错  </p>
+<h2 id="BindQuery等"><a href="#BindQuery等" class="headerlink" title="BindQuery等"></a>BindQuery等</h2><p>BindJSON,BindXML,BindQuery,BindYAML等函数只绑定对应格式的参数  </p>
+]]></content>
+      <categories>
+        <category>LearnGin</category>
+      </categories>
+      <tags>
+        <tag>Gin</tag>
+        <tag>数据绑定</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git更改远程推送的仓库地址</title>
     <url>/2019/06/29/git-change-push-remote-rep/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>本地代码推送到远程仓库地址时，有时地址会发生变更，所以需要更改，<code>git</code>命令如下  </p>
@@ -8911,6 +8946,101 @@
       </tags>
   </entry>
   <entry>
+    <title>Gin框架介绍</title>
+    <url>/2022/06/12/introduction-to-gin-framework/</url>
+    <content><![CDATA[<h1 id="gin框架介绍"><a href="#gin框架介绍" class="headerlink" title="gin框架介绍"></a>gin框架介绍</h1><p>gin是用go语言开发的一个web框架，简单易用，是一个轻量级框架。  </p>
+<h2 id="为什么选择Gin"><a href="#为什么选择Gin" class="headerlink" title="为什么选择Gin"></a>为什么选择Gin</h2><ul>
+<li>1.运行响应非常快  </li>
+<li>2.快速开发  </li>
+<li>3.文档齐全  </li>
+<li>4.社区活跃</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>1.快速：基于 Radix 树的路由，小内存占用。没有反射。可预测的 API 性能。  </li>
+<li>2.支持中间件：传入的 HTTP 请求可以由一系列中间件和最终操作来处理。 例如：Logger，Authorization，GZIP，最终操作 DB。  </li>
+<li>3.Crash 处理：Gin 可以 catch 一个发生在 HTTP 请求中的 panic 并 recover 它。这样，你的服务器将始终可用。例如，你可以向 Sentry 报告这个 panic！  </li>
+<li>4.JSON 验证：Gin 可以解析并验证请求的 JSON，例如检查所需值的存在。  </li>
+<li>5.路由组：更好地组织路由。是否需要授权，不同的 API 版本…… 此外，这些组可以无限制地嵌套而不会降低性能。  </li>
+<li>6.错误管理：Gin 提供了一种方便的方法来收集 HTTP 请求期间发生的所有错误。最终，中间件可以将它们写入日志文件，数据库并通过网络发送。  </li>
+<li>7.内置渲染：Gin 为 JSON，XML 和 HTML 渲染提供了易于使用的 API。  </li>
+<li>8.可扩展性：新建一个中间件非常简单。</li>
+</ul>
+<h1 id="Gin环境搭建"><a href="#Gin环境搭建" class="headerlink" title="Gin环境搭建"></a>Gin环境搭建</h1><p><strong>注意：go1.9版本以上，很快将不再支持go1.7或go1.8。</strong>  </p>
+<p>先安装Go环境，然后直接运行以下命令即可：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">go get -u github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
+
+<h1 id="我的第一个Gin项目"><a href="#我的第一个Gin项目" class="headerlink" title="我的第一个Gin项目"></a>我的第一个Gin项目</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//engine := gin.New()</span></span><br><span class="line">    engine := gin.Default()</span><br><span class="line">    engine.GET(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(context *gin.Context)</span></span> &#123;</span><br><span class="line">        context.String(<span class="number">200</span>,<span class="string">&quot;hello gin&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    engine.Run(<span class="string">&quot;:9000&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h1><h2 id="router-x3D-gin-Default"><a href="#router-x3D-gin-Default" class="headerlink" title="router :&#x3D; gin.Default()"></a>router :&#x3D; gin.Default()</h2><p>初始化一个引擎，是gin.New()的升级。  </p>
+<h2 id="router-GET"><a href="#router-GET" class="headerlink" title="router.GET"></a>router.GET</h2><ul>
+<li>1.RESTFUL风格的请求方法(method)  </li>
+<li>2.有两个参数：<br>  relativePath：路由，string类型<br>  HandlerFunc：执行的函数  </li>
+<li>3.可以使用router.Handle代替，多了个的method参数(字符串)，method参数必须是大写的，如：GET</li>
+</ul>
+<h2 id="执行的函数"><a href="#执行的函数" class="headerlink" title="执行的函数"></a>执行的函数</h2><ul>
+<li>1.必须有个参数是gin.Context指针类型的<br>注意：context是gin的一个重要组成部分。用来在中间层传递数据流。  </li>
+<li>2.函数是个参数，不能调用</li>
+</ul>
+<h2 id="router-Run"><a href="#router-Run" class="headerlink" title="router.Run"></a>router.Run</h2><p>启动http监听，有个address参数，字符串类型的，可以指定host和port<br>注意：  </p>
+<ul>
+<li>addr的host和port是用冒号分隔的  </li>
+<li>只指定port，port前面必须要有冒号  </li>
+<li>指定了host和port，host和port中间有冒号  </li>
+<li>不能只指定host</li>
+</ul>
+<h1 id="go-mod包管理"><a href="#go-mod包管理" class="headerlink" title="go mod包管理"></a>go mod包管理</h1><p>前提是Go版本&gt;&#x3D;1.11  </p>
+<h2 id="什么是module？"><a href="#什么是module？" class="headerlink" title="什么是module？"></a>什么是module？</h2><p>go中包管理工具  </p>
+<h2 id="使用module和不使用的区别"><a href="#使用module和不使用的区别" class="headerlink" title="使用module和不使用的区别"></a>使用module和不使用的区别</h2><p>使用环境变量中的GO111MODULE控制是否使用mod  </p>
+<ul>
+<li>1.开启mod：<code>go env -w GO111MODULE=on</code>，<strong>会将包下载到gopath下的pkg下的mod文件夹中</strong>  </li>
+<li>2.关闭mod：<code>go env -w GO111MODULE=off</code>，<strong>会将包下载到gopath下的src下</strong>  </li>
+<li>3.<code>go env GO111MODULE=auto</code>,只有当前目录在GOPATH&#x2F;src目录之外而且当前目录包含go.mod文件或者其子目录包含go.mod文件才会启用。</li>
+</ul>
+<h2 id="go-mod文件的语法介绍"><a href="#go-mod文件的语法介绍" class="headerlink" title="go mod文件的语法介绍"></a>go mod文件的语法介绍</h2><p>示例：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module my/thing</span><br><span class="line"></span><br><span class="line">go 1.13.4</span><br><span class="line"></span><br><span class="line">require (</span><br><span class="line">        new/thing v2.3.4</span><br><span class="line">        old/thing v1.2.3</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.module：指明根目录  </li>
+<li>2.go 后面跟版本号是指定go的版本  </li>
+<li>3.require是个动作指令，对依赖包起作用，比如require(依赖)，还有exclude(排除)，replace(替代)，相同动作的可以放在一个动词+括号组成的结构中，如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">require (</span><br><span class="line">    new/thing v2.3.4</span><br><span class="line">    old/thing v1.2.3</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">require new/thing v2.3.4</span><br><span class="line">require old/thing v1.2.3</span><br><span class="line"></span><br><span class="line">// 排除</span><br><span class="line">exclude old/thing         v1.2.3</span><br><span class="line"></span><br><span class="line">// 替换，使用箭头后的替换前面的</span><br><span class="line">replace bad/thing         v1.4.5     =&gt; good/thing v1.4.5</span><br></pre></td></tr></table></figure>
+
+<p>注意：  </p>
+<ul>
+<li>exclude和replace仅适用于主的go.mod文件中，其他的依赖中会被忽略、  </li>
+<li>可以使用replace替换无法获取的库，比如<code>golang.org/x/crypto replace为github.com.com/golang/crypto</code>  </li>
+<li>注释：使用&#x2F;&#x2F;，没有&#x2F;* xxx *&#x2F;这种块注释</li>
+</ul>
+<h2 id="go-mod-命令"><a href="#go-mod-命令" class="headerlink" title="go mod 命令"></a>go mod 命令</h2><p>go mod help 查看帮助  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">download    下载模块到本地缓存，go env中的GOCACHE路径，可以通过go clean -cache清空缓存多个项目可以共享缓存的包</span><br><span class="line">edit        在工具或脚本中编辑go.mod文件</span><br><span class="line">graph       打印模块需求图</span><br><span class="line">init        在当前目录下初始化新的模块</span><br><span class="line">    go mod init 【项目名】    默认使用当前路径的项目名称</span><br><span class="line">tidy        添加缺失的模块以及移除无用的模块，生成go.sum文件</span><br><span class="line">vendor      会自动下载项目中依赖的包到项目根目录下的vendor文件夹下，并写入go.mod文件，同时生成modules.txt文件</span><br><span class="line">            go mod vender -v     </span><br><span class="line"></span><br><span class="line">verify      检查当前模块的依赖是否全部下载下来，是否下载下来被修改过</span><br><span class="line">why         解释为什么需要包或模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注意：-v参数可以查看执行的详细信息</span><br></pre></td></tr></table></figure>
+
+<p>已经完成的项目可以这样操作来使用mod  </p>
+<ul>
+<li>项目路径下执行go mod init  </li>
+<li>然后再执行go mod vendor（或者直接运行项目）</li>
+</ul>
+<p>项目中可以是这样的执行顺序：  </p>
+<ul>
+<li>init初始化 –&gt; tidy 增删模块–&gt; verify 校验模块–&gt;vendor</li>
+</ul>
+<p><strong>注意：项目中引入该项目下的任何路径都要是绝对路径，也就是以改项目名开头的路径</strong>  </p>
+<p>使用mod的步骤：  </p>
+<ul>
+<li>1.开启mod:go111module&#x3D;on  </li>
+<li>2.进入项目，执行go mod init (在项目根目录生成go.mod文件)  </li>
+<li>3.启动项目（go.mod添加依赖的包）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnGin</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>Gin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>抗战传奇之扛包的少年</title>
     <url>/2017/03/12/kang-ri-chuan-qi-zhi-kang-bao-de-shao-nian/</url>
     <content><![CDATA[<p>注意：以下内容纯属个人想象虚构，作者只是一直想完成一项六年前的想法。  </p>
@@ -8968,7 +9098,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#x2e;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;">&#46;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -10818,6 +10948,50 @@
       </categories>
       <tags>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 26. 树的子结构</title>
+    <url>/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/">剑指 Offer 26. 树的子结构</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="一次遍历"><a href="#一次遍历" class="headerlink" title="一次遍历"></a>一次遍历</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSubStructure</span><span class="params">(TreeNode A, TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// 一开始如果 A 或者 B为空，直接返回false</span></span><br><span class="line">        <span class="comment">// 因为题目约定空树不是任意一个树的子结构</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span> || B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接下来考虑以下几种情况</span></span><br><span class="line">        <span class="comment">// A的根节点 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 1、A的根节点和B的根节点相同情况，依次比较它们的子节点</span></span><br><span class="line">        <span class="comment">// 2、A的根节点和B的根节点不相同情况，A的左子树 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 3、A的根节点和B的根节点不相同情况，A的右子树 VS B的根节点</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isSub</span><span class="params">(TreeNode A,TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// A和B 不匹配的情况有很多，我们需要一开始去找它们完全匹配的情况</span></span><br><span class="line">        <span class="comment">// 即遍历完B，直接为null，说明B的全部节点和A的子结构匹配上</span></span><br><span class="line">        <span class="keyword">if</span> (B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A中的节点为空，但B中的节点不为空，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A和B都不为空，但数值不同，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A.val != B.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 此时，当前这个点是匹配的，继续递归判断左子树和右字树是否 分别匹配</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A.left,B.left) &amp;&amp; isSub(A.right,B.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 27. 二叉树的镜像</title>
+    <url>/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof/">剑指 Offer 27. 二叉树的镜像</a>  </p>
+<p>相当于复制后做一下翻转，本来是左子树变为右子树，同理右子树变左子树：<br><img src="/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/1.png">  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">mirrorTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 当节点为空时，直接返回</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置一个临时的节点 tmp 用来存储当前节点的左子树</span></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">tmp</span> <span class="operator">=</span> root.left;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 以下两个操作是交换当前节点的左右子树</span></span><br><span class="line">        root.left = mirrorTree(root.right);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前节点的左子树为节点的右子树</span></span><br><span class="line">        <span class="comment">// 同时递归下去，不停的交换子树中的节点</span></span><br><span class="line">        root.right = mirrorTree(tmp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前节点的右子树为节点的左子树</span></span><br><span class="line">        <span class="comment">// 同时递归下去，不停的交换字树中的节点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 最后返回根节点</span></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：38.7 MB, 在所有 Java 提交中击败了82.58%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 28. 对称的二叉树</title>
+    <url>/2022/08/17/leetcode-lcof-28-dui-cheng-de-er-cha-shu/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/">剑指 Offer 28. 对称的二叉树</a></p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ul>
+<li>1，从根节点出发，先判断左子树的值和右子树的是否相等；  </li>
+<li>2，若相等，从左子树的节点递归出发，以及右子树的节点递归出发，继续判断是否相等；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 边界情况</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 递归判断左子树和又子树是否对称</span></span><br><span class="line">        <span class="keyword">return</span> isSymmetricalCor(root.left,root.right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isSymmetricalCor</span><span class="params">(TreeNode L,TreeNode R)</span> &#123;</span><br><span class="line">        <span class="comment">// 如果某根子树的左右两个子树同时为空，肯定是对称的，直接返回 true</span></span><br><span class="line">        <span class="keyword">if</span> (L == <span class="literal">null</span> &amp;&amp; R == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 说明根子树的左右两个子树有某子树为空，某子树有值，不对称，返回 false</span></span><br><span class="line">        <span class="keyword">if</span> (L == <span class="literal">null</span> || R == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 左子树的值与右子树的值不相等，不对称，返回 false</span></span><br><span class="line">        <span class="keyword">if</span> (L.val != R.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 递归对比当前节点的左子树的左子树与右子树的右子树、左子树的右子树与右子树的左子树是否对称</span></span><br><span class="line">        <span class="keyword">return</span> isSymmetricalCor(L.left,R.right) &amp;&amp; isSymmetricalCor(L.right,R.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
