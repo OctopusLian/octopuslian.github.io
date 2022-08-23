@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-08-17T15:37:43.479Z</updated>
+  <updated>2022-08-23T16:26:44.177Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指 Offer 30. 包含min函数的栈</title>
+    <link href="https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/"/>
+    <id>https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/</id>
+    <published>2022-08-23T15:54:37.000Z</published>
+    <updated>2022-08-23T16:26:44.177Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/&quot;&gt;剑指 Offer 30. 包含min函数的栈&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;栈的特点：先进后出，后进先出。  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;数据栈和辅助栈&quot;&gt;&lt;a href=&quot;#数据栈和辅助栈&quot; class=&quot;headerlink&quot; title=&quot;数据栈和辅助栈&quot;&gt;&lt;/a&gt;数据栈和辅助栈&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="栈" scheme="https://octopuslian.github.io/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指 Offer 28. 对称的二叉树</title>
@@ -501,29 +522,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>LintCode Python教程 练习题答案</title>
-    <link href="https://octopuslian.github.io/2022/03/05/lintcode-learn-python/"/>
-    <id>https://octopuslian.github.io/2022/03/05/lintcode-learn-python/</id>
-    <published>2022-03-05T07:42:42.000Z</published>
-    <updated>2022-04-27T13:15:14.467Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;LEVEL-1&quot;&gt;&lt;a href=&quot;#LEVEL-1&quot; class=&quot;headerlink&quot; title=&quot;LEVEL 1&quot;&gt;&lt;/a&gt;LEVEL 1&lt;/h1&gt;&lt;h2 id=&quot;2274-·-第一个-Python-程序：打印-Hello-World&quot;&gt;&lt;a href=&quot;#2274-·-第一个-Python-程序：打印-Hello-World&quot; class=&quot;headerlink&quot; title=&quot;2274 · 第一个 Python 程序：打印 Hello World&quot;&gt;&lt;/a&gt;2274 · 第一个 Python 程序：打印 Hello World&lt;/h2&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Your first python code&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# print Hello World to console&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;2920-·-获取输入数据并打印它&quot;&gt;&lt;a href=&quot;#2920-·-获取输入数据并打印它&quot; class=&quot;headerlink&quot; title=&quot;2920 · 获取输入数据并打印它&quot;&gt;&lt;/a&gt;2920 · 获取输入数据并打印它&lt;/h2&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Please write your code here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;built_in&quot;&gt;input&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(name)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnPython" scheme="https://octopuslian.github.io/categories/LearnPython/"/>
-    
-    
-    <category term="lintcode" scheme="https://octopuslian.github.io/tags/lintcode/"/>
-    
-    <category term="python" scheme="https://octopuslian.github.io/tags/python/"/>
     
   </entry>
   

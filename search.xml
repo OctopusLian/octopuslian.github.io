@@ -86,25 +86,6 @@
       </categories>
   </entry>
   <entry>
-    <title>2021读书计划</title>
-    <url>/2021/01/02/2021-read-books-plan/</url>
-    <content><![CDATA[<p>2020年，我利用上下班和等车时间，读了很多书，发现时间虽然碎片，有时看不起眼的3-5分钟，其实如果加以利用的话，就是200-300秒的思考时间，将这几百秒的时间乘以每天十几个时间碎片片段，也是一块不小的时间空隙呢。  </p>
-<p>当然碎片化也不好，就是不能集中注意力，也许看了第三章，打断阅读后再回过头来已经忘记了第一章节的内容，因此我个人建议可以给每一章末尾或印象深刻的段落加上笔记，这样当我看到我写过的东西，就会立刻回想起原先的内容。  </p>
-<p>下面是我利用思维导图工具制定的一份2021阅读计划，希望年底前可以完成它。  </p>
-<p>GOOD LUCK.  </p>
-<p><img src="/2021/01/02/2021-read-books-plan/2021-book-plan.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>计划</tag>
-        <tag>读书</tag>
-        <tag>阅读</tag>
-        <tag>豆瓣TOP250</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2021春招找工作计划</title>
     <url>/2021/03/04/2021-spring-find-job/</url>
     <content><![CDATA[<p>三月到来，各个企业又开始招人了，我也收到了几家企业的面试邀请。  </p>
@@ -122,6 +103,25 @@
       <tags>
         <tag>找工作</tag>
         <tag>春招</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021读书计划</title>
+    <url>/2021/01/02/2021-read-books-plan/</url>
+    <content><![CDATA[<p>2020年，我利用上下班和等车时间，读了很多书，发现时间虽然碎片，有时看不起眼的3-5分钟，其实如果加以利用的话，就是200-300秒的思考时间，将这几百秒的时间乘以每天十几个时间碎片片段，也是一块不小的时间空隙呢。  </p>
+<p>当然碎片化也不好，就是不能集中注意力，也许看了第三章，打断阅读后再回过头来已经忘记了第一章节的内容，因此我个人建议可以给每一章末尾或印象深刻的段落加上笔记，这样当我看到我写过的东西，就会立刻回想起原先的内容。  </p>
+<p>下面是我利用思维导图工具制定的一份2021阅读计划，希望年底前可以完成它。  </p>
+<p>GOOD LUCK.  </p>
+<p><img src="/2021/01/02/2021-read-books-plan/2021-book-plan.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+        <tag>读书</tag>
+        <tag>阅读</tag>
+        <tag>豆瓣TOP250</tag>
       </tags>
   </entry>
   <entry>
@@ -9098,7 +9098,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;">&#46;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9462,26 +9462,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-121-best-time-to-buy-and-sell-stock | 买卖股票的最佳时机</title>
-    <url>/2019/12/05/leetcode-121-best-time-to-buy-and-sell-stock/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">原题链接</a><br><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">中文原题链接</a>  </p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ul>
-<li>1，暴力求解，直接求出买入和买出的最大值返回即可。</li>
-</ul>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
-<li>方法一：暴力法求解</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    maxProfit := <span class="number">0</span>  <span class="comment">//最大利润</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i + <span class="number">1</span>; j &lt; <span class="built_in">len</span>(prices); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[j] - prices[i] &gt; maxProfit) &#123;</span><br><span class="line">                maxProfit = prices[j] - prices[i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-        <tag>暴力求解</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-122-best-time-to-buy-and-sell-stock-ii | 买卖股票的最佳时机II</title>
     <url>/2019/12/06/leetcode-122-best-time-to-buy-and-sell-stock-ii/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><ul>
@@ -9499,6 +9479,26 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-121-best-time-to-buy-and-sell-stock | 买卖股票的最佳时机</title>
+    <url>/2019/12/05/leetcode-121-best-time-to-buy-and-sell-stock/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">原题链接</a><br><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">中文原题链接</a>  </p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ul>
+<li>1，暴力求解，直接求出买入和买出的最大值返回即可。</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>方法一：暴力法求解</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    maxProfit := <span class="number">0</span>  <span class="comment">//最大利润</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i + <span class="number">1</span>; j &lt; <span class="built_in">len</span>(prices); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[j] - prices[i] &gt; maxProfit) &#123;</span><br><span class="line">                maxProfit = prices[j] - prices[i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+        <tag>暴力求解</tag>
       </tags>
   </entry>
   <entry>
@@ -10088,20 +10088,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-392-is-subsequence | 判断子序列</title>
-    <url>/2020/07/31/leetcode-392-is-subsequence/</url>
-    <content><![CDATA[<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://leetcode-cn.com/problems/is-subsequence/">leetcode中国</a>  </p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><p>Golang </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubsequence</span><span class="params">(s <span class="type">string</span>, t <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    n, m := <span class="built_in">len</span>(s), <span class="built_in">len</span>(t)  </span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span> <span class="comment">//初始化两个指针i,j分别指向s和t初始化的位置</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &amp;&amp; j &lt; m &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == t[j] &#123;</span><br><span class="line">            i++  <span class="comment">//匹配成功，则i,j同时右移</span></span><br><span class="line">        &#125;</span><br><span class="line">        j++  <span class="comment">//匹配失败，则j右移，i不变</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i == n  <span class="comment">//最终如果i移动到s的末尾，就说明s是t的子序列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-412-fizz-buzz | Fizz Buzz</title>
     <url>/2020/02/02/leetcode-412-fizz-buzz/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><ul>
@@ -10117,6 +10103,20 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-392-is-subsequence | 判断子序列</title>
+    <url>/2020/07/31/leetcode-392-is-subsequence/</url>
+    <content><![CDATA[<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://leetcode-cn.com/problems/is-subsequence/">leetcode中国</a>  </p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><p>Golang </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubsequence</span><span class="params">(s <span class="type">string</span>, t <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    n, m := <span class="built_in">len</span>(s), <span class="built_in">len</span>(t)  </span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span> <span class="comment">//初始化两个指针i,j分别指向s和t初始化的位置</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &amp;&amp; j &lt; m &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == t[j] &#123;</span><br><span class="line">            i++  <span class="comment">//匹配成功，则i,j同时右移</span></span><br><span class="line">        &#125;</span><br><span class="line">        j++  <span class="comment">//匹配失败，则j右移，i不变</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i == n  <span class="comment">//最终如果i移动到s的末尾，就说明s是t的子序列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10992,6 +10992,41 @@
       </categories>
       <tags>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 30. 包含min函数的栈</title>
+    <url>/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/">剑指 Offer 30. 包含min函数的栈</a>  </p>
+<p>栈的特点：先进后出，后进先出。  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="数据栈和辅助栈"><a href="#数据栈和辅助栈" class="headerlink" title="数据栈和辅助栈"></a>数据栈和辅助栈</h2><ul>
+<li>0，声明一个栈为<code>stack1</code>，另一个栈为<code>stack2</code>  </li>
+<li>1，<code>push(-2)</code>到<code>stack1</code>，此时该栈中的最小值是-2，因此<code>stack2</code> push进-2  </li>
+<li>2，<code>push(0)</code>到<code>stack1</code>，此时该栈中的最小值是-2，因此<code>stack2</code> 再次push进-2  </li>
+<li>3，<code>push(-3)</code>到<code>stack1</code>，此时该栈中的最小值是-3，因此<code>stack2</code> push进-3</li>
+</ul>
+<p>此时两个栈中的值为：  </p>
+<p><img src="/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/1.png">  </p>
+<ul>
+<li>4，此时调用最小栈的<code>min</code>，从<code>stack2</code>中<code>pop</code>最小值为-3  </li>
+<li>5，调用最小栈的<code>pop</code>操作，同时从<code>stack1</code>和<code>stack2</code>中把-3弹出去（删除掉）</li>
+</ul>
+<p>此时两个栈中的值为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--------------------------------------------------------</span><br><span class="line">               栈顶</span><br><span class="line"> 0                                  -2</span><br><span class="line"> -2                                 -2</span><br><span class="line">               栈底</span><br><span class="line">stack1                            stack2</span><br><span class="line">-------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6，执行最小栈的<code>top</code>操作，从<code>stack1</code> 获取出此时的栈顶元素0  </li>
+<li>7，执行最小栈的<code>min</code>操作，从<code>stack2</code> 获取出此时的栈顶元素-2，也就是此时最小栈里的最小值为-2</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line">    <span class="comment">// 创建两个栈</span></span><br><span class="line">    <span class="comment">// 创建stack1，用来作为数据栈</span></span><br><span class="line">    Stack&lt;Integer&gt; stack1;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建stack2，用来作为辅助栈</span></span><br><span class="line">    Stack&lt;Integer&gt; stack2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MinStack</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化 stack1</span></span><br><span class="line">        stack1 = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化 stack2</span></span><br><span class="line">        stack2 = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 最小栈的压入操作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="comment">// 数据栈 stack1直接压入 x</span></span><br><span class="line">        stack1.push(x);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果辅助栈 stack2为空，可以直接压入 x</span></span><br><span class="line">        <span class="comment">// 此时，由于只有一个元素，stack2中的【栈顶元素】就是 stack1 中的 【最小元素】</span></span><br><span class="line">        <span class="keyword">if</span> (stack2.isEmpty())&#123;</span><br><span class="line">            <span class="comment">// stack2 直接压入x</span></span><br><span class="line">            stack2.push(x);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 辅助栈 stack2 不为空</span></span><br><span class="line">            <span class="keyword">if</span> (stack2.peek() &gt;= x) &#123;</span><br><span class="line">                <span class="comment">// 如果辅助栈 stack2 的栈顶元素大于等于x，可以把 x 压入到 stack2 中</span></span><br><span class="line">                stack2.push(x);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 如果辅助栈 stack2 的栈顶元素小于x，不可以把 x 压入到 stack2 中</span></span><br><span class="line">                <span class="comment">// 所以将辅助栈原先的【栈顶元素】压入即可</span></span><br><span class="line">                stack2.push(stack2.peek());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 数据栈 stack1 直接pop</span></span><br><span class="line">        stack1.pop();</span><br><span class="line">        <span class="comment">// 数据栈 stack2 直接pop</span></span><br><span class="line">        stack2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">top</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 返回数据栈 stack1 的栈顶元素</span></span><br><span class="line">        <span class="keyword">return</span> stack1.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">min</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 由于 stack2的【栈顶元素】是 stack1的【最小元素】，所以直接返回stack2的栈顶元素即可</span></span><br><span class="line">        <span class="keyword">return</span> stack2.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.min();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：14 ms, 在所有 Java 提交中击败了22.98%的用户</span><br><span class="line">内存消耗：43.7 MB, 在所有 Java 提交中击败了17.84%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
