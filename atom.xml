@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-08-23T16:26:44.177Z</updated>
+  <updated>2022-08-28T14:32:09.704Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,86 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>成都Zadig Meetup</title>
+    <link href="https://octopuslian.github.io/2022/08/28/china-chengdu-zadig-meetup/"/>
+    <id>https://octopuslian.github.io/2022/08/28/china-chengdu-zadig-meetup/</id>
+    <published>2022-08-28T08:36:44.000Z</published>
+    <updated>2022-08-28T14:32:09.704Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;2022.8.24（周三）晚上，我参加了&lt;code&gt;Zadig&lt;/code&gt;的线下MeetUp。  &lt;/p&gt;
+&lt;p&gt;而与&lt;code&gt;Zadig&lt;/code&gt;结缘是因为关注了一个云原生公众号，他们推送了有关&lt;code&gt;Zadig&lt;/code&gt;的消息后，我想，既然在成都，而且是晚上，那就去参加一下呗，见一见各位大佬，结果确实是大佬云集的一次线下聚会。  &lt;/p&gt;
+&lt;h1 id=&quot;缘聚&quot;&gt;&lt;a href=&quot;#缘聚&quot; class=&quot;headerlink&quot; title=&quot;缘聚&quot;&gt;&lt;/a&gt;缘聚&lt;/h1&gt;&lt;p&gt;周三晚上，我和周如约而至在成都市大跃啤酒。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MeetUp" scheme="https://octopuslian.github.io/categories/MeetUp/"/>
+    
+    
+    <category term="遇见" scheme="https://octopuslian.github.io/tags/%E9%81%87%E8%A7%81/"/>
+    
+    <category term="云原生" scheme="https://octopuslian.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
+    
+    <category term="meetup" scheme="https://octopuslian.github.io/tags/meetup/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 32 - II. 从上到下打印二叉树 II</title>
+    <link href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/"/>
+    <id>https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/</id>
+    <published>2022-08-28T08:19:15.000Z</published>
+    <updated>2022-08-28T08:35:18.457Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/&quot;&gt;剑指 Offer 32 - II. 从上到下打印二叉树 II&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;队列-二维数组&quot;&gt;&lt;a href=&quot;#队列-二维数组&quot; class=&quot;headerlink&quot; title=&quot;队列+二维数组&quot;&gt;&lt;/a&gt;队列+二维数组&lt;/h2&gt;&lt;p&gt;过程：&lt;br&gt;&lt;img src=&quot;/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/1.png&quot;&gt;  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
+    <link href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/"/>
+    <id>https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</id>
+    <published>2022-08-28T07:56:32.000Z</published>
+    <updated>2022-08-28T08:17:35.771Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/&quot;&gt;剑指 Offer 32 - I. 从上到下打印二叉树&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;队列&quot;&gt;&lt;a href=&quot;#队列&quot; class=&quot;headerlink&quot; title=&quot;队列&quot;&gt;&lt;/a&gt;队列&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;初始化队列&lt;code&gt;queue&lt;/code&gt;和结果数组&lt;code&gt;res&lt;/code&gt;，从二叉树根节点3开始  &lt;/li&gt;
+&lt;li&gt;先将3推入到队列&lt;code&gt;queue&lt;/code&gt;中，看3有没有左子树和右子树  &lt;/li&gt;
+&lt;li&gt;有的话，将3从队列&lt;code&gt;queue&lt;/code&gt;中取出，放入结果数组&lt;code&gt;res&lt;/code&gt;的第一位，此时&lt;code&gt;res = []int&amp;#123;3&amp;#125;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;访问3的左子树节点9，将9推入到队列&lt;code&gt;queue&lt;/code&gt;中  &lt;/li&gt;
+&lt;li&gt;此时看9有没有左子树和右子树，没有，将9从队列&lt;code&gt;queue&lt;/code&gt;中取出放入结果数组&lt;code&gt;res&lt;/code&gt;中，此时&lt;code&gt;res = []int&amp;#123;3,9&amp;#125;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;访问3的右子树节点20，将20推入到队列&lt;code&gt;queue&lt;/code&gt;中  &lt;/li&gt;
+&lt;li&gt;此时看20有没有左子树和右子树，有，将左子树15推入队列&lt;code&gt;queue&lt;/code&gt;中&lt;/li&gt;
+&lt;li&gt;看15有没有左子树和右子树，没有，将队列中的20，15依次取出放入结果数组&lt;code&gt;res&lt;/code&gt;，此时&lt;code&gt;res = []int&amp;#123;3,9,20,15&amp;#125;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;访问20的右子树7，发现7没有左子树和右子树，将7推入进队列&lt;code&gt;queue&lt;/code&gt;中，然后取出放入&lt;code&gt;res&lt;/code&gt;，此时&lt;code&gt;res = []int&amp;#123;3,9,20,15,7&amp;#125;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指 Offer 30. 包含min函数的栈</title>
     <link href="https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/"/>
     <id>https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/</id>
     <published>2022-08-23T15:54:37.000Z</published>
-    <updated>2022-08-23T16:26:44.177Z</updated>
+    <updated>2022-08-23T16:26:54.601Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/&quot;&gt;剑指 Offer 30. 包含min函数的栈&lt;/a&gt;  &lt;/p&gt;
@@ -439,89 +514,6 @@
     <category term="Next" scheme="https://octopuslian.github.io/tags/Next/"/>
     
     <category term="美化" scheme="https://octopuslian.github.io/tags/%E7%BE%8E%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>四季予你</title>
-    <link href="https://octopuslian.github.io/2022/03/31/happy-26-birthday-four-seasons-for-you/"/>
-    <id>https://octopuslian.github.io/2022/03/31/happy-26-birthday-four-seasons-for-you/</id>
-    <published>2022-03-30T17:38:05.000Z</published>
-    <updated>2022-04-27T13:15:14.431Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;世间的本质，用眼睛是看不到的，那一刻我才明白这句话的真正含义。我是个盲人，但那又如何呢，世界不会因为我看不到而不再美丽；我不是侠岚，但那又怎样呢，我手中有属于我自己的侠岚印。 ——《风语咒》  &lt;/p&gt;
-&lt;p&gt;十年之约，已走过十分之一。  &lt;/p&gt;
-&lt;p&gt;这一年，你是否离自己的目标更近了一些，是否摆脱了内心的桎梏，重获新生？  &lt;/p&gt;
-&lt;h1 id=&quot;三月的春风&quot;&gt;&lt;a href=&quot;#三月的春风&quot; class=&quot;headerlink&quot; title=&quot;三月的春风&quot;&gt;&lt;/a&gt;三月的春风&lt;/h1&gt;&lt;p&gt;三月，你意气风发，自信满满，觉得未来前途一切光明，朋友L交代给你的事情，你觉得百分百可以搞定。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Happy-Birthday" scheme="https://octopuslian.github.io/categories/Happy-Birthday/"/>
-    
-    
-    <category term="成长" scheme="https://octopuslian.github.io/tags/%E6%88%90%E9%95%BF/"/>
-    
-    <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
-    
-    <category term="随笔" scheme="https://octopuslian.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="挫折" scheme="https://octopuslian.github.io/tags/%E6%8C%AB%E6%8A%98/"/>
-    
-    <category term="痛苦" scheme="https://octopuslian.github.io/tags/%E7%97%9B%E8%8B%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubeadm join原理</title>
-    <link href="https://octopuslian.github.io/2022/03/05/kubeadm-join-principle/"/>
-    <id>https://octopuslian.github.io/2022/03/05/kubeadm-join-principle/</id>
-    <published>2022-03-05T13:59:08.000Z</published>
-    <updated>2022-04-27T13:15:14.439Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;join：将node加入集群&quot;&gt;&lt;a href=&quot;#join：将node加入集群&quot; class=&quot;headerlink&quot; title=&quot;join：将node加入集群&quot;&gt;&lt;/a&gt;join：将node加入集群&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;join前检查 </summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>kubeadm init流程概览</title>
-    <link href="https://octopuslian.github.io/2022/03/05/kubeadm-init-process-overview/"/>
-    <id>https://octopuslian.github.io/2022/03/05/kubeadm-init-process-overview/</id>
-    <published>2022-03-05T10:27:53.000Z</published>
-    <updated>2022-04-27T13:15:14.439Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;kubeadm-init流程&quot;&gt;&lt;a href=&quot;#kubeadm-init流程&quot; class=&quot;headerlink&quot; title=&quot;kubeadm init流程&quot;&gt;&lt;/a&gt;kubeadm init流程&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;1，引导前的检查  &lt;/li&gt;
-&lt;li&gt;2，生成私钥和数字证书  &lt;/li&gt;
-&lt;li&gt;3，生成控制平面组件kubeconfig文件  &lt;/li&gt;
-&lt;li&gt;4，生成控制平面组件manifest文件  &lt;/li&gt;
-&lt;li&gt;5，下载镜像，等待控制平面启动  &lt;/li&gt;
-&lt;li&gt;6，保存MasterConfiguration  &lt;/li&gt;
-&lt;li&gt;7，设定Master标志  &lt;/li&gt;
-&lt;li&gt;8，进行基于TLS的安全引导相关配置  &lt;/li&gt;
-&lt;li&gt;9，安装DNS和kube-proxy插件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;引导前检查&quot;&gt;&lt;a href=&quot;#引导前检查&quot; class=&quot;headerlink&quot; title=&quot;引导前检查&quot;&gt;&lt;/a&gt;引导前检查&lt;/h1&gt;&lt;p&gt;kubeadm init pre-flight check：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;kubeadm版本与要安装的kubernetes版本的比对检查  &lt;/li&gt;
-&lt;li&gt;kubernetes安装的系统需求检查  &lt;/li&gt;
-&lt;li&gt;其他检查：用户、主机、端口、swap、工具等&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
     
   </entry>
   

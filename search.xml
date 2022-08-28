@@ -86,6 +86,25 @@
       </categories>
   </entry>
   <entry>
+    <title>2021读书计划</title>
+    <url>/2021/01/02/2021-read-books-plan/</url>
+    <content><![CDATA[<p>2020年，我利用上下班和等车时间，读了很多书，发现时间虽然碎片，有时看不起眼的3-5分钟，其实如果加以利用的话，就是200-300秒的思考时间，将这几百秒的时间乘以每天十几个时间碎片片段，也是一块不小的时间空隙呢。  </p>
+<p>当然碎片化也不好，就是不能集中注意力，也许看了第三章，打断阅读后再回过头来已经忘记了第一章节的内容，因此我个人建议可以给每一章末尾或印象深刻的段落加上笔记，这样当我看到我写过的东西，就会立刻回想起原先的内容。  </p>
+<p>下面是我利用思维导图工具制定的一份2021阅读计划，希望年底前可以完成它。  </p>
+<p>GOOD LUCK.  </p>
+<p><img src="/2021/01/02/2021-read-books-plan/2021-book-plan.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+        <tag>读书</tag>
+        <tag>阅读</tag>
+        <tag>豆瓣TOP250</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2021春招找工作计划</title>
     <url>/2021/03/04/2021-spring-find-job/</url>
     <content><![CDATA[<p>三月到来，各个企业又开始招人了，我也收到了几家企业的面试邀请。  </p>
@@ -103,25 +122,6 @@
       <tags>
         <tag>找工作</tag>
         <tag>春招</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2021读书计划</title>
-    <url>/2021/01/02/2021-read-books-plan/</url>
-    <content><![CDATA[<p>2020年，我利用上下班和等车时间，读了很多书，发现时间虽然碎片，有时看不起眼的3-5分钟，其实如果加以利用的话，就是200-300秒的思考时间，将这几百秒的时间乘以每天十几个时间碎片片段，也是一块不小的时间空隙呢。  </p>
-<p>当然碎片化也不好，就是不能集中注意力，也许看了第三章，打断阅读后再回过头来已经忘记了第一章节的内容，因此我个人建议可以给每一章末尾或印象深刻的段落加上笔记，这样当我看到我写过的东西，就会立刻回想起原先的内容。  </p>
-<p>下面是我利用思维导图工具制定的一份2021阅读计划，希望年底前可以完成它。  </p>
-<p>GOOD LUCK.  </p>
-<p><img src="/2021/01/02/2021-read-books-plan/2021-book-plan.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>计划</tag>
-        <tag>读书</tag>
-        <tag>阅读</tag>
-        <tag>豆瓣TOP250</tag>
       </tags>
   </entry>
   <entry>
@@ -603,6 +603,37 @@
       <tags>
         <tag>写作</tag>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>成都Zadig Meetup</title>
+    <url>/2022/08/28/china-chengdu-zadig-meetup/</url>
+    <content><![CDATA[<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>2022.8.24（周三）晚上，我参加了<code>Zadig</code>的线下MeetUp。  </p>
+<p>而与<code>Zadig</code>结缘是因为关注了一个云原生公众号，他们推送了有关<code>Zadig</code>的消息后，我想，既然在成都，而且是晚上，那就去参加一下呗，见一见各位大佬，结果确实是大佬云集的一次线下聚会。  </p>
+<h1 id="缘聚"><a href="#缘聚" class="headerlink" title="缘聚"></a>缘聚</h1><p>周三晚上，我和周如约而至在成都市大跃啤酒。  </p>
+<p>首先见到了<code>Min Min</code>，他带领我们到了指定位置，然后是满脸络腮胡的主持人<code>Grant</code>介绍了整体流程，虽然看着40岁的人，但感觉很有干劲，且阳光向上。  </p>
+<p>首先是自我介绍环节，有像我们这样95后刚接触<code>CI/CD</code>，想提升效率的；有90后老哥分享在他公司使用<code>Zadig</code>后效率提升翻倍的爽感；有80后大佬分享自己对35岁“被退休”的看法；有开源项目负责人分享自己如何和<code>Zadig</code>结缘。  </p>
+<p>然后是对话<code>Min Min</code>环节，这位在国外某计算机名校本科毕业的老哥，可谓是真正的全栈（产品+运营+剪视频+前后端）。  </p>
+<p>最后是远程对话<code>Zidig</code>项目创始人<code>Landy</code>环节，一位非常厉害的女程序员，解答了许多困惑。  </p>
+<h1 id="MeetUp收获"><a href="#MeetUp收获" class="headerlink" title="MeetUp收获"></a>MeetUp收获</h1><ul>
+<li>永远对未来充满希望，充满干劲  </li>
+<li>不要对“35岁被退休”产生恐惧和迷茫，只要一步一个脚印，迷茫不攻自破  </li>
+<li>选择对一家企业真的很重要  </li>
+<li>一定要想清楚自己的商业模式，从客户需求-客户规模-如何盈利-如何拓展，形成闭环  </li>
+<li><code>Grant</code>给我说，做开源项目可以前期吃亏一些，比如<code>Zadig</code>开源后，前期是全部免费给企业用，后面因为客户体验超爽，直接找<code>Zadig</code>做定制化，我觉得这块和我老爸做生意的理念非常像  </li>
+<li>基础要打扎实，这样你面试名企的时候，基础就是你谈薪资的上限  </li>
+<li>最后，感谢这次成都<code>Meet up</code>，扫清了未来3-5年存在的困惑，也希望后期可以为<code>Zadig</code>开源贡献自己的一份力量！</li>
+</ul>
+<p><img src="/2022/08/28/china-chengdu-zadig-meetup/heying.png"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.koderover.com/">Zadig官网</a><br><a href="https://gitee.com/koderover/zadig">码云-Zadig</a><br><a href="https://github.com/koderover/zadig">Github-Zadig</a></p>
+]]></content>
+      <categories>
+        <category>MeetUp</category>
+      </categories>
+      <tags>
+        <tag>遇见</tag>
+        <tag>云原生</tag>
+        <tag>meetup</tag>
       </tags>
   </entry>
   <entry>
@@ -9098,7 +9129,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;">&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9462,26 +9493,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-122-best-time-to-buy-and-sell-stock-ii | 买卖股票的最佳时机II</title>
-    <url>/2019/12/06/leetcode-122-best-time-to-buy-and-sell-stock-ii/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><ul>
-<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a>  </li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">122. Best Time to Buy and Sell Stock II</a></li>
-</ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>由于没有规定交易次数，所以可以遍历<code>prices</code>数组。<br>如果后一个比前一个大，做差，并累积利润，最后返回结果。  </p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    maxProfit := <span class="number">0</span>  <span class="comment">//最大利润</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(prices)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> prices[i+<span class="number">1</span>] &gt; prices[i] &#123;</span><br><span class="line">            <span class="comment">//如果后一笔比前一笔数额大，做减法，累积利润</span></span><br><span class="line">            maxProfit = maxProfit + prices[i+<span class="number">1</span>] - prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-        <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-121-best-time-to-buy-and-sell-stock | 买卖股票的最佳时机</title>
     <url>/2019/12/05/leetcode-121-best-time-to-buy-and-sell-stock/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">原题链接</a><br><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">中文原题链接</a>  </p>
@@ -9499,6 +9510,26 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>暴力求解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-122-best-time-to-buy-and-sell-stock-ii | 买卖股票的最佳时机II</title>
+    <url>/2019/12/06/leetcode-122-best-time-to-buy-and-sell-stock-ii/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a>  </li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">122. Best Time to Buy and Sell Stock II</a></li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>由于没有规定交易次数，所以可以遍历<code>prices</code>数组。<br>如果后一个比前一个大，做差，并累积利润，最后返回结果。  </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    maxProfit := <span class="number">0</span>  <span class="comment">//最大利润</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(prices)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> prices[i+<span class="number">1</span>] &gt; prices[i] &#123;</span><br><span class="line">            <span class="comment">//如果后一笔比前一笔数额大，做减法，累积利润</span></span><br><span class="line">            maxProfit = maxProfit + prices[i+<span class="number">1</span>] - prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -10088,6 +10119,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-392-is-subsequence | 判断子序列</title>
+    <url>/2020/07/31/leetcode-392-is-subsequence/</url>
+    <content><![CDATA[<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://leetcode-cn.com/problems/is-subsequence/">leetcode中国</a>  </p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><p>Golang </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubsequence</span><span class="params">(s <span class="type">string</span>, t <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    n, m := <span class="built_in">len</span>(s), <span class="built_in">len</span>(t)  </span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span> <span class="comment">//初始化两个指针i,j分别指向s和t初始化的位置</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &amp;&amp; j &lt; m &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == t[j] &#123;</span><br><span class="line">            i++  <span class="comment">//匹配成功，则i,j同时右移</span></span><br><span class="line">        &#125;</span><br><span class="line">        j++  <span class="comment">//匹配失败，则j右移，i不变</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i == n  <span class="comment">//最终如果i移动到s的末尾，就说明s是t的子序列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-412-fizz-buzz | Fizz Buzz</title>
     <url>/2020/02/02/leetcode-412-fizz-buzz/</url>
     <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><ul>
@@ -10103,20 +10148,6 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-392-is-subsequence | 判断子序列</title>
-    <url>/2020/07/31/leetcode-392-is-subsequence/</url>
-    <content><![CDATA[<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://leetcode-cn.com/problems/is-subsequence/">leetcode中国</a>  </p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><p>Golang </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubsequence</span><span class="params">(s <span class="type">string</span>, t <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    n, m := <span class="built_in">len</span>(s), <span class="built_in">len</span>(t)  </span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span> <span class="comment">//初始化两个指针i,j分别指向s和t初始化的位置</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &amp;&amp; j &lt; m &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == t[j] &#123;</span><br><span class="line">            i++  <span class="comment">//匹配成功，则i,j同时右移</span></span><br><span class="line">        &#125;</span><br><span class="line">        j++  <span class="comment">//匹配失败，则j右移，i不变</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i == n  <span class="comment">//最终如果i移动到s的末尾，就说明s是t的子序列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -11027,6 +11058,49 @@
       </categories>
       <tags>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 32 - II. 从上到下打印二叉树 II</title>
+    <url>/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="队列-二维数组"><a href="#队列-二维数组" class="headerlink" title="队列+二维数组"></a>队列+二维数组</h2><p>过程：<br><img src="/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/1.png">  </p>
+<p>最终转换结果：<br><img src="/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/2.png">  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置res用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录queue的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            <span class="comment">// 用来保存每一层节点，保存成功后添加到res中</span></span><br><span class="line">            List&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue中的元素添加到temp中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从queue中取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="comment">// 把节点存放到list中</span></span><br><span class="line">                temp.add(node.val);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) &#123;</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组temp添加到res中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：41.8 MB, 在所有 Java 提交中击败了10.94%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
+    <url>/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指 Offer 32 - I. 从上到下打印二叉树</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><ul>
+<li>初始化队列<code>queue</code>和结果数组<code>res</code>，从二叉树根节点3开始  </li>
+<li>先将3推入到队列<code>queue</code>中，看3有没有左子树和右子树  </li>
+<li>有的话，将3从队列<code>queue</code>中取出，放入结果数组<code>res</code>的第一位，此时<code>res = []int&#123;3&#125;</code>  </li>
+<li>访问3的左子树节点9，将9推入到队列<code>queue</code>中  </li>
+<li>此时看9有没有左子树和右子树，没有，将9从队列<code>queue</code>中取出放入结果数组<code>res</code>中，此时<code>res = []int&#123;3,9&#125;</code>  </li>
+<li>访问3的右子树节点20，将20推入到队列<code>queue</code>中  </li>
+<li>此时看20有没有左子树和右子树，有，将左子树15推入队列<code>queue</code>中</li>
+<li>看15有没有左子树和右子树，没有，将队列中的20，15依次取出放入结果数组<code>res</code>，此时<code>res = []int&#123;3,9,20,15&#125;</code>  </li>
+<li>访问20的右子树7，发现7没有左子树和右子树，将7推入进队列<code>queue</code>中，然后取出放入<code>res</code>，此时<code>res = []int&#123;3,9,20,15,7&#125;</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] levelOrder(TreeNode root) &#123;</span><br><span class="line">        <span class="comment">// 根节点为空的情况返回空数组</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成一个队列，用来保存节点</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成一个list，用来保存输出的节点</span></span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 首先让根节点入队</span></span><br><span class="line">        queue.add(root);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空</span></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 获取队列的头部元素</span></span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">            <span class="comment">// 把节点值存放到list中</span></span><br><span class="line">            list.add(node.val);</span><br><span class="line">            <span class="comment">// 判断该节点是否有左右子节点</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果左子节点有值，则把左子节点加入到队列中</span></span><br><span class="line">            <span class="keyword">if</span> (node.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果右子树有值，则把右子节点加入到队列中</span></span><br><span class="line">            <span class="keyword">if</span> (node.right != <span class="literal">null</span>) &#123;</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把list转化为数组</span></span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[list.size()];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; list.size();i++) &#123;</span><br><span class="line">            res[i] = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了97.77%的用户</span><br><span class="line">内存消耗：41.5 MB, 在所有 Java 提交中击败了28.48%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
