@@ -620,9 +620,10 @@
 <li>不要对“35岁被退休”产生恐惧和迷茫，只要一步一个脚印，迷茫不攻自破  </li>
 <li>选择对一家企业真的很重要  </li>
 <li>一定要想清楚自己的商业模式，从客户需求-客户规模-如何盈利-如何拓展，形成闭环  </li>
-<li><code>Grant</code>给我说，做开源项目可以前期吃亏一些，比如<code>Zadig</code>开源后，前期是全部免费给企业用，后面因为客户体验超爽，直接找<code>Zadig</code>做定制化，我觉得这块和我老爸做生意的理念非常像  </li>
+<li><code>Grant</code>给我说，做开源项目可以前期吃亏一些，比如<code>Zadig</code>开源后，前期是全部免费给企业用，后面因为客户体验超爽，直接找<code>Zadig</code>做企业级服务和产品，我觉得这块和我老爸做生意的想法有着相似之处  </li>
 <li>基础要打扎实，这样你面试名企的时候，基础就是你谈薪资的上限  </li>
-<li>最后，感谢这次成都<code>Meet up</code>，扫清了未来3-5年存在的困惑，也希望后期可以为<code>Zadig</code>开源贡献自己的一份力量！</li>
+<li>最后，感谢这次成都<code>Meet up</code>，扫清了未来3-5年存在的困惑，也希望后期可以为<code>Zadig</code>开源贡献自己的一份力量！  </li>
+<li>入门陌生的领域，先学会听，然后不懂的再请教，最后再说出自己的想法</li>
 </ul>
 <p><img src="/2022/08/28/china-chengdu-zadig-meetup/heying.png"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.koderover.com/">Zadig官网</a><br><a href="https://gitee.com/koderover/zadig">码云-Zadig</a><br><a href="https://github.com/koderover/zadig">Github-Zadig</a></p>
@@ -9129,7 +9130,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;">&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x2e;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -14227,6 +14228,22 @@
       </tags>
   </entry>
   <entry>
+    <title>当你遇到公司裁员时...</title>
+    <url>/2019/11/23/when-you-face-cut-down-staff/</url>
+    <content><![CDATA[<p>今天看了一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MzIxNjkwMTk5Mg==&mid=2247483987&idx=1&sn=d43e49dfd71d5c60605e2159d1727f36&chksm=9780b254a0f73b422649f2abeca21e5f1eff5398384f37efba80e350879cca759696f86594ac&dt_dapp=1#rd">网易裁员，让保安把身患绝症的我赶出公司。我在网易亲身经历的噩梦！</a>，让我感到无比震惊。  </p>
+<p>前些天，女朋友给我说，西瓜创客在裁员，结果第二天就有一堆西瓜创客的员工来她所在的公司面试。  </p>
+<p>我没有经历过裁员，但也间接的和<code>HR</code>沟通办理过离职。记得当时刚毕业在一家游戏公司干了两个多月，被通知转正没有过，下午来办理离职手续，交还电脑，工牌等。当时<code>HR</code>还告诉我，叫我申请主动离职，这样不会在下一家公司求职时，简历上有污点。  </p>
+<p>其实我现在很好奇，在这样一个充满利益纠纷的社会里，只要不放在档案里，那些所谓的评价真的有用吗？？？  </p>
+]]></content>
+      <categories>
+        <category>Work-Career</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+        <tag>裁员</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>当我提完离职的时候</title>
     <url>/2020/11/09/when-i-mentioned-my-resignation/</url>
     <content><![CDATA[<p>第一次提离职，难免有些紧张，当我梳理好离职的话语，按下回车的那一刻，仿佛世界一下就安静了。  </p>
@@ -14244,22 +14261,6 @@
         <tag>职场</tag>
         <tag>离职</tag>
         <tag>心情</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>当你遇到公司裁员时...</title>
-    <url>/2019/11/23/when-you-face-cut-down-staff/</url>
-    <content><![CDATA[<p>今天看了一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MzIxNjkwMTk5Mg==&mid=2247483987&idx=1&sn=d43e49dfd71d5c60605e2159d1727f36&chksm=9780b254a0f73b422649f2abeca21e5f1eff5398384f37efba80e350879cca759696f86594ac&dt_dapp=1#rd">网易裁员，让保安把身患绝症的我赶出公司。我在网易亲身经历的噩梦！</a>，让我感到无比震惊。  </p>
-<p>前些天，女朋友给我说，西瓜创客在裁员，结果第二天就有一堆西瓜创客的员工来她所在的公司面试。  </p>
-<p>我没有经历过裁员，但也间接的和<code>HR</code>沟通办理过离职。记得当时刚毕业在一家游戏公司干了两个多月，被通知转正没有过，下午来办理离职手续，交还电脑，工牌等。当时<code>HR</code>还告诉我，叫我申请主动离职，这样不会在下一家公司求职时，简历上有污点。  </p>
-<p>其实我现在很好奇，在这样一个充满利益纠纷的社会里，只要不放在档案里，那些所谓的评价真的有用吗？？？  </p>
-]]></content>
-      <categories>
-        <category>Work-Career</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
-        <tag>裁员</tag>
       </tags>
   </entry>
   <entry>
