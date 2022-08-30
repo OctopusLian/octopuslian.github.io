@@ -293,10 +293,10 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>成长</tag>
-        <tag>感悟</tag>
         <tag>项目</tag>
         <tag>演示</tag>
+        <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>收获</tag>
       </tags>
   </entry>
@@ -351,9 +351,9 @@
         <category>Essay</category>
       </categories>
       <tags>
+        <tag>工作</tag>
         <tag>感悟</tag>
         <tag>生活</tag>
-        <tag>工作</tag>
         <tag>加班</tag>
       </tags>
   </entry>
@@ -400,8 +400,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>成长</tag>
         <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>知识付费</tag>
         <tag>焦虑</tag>
       </tags>
@@ -440,8 +440,8 @@
         <category>Learn-algo</category>
       </categories>
       <tags>
-        <tag>面试</tag>
         <tag>算法</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -534,8 +534,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>工作</tag>
         <tag>Go</tag>
+        <tag>工作</tag>
         <tag>收获</tag>
         <tag>提问</tag>
       </tags>
@@ -1333,8 +1333,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>成长</tag>
         <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>端午</tag>
         <tag>高考</tag>
       </tags>
@@ -1404,8 +1404,8 @@
       </categories>
       <tags>
         <tag>FFmpeg</tag>
-        <tag>OpenGL</tag>
         <tag>视音频</tag>
+        <tag>OpenGL</tag>
       </tags>
   </entry>
   <entry>
@@ -1632,9 +1632,9 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>成长</tag>
-        <tag>感悟</tag>
         <tag>工作</tag>
+        <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>学习</tag>
         <tag>沟通</tag>
         <tag>bug</tag>
@@ -2036,8 +2036,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>设计</tag>
         <tag>动态规划</tag>
+        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -3441,8 +3441,8 @@
         <category>Learn-Algorithms</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>收获</tag>
+        <tag>算法</tag>
         <tag>总结</tag>
       </tags>
   </entry>
@@ -4438,9 +4438,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
+        <tag>工作</tag>
         <tag>面试</tag>
         <tag>直播</tag>
-        <tag>工作</tag>
       </tags>
   </entry>
   <entry>
@@ -4495,8 +4495,8 @@
         <category>Share-live</category>
       </categories>
       <tags>
-        <tag>面试</tag>
         <tag>算法</tag>
+        <tag>面试</tag>
         <tag>直播</tag>
         <tag>极客邦</tag>
       </tags>
@@ -4721,9 +4721,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
-        <tag>直播</tag>
         <tag>职场</tag>
         <tag>极客时间</tag>
+        <tag>直播</tag>
         <tag>感恩节</tag>
       </tags>
   </entry>
@@ -4959,8 +4959,8 @@
         <category>Learn-go</category>
       </categories>
       <tags>
-        <tag>项目</tag>
         <tag>Go</tag>
+        <tag>项目</tag>
         <tag>架构设计</tag>
       </tags>
   </entry>
@@ -5964,8 +5964,8 @@
         <category>GoSEC</category>
       </categories>
       <tags>
-        <tag>框架</tag>
         <tag>Go</tag>
+        <tag>框架</tag>
         <tag>RestFul</tag>
       </tags>
   </entry>
@@ -6196,9 +6196,9 @@
         <category>GoATC</category>
       </categories>
       <tags>
-        <tag>gRPC</tag>
-        <tag>微服务</tag>
         <tag>Golang</tag>
+        <tag>微服务</tag>
+        <tag>gRPC</tag>
       </tags>
   </entry>
   <entry>
@@ -6625,9 +6625,9 @@
         <category>GoATC</category>
       </categories>
       <tags>
-        <tag>微服务</tag>
         <tag>架构设计</tag>
         <tag>golang</tag>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -8172,8 +8172,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>FFmpeg</tag>
         <tag>项目</tag>
+        <tag>FFmpeg</tag>
         <tag>人工智能</tag>
         <tag>收录</tag>
         <tag>服务</tag>
@@ -8194,8 +8194,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>成长</tag>
         <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>挫折</tag>
       </tags>
   </entry>
@@ -8831,8 +8831,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>面试</tag>
         <tag>生活</tag>
+        <tag>面试</tag>
         <tag>思考</tag>
       </tags>
   </entry>
@@ -9130,7 +9130,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x2e;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9447,8 +9447,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>基础</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9461,9 +9461,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>二叉树</tag>
         <tag>递归</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9475,8 +9475,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>二叉树</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9488,8 +9488,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>递归</tag>
+        <tag>leetcode</tag>
         <tag>斐波那契</tag>
       </tags>
   </entry>
@@ -9508,8 +9508,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -9528,8 +9528,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -9567,9 +9567,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>Map</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9609,8 +9609,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>链表</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9626,8 +9626,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>暴力</tag>
       </tags>
   </entry>
@@ -9675,8 +9675,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9690,8 +9690,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>链表</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9721,8 +9721,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>栈</tag>
+        <tag>leetcode</tag>
         <tag>括号问题</tag>
         <tag>replace</tag>
       </tags>
@@ -9753,9 +9753,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>链表</tag>
         <tag>递归</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9781,8 +9781,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -9795,8 +9795,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>字符串比较</tag>
         <tag>map</tag>
       </tags>
@@ -9833,8 +9833,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>双指针</tag>
       </tags>
   </entry>
@@ -9890,8 +9890,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>字符串</tag>
+        <tag>leetcode</tag>
         <tag>KMP</tag>
         <tag>暴力法</tag>
       </tags>
@@ -9908,9 +9908,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9933,8 +9933,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>循环</tag>
+        <tag>leetcode</tag>
         <tag>map</tag>
         <tag>array</tag>
       </tags>
@@ -9996,8 +9996,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>动态规划</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10013,9 +10013,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>BFS</tag>
         <tag>DFS</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10064,8 +10064,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10114,9 +10114,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>哈希表</tag>
         <tag>字符串</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10129,8 +10129,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10146,9 +10146,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10174,8 +10174,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10204,8 +10204,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10249,9 +10249,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>动态规划</tag>
+        <tag>leetcode</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -10275,9 +10275,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>字符串</tag>
+        <tag>leetcode</tag>
         <tag>反转</tag>
       </tags>
   </entry>
@@ -10326,8 +10326,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10346,8 +10346,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>递归</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10365,8 +10365,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>二分查找</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10382,9 +10382,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>循环</tag>
         <tag>哈希表</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10402,8 +10402,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10416,8 +10416,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -10463,8 +10463,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10476,8 +10476,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>二叉树</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10505,8 +10505,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>数组</tag>
+        <tag>leetcode</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -10548,9 +10548,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -11071,6 +11071,23 @@
 
 <p><code>leetcode-cn</code>执行：  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户</span><br><span class="line">内存消耗：41.8 MB, 在所有 Java 提交中击败了10.94%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
+    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
+<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>SwordToOffer</category>
       </categories>
@@ -11845,8 +11862,8 @@
         <category>Remind-sth</category>
       </categories>
       <tags>
-        <tag>经验</tag>
         <tag>老师</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -12295,9 +12312,9 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>经验</tag>
         <tag>工作</tag>
         <tag>职场</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -12321,8 +12338,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
         <tag>工作</tag>
+        <tag>感悟</tag>
         <tag>挫折</tag>
       </tags>
   </entry>
@@ -12508,9 +12525,9 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>经验</tag>
         <tag>工作</tag>
         <tag>效率</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -12604,8 +12621,8 @@
         <category>Tech-Growing</category>
       </categories>
       <tags>
-        <tag>架构师</tag>
         <tag>计划</tag>
+        <tag>架构师</tag>
         <tag>研发</tag>
       </tags>
   </entry>
@@ -12738,25 +12755,6 @@
       </tags>
   </entry>
   <entry>
-    <title>妹妹的中考</title>
-    <url>/2020/07/30/sister-zhong-kao/</url>
-    <content><![CDATA[<p>这两周一直在忙妹妹的中考，这个月底总算尘埃落定。  </p>
-<p>由于今年疫情原因，取消中考体育，所以总分只有750分，妹妹说她考了670分，全市排名1700左右，我觉得可以冲下排名第二、三，保底是排名第四和第五的学校。  </p>
-<p>然而最终录取分数线出来后，排名第三的乌鲁木齐市八一中学分数线比妹妹的成绩高了5分，最终被排名第四的乌鲁木齐市八中录取了。  </p>
-<p>父母觉得有些遗憾，但只能接受，好在乌鲁木齐市八中也离家比较近，耗时近两周的中考录取终于结束了。  </p>
-<p>然而，我突然回想起我的中考，跌跌撞撞中被乌鲁木齐市高级中学实验班录取，巨大的校园和先进的设备吸引了我，还有各种兴趣小组可以参加，邻居们之前还对我家不屑一顾，突然听说我考到了乌鲁木齐市高级中学的时候，羡慕、嫉妒纷至沓来。从那时起我突然明白，原来好学校有时候就像一种荣誉的象征，不光是给自己争气，也是给父母脸上增光。  </p>
-<p>时隔多年，我依然庆幸，在高中里遇到的良师益友，影响了我的高考乃至大学生涯。  </p>
-<p>中考差5分也算是一次警醒，希望妹妹可以在乌鲁木齐市八中里茁壮成长，期待三年后的高考，也能取得一个满意的结果。  </p>
-<p><img src="/2020/07/30/sister-zhong-kao/light.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>中考</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>6次提交完善Github个人简介</title>
     <url>/2021/02/01/six-github-commits-update-my-github-readme/</url>
     <content><![CDATA[<p>半年前意外看到了阿里巴巴半霜大佬的<code>Github</code>个人界面，甚是喜欢，今天晚上我利用了一个半小时的时间查资料分析代码，，地址点<a href="https://github.com/OctopusLian">这里</a>  </p>
@@ -12819,6 +12817,25 @@
         <tag>skin79</tag>
         <tag>黑头</tag>
         <tag>清理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>妹妹的中考</title>
+    <url>/2020/07/30/sister-zhong-kao/</url>
+    <content><![CDATA[<p>这两周一直在忙妹妹的中考，这个月底总算尘埃落定。  </p>
+<p>由于今年疫情原因，取消中考体育，所以总分只有750分，妹妹说她考了670分，全市排名1700左右，我觉得可以冲下排名第二、三，保底是排名第四和第五的学校。  </p>
+<p>然而最终录取分数线出来后，排名第三的乌鲁木齐市八一中学分数线比妹妹的成绩高了5分，最终被排名第四的乌鲁木齐市八中录取了。  </p>
+<p>父母觉得有些遗憾，但只能接受，好在乌鲁木齐市八中也离家比较近，耗时近两周的中考录取终于结束了。  </p>
+<p>然而，我突然回想起我的中考，跌跌撞撞中被乌鲁木齐市高级中学实验班录取，巨大的校园和先进的设备吸引了我，还有各种兴趣小组可以参加，邻居们之前还对我家不屑一顾，突然听说我考到了乌鲁木齐市高级中学的时候，羡慕、嫉妒纷至沓来。从那时起我突然明白，原来好学校有时候就像一种荣誉的象征，不光是给自己争气，也是给父母脸上增光。  </p>
+<p>时隔多年，我依然庆幸，在高中里遇到的良师益友，影响了我的高考乃至大学生涯。  </p>
+<p>中考差5分也算是一次警醒，希望妹妹可以在乌鲁木齐市八中里茁壮成长，期待三年后的高考，也能取得一个满意的结果。  </p>
+<p><img src="/2020/07/30/sister-zhong-kao/light.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>中考</tag>
       </tags>
   </entry>
   <entry>
@@ -14228,22 +14245,6 @@
       </tags>
   </entry>
   <entry>
-    <title>当你遇到公司裁员时...</title>
-    <url>/2019/11/23/when-you-face-cut-down-staff/</url>
-    <content><![CDATA[<p>今天看了一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MzIxNjkwMTk5Mg==&mid=2247483987&idx=1&sn=d43e49dfd71d5c60605e2159d1727f36&chksm=9780b254a0f73b422649f2abeca21e5f1eff5398384f37efba80e350879cca759696f86594ac&dt_dapp=1#rd">网易裁员，让保安把身患绝症的我赶出公司。我在网易亲身经历的噩梦！</a>，让我感到无比震惊。  </p>
-<p>前些天，女朋友给我说，西瓜创客在裁员，结果第二天就有一堆西瓜创客的员工来她所在的公司面试。  </p>
-<p>我没有经历过裁员，但也间接的和<code>HR</code>沟通办理过离职。记得当时刚毕业在一家游戏公司干了两个多月，被通知转正没有过，下午来办理离职手续，交还电脑，工牌等。当时<code>HR</code>还告诉我，叫我申请主动离职，这样不会在下一家公司求职时，简历上有污点。  </p>
-<p>其实我现在很好奇，在这样一个充满利益纠纷的社会里，只要不放在档案里，那些所谓的评价真的有用吗？？？  </p>
-]]></content>
-      <categories>
-        <category>Work-Career</category>
-      </categories>
-      <tags>
-        <tag>工作</tag>
-        <tag>裁员</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>当我提完离职的时候</title>
     <url>/2020/11/09/when-i-mentioned-my-resignation/</url>
     <content><![CDATA[<p>第一次提离职，难免有些紧张，当我梳理好离职的话语，按下回车的那一刻，仿佛世界一下就安静了。  </p>
@@ -14261,6 +14262,22 @@
         <tag>职场</tag>
         <tag>离职</tag>
         <tag>心情</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>当你遇到公司裁员时...</title>
+    <url>/2019/11/23/when-you-face-cut-down-staff/</url>
+    <content><![CDATA[<p>今天看了一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MzIxNjkwMTk5Mg==&mid=2247483987&idx=1&sn=d43e49dfd71d5c60605e2159d1727f36&chksm=9780b254a0f73b422649f2abeca21e5f1eff5398384f37efba80e350879cca759696f86594ac&dt_dapp=1#rd">网易裁员，让保安把身患绝症的我赶出公司。我在网易亲身经历的噩梦！</a>，让我感到无比震惊。  </p>
+<p>前些天，女朋友给我说，西瓜创客在裁员，结果第二天就有一堆西瓜创客的员工来她所在的公司面试。  </p>
+<p>我没有经历过裁员，但也间接的和<code>HR</code>沟通办理过离职。记得当时刚毕业在一家游戏公司干了两个多月，被通知转正没有过，下午来办理离职手续，交还电脑，工牌等。当时<code>HR</code>还告诉我，叫我申请主动离职，这样不会在下一家公司求职时，简历上有污点。  </p>
+<p>其实我现在很好奇，在这样一个充满利益纠纷的社会里，只要不放在档案里，那些所谓的评价真的有用吗？？？  </p>
+]]></content>
+      <categories>
+        <category>Work-Career</category>
+      </categories>
+      <tags>
+        <tag>工作</tag>
+        <tag>裁员</tag>
       </tags>
   </entry>
   <entry>
@@ -14581,10 +14598,10 @@
         <category>Learn-go</category>
       </categories>
       <tags>
-        <tag>项目</tag>
-        <tag>爬虫</tag>
         <tag>Go</tag>
+        <tag>项目</tag>
         <tag>知识星球</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -18264,8 +18281,8 @@
         <category>Travel-notes</category>
       </categories>
       <tags>
-        <tag>成长</tag>
         <tag>感悟</tag>
+        <tag>成长</tag>
         <tag>游记</tag>
         <tag>单人旅途</tag>
       </tags>
@@ -18639,9 +18656,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
-        <tag>设计</tag>
         <tag>学习</tag>
         <tag>技术</tag>
+        <tag>设计</tag>
         <tag>消息推送</tag>
       </tags>
   </entry>
@@ -19111,8 +19128,8 @@
         <category>Work-Career</category>
       </categories>
       <tags>
-        <tag>经验</tag>
         <tag>职场</tag>
+        <tag>经验</tag>
         <tag>生存指南</tag>
       </tags>
   </entry>
