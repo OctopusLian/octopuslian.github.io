@@ -293,10 +293,10 @@
         <category>Essay</category>
       </categories>
       <tags>
+        <tag>成长</tag>
+        <tag>感悟</tag>
         <tag>项目</tag>
         <tag>演示</tag>
-        <tag>感悟</tag>
-        <tag>成长</tag>
         <tag>收获</tag>
       </tags>
   </entry>
@@ -351,9 +351,9 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>工作</tag>
         <tag>感悟</tag>
         <tag>生活</tag>
+        <tag>工作</tag>
         <tag>加班</tag>
       </tags>
   </entry>
@@ -400,8 +400,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
         <tag>成长</tag>
+        <tag>感悟</tag>
         <tag>知识付费</tag>
         <tag>焦虑</tag>
       </tags>
@@ -440,8 +440,8 @@
         <category>Learn-algo</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>面试</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -534,8 +534,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>Go</tag>
         <tag>工作</tag>
+        <tag>Go</tag>
         <tag>收获</tag>
         <tag>提问</tag>
       </tags>
@@ -898,7 +898,7 @@
       </tags>
   </entry>
   <entry>
-    <title>30分钟部署一个kubernetes集群</title>
+    <title>安装部署一个kubernetes集群</title>
     <url>/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/</url>
     <content><![CDATA[<h1 id="Kubernetes架构"><a href="#Kubernetes架构" class="headerlink" title="Kubernetes架构"></a>Kubernetes架构</h1><p><img src="/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84.png">  </p>
 <ul>
@@ -916,30 +916,47 @@
 <li>硬件配置：2GB或更多RAM，2个CPU或更多CPU，硬盘30GB或更多  </li>
 <li>集群中所有机器之间网络互通  </li>
 <li>可以访问外网，需要拉取镜像  </li>
-<li>禁止swap分区</li>
+<li>禁止swap分区<br>临时关闭swap  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># swapoff -a</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关闭防火墙：</span><br><span class="line">$ systemctl stop firewalld</span><br><span class="line">$ systemctl disable firewalld</span><br><span class="line"></span><br><span class="line">关闭selinux：</span><br><span class="line">$ sed -i &#x27;s/enforcing/disabled/&#x27; /etc/selinux/config</span><br><span class="line">$ setenforce 0</span><br><span class="line"></span><br><span class="line">关闭swap：</span><br><span class="line">$ swapoff -a $ 临时</span><br><span class="line">$ vim /etc/fstab $ 永久</span><br><span class="line"></span><br><span class="line">添加主机名与IP对应关系（记得设置主机名）：</span><br><span class="line">$ cat /etc/hosts</span><br><span class="line">192.168.33.104 k8s-master</span><br><span class="line">192.168.33.105 k8s-node1</span><br><span class="line"></span><br><span class="line">将桥接的IPv4流量传递到iptables的链：</span><br><span class="line">$ cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br><span class="line">$ sysctl --system</span><br></pre></td></tr></table></figure>
+<p>永久关闭swap</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vim /etc/fstab</span><br><span class="line"></span><br><span class="line">注释调swap那一行后重启即可</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>关闭防火墙</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># systemctl stop firewalld</span><br><span class="line"># systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭selinux  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sed -i &#x27;s/enforcing/disabled/&#x27; /etc/selinux/config</span><br><span class="line"># setenforce 0</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>添加主机名与IP对应关系（记得设置主机名）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /etc/hosts</span><br><span class="line">192.168.31.140 k8s-master  // 如果是部署单节点集群，配置一个即可</span><br><span class="line">192.168.32.141 k8s-node01</span><br><span class="line">192.168.32.142 k8s-node02</span><br></pre></td></tr></table></figure>
+
+
+<p>将桥接的IPv4流量传递到iptables的链：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"># sysctl --system</span><br></pre></td></tr></table></figure>
+
 
 <h1 id="所有节点安装Docker-x2F-kubeadm-x2F-kubelet"><a href="#所有节点安装Docker-x2F-kubeadm-x2F-kubelet" class="headerlink" title="所有节点安装Docker&#x2F;kubeadm&#x2F;kubelet"></a>所有节点安装Docker&#x2F;kubeadm&#x2F;kubelet</h1><p>Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。  </p>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo</span><br><span class="line">$ yum -y install docker-ce-18.06.1.ce-3.el7</span><br><span class="line">$ systemctl enable docker &amp;&amp; systemctl start docker</span><br><span class="line">$ docker --version</span><br><span class="line">Docker version 18.06.1-ce, build e68fc7a</span><br></pre></td></tr></table></figure>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>下载最新版本的Docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># apt install docker.io</span><br><span class="line"></span><br><span class="line"># docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.12</span><br><span class="line"> API version:       1.41</span><br><span class="line"> Go version:        go1.16.2</span><br><span class="line"> Git commit:        20.10.12-0ubuntu2~20.04.1</span><br><span class="line"> Built:             Wed Apr  6 02:14:38 2022</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Context:           default</span><br><span class="line"> Experimental:      true</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.12</span><br><span class="line">  API version:      1.41 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.16.2</span><br><span class="line">  Git commit:       20.10.12-0ubuntu2~20.04.1</span><br><span class="line">  Built:            Thu Feb 10 15:03:35 2022</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     false</span><br><span class="line"> containerd:</span><br><span class="line">  Version:          1.2.6-0ubuntu1~16.04.6+esm1</span><br><span class="line">  GitCommit:        </span><br><span class="line"> runc:</span><br><span class="line">  Version:          spec: 1.0.1-dev</span><br><span class="line">  GitCommit:        </span><br><span class="line"> docker-init:</span><br><span class="line">  Version:          0.19.0</span><br><span class="line">  GitCommit:        </span><br></pre></td></tr></table></figure>
 
-<h2 id="添加访问公钥"><a href="#添加访问公钥" class="headerlink" title="添加访问公钥"></a>添加访问公钥</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -</span><br></pre></td></tr></table></figure>
+<h2 id="添加访问公钥"><a href="#添加访问公钥" class="headerlink" title="添加访问公钥"></a>添加访问公钥</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -</span><br></pre></td></tr></table></figure>
 
-<h2 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h2><p>因为考虑不能翻墙，所以选择阿里云源。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 <p>更新缓存索引  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
 
-<h2 id="安装kubeadm，kubelet和kubectl"><a href="#安装kubeadm，kubelet和kubectl" class="headerlink" title="安装kubeadm，kubelet和kubectl"></a>安装kubeadm，kubelet和kubectl</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt install  kubectl kubelet kubeadm -y</span><br></pre></td></tr></table></figure>
+<h2 id="安装kubeadm，kubelet和kubectl"><a href="#安装kubeadm，kubelet和kubectl" class="headerlink" title="安装kubeadm，kubelet和kubectl"></a>安装kubeadm，kubelet和kubectl</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">指定为 1.16.15版本</span><br><span class="line">apt install  kubectl=1.16.15-00 kubelet=1.16.15-00 kubeadm=1.16.15-00 -y</span><br></pre></td></tr></table></figure>
 
 <p>开机自启kubelet  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable kubelet</span><br></pre></td></tr></table></figure>
 
 <p>验证  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubelet --version</span><br><span class="line">Kubernetes v1.23.4</span><br><span class="line"></span><br><span class="line"># kubeadm version</span><br><span class="line">kubeadm version: &amp;version.Info&#123;Major:&quot;1&quot;, Minor:&quot;23&quot;, GitVersion:&quot;v1.23.4&quot;, GitCommit:&quot;e6c093d87ea4cbb530a7b2ae91e54c0842d8308a&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2022-02-16T12:36:57Z&quot;, GoVersion:&quot;go1.17.7&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;&#125;</span><br><span class="line"></span><br><span class="line"># kubectl version</span><br><span class="line">Client Version: version.Info&#123;Major:&quot;1&quot;, Minor:&quot;23&quot;, GitVersion:&quot;v1.23.4&quot;, GitCommit:&quot;e6c093d87ea4cbb530a7b2ae91e54c0842d8308a&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2022-02-16T12:38:05Z&quot;, GoVersion:&quot;go1.17.7&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl version</span><br><span class="line">Client Version: version.Info&#123;Major:&quot;1&quot;, Minor:&quot;16&quot;, GitVersion:&quot;v1.16.15&quot;, GitCommit:&quot;2adc8d7091e89b6e3ca8d048140618ec89b39369&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2020-09-02T11:40:00Z&quot;, GoVersion:&quot;go1.13.15&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;&#125;</span><br><span class="line"></span><br><span class="line"># kubeadm version</span><br><span class="line">kubeadm version: &amp;version.Info&#123;Major:&quot;1&quot;, Minor:&quot;16&quot;, GitVersion:&quot;v1.16.15&quot;, GitCommit:&quot;2adc8d7091e89b6e3ca8d048140618ec89b39369&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2020-09-02T11:37:34Z&quot;, GoVersion:&quot;go1.13.15&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># kubelet --version</span><br><span class="line">Kubernetes v1.16.15</span><br></pre></td></tr></table></figure>
 
-<h1 id="部署Kubernetes-Master"><a href="#部署Kubernetes-Master" class="headerlink" title="部署Kubernetes Master"></a>部署Kubernetes Master</h1><p>在192.168.33.104（Master）执行。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubeadm init \</span><br><span class="line">--apiserver-advertise-address=192.168.33.104 \</span><br><span class="line">--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">--kubernetes-version v1.23.4 \</span><br><span class="line">--service-cidr=10.1.0.0/16 \</span><br><span class="line">--pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></table></figure>
+<h1 id="部署Kubernetes-Master"><a href="#部署Kubernetes-Master" class="headerlink" title="部署Kubernetes Master"></a>部署Kubernetes Master</h1><p>在192.168.31.140（Master）执行。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubeadm init \</span><br><span class="line">--apiserver-advertise-address=192.168.31.140 \</span><br><span class="line">--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">--kubernetes-version v1.16.15 \</span><br><span class="line">--service-cidr=10.96.0.0/12 \</span><br><span class="line">--pod-network-cidr=10.244.0.0/16 \</span><br><span class="line">--ignore-preflight-errors=all</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>apiserver-advertise-address：内网的IP地址  </li>
@@ -950,43 +967,24 @@
 </ul>
 <p>注：由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址。  </p>
 <p>使用kubectl工具：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line"># cat .kube/config </span><br><span class="line">apiVersion: v1</span><br><span class="line">clusters:</span><br><span class="line">- cluster:</span><br><span class="line">    一堆字符串，省略...</span><br><span class="line">    server: https://192.168.33.104:6443</span><br><span class="line">  name: kubernetes</span><br><span class="line">contexts:</span><br><span class="line">- context:</span><br><span class="line">    cluster: kubernetes</span><br><span class="line">    user: kubernetes-admin</span><br><span class="line">  name: kubernetes-admin@kubernetes</span><br><span class="line">current-context: kubernetes-admin@kubernetes</span><br><span class="line">kind: Config</span><br><span class="line">preferences: &#123;&#125;</span><br><span class="line">users:</span><br><span class="line">- name: kubernetes-admin</span><br><span class="line">  user:</span><br><span class="line">    一堆字符串，省略...</span><br><span class="line">    client-key-data:</span><br><span class="line">    一堆字符串，省略...</span><br><span class="line"></span><br><span class="line"># kubectl get nodes</span><br><span class="line">NAME     STATUS     ROLES                  AGE   VERSION</span><br><span class="line">ubuntu   NotReady   control-plane,master   19m   v1.23.4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line"># cat .kube/config </span><br><span class="line">apiVersion: v1</span><br><span class="line">clusters:</span><br><span class="line">- cluster:</span><br><span class="line">    一堆字符串，省略...</span><br><span class="line">    server: https://192.168.33.104:6443</span><br><span class="line">  name: kubernetes</span><br><span class="line">contexts:</span><br><span class="line">- context:</span><br><span class="line">    cluster: kubernetes</span><br><span class="line">    user: kubernetes-admin</span><br><span class="line">  name: kubernetes-admin@kubernetes</span><br><span class="line">current-context: kubernetes-admin@kubernetes</span><br><span class="line">kind: Config</span><br><span class="line">preferences: &#123;&#125;</span><br><span class="line">users:</span><br><span class="line">- name: kubernetes-admin</span><br><span class="line">  user:</span><br><span class="line">    一堆字符串，省略...</span><br><span class="line">    client-key-data:</span><br><span class="line">    一堆字符串，省略...</span><br></pre></td></tr></table></figure>
 
-
-
-<h1 id="部署Pod网络插件（CNI）"><a href="#部署Pod网络插件（CNI）" class="headerlink" title="部署Pod网络插件（CNI）"></a>部署Pod网络插件（CNI）</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
+<h1 id="部署Pod网络插件（CNI）"><a href="#部署Pod网络插件（CNI）" class="headerlink" title="部署Pod网络插件（CNI）"></a>部署Pod网络插件（CNI）</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
 
 <p>查看是否启动成功  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl get pods -n kube-system</span><br><span class="line">NAME                             READY   STATUS    RESTARTS   AGE</span><br><span class="line">coredns-6d8c4cb4d-7j6bz          1/1     Running   0          27m</span><br><span class="line">coredns-6d8c4cb4d-kmdk5          1/1     Running   0          27m</span><br><span class="line">etcd-ubuntu                      1/1     Running   0          27m</span><br><span class="line">kube-apiserver-ubuntu            1/1     Running   0          27m</span><br><span class="line">kube-controller-manager-ubuntu   1/1     Running   0          27m</span><br><span class="line">kube-flannel-ds-d275s            1/1     Running   0          2m15s</span><br><span class="line">kube-proxy-n94jd                 1/1     Running   0          27m</span><br><span class="line">kube-scheduler-ubuntu            1/1     Running   0          27m</span><br></pre></td></tr></table></figure>
 
-<h1 id="加入Kubernetes-Node"><a href="#加入Kubernetes-Node" class="headerlink" title="加入Kubernetes Node"></a>加入Kubernetes Node</h1><p>在192.168.33.105（Node1）执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubeadm join 192.168.33.104:6443 --token 5vo1hz.0snnkh9fltyta36u --discovery-token-ca-cert-hash sha256:5790abff3550cb60573d5773240363a864eef5c0ab2f963a1627a8f7436563a4</span><br></pre></td></tr></table></figure>
+<h1 id="加入Kubernetes-Node"><a href="#加入Kubernetes-Node" class="headerlink" title="加入Kubernetes Node"></a>加入Kubernetes Node</h1><p>在192.168.33.141（Node1）执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubeadm join 192.168.33.141:6443 --token 5vo1hz.0snnkh9fltyta36u --discovery-token-ca-cert-hash sha256:&quot;&lt;kubernetes master token&gt;&quot;</span><br></pre></td></tr></table></figure>
 
 <p><code>discovery-token-ca-cert-hash</code>是在<code>kubeadm init</code>后的时候生成的，如果找不到这个token，可以使用命令  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubeadm token create --print-join-command</span><br><span class="line">kubeadm join 192.168.33.104:6443 --token 5vo1hz.0snnkh9fltyta36u --discovery-token-ca-cert-hash sha256:5790abff3550cb60573d5773240363a864eef5c0ab2f963a1627a8f7436563a4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubeadm token create --print-join-command</span><br><span class="line">kubeadm join 192.168.33.104:6443 --token 5vo1hz.0snnkh9fltyta36u --discovery-token-ca-cert-hash sha256:&quot;&lt;kubernetes master token&gt;&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="设置Master单节点集群"><a href="#设置Master单节点集群" class="headerlink" title="设置Master单节点集群"></a>设置Master单节点集群</h1><p>在<code>Master</code>节点输入  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl taint nodes --all node-role.kubernetes.io/master-</span><br></pre></td></tr></table></figure>
 
-<p>待验证…  </p>
-<h1 id="测试kubernetes集群"><a href="#测试kubernetes集群" class="headerlink" title="测试kubernetes集群"></a>测试kubernetes集群</h1><p>在Kubernetes集群中创建一个pod，验证是否正常运行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl create deployment nginx --image=nginx</span><br><span class="line">$ kubectl expose deployment nginx --port=80 --type=NodePort</span><br><span class="line">$ kubectl get pod,svc</span><br></pre></td></tr></table></figure>
-
-<p>访问地址：<a href="http://NodeIP:Port">http://NodeIP:Port</a>  </p>
-<h1 id="部署Web-UI（Dashboard）"><a href="#部署Web-UI（Dashboard）" class="headerlink" title="部署Web UI（Dashboard）"></a>部署Web UI（Dashboard）</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml</span><br></pre></td></tr></table></figure>
-
-<p>默认Dashboard只能集群内部访问，修改Service为NodePort类型，暴露到外部：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kind: Service</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">labels:</span><br><span class="line">  k8s-app: kubernetes-dashboard</span><br><span class="line">name: kubernetes-dashboard</span><br><span class="line">namespace: kube-system</span><br><span class="line">spec:</span><br><span class="line">type: NodePort</span><br><span class="line">ports:</span><br><span class="line">  - port: 443</span><br><span class="line">    targetPort: 8443</span><br><span class="line">    nodePort: 30001</span><br><span class="line">selector:</span><br><span class="line">  k8s-app: kubernetes-dashboard</span><br><span class="line">$ kubectl apply -f kubernetes-dashboard.yaml</span><br></pre></td></tr></table></figure>
-
-<p>访问地址：<a href="http://nodeip:30001/">http://NodeIP:30001</a>  </p>
-<p>创建service account并绑定默认cluster-admin管理员集群角色：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl create serviceaccount dashboard-admin -n kube-system</span><br><span class="line">$ kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin</span><br><span class="line">$ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk &#x27;/dashboard-admin/&#123;print $1&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>使用输出的token登录Dashboard。  </p>
-<h1 id="部署时可能会遇到的问题"><a href="#部署时可能会遇到的问题" class="headerlink" title="部署时可能会遇到的问题"></a>部署时可能会遇到的问题</h1><h2 id="安装Pod网络插件显示serviceaccount-x2F-flannel-unchanged"><a href="#安装Pod网络插件显示serviceaccount-x2F-flannel-unchanged" class="headerlink" title="安装Pod网络插件显示serviceaccount&#x2F;flannel unchanged"></a>安装Pod网络插件显示serviceaccount&#x2F;flannel unchanged</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml</span><br><span class="line">serviceaccount/flannel unchanged</span><br><span class="line">configmap/kube-flannel-cfg unchanged</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;ClusterRole&quot; in version &quot;rbac.authorization.k8s.io/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;ClusterRoleBinding&quot; in version &quot;rbac.authorization.k8s.io/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;DaemonSet&quot; in version &quot;extensions/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;DaemonSet&quot; in version &quot;extensions/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;DaemonSet&quot; in version &quot;extensions/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;DaemonSet&quot; in version &quot;extensions/v1beta1&quot;</span><br><span class="line">unable to recognize &quot;https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml&quot;: no matches for kind &quot;DaemonSet&quot; in version &quot;extensions/v1beta1&quot;</span><br></pre></td></tr></table></figure>
-
-<p>解决<a href="https://github.com/flannel-io/flannel/issues/1147">github_can not install flannel</a>  </p>
-<h2 id="kubeadm-failed：-ERROR-Service-Docker-docker-service-is-not-active-please-run-‘systemctl-start-docker-service’"><a href="#kubeadm-failed：-ERROR-Service-Docker-docker-service-is-not-active-please-run-‘systemctl-start-docker-service’" class="headerlink" title="kubeadm failed：[ERROR Service-Docker]: docker service is not active, please run ‘systemctl start docker.service’"></a>kubeadm failed：[ERROR Service-Docker]: docker service is not active, please run ‘systemctl start docker.service’</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubeadm join 192.168.33.104:6443 --token 5vo1hz.0snnkh9fltyta36u --discovery-token-ca-cert-hash sha256:5790abff3550cb60573d5773240363a864eef5c0ab2f963a1627a8f7436563a4</span><br><span class="line">[preflight] Running pre-flight checks</span><br><span class="line">[preflight] The system verification failed. Printing the output from the verification:</span><br><span class="line">....</span><br><span class="line">Server:</span><br><span class="line">ERROR: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</span><br><span class="line">errors pretty printing info</span><br><span class="line">, error: exit status 1</span><br><span class="line">        [ERROR Service-Docker]: docker service is not active, please run &#x27;systemctl start docker.service&#x27;</span><br><span class="line">        [ERROR SystemVerification]: error verifying Docker info: &quot;Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?&quot;</span><br><span class="line">[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`</span><br><span class="line">To see the stack trace of this error execute with --v=5 or higher</span><br><span class="line"></span><br><span class="line"># systemctl status docker.service</span><br><span class="line">× docker.service - Docker Application Container Engine</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: failed (Result: exit-code) since Sun 2022-02-27 09:57:04 UTC; 6s ago</span><br><span class="line">TriggeredBy: × docker.socket</span><br><span class="line">       Docs: https://docs.docker.com</span><br><span class="line">    Process: 38651 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock (code=exited, status=1/FAILURE)</span><br><span class="line">   Main PID: 38651 (code=exited, status=1/FAILURE)</span><br><span class="line">        CPU: 95ms</span><br><span class="line"></span><br><span class="line">Feb 27 09:57:04 ubuntu systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.</span><br><span class="line">Feb 27 09:57:04 ubuntu systemd[1]: Stopped Docker Application Container Engine.</span><br><span class="line">Feb 27 09:57:04 ubuntu systemd[1]: docker.service: Start request repeated too quickly.</span><br><span class="line">Feb 27 09:57:04 ubuntu systemd[1]: docker.service: Failed with result &#x27;exit-code&#x27;.</span><br><span class="line">Feb 27 09:57:04 ubuntu systemd[1]: Failed to start Docker Application Container Engine.</span><br></pre></td></tr></table></figure>
-
-<p>未解决  </p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1>]]></content>
+<p>该命令含义是：移除所有以<code>node-role.kubernetes.io/master</code>为键的<code>Taint</code>  </p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.cnblogs.com/architectforest/p/12982886.html">linux(centos8): 临时关闭&#x2F;永久关闭交换分区swap？</a>  </p>
+]]></content>
       <categories>
         <category>LearnKubernetes</category>
       </categories>
@@ -1333,8 +1331,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
         <tag>成长</tag>
+        <tag>感悟</tag>
         <tag>端午</tag>
         <tag>高考</tag>
       </tags>
@@ -1404,8 +1402,8 @@
       </categories>
       <tags>
         <tag>FFmpeg</tag>
-        <tag>视音频</tag>
         <tag>OpenGL</tag>
+        <tag>视音频</tag>
       </tags>
   </entry>
   <entry>
@@ -1632,9 +1630,9 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>工作</tag>
-        <tag>感悟</tag>
         <tag>成长</tag>
+        <tag>感悟</tag>
+        <tag>工作</tag>
         <tag>学习</tag>
         <tag>沟通</tag>
         <tag>bug</tag>
@@ -2036,8 +2034,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>动态规划</tag>
         <tag>设计</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -3441,8 +3439,8 @@
         <category>Learn-Algorithms</category>
       </categories>
       <tags>
-        <tag>收获</tag>
         <tag>算法</tag>
+        <tag>收获</tag>
         <tag>总结</tag>
       </tags>
   </entry>
@@ -4438,9 +4436,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
-        <tag>工作</tag>
         <tag>面试</tag>
         <tag>直播</tag>
+        <tag>工作</tag>
       </tags>
   </entry>
   <entry>
@@ -4495,8 +4493,8 @@
         <category>Share-live</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>面试</tag>
+        <tag>算法</tag>
         <tag>直播</tag>
         <tag>极客邦</tag>
       </tags>
@@ -4721,9 +4719,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
+        <tag>直播</tag>
         <tag>职场</tag>
         <tag>极客时间</tag>
-        <tag>直播</tag>
         <tag>感恩节</tag>
       </tags>
   </entry>
@@ -4959,8 +4957,8 @@
         <category>Learn-go</category>
       </categories>
       <tags>
-        <tag>Go</tag>
         <tag>项目</tag>
+        <tag>Go</tag>
         <tag>架构设计</tag>
       </tags>
   </entry>
@@ -5964,8 +5962,8 @@
         <category>GoSEC</category>
       </categories>
       <tags>
-        <tag>Go</tag>
         <tag>框架</tag>
+        <tag>Go</tag>
         <tag>RestFul</tag>
       </tags>
   </entry>
@@ -6196,9 +6194,9 @@
         <category>GoATC</category>
       </categories>
       <tags>
-        <tag>Golang</tag>
-        <tag>微服务</tag>
         <tag>gRPC</tag>
+        <tag>微服务</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -6625,9 +6623,9 @@
         <category>GoATC</category>
       </categories>
       <tags>
+        <tag>微服务</tag>
         <tag>架构设计</tag>
         <tag>golang</tag>
-        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -8172,8 +8170,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>项目</tag>
         <tag>FFmpeg</tag>
+        <tag>项目</tag>
         <tag>人工智能</tag>
         <tag>收录</tag>
         <tag>服务</tag>
@@ -8194,8 +8192,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
         <tag>成长</tag>
+        <tag>感悟</tag>
         <tag>挫折</tag>
       </tags>
   </entry>
@@ -8335,6 +8333,21 @@
         <tag>上班</tag>
         <tag>选择</tag>
         <tag>价值</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何完美干净的卸载Kubernetes集群</title>
+    <url>/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</url>
+    <content><![CDATA[<p>因为某些原因，需要卸载<code>kubernetes</code>集群，本文将分享完整卸载<code>kubernetes</code>的方法。  </p>
+<p>默认是<code>root</code>用户操作  </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先清理运行到k8s群集中的pod</span></span><br><span class="line">kubectl delete node --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止所有k8s相关服务</span></span><br><span class="line"><span class="keyword">for</span> service <span class="keyword">in</span> kube-apiserver kube-controller-manager kubectl kubelet kube-proxy kube-scheduler;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">      systemctl stop <span class="variable">$service</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置集群</span></span><br><span class="line">kubeadm reset -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除相关的配置文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf ~/.kube/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/kubernetes/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service.d</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service</span><br><span class="line"><span class="comment"># 删除kubenetes有关的可执行文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf /usr/bin/kube*</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /opt/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/etcd</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/etcd</span><br><span class="line"></span><br><span class="line">apt clean all</span><br><span class="line"></span><br><span class="line">apt remove kube*</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>集群</tag>
+        <tag>kubernetes</tag>
+        <tag>卸载</tag>
       </tags>
   </entry>
   <entry>
@@ -8670,6 +8683,54 @@
       </tags>
   </entry>
   <entry>
+    <title>深入剖析Kubernetes</title>
+    <url>/2022/09/05/in-depth-kubernetes/</url>
+    <content><![CDATA[<h1 id="容器技术预习"><a href="#容器技术预习" class="headerlink" title="容器技术预习"></a>容器技术预习</h1><h2 id="Docker产生的背景"><a href="#Docker产生的背景" class="headerlink" title="Docker产生的背景"></a>Docker产生的背景</h2><p>2013~2014 年，以 Cloud Foundry 为代表的 PaaS 项目，逐渐完成了教育用户和开拓市<br>场的艰巨任务，也正是在这个将概念逐渐落地的过程中，应用“打包”困难这个问题，成了整个后端技术圈子的一块心病。Docker 项目的出现，则为这个根本性的问题提供了一个近乎完美的解决方案。这正是Docker 项目刚刚开源不久，就能够带领一家原本默默无闻的PaaS 创业公司脱颖而出，然后迅速占领了所有云计算领域头条的技术原因。  </p>
+<p>而在成为了基础设施领域近十年难得一见的技术明星之后，dotCloud 公司则在 2013 年底大胆改名为 Docker 公司。不过，这个在当时就颇具争议的改名举动，也成为了日后容器技术圈风云变幻的一个关键伏笔。  </p>
+<h2 id="Docker-项目在短时间内迅速崛起的三个重要原因"><a href="#Docker-项目在短时间内迅速崛起的三个重要原因" class="headerlink" title="Docker 项目在短时间内迅速崛起的三个重要原因"></a>Docker 项目在短时间内迅速崛起的三个重要原因</h2><ul>
+<li>1.Docker 镜像通过技术手段解决了 PaaS 的根本性问题；  </li>
+<li>2.Docker 容器同开发者之间有着与生俱来的密切关系；  </li>
+<li>3.PaaS 概念已经深入人心的完美契机。</li>
+</ul>
+<h1 id="容器技术概念入门"><a href="#容器技术概念入门" class="headerlink" title="容器技术概念入门"></a>容器技术概念入门</h1><h2 id="从进程开始"><a href="#从进程开始" class="headerlink" title="从进程开始"></a>从进程开始</h2><p>谈到为“进程划分一个独立空间”的思想，相信你一定会联想到虚拟机。<br>而且，你应该还看过一张虚拟机和容器的对比图。  </p>
+<p><img src="/2022/09/05/in-depth-kubernetes/vmvsdocker.png">  </p>
+<p>这幅图的左边，画出了虚拟机的工作原理。其中，名为 Hypervisor 的软件是虚拟机最主要的部分。它通过硬件虚拟化功能，模拟出了运行一个操作系统需要的各种硬件，比如CPU、内存、I&#x2F;O 设备等等。然后，它在这些虚拟的硬件上安装了一个新的操作系统，即Guest OS。  </p>
+<p>这样，用户的应用进程就可以运行在这个虚拟的机器中，它能看到的自然也只有 Guest OS的文件和目录，以及这个机器里的虚拟设备。这就是为什么虚拟机也能起到将不同的应用进<br>程相互隔离的作用。  </p>
+<p>而这幅图的右边，则用一个名为 Docker Engine 的软件替换了 Hypervisor。这也是为什么，很多人会把 Docker 项目称为“轻量级”虚拟化技术的原因，实际上就是把虚拟机的概念套在了容器上。  </p>
+<p><strong>可是这样的说法，却并不严谨。</strong>  </p>
+<p>在理解了 Namespace 的工作方式之后，你就会明白，跟真实存在的虚拟机不同，在使用<br>Docker 的时候，并没有一个真正的“Docker 容器”运行在宿主机里面。Docker 项目帮助用户启动的，还是原来的应用进程，只不过在创建这些进程时，Docker 为它们加上了各种各样的 Namespace 参数。  </p>
+<p>这时，这些进程就会觉得自己是各自 PID Namespace 里的第 1 号进程，只能看到各自<br>Mount Namespace 里挂载的目录和文件，只能访问到各自 Network Namespace 里的网<br>络设备，就仿佛运行在一个个“容器”里面，与世隔绝。  </p>
+<h2 id="隔离与限制"><a href="#隔离与限制" class="headerlink" title="隔离与限制"></a>隔离与限制</h2><p>一个正在运行的 Docker 容器，其实就是一个启用了多个 Linux Namespace 的应用进程，而这个进程能够使用的资源量，则受 Cgroups 配置的限制。  </p>
+<p>这也是容器技术中一个非常重要的概念，即：<strong>容器是一个“单进程”模型</strong>。  </p>
+<p>由于一个容器的本质就是一个进程，用户的应用进程实际上就是容器里 PID&#x3D;1 的进程，也<br>是其他后续创建的所有进程的父进程。这就意味着，在一个容器中，你没办法同时运行两个<br>不同的应用，除非你能事先找到一个公共的 PID&#x3D;1 的程序来充当两个不同应用的父进程，<br>这也是为什么很多人都会用 systemd 或者 supervisord 这样的软件来代替应用本身作为容器的启动进程。  </p>
+<p>另外，跟 Namespace 的情况类似，Cgroups 对资源的限制能力也有很多不完善的地方，<br>被提及最多的自然是 &#x2F;proc 文件系统的问题。  </p>
+<p>众所周知，Linux 下的 &#x2F;proc 目录存储的是记录当前内核运行状态的一系列特殊文件，用户可以通过访问这些文件，查看系统以及当前正在运行的进程的信息，比如 CPU 使用情况、内存占用率等，这些文件也是 top 指令查看系统信息的主要数据来源。  </p>
+<p>但是，你如果在容器里执行 top 指令，就会发现，它显示的信息居然是宿主机的 CPU 和内存数据，而不是当前容器的数据。造成这个问题的原因就是，&#x2F;proc 文件系统并不知道用户通过 Cgroups 给这个容器做了什么样的资源限制，即：&#x2F;proc 文件系统不了解 Cgroups 限制的存在。  </p>
+<p>在生产环境中，这个问题必须进行修正，否则应用程序在容器里读取到的 CPU 核数、<br>可用内存等信息都是宿主机上的数据，这会给应用的运行带来非常大的困惑和风险。  </p>
+<h2 id="深入理解容器镜像"><a href="#深入理解容器镜像" class="headerlink" title="深入理解容器镜像"></a>深入理解容器镜像</h2><p>Linux 容器文件系统的<code>rootfs</code>机制，也是我们提到的容器镜像。它只是一个操作系统的所有文件和目录，并不包含内核，最多也就几百兆。而相比之下，传统虚拟机的镜像大多是一个磁盘的“快照”，磁盘有多大，镜像就至少有多大。  </p>
+<p>通过结合使用 Mount Namespace 和 rootfs，容器就能够为进程构建出一个完善的文件系统隔离环境。当然，这个功能的实现还必须感谢 chroot 和 pivot_root 这两个系统调用切换进程根目录的能力。  </p>
+<p>而在 rootfs 的基础上，Docker 公司创新性地提出了使用多个增量 rootfs 联合挂载一个完整 rootfs 的方案，这就是容器镜像中“层”的概念。  </p>
+<p>通过“分层镜像”的设计，以 Docker 镜像为核心，来自不同公司、不同团队的技术人员被<br>紧密地联系在了一起。而且，由于容器镜像的操作是增量式的，这样每次镜像拉取、推送的<br>内容，比原本多个完整的操作系统的大小要小得多；而共享层的存在，可以使得所有这些容<br>器镜像需要的总空间，也比每个镜像的总和要小。这样就使得基于容器镜像的团队协作，要<br>比基于动则几个 GB 的虚拟机磁盘镜像的协作要敏捷得多。  </p>
+<p>更重要的是，一旦这个镜像被发布，那么你在全世界的任何一个地方下载这个镜像，得到的<br>内容都完全一致，可以完全复现这个镜像制作者当初的完整环境。这，就是容器技术“强一<br>致性”的重要体现。  </p>
+<p>而这种价值正是支撑 Docker 公司在 2014~2016 年间迅猛发展的核心动力。<br>容器镜像的发明，不仅打通了“开发 - 测试 - 部署”流程的每一个环节，更重要的是：<strong>容器镜像将会成为未来软件的主流发布方式。</strong>  </p>
+<h2 id="重新认识Docker容器"><a href="#重新认识Docker容器" class="headerlink" title="重新认识Docker容器"></a>重新认识Docker容器</h2><p><img src="/2022/09/05/in-depth-kubernetes/dockerview.png">  </p>
+<p>这个容器进程“python app.py”，运行在由 Linux Namespace 和 Cgroups 构成的隔离<br>环境里；而它运行所需要的各种文件，比如 python，app.py，以及整个操作系统文件，则由多个联合挂载在一起的 rootfs 层提供。  </p>
+<p>这些 rootfs 层的最下层，是来自 Docker 镜像的只读层。  </p>
+<p>在只读层之上，是 Docker 自己添加的 Init 层，用来存放被临时修改过的 &#x2F;etc&#x2F;hosts 等文件。  </p>
+<p>而 rootfs 的最上层是一个可读写层，它以 Copy-on-Write 的方式存放任何对只读层的修改，容器声明的 Volume 的挂载点，也出现在这一层。  </p>
+<h2 id="谈谈Kubernetes的本质"><a href="#谈谈Kubernetes的本质" class="headerlink" title="谈谈Kubernetes的本质"></a>谈谈Kubernetes的本质</h2><p>过去很多的集群管理项目（比如 Yarn、Mesos，以及 Swarm）所擅长的，都是把一个容器，按照某种规则，放置在某个最佳节点上运行起来。这种功能，我们称为“调度”。而 Kubernetes 项目所擅长的，是按照用户的意愿和整个系统的规则，完全自动化地处理<br>好容器之间的各种关系。这种功能，就是我们经常听到的一个概念：<strong>编排</strong>。  </p>
+<p>所以说，Kubernetes 项目的本质，是为用户提供一个具有普遍意义的容器编排工具。  </p>
+<p>不过，更重要的是，Kubernetes 项目为用户提供的不仅限于一个工具。它真正的价值，乃在于提供了一套基于容器构建分布式系统的基础依赖。  </p>
+<h1 id="Kubernetes集群搭建与实践"><a href="#Kubernetes集群搭建与实践" class="headerlink" title="Kubernetes集群搭建与实践"></a>Kubernetes集群搭建与实践</h1><h1 id="容器编排与Kubernetes作业管理"><a href="#容器编排与Kubernetes作业管理" class="headerlink" title="容器编排与Kubernetes作业管理"></a>容器编排与Kubernetes作业管理</h1><h2 id="为什么我们需要Pod？"><a href="#为什么我们需要Pod？" class="headerlink" title="为什么我们需要Pod？"></a>为什么我们需要Pod？</h2>]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>吊车尾</title>
     <url>/2019/05/23/in-the-end/</url>
     <content><![CDATA[<p>这一周感觉过得好慢，也许是我太压抑了的缘故吧。  </p>
@@ -8831,8 +8892,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>生活</tag>
         <tag>面试</tag>
+        <tag>生活</tag>
         <tag>思考</tag>
       </tags>
   </entry>
@@ -8866,115 +8927,6 @@
         <tag>并发</tag>
         <tag>服务</tag>
         <tag>消息队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>容器技术概念入门</title>
-    <url>/2022/01/15/introduction-to-container-technology-concepts/</url>
-    <content><![CDATA[<h1 id="从进程说开去"><a href="#从进程说开去" class="headerlink" title="从进程说开去"></a>从进程说开去</h1><p><strong>容器本身没有价值，有价值的是“容器编排”。</strong>  </p>
-<p>先启动一个容器  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ docker run -it busybox /bin/sh</span><br><span class="line">Unable to find image &#x27;busybox:latest&#x27; locally</span><br><span class="line">latest: Pulling from library/busybox</span><br><span class="line">5cc84ad355aa: Pull complete </span><br><span class="line">Digest: sha256:5acba83a746c7608ed544dc1533b87c737a0b0fb730301639a0179f9344b1678</span><br><span class="line">Status: Downloaded newer image for busybox:latest</span><br><span class="line">/ # </span><br></pre></td></tr></table></figure>
-
-<p>这段语句的含义是：请帮我启动一个容器，在容器里执行&#x2F;bin&#x2F;sh，并且给我分配一个命令行终端跟这个容器交互。  </p>
-<p>此时，如果我们在容器里执行一下 ps 指令：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/ # ps</span><br><span class="line">PID   USER     TIME  COMMAND</span><br><span class="line">    1 root      0:00 /bin/sh</span><br><span class="line">    6 root      0:00 ps</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，我们在 Docker 里最开始执行的 &#x2F;bin&#x2F;sh，就是这个容器内部的第 1 号进程（PID&#x3D;1），而这个容器里一共只有两个进程在运行。这就意味着，前面执行的 &#x2F;bin&#x2F;sh，以及我们刚刚执行的 ps，已经被 Docker 隔离在了一个跟宿主机完全不同的世界当中。  </p>
-<p>本来，每当我们在宿主机上运行了一个 &#x2F;bin&#x2F;sh 程序，操作系统都会给它分配一个进程编号，比如 PID&#x3D;100。这个编号是进程的唯一标识，就像员工的工牌一样。所以PID&#x3D;100，可以粗略地理解为这个 &#x2F;bin&#x2F;sh 是我们公司里的第 100 号员工，而现在，我们要通过 Docker 把这个 &#x2F;bin&#x2F;sh 程序运行在一个容器当中。这时候，Docker<br>就会在这个第 100 号员工入职时给他施一个“障眼法”，让他永远看不到前面的其他 99个员工，他就会错误地以为自己就是公司里的第 1 号员工。  </p>
-<p>这种机制，其实就是对被隔离应用的进程空间做了手脚，使得这些进程只能看到重新计算过的进程编号，比如 PID&#x3D;1。可实际上，他们在宿主机的操作系统里，还是原来的第 100 号进程。这种技术，就是 Linux 里面的 Namespace 机制。而 Namespace其实只是 Linux 创建新进程的一个可选参数。  </p>
-<p>在 Linux 系统中创建线程的系统调用是 clone()，比如：  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> pid = clone(main_function, stack_size, SIGCHLD, <span class="literal">NULL</span>); </span><br></pre></td></tr></table></figure>
-<p>这个系统调用就会为我们创建一个新的进程，并且返回它的进程号 pid。  </p>
-<p>而当我们用 clone() 系统调用创建一个新进程时，就可以在参数中指定 CLONE_NEWPID参数，比如：  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> pid = clone(main_function, stack_size, CLONE_NEWPID | SIGCHLD, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
-
-<p>这时，新创建的这个进程将会“看到”一个全新的进程空间，在这个进程空间里，它的 PID是 1。之所以说“看到”，是因为这只是一个“障眼法”，在宿主机真实的进程空间里，这个进程的 PID 还是真实的数值，比如 100。  </p>
-<p>当然，我们还可以多次执行上面的 clone() 调用，这样就会创建多个 PID Namespace，而每个 Namespace 里的应用进程，都会认为自己是当前容器里的第 1 号进程，它们既看不到宿主机里真正的进程空间，也看不到其他 PID Namespace 里的具体情况。  </p>
-<p>除了PID Namespace，Linux 操作系统还提供了 Mount、UTS、IPC、Network 和 User 这些 Namespace，用来对各种不同的进程上下文进行“障眼法”操作。  </p>
-<p>比如：  </p>
-<ul>
-<li>Mount Namespace，用于让被隔离进程只看到当前 Namespace 里的挂载点信息；  </li>
-<li>Network Namespace，用于让被隔离进程看到当前 Namespace 里的网络设备和配置。</li>
-</ul>
-<p>所以，Docker容器实际上是在创建容器进程时，指定了这个进程所需要启用的一组 Namespace 参数。这样，容器就只能“看”到当前 Namespace所限定的资源、文件、设备、状态，或者配置。而对于宿主机以及其他不相关的程序，它就完全看不到了。  </p>
-<p>因此，容器其实是一种特殊的进程。  </p>
-<h2 id="虚拟机VS容器"><a href="#虚拟机VS容器" class="headerlink" title="虚拟机VS容器"></a>虚拟机VS容器</h2><p><img src="/2022/01/15/introduction-to-container-technology-concepts/%E8%99%9A%E6%8B%9F%E6%9C%BAvs%E5%AE%B9%E5%99%A8.png">  </p>
-<ul>
-<li><p>左图为虚拟机，名为 Hypervisor 的软件是虚拟机最主要的部分。它通过硬件虚拟化功能，模拟出了运行一个操作系统需要的各种硬件，比如CPU、内存、I&#x2F;O 设备等等。然后，它在这些虚拟的硬件上安装了一个新的操作系统，即Guest OS。这样，用户的应用进程就可以运行在这个虚拟的机器中，它能看到的自然也只有 Guest OS的文件和目录，以及这个机器里的虚拟设备。这就是为什么虚拟机也能起到将不同的应用进程相互隔离的作用。  </p>
-</li>
-<li><p>右图为容器，用一个名为 Docker Engine 的软件替换了 Hypervisor。这也是为什么，很多人会把 Docker 项目称为“轻量级”虚拟化技术的原因，实际上就是把虚拟机的概念套在了容器上。</p>
-</li>
-</ul>
-<h1 id="隔离与限制"><a href="#隔离与限制" class="headerlink" title="隔离与限制"></a>隔离与限制</h1><h2 id="隔离"><a href="#隔离" class="headerlink" title="隔离"></a>隔离</h2><p>基于 Linux Namespace 的隔离机制相比于虚拟化技术也有很多不足之处，其中最主要的问题就是：隔离得不彻底。  </p>
-<p><strong>首先，既然容器只是运行在宿主机上的一种特殊的进程，那么多个容器之间使用的就还是同一个宿主机的操作系统内核。</strong>  </p>
-<p><strong>其次，在 Linux 内核中，有很多资源和对象是不能被 Namespace 化的，最典型的例子就是：时间。</strong>  </p>
-<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>疑惑：我们不是已经通过 Linux Namespace 创建了一个“容器”吗，为什么还需要对容器做“限制”呢？  </p>
-<p>虽然容器内的第 1 号进程在“障眼法”的干扰下只能看到容器里的情况，但是宿主机上，它作为第 100 号进程与其他所有进程之间依然是平等的竞争关系。这就意味着，虽然第<br>100 号进程表面上被隔离了起来，但是它所能够使用到的资源（比如 CPU、内存），却是可以随时被宿主机上的其他进程（或者其他容器）占用的。当然，这个 100 号进程自己也可能把所有资源吃光。这些情况，显然都不是一个“沙盒”应该表现出来的合理行为。  </p>
-<p><strong>Linux Cgroups 就是 Linux 内核中用来为进程设置资源限制的一个重要功能。</strong>  </p>
-<p>Linux Cgroups 的全称是 Linux Control Group。它最主要的作用，就是限制一个进程组能够使用的资源上限，包括 CPU、内存、磁盘、网络带宽等等。  </p>
-<p>此外，Cgroups 还能够对进程进行优先级设置、审计，以及将进程挂起和恢复等操作。  </p>
-<p>在 Linux 中，Cgroups 给用户暴露出来的操作接口是文件系统，即它以文件和目录的方式组织在操作系统的 &#x2F;sys&#x2F;fs&#x2F;cgroup 路径下。在我自己的Ubuntu 20.04 机器里，我可以用 mount指令把它们展示出来，这条命令是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mount -t cgroup</span><br><span class="line">cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)</span><br><span class="line">cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)</span><br><span class="line">cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)</span><br><span class="line">cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)</span><br><span class="line">cgroup on /sys/fs/cgroup/rdma type cgroup (rw,nosuid,nodev,noexec,relatime,rdma)</span><br><span class="line">cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)</span><br><span class="line">cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)</span><br><span class="line">cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)</span><br><span class="line">cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)</span><br><span class="line">cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)</span><br><span class="line">cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)</span><br><span class="line">cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)</span><br></pre></td></tr></table></figure>
-
-<p>它的输出结果，是一系列文件系统目录。  </p>
-<p>可以看到，在 &#x2F;sys&#x2F;fs&#x2F;cgroup 下面有很多诸如 cpuset、cpu、 memory 这样的子目录，也叫子系统。这些都是我这台机器当前可以被 Cgroups 进行限制的资源种类。而在子系统对应的资源种类下，你就可以看到该类资源具体可以被限制的方法。比如，对 CPU 子系统来说，我们就可以看到如下几个配置文件，这个指令是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ls /sys/fs/cgroup/cpu</span><br><span class="line">cgroup.clone_children     cpuacct.usage_percpu_user  init.scope</span><br><span class="line">cgroup.procs              cpuacct.usage_sys          notify_on_release</span><br><span class="line">cgroup.sane_behavior      cpuacct.usage_user         release_agent</span><br><span class="line">cpuacct.stat              cpu.cfs_period_us          system.slice</span><br><span class="line">cpuacct.usage             cpu.cfs_quota_us           tasks</span><br><span class="line">cpuacct.usage_all         cpu.shares                 user.slice</span><br><span class="line">cpuacct.usage_percpu      cpu.stat</span><br><span class="line">cpuacct.usage_percpu_sys  docker</span><br></pre></td></tr></table></figure>
-
-<p>在Linux CPU 管理中，会看到cfs_period 和 cfs_quota 这样的关键词。这两个参数需要组合使用，可以用来限制进程在长度为 cfs_period 的一段时间内，只能被分配到总量为 cfs_quota 的 CPU 时间。  </p>
-<p>而这样的配置文件又如何使用呢？  </p>
-<p>首先，你需要在对应的子系统下面创建一个目录，比如，我们现在进入 &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu 目录下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo mkdir container</span><br><span class="line">[sudo] neo 的密码： </span><br><span class="line">$ ls container/</span><br><span class="line">cgroup.clone_children  cpuacct.usage_percpu_sys   cpu.shares</span><br><span class="line">cgroup.procs           cpuacct.usage_percpu_user  cpu.stat</span><br><span class="line">cpuacct.stat           cpuacct.usage_sys          cpu.uclamp.max</span><br><span class="line">cpuacct.usage          cpuacct.usage_user         cpu.uclamp.min</span><br><span class="line">cpuacct.usage_all      cpu.cfs_period_us          notify_on_release</span><br><span class="line">cpuacct.usage_percpu   cpu.cfs_quota_us           tasks</span><br></pre></td></tr></table></figure>
-
-<p>这个目录就称为一个“控制组”。你会发现，操作系统会在你新创建的 container 目录下，自动生成该子系统对应的资源限制文件。  </p>
-<p>现在，我们在后台执行这样一条脚本：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ while : ; do : ; done &amp;</span><br><span class="line">[1] 226</span><br></pre></td></tr></table></figure>
-
-<p>显然，它执行了一个死循环，可以把计算机的 CPU 吃到 100%，根据它的输出，我们可以看到这个脚本在后台运行的进程号（PID）是 226。  </p>
-<p>这样，我们可以用 top 指令来确认一下 CPU 有没有被打满：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ top</span><br><span class="line">%Cpu0 :100.0 us, 0.0 sy, 0.0 ni, 0.0 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st</span><br></pre></td></tr></table></figure>
-
-<p>在输出里可以看到，CPU 的使用率已经 100% 了（%Cpu0 :100.0 us）。  </p>
-<p>而此时，我们可以通过查看 container 目录下的文件，看到 container 控制组里的 CPU quota 还没有任何限制（即：-1），CPU period 则是默认的 100 ms（100000 us）：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /sys/fs/cgroup/cpu/container/cpu.cfs_quota_us</span><br><span class="line">-1</span><br><span class="line">$ cat /sys/fs/cgroup/cpu/container/cpu.cfs_period_us </span><br><span class="line">100000</span><br></pre></td></tr></table></figure>
-
-<p>接下来，我们可以通过修改这些文件的内容来设置限制。比如，向 container 组里的 cfs_quota 文件写入 20 ms（20000 us）：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo 20000 &gt; /sys/fs/cgroup/cpu/container/cpu.cfs_quota_us</span><br></pre></td></tr></table></figure>
-
-<p>它意味着在每 100 ms 的时间里，被该控制组限制的进程只能使用 20 ms 的 CPU 时间，也就是说这个进程只能使用到 20% 的CPU 带宽。  </p>
-<p>接下来，我们把被限制的进程的 PID 写入 container 组里的 tasks 文件，上面的设置就会对该进程生效了：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo 226 &gt; /sys/fs/cgroup/cpu/container/tasks</span><br></pre></td></tr></table></figure>
-
-<p>我们可以用 top 指令查看一下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ top</span><br><span class="line">%Cpu0 : 20.3 us, 0.0 sy, 0.0 ni, 79.7 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，计算机的 CPU 使用率立刻降到了 20%（%Cpu0 : 20.3 us）。  </p>
-<p>除 CPU 子系统外，Cgroups 的每一项子系统都有其独有的资源限制能力，比如：  </p>
-<ul>
-<li>blkio，为块设备设定I&#x2F;O限制，一般用于磁盘等设备；  </li>
-<li>blkio，为块设备设定I&#x2F;O限制，一般用于磁盘等设备；  </li>
-<li>memory，为进程设定内存使用的限制。</li>
-</ul>
-<p>Linux Cgroups 的设计还是比较易用的，简单粗暴地理解它就是一个子系统目录加上一组资源限制文件的组合。<br>而对于 Docker 等 Linux 容器项目来说，它们只需要在每个子系统下面，为每个容器创建一个控制组（即创建一个新目录），然后在启动容器进程之后，把这个进程的 PID 填写到对应控制组的 tasks 文件中就可以了。  </p>
-<p>比如这样一条命令：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ docker run -it --cpu-period=100000 --cpu-quota=20000 ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-
-<p>在启动这个容器后，我们可以通过查看 Cgroups 文件系统下，CPU 子系统中，“docker”这个控制组里的资源限制文件的内容来确认：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_period_us</span><br><span class="line">100000</span><br><span class="line">$ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_quota_us </span><br><span class="line">20000</span><br></pre></td></tr></table></figure>
-
-<p>这就意味着这个 Docker 容器，只能使用到 20% 的 CPU 带宽。  </p>
-<h1 id="深入理解容器镜像"><a href="#深入理解容器镜像" class="headerlink" title="深入理解容器镜像"></a>深入理解容器镜像</h1><p>疑惑：容器里的进程看到的文件系统又是什么样子的呢？  </p>
-<p>下面来看一段程序，它的作用是在创建子进程时开启指定的 Namespace。  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _GNU_SOURCE</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/mount.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sched.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> STACK_SIZE (1024 * 1024)</span></span><br><span class="line"><span class="type">static</span> <span class="type">char</span> container_stack[STACK_SIZE];</span><br><span class="line"><span class="type">char</span>* <span class="type">const</span> container_args[] = &#123;</span><br><span class="line"> <span class="string">&quot;/bin/bash&quot;</span>,</span><br><span class="line"> <span class="literal">NULL</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">container_main</span><span class="params">(<span class="type">void</span>* arg)</span></span><br><span class="line">&#123; </span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">&quot;Container - inside the container!\n&quot;</span>);</span><br><span class="line"> execv(container_args[<span class="number">0</span>], container_args);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">&quot;Something&#x27;s wrong!\n&quot;</span>);</span><br><span class="line"> <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">&quot;Parent - start a container!\n&quot;</span>);</span><br><span class="line"> <span class="type">int</span> container_pid = clone(container_main, container_stack+STACK_SIZE, CLONE_NEWNS | SI</span><br><span class="line"> waitpid(container_pid, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">&quot;Parent - container stopped!\n&quot;</span>);</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="重新认识Docker容器"><a href="#重新认识Docker容器" class="headerlink" title="重新认识Docker容器"></a>重新认识Docker容器</h1><h1 id="谈谈Kubernetes的本质"><a href="#谈谈Kubernetes的本质" class="headerlink" title="谈谈Kubernetes的本质"></a>谈谈Kubernetes的本质</h1><h2 id="首先，Kubernetes-项目要解决的问题是什么？"><a href="#首先，Kubernetes-项目要解决的问题是什么？" class="headerlink" title="首先，Kubernetes 项目要解决的问题是什么？"></a>首先，Kubernetes 项目要解决的问题是什么？</h2><h2 id="Borg-对于-Kubernetes-项目的指导作用又体现在哪里呢？"><a href="#Borg-对于-Kubernetes-项目的指导作用又体现在哪里呢？" class="headerlink" title="Borg 对于 Kubernetes 项目的指导作用又体现在哪里呢？"></a>Borg 对于 Kubernetes 项目的指导作用又体现在哪里呢？</h2>]]></content>
-      <categories>
-        <category>LearnCloudNative</category>
-      </categories>
-      <tags>
-        <tag>云原生</tag>
-        <tag>容器</tag>
       </tags>
   </entry>
   <entry>
@@ -9130,7 +9082,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9447,8 +9399,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>基础</tag>
         <tag>leetcode</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -9461,9 +9413,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>二叉树</tag>
         <tag>递归</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9475,8 +9427,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>二叉树</tag>
         <tag>leetcode</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -9488,8 +9440,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>leetcode</tag>
+        <tag>递归</tag>
         <tag>斐波那契</tag>
       </tags>
   </entry>
@@ -9508,8 +9460,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -9528,8 +9480,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -9567,9 +9519,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>Map</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9609,8 +9561,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>链表</tag>
         <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -9626,8 +9578,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>暴力</tag>
       </tags>
   </entry>
@@ -9675,8 +9627,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -9690,8 +9642,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>链表</tag>
         <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -9721,8 +9673,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>栈</tag>
         <tag>leetcode</tag>
+        <tag>栈</tag>
         <tag>括号问题</tag>
         <tag>replace</tag>
       </tags>
@@ -9753,9 +9705,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>链表</tag>
         <tag>递归</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9781,8 +9733,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -9795,8 +9747,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>字符串比较</tag>
         <tag>map</tag>
       </tags>
@@ -9833,8 +9785,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>双指针</tag>
       </tags>
   </entry>
@@ -9890,8 +9842,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>leetcode</tag>
+        <tag>字符串</tag>
         <tag>KMP</tag>
         <tag>暴力法</tag>
       </tags>
@@ -9908,9 +9860,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -9933,8 +9885,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>循环</tag>
         <tag>leetcode</tag>
+        <tag>循环</tag>
         <tag>map</tag>
         <tag>array</tag>
       </tags>
@@ -9996,8 +9948,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>动态规划</tag>
         <tag>leetcode</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -10013,9 +9965,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>BFS</tag>
         <tag>DFS</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10064,8 +10016,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10114,9 +10066,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>哈希表</tag>
         <tag>字符串</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10129,8 +10081,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10146,9 +10098,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>循环</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10174,8 +10126,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10204,8 +10156,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10249,9 +10201,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>动态规划</tag>
-        <tag>leetcode</tag>
         <tag>暴力求解</tag>
       </tags>
   </entry>
@@ -10275,9 +10227,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>字符串</tag>
-        <tag>leetcode</tag>
         <tag>反转</tag>
       </tags>
   </entry>
@@ -10326,8 +10278,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10346,8 +10298,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>leetcode</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -10365,8 +10317,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>leetcode</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -10382,9 +10334,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>循环</tag>
         <tag>哈希表</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -10402,8 +10354,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10416,8 +10368,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -10463,8 +10415,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -10476,8 +10428,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>二叉树</tag>
         <tag>leetcode</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -10505,8 +10457,8 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>leetcode</tag>
+        <tag>数组</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -10548,9 +10500,9 @@
         <category>LeetCode-Solutions</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -11079,23 +11031,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
-    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
-<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>leetcode-cn</code>执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SwordToOffer</category>
-      </categories>
-      <tags>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
     <url>/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指 Offer 32 - I. 从上到下打印二叉树</a>  </p>
@@ -11114,6 +11049,23 @@
 
 <p><code>leetcode-cn</code>执行  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了97.77%的用户</span><br><span class="line">内存消耗：41.5 MB, 在所有 Java 提交中击败了28.48%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
+    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
+<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>SwordToOffer</category>
       </categories>
@@ -11862,8 +11814,8 @@
         <category>Remind-sth</category>
       </categories>
       <tags>
-        <tag>老师</tag>
         <tag>经验</tag>
+        <tag>老师</tag>
       </tags>
   </entry>
   <entry>
@@ -12312,9 +12264,9 @@
         <category>Essay</category>
       </categories>
       <tags>
+        <tag>经验</tag>
         <tag>工作</tag>
         <tag>职场</tag>
-        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -12338,8 +12290,8 @@
         <category>Essay</category>
       </categories>
       <tags>
-        <tag>工作</tag>
         <tag>感悟</tag>
+        <tag>工作</tag>
         <tag>挫折</tag>
       </tags>
   </entry>
@@ -12525,9 +12477,9 @@
         <category>Essay</category>
       </categories>
       <tags>
+        <tag>经验</tag>
         <tag>工作</tag>
         <tag>效率</tag>
-        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -12621,8 +12573,8 @@
         <category>Tech-Growing</category>
       </categories>
       <tags>
-        <tag>计划</tag>
         <tag>架构师</tag>
+        <tag>计划</tag>
         <tag>研发</tag>
       </tags>
   </entry>
@@ -12755,6 +12707,25 @@
       </tags>
   </entry>
   <entry>
+    <title>妹妹的中考</title>
+    <url>/2020/07/30/sister-zhong-kao/</url>
+    <content><![CDATA[<p>这两周一直在忙妹妹的中考，这个月底总算尘埃落定。  </p>
+<p>由于今年疫情原因，取消中考体育，所以总分只有750分，妹妹说她考了670分，全市排名1700左右，我觉得可以冲下排名第二、三，保底是排名第四和第五的学校。  </p>
+<p>然而最终录取分数线出来后，排名第三的乌鲁木齐市八一中学分数线比妹妹的成绩高了5分，最终被排名第四的乌鲁木齐市八中录取了。  </p>
+<p>父母觉得有些遗憾，但只能接受，好在乌鲁木齐市八中也离家比较近，耗时近两周的中考录取终于结束了。  </p>
+<p>然而，我突然回想起我的中考，跌跌撞撞中被乌鲁木齐市高级中学实验班录取，巨大的校园和先进的设备吸引了我，还有各种兴趣小组可以参加，邻居们之前还对我家不屑一顾，突然听说我考到了乌鲁木齐市高级中学的时候，羡慕、嫉妒纷至沓来。从那时起我突然明白，原来好学校有时候就像一种荣誉的象征，不光是给自己争气，也是给父母脸上增光。  </p>
+<p>时隔多年，我依然庆幸，在高中里遇到的良师益友，影响了我的高考乃至大学生涯。  </p>
+<p>中考差5分也算是一次警醒，希望妹妹可以在乌鲁木齐市八中里茁壮成长，期待三年后的高考，也能取得一个满意的结果。  </p>
+<p><img src="/2020/07/30/sister-zhong-kao/light.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>中考</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>6次提交完善Github个人简介</title>
     <url>/2021/02/01/six-github-commits-update-my-github-readme/</url>
     <content><![CDATA[<p>半年前意外看到了阿里巴巴半霜大佬的<code>Github</code>个人界面，甚是喜欢，今天晚上我利用了一个半小时的时间查资料分析代码，，地址点<a href="https://github.com/OctopusLian">这里</a>  </p>
@@ -12817,25 +12788,6 @@
         <tag>skin79</tag>
         <tag>黑头</tag>
         <tag>清理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>妹妹的中考</title>
-    <url>/2020/07/30/sister-zhong-kao/</url>
-    <content><![CDATA[<p>这两周一直在忙妹妹的中考，这个月底总算尘埃落定。  </p>
-<p>由于今年疫情原因，取消中考体育，所以总分只有750分，妹妹说她考了670分，全市排名1700左右，我觉得可以冲下排名第二、三，保底是排名第四和第五的学校。  </p>
-<p>然而最终录取分数线出来后，排名第三的乌鲁木齐市八一中学分数线比妹妹的成绩高了5分，最终被排名第四的乌鲁木齐市八中录取了。  </p>
-<p>父母觉得有些遗憾，但只能接受，好在乌鲁木齐市八中也离家比较近，耗时近两周的中考录取终于结束了。  </p>
-<p>然而，我突然回想起我的中考，跌跌撞撞中被乌鲁木齐市高级中学实验班录取，巨大的校园和先进的设备吸引了我，还有各种兴趣小组可以参加，邻居们之前还对我家不屑一顾，突然听说我考到了乌鲁木齐市高级中学的时候，羡慕、嫉妒纷至沓来。从那时起我突然明白，原来好学校有时候就像一种荣誉的象征，不光是给自己争气，也是给父母脸上增光。  </p>
-<p>时隔多年，我依然庆幸，在高中里遇到的良师益友，影响了我的高考乃至大学生涯。  </p>
-<p>中考差5分也算是一次警醒，希望妹妹可以在乌鲁木齐市八中里茁壮成长，期待三年后的高考，也能取得一个满意的结果。  </p>
-<p><img src="/2020/07/30/sister-zhong-kao/light.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>中考</tag>
       </tags>
   </entry>
   <entry>
@@ -14598,10 +14550,10 @@
         <category>Learn-go</category>
       </categories>
       <tags>
-        <tag>Go</tag>
         <tag>项目</tag>
-        <tag>知识星球</tag>
         <tag>爬虫</tag>
+        <tag>Go</tag>
+        <tag>知识星球</tag>
       </tags>
   </entry>
   <entry>
@@ -18281,8 +18233,8 @@
         <category>Travel-notes</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
         <tag>成长</tag>
+        <tag>感悟</tag>
         <tag>游记</tag>
         <tag>单人旅途</tag>
       </tags>
@@ -18656,9 +18608,9 @@
         <category>Share-live</category>
       </categories>
       <tags>
+        <tag>设计</tag>
         <tag>学习</tag>
         <tag>技术</tag>
-        <tag>设计</tag>
         <tag>消息推送</tag>
       </tags>
   </entry>
@@ -19128,8 +19080,8 @@
         <category>Work-Career</category>
       </categories>
       <tags>
-        <tag>职场</tag>
         <tag>经验</tag>
+        <tag>职场</tag>
         <tag>生存指南</tag>
       </tags>
   </entry>

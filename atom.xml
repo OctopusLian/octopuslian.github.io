@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-08-30T14:58:26.337Z</updated>
+  <updated>2022-09-06T13:58:35.091Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>如何完美干净的卸载Kubernetes集群</title>
+    <link href="https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/"/>
+    <id>https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</id>
+    <published>2022-09-06T13:49:55.000Z</published>
+    <updated>2022-09-06T13:58:35.091Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;因为某些原因，需要卸载&lt;code&gt;kubernetes&lt;/code&gt;集群，本文将分享完整卸载&lt;code&gt;kubernetes&lt;/code&gt;的方法。  &lt;/p&gt;
+&lt;p&gt;默认是&lt;code&gt;root&lt;/code&gt;用户操作  &lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="集群" scheme="https://octopuslian.github.io/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="卸载" scheme="https://octopuslian.github.io/tags/%E5%8D%B8%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入剖析Kubernetes</title>
+    <link href="https://octopuslian.github.io/2022/09/05/in-depth-kubernetes/"/>
+    <id>https://octopuslian.github.io/2022/09/05/in-depth-kubernetes/</id>
+    <published>2022-09-05T02:28:09.000Z</published>
+    <updated>2022-09-05T03:28:52.976Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;容器技术预习&quot;&gt;&lt;a href=&quot;#容器技术预习&quot; class=&quot;headerlink&quot; title=&quot;容器技术预习&quot;&gt;&lt;/a&gt;容器技术预习&lt;/h1&gt;&lt;h2 id=&quot;Docker产生的背景&quot;&gt;&lt;a href=&quot;#Docker产生的背景&quot; class=&quot;headerlink&quot; title=&quot;Docker产生的背景&quot;&gt;&lt;/a&gt;Docker产生的背景&lt;/h2&gt;&lt;p&gt;2013~2014 年，以 Cloud Foundry 为代表的 PaaS 项目，逐渐完成了教育用户和开拓市&lt;br&gt;场的艰巨任务，也正是在这个将概念逐渐落地的过程中，应用“打包”困难这个问题，成了整个后端技术圈子的一块心病。Docker 项目的出现，则为这个根本性的问题提供了一个近乎完美的解决方案。这正是Docker 项目刚刚开源不久，就能够带领一家原本默默无闻的PaaS 创业公司脱颖而出，然后迅速占领了所有云计算领域头条的技术原因。  &lt;/p&gt;
+&lt;p&gt;而在成为了基础设施领域近十年难得一见的技术明星之后，dotCloud 公司则在 2013 年底大胆改名为 Docker 公司。不过，这个在当时就颇具争议的改名举动，也成为了日后容器技术圈风云变幻的一个关键伏笔。  &lt;/p&gt;
+&lt;h2 id=&quot;Docker-项目在短时间内迅速崛起的三个重要原因&quot;&gt;&lt;a href=&quot;#Docker-项目在短时间内迅速崛起的三个重要原因&quot; class=&quot;headerlink&quot; title=&quot;Docker 项目在短时间内迅速崛起的三个重要原因&quot;&gt;&lt;/a&gt;Docker 项目在短时间内迅速崛起的三个重要原因&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
     <link href="https://octopuslian.github.io/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/"/>
     <id>https://octopuslian.github.io/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</id>
     <published>2022-08-30T14:33:36.000Z</published>
-    <updated>2022-08-30T14:58:26.337Z</updated>
+    <updated>2022-08-30T14:58:55.396Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/&quot;&gt;剑指 Offer 32 - III. 从上到下打印二叉树 III&lt;/a&gt;  &lt;/p&gt;
@@ -422,93 +476,6 @@
     
     
     <category term="数列" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 09. 用两个栈实现队列</title>
-    <link href="https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/"/>
-    <id>https://octopuslian.github.io/2022/05/06/leetcode-lcof-09-yong-liang-ge-zhan-shi-xian-dui-lie/</id>
-    <published>2022-05-06T13:46:37.000Z</published>
-    <updated>2022-05-06T15:50:50.988Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/&quot;&gt;剑指 Offer 09. 用两个栈实现队列&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;我的复述：  &lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;函数操作&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;CQueue&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;appendTail&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;appendTail&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;deleteHead&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;入参&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;[]&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;5&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;2&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;[]&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;返回结果&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;null&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;-1&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;null&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;null&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;5&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;h1 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="队列" scheme="https://octopuslian.github.io/tags/%E9%98%9F%E5%88%97/"/>
-    
-    <category term="栈" scheme="https://octopuslian.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一文搞懂算法复杂度分析</title>
-    <link href="https://octopuslian.github.io/2022/05/05/complexity-analysis/"/>
-    <id>https://octopuslian.github.io/2022/05/05/complexity-analysis/</id>
-    <published>2022-05-05T06:22:08.000Z</published>
-    <updated>2022-05-05T12:14:03.262Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;为什么要懂复杂度分析&quot;&gt;&lt;a href=&quot;#为什么要懂复杂度分析&quot; class=&quot;headerlink&quot; title=&quot;为什么要懂复杂度分析&quot;&gt;&lt;/a&gt;为什么要懂复杂度分析&lt;/h1&gt;&lt;p&gt;我们都知道，数据结构和算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，执行效率是算法一个非常重要的考量指标。那如何来衡量你编写的算法代码的执行效率呢？  &lt;/p&gt;
-&lt;p&gt;你可能会有些疑惑，我把代码跑一遍，通过统计、监控，就能得到算法执行的时间和占用的内存大小。为什么还要做时间、空间复杂度分析呢？这种分析方法能比我实实在在跑一遍得到的数据更准确吗？  &lt;/p&gt;
-&lt;p&gt;首先，我可以肯定地说，你这种评估算法执行效率的方法是正确的。很多数据结构和算法书籍还给这种方法起了一个名字，叫&lt;strong&gt;事后统计法&lt;/strong&gt;。但是，这种统计方法有非常大的局限性。  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;ol&gt;
-&lt;li&gt;测试结果非常依赖测试环境&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;测试结果受数据规模的影响很大&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="Learn-Algorithms" scheme="https://octopuslian.github.io/categories/Learn-Algorithms/"/>
-    
-    
-    <category term="算法" scheme="https://octopuslian.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="复杂度" scheme="https://octopuslian.github.io/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
     
   </entry>
   
