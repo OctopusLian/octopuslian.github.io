@@ -4950,6 +4950,41 @@
       </tags>
   </entry>
   <entry>
+    <title>让Go“恐慌”的十种方法</title>
+    <url>/2021/09/05/go-panic-ten-method/</url>
+    <content><![CDATA[<p>本内容来源于书籍《Go语言编程之旅》  </p>
+<p>本文内容将运行让Go程序遇到“恐慌”的代码例子  </p>
+<h2 id="数组-x2F-切片索引越界"><a href="#数组-x2F-切片索引越界" class="headerlink" title="数组&#x2F;切片索引越界"></a>数组&#x2F;切片索引越界</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	names := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="string">&quot;2&quot;</span>,</span><br><span class="line">		<span class="string">&quot;3&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	name := names[<span class="built_in">len</span>(names)]  <span class="comment">//应该改为 names[len(names) - 1]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;name: %s&quot;</span>,name)  <span class="comment">//panic: runtime error: index out of range [3] with length 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="空指针调用"><a href="#空指针调用" class="headerlink" title="空指针调用"></a>空指针调用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *User)</span></span>GetName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> u.Name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s := &amp;User&#123;Name: <span class="string">&quot;Neo&quot;</span>&#125;</span><br><span class="line">	s = <span class="literal">nil</span></span><br><span class="line">	s.GetName()  <span class="comment">//panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="过早关闭HTTP响应体"><a href="#过早关闭HTTP响应体" class="headerlink" title="过早关闭HTTP响应体"></a>过早关闭HTTP响应体</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp,err := http.Get(<span class="string">&quot;https://xxx&quot;</span>)</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()  <span class="comment">//panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;http.Get err: %v&quot;</span>,err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="除以零"><a href="#除以零" class="headerlink" title="除以零"></a>除以零</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">divide</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a / b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	divide(<span class="number">1</span>,<span class="number">0</span>)  <span class="comment">//panic: runtime error: integer divide by zero</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="向已经关闭的通道发送消息"><a href="#向已经关闭的通道发送消息" class="headerlink" title="向已经关闭的通道发送消息"></a>向已经关闭的通道发送消息</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>,<span class="number">1</span>)</span><br><span class="line">	ch &lt;- <span class="string">&quot;neo&quot;</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="string">&quot;come on&quot;</span>  <span class="comment">//panic: send on closed channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="重复关闭通道"><a href="#重复关闭通道" class="headerlink" title="重复关闭通道"></a>重复关闭通道</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>,<span class="number">1</span>)</span><br><span class="line">	ch &lt;- <span class="string">&quot;neo&quot;</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	<span class="built_in">close</span>(ch)  <span class="comment">//panic: close of closed channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关闭未初始化的通道"><a href="#关闭未初始化的通道" class="headerlink" title="关闭未初始化的通道"></a>关闭未初始化的通道</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch <span class="keyword">chan</span> <span class="type">string</span></span><br><span class="line">	<span class="built_in">close</span>(ch)  <span class="comment">//panic: close of nil channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="未初始化map"><a href="#未初始化map" class="headerlink" title="未初始化map"></a>未初始化map</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span></span><br><span class="line">	m[<span class="string">&quot;neo&quot;</span>] = <span class="string">&quot;come on&quot;</span>  <span class="comment">//panic: assignment to entry in nil map</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="跨协程的“恐慌”处理"><a href="#跨协程的“恐慌”处理" class="headerlink" title="跨协程的“恐慌”处理"></a>跨协程的“恐慌”处理</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">if</span> err := <span class="built_in">recover</span>();err != <span class="literal">nil</span> &#123;</span><br><span class="line">				log.Fatalf(<span class="string">&quot;revover err: %v&quot;</span>,err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">		handle()</span><br><span class="line">	&#125;()</span><br><span class="line">	time.Sleep(time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> divide(<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">divide</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a / b  <span class="comment">//panic: runtime error: integer divide by zero</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sync计数为负值"><a href="#sync计数为负值" class="headerlink" title="sync计数为负值"></a>sync计数为负值</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wg := sync.WaitGroup&#123;&#125;</span><br><span class="line">	wg.Add(<span class="number">-1</span>)  <span class="comment">//panic: sync: negative WaitGroup counter</span></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://gist.github.com/OctopusLian/c07175249607e3c523704a08fb05e47f">代码地址</a>  </p>
+]]></content>
+      <categories>
+        <category>Learn-go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>panic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go项目结构设计过程点滴记录</title>
     <url>/2019/04/22/go-project-struct-design-note/</url>
     <content><![CDATA[<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>之前在知识星球里星主让用<code>SMTP</code>协议实现邮件发送功能，看了<code>Max Li</code>的设计，并和他交流了一小时，在此将设计经验记录下来。  </p>
@@ -4991,41 +5026,6 @@
         <tag>项目</tag>
         <tag>Go</tag>
         <tag>架构设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>让Go“恐慌”的十种方法</title>
-    <url>/2021/09/05/go-panic-ten-method/</url>
-    <content><![CDATA[<p>本内容来源于书籍《Go语言编程之旅》  </p>
-<p>本文内容将运行让Go程序遇到“恐慌”的代码例子  </p>
-<h2 id="数组-x2F-切片索引越界"><a href="#数组-x2F-切片索引越界" class="headerlink" title="数组&#x2F;切片索引越界"></a>数组&#x2F;切片索引越界</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	names := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="string">&quot;2&quot;</span>,</span><br><span class="line">		<span class="string">&quot;3&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	name := names[<span class="built_in">len</span>(names)]  <span class="comment">//应该改为 names[len(names) - 1]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;name: %s&quot;</span>,name)  <span class="comment">//panic: runtime error: index out of range [3] with length 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="空指针调用"><a href="#空指针调用" class="headerlink" title="空指针调用"></a>空指针调用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *User)</span></span>GetName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> u.Name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s := &amp;User&#123;Name: <span class="string">&quot;Neo&quot;</span>&#125;</span><br><span class="line">	s = <span class="literal">nil</span></span><br><span class="line">	s.GetName()  <span class="comment">//panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="过早关闭HTTP响应体"><a href="#过早关闭HTTP响应体" class="headerlink" title="过早关闭HTTP响应体"></a>过早关闭HTTP响应体</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp,err := http.Get(<span class="string">&quot;https://xxx&quot;</span>)</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()  <span class="comment">//panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;http.Get err: %v&quot;</span>,err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="除以零"><a href="#除以零" class="headerlink" title="除以零"></a>除以零</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">divide</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a / b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	divide(<span class="number">1</span>,<span class="number">0</span>)  <span class="comment">//panic: runtime error: integer divide by zero</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="向已经关闭的通道发送消息"><a href="#向已经关闭的通道发送消息" class="headerlink" title="向已经关闭的通道发送消息"></a>向已经关闭的通道发送消息</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>,<span class="number">1</span>)</span><br><span class="line">	ch &lt;- <span class="string">&quot;neo&quot;</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="string">&quot;come on&quot;</span>  <span class="comment">//panic: send on closed channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="重复关闭通道"><a href="#重复关闭通道" class="headerlink" title="重复关闭通道"></a>重复关闭通道</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>,<span class="number">1</span>)</span><br><span class="line">	ch &lt;- <span class="string">&quot;neo&quot;</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	<span class="built_in">close</span>(ch)  <span class="comment">//panic: close of closed channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关闭未初始化的通道"><a href="#关闭未初始化的通道" class="headerlink" title="关闭未初始化的通道"></a>关闭未初始化的通道</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch <span class="keyword">chan</span> <span class="type">string</span></span><br><span class="line">	<span class="built_in">close</span>(ch)  <span class="comment">//panic: close of nil channel</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="未初始化map"><a href="#未初始化map" class="headerlink" title="未初始化map"></a>未初始化map</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span></span><br><span class="line">	m[<span class="string">&quot;neo&quot;</span>] = <span class="string">&quot;come on&quot;</span>  <span class="comment">//panic: assignment to entry in nil map</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="跨协程的“恐慌”处理"><a href="#跨协程的“恐慌”处理" class="headerlink" title="跨协程的“恐慌”处理"></a>跨协程的“恐慌”处理</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">if</span> err := <span class="built_in">recover</span>();err != <span class="literal">nil</span> &#123;</span><br><span class="line">				log.Fatalf(<span class="string">&quot;revover err: %v&quot;</span>,err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">		handle()</span><br><span class="line">	&#125;()</span><br><span class="line">	time.Sleep(time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> divide(<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">divide</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a / b  <span class="comment">//panic: runtime error: integer divide by zero</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="sync计数为负值"><a href="#sync计数为负值" class="headerlink" title="sync计数为负值"></a>sync计数为负值</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wg := sync.WaitGroup&#123;&#125;</span><br><span class="line">	wg.Add(<span class="number">-1</span>)  <span class="comment">//panic: sync: negative WaitGroup counter</span></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://gist.github.com/OctopusLian/c07175249607e3c523704a08fb05e47f">代码地址</a>  </p>
-]]></content>
-      <categories>
-        <category>Learn-go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>panic</tag>
       </tags>
   </entry>
   <entry>
@@ -8402,6 +8402,21 @@
       </tags>
   </entry>
   <entry>
+    <title>如何完美干净的卸载Kubernetes集群</title>
+    <url>/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</url>
+    <content><![CDATA[<p>因为某些原因，需要卸载<code>kubernetes</code>集群，本文将分享完整卸载<code>kubernetes</code>的方法。  </p>
+<p>默认是<code>root</code>用户操作  </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先清理运行到k8s群集中的pod</span></span><br><span class="line">kubectl delete node --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止所有k8s相关服务</span></span><br><span class="line"><span class="keyword">for</span> service <span class="keyword">in</span> kube-apiserver kube-controller-manager kubectl kubelet kube-proxy kube-scheduler;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">      systemctl stop <span class="variable">$service</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置集群</span></span><br><span class="line">kubeadm reset -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除相关的配置文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf ~/.kube/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/kubernetes/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service.d</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service</span><br><span class="line"><span class="comment"># 删除kubenetes有关的可执行文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf /usr/bin/kube*</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /opt/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/etcd</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/etcd</span><br><span class="line"></span><br><span class="line">apt clean all</span><br><span class="line"></span><br><span class="line">apt remove kube*</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>集群</tag>
+        <tag>kubernetes</tag>
+        <tag>卸载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何释放压力</title>
     <url>/2019/11/11/how-to-reduce-pressure/</url>
     <content><![CDATA[<h2 id="压力来源"><a href="#压力来源" class="headerlink" title="压力来源"></a>压力来源</h2><p>我个人觉得压力的渠道主要有这些：  </p>
@@ -9085,7 +9100,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#x2e;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#46;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9169,6 +9184,39 @@
 </ul>
 <p><img src="/2022/03/05/kubeadm-join-principle/kubeadm.png">  </p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Kubernetes编排原理——“控制器”设计思想</title>
+    <url>/2022/09/07/kubernetes-arrange-principle-controller-manager/</url>
+    <content><![CDATA[<p>首先，我们以之前实践过的<code>nginx-deployment.yaml</code>文件为例：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span> <span class="comment"># API对象的类型</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span> </span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span> <span class="comment"># 过滤规则的定义</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span> <span class="comment"># 定义Pod副本个数为2</span></span><br><span class="line"> <span class="attr">template:</span> </span><br><span class="line">   <span class="attr">metadata: labels:</span> <span class="comment"># 元数据</span></span><br><span class="line">     <span class="attr">app:</span> <span class="string">nginx</span> <span class="comment"># labels，一组键值对的标签</span></span><br><span class="line">   <span class="attr">spec:</span> </span><br><span class="line">     <span class="attr">containers:</span> </span><br><span class="line">     <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span> </span><br><span class="line">       <span class="attr">image:</span> <span class="string">nginx:1.7.9</span> </span><br><span class="line">       <span class="attr">ports:</span> </span><br><span class="line">       <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+<p>这个<code>Deployment</code>定义的编排动作是：请确保携带了<code>app:nginx</code>标签的<code>Pod</code>的个数永远等于<code>spec.replicas</code>指定的个数-&gt; 2。  </p>
+<p>这就意味着，如果在这个集群中，携带<code>app:nginx</code>标签的<code>Pod</code>个数大于等于2，就会有旧的<code>Pod</code>被删除；反之就会有新的<code>Pod</code>被创建。  </p>
+<p>那么，究竟是<code>Kubernetes</code>项目的哪个组件在执行这些操作呢？——<code>kube-controller-manager</code>组件。  </p>
+<p>实际上，这个组件就是一系列控制器的集合，看下<code>pkg/controller</code>目录  </p>
+<p>实际上，这些控制器之所以被统一放在<code>pkg/controller</code>目录下，就是因为它们都遵循<code>Kubernetes</code>项目中的一个通用编排模式——控制循环（<code>control loop</code>）。  </p>
+<p>比如，现在有一种待编排的对象X，它有一个对应的控制器。那么，我就可以用一段Go语言风格伪代码来描述：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">    实际状态 := 获取集群中对象X的实际状态</span><br><span class="line">    期望状态 := 获取集群中对象X的期望状态</span><br><span class="line">    <span class="keyword">if</span> 实际状态 == 期望状态 &#123;</span><br><span class="line">        什么都不做</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        执行编排动作，将实际状态调整为期望状态</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们以<code>Deployment</code>为例，简单介绍它对控制器模型的实现：  </p>
+<ul>
+<li>1，<code>Deployment</code>控制器从<code>etcd</code>中获取所有携带了<code>app:nginx</code>标签的<code>Pod</code>，然后统计它们的数量，这就是实际状态；  </li>
+<li>2，<code>Deployment</code>对象的<code>Replicas</code>字段的值就是期望状态；  </li>
+<li>3，<code>Deployment</code>控制器比较两个状态，然后根据结果确定是创建<code>Pod</code>，还是删除已有的<code>Pod</code>。</li>
+</ul>
+<p>因此，一个<code>Kubernetes</code>对象的主要编排逻辑在第三步对比阶段完成。这个操作通常称作<strong>调谐（reconcile）</strong>。调谐的过程则称作<strong>调谐循环（reconcile loop）</strong>或者<strong>同步循环（sync loop）</strong>。  </p>
+<p>调谐的最终结果往往是对被控制对象的某种写操作。比如，增加&#x2F;删除 Pod，或者更新<code>Pod</code>的某个字段。  </p>
+<p>至此，我们可以对<code>Deployment</code>以及其他类似的控制器做一个简单总结：<br><img src="/2022/09/07/kubernetes-arrange-principle-controller-manager/deployment.png">  </p>
+<p>类似于<code>Deployment</code>这样的控制器，由上半部分的控制器定义（包括期望状态）和下半部分的被控制对象的模板组成的。这就是为什么在所有API对象的<code>Metadata</code>里，都会有一个名为<code>ownerReference</code>的字段，用于保存当前这个API对象的拥有者的信息。  </p>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>控制器</tag>
+        <tag>编排原理</tag>
+      </tags>
   </entry>
   <entry>
     <title>Kubernetes编排原理——Pod</title>
@@ -9708,21 +9756,6 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>暴力</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何完美干净的卸载Kubernetes集群</title>
-    <url>/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</url>
-    <content><![CDATA[<p>因为某些原因，需要卸载<code>kubernetes</code>集群，本文将分享完整卸载<code>kubernetes</code>的方法。  </p>
-<p>默认是<code>root</code>用户操作  </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先清理运行到k8s群集中的pod</span></span><br><span class="line">kubectl delete node --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止所有k8s相关服务</span></span><br><span class="line"><span class="keyword">for</span> service <span class="keyword">in</span> kube-apiserver kube-controller-manager kubectl kubelet kube-proxy kube-scheduler;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">      systemctl stop <span class="variable">$service</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置集群</span></span><br><span class="line">kubeadm reset -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除相关的配置文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf ~/.kube/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/kubernetes/</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service.d</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/systemd/system/kubelet.service</span><br><span class="line"><span class="comment"># 删除kubenetes有关的可执行文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf /usr/bin/kube*</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /opt/cni</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/etcd</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /var/etcd</span><br><span class="line"></span><br><span class="line">apt clean all</span><br><span class="line"></span><br><span class="line">apt remove kube*</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LearnKubernetes</category>
-      </categories>
-      <tags>
-        <tag>集群</tag>
-        <tag>kubernetes</tag>
-        <tag>卸载</tag>
       </tags>
   </entry>
   <entry>
@@ -11173,6 +11206,23 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
+    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
+<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
     <url>/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指 Offer 32 - I. 从上到下打印二叉树</a>  </p>
@@ -12608,23 +12658,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
-    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
-<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>leetcode-cn</code>执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SwordToOffer</category>
-      </categories>
-      <tags>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>四川省都江堰市青城后山一日游</title>
     <url>/2021/04/21/qing-cheng-hou-shan-one-day-trip/</url>
     <content><![CDATA[<p>上周五去跟一位朋友约去爬山，地点选在都江堰市的青城山，本文将详细分享旅游攻略，以及旅行完的顿悟。</p>
@@ -13958,6 +13991,33 @@
       </tags>
   </entry>
   <entry>
+    <title>图灵导读_《微积分入门》_第七天_柯西判别法</title>
+    <url>/2019/11/23/turing-read-introduce-to-calculus-day7/</url>
+    <content><![CDATA[<h2 id="知识点概览"><a href="#知识点概览" class="headerlink" title="知识点概览"></a>知识点概览</h2><p>本节定理的证明十分精彩，几乎把前面所学到的知识的板块，集训似的演练一遍。  </p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（位置在书本的第十八面，定理1.13）  </p>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/1.jpg">  </p>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/2.jpg">  </p>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/3.jpg">  </p>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/4.jpg">  </p>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/5.jpg">  </p>
+<h3 id="证明α是数列极限"><a href="#证明α是数列极限" class="headerlink" title="证明α是数列极限"></a>证明α是数列极限</h3><p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/6.jpg">  </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>从定义上认真理解到位，很重要。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://wikipedia.hk.wjbk.site/wiki/%E6%9F%AF%E8%A5%BF%E5%88%A4%E5%88%A5%E6%B3%95">维基百科_柯西判别法</a></li>
+</ul>
+<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/day7.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Learn-math</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>TURING</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>两天时间兼职运维从零搭建一套分布式云存储文件系统的收获</title>
     <url>/2021/08/24/two-days-build-distribute-cloud-storage-file-system-gains/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>部门的小<code>leader</code>C想让我熟悉整个业务，知道来龙去脉，让我从零开始搭建一套环境，也方便开发人员直接在上面进行测试，所以从这周一开始，我的工作就来了。  </p>
@@ -13984,33 +14044,6 @@
         <tag>运维</tag>
         <tag>IPFS</tag>
         <tag>云存储</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图灵导读_《微积分入门》_第七天_柯西判别法</title>
-    <url>/2019/11/23/turing-read-introduce-to-calculus-day7/</url>
-    <content><![CDATA[<h2 id="知识点概览"><a href="#知识点概览" class="headerlink" title="知识点概览"></a>知识点概览</h2><p>本节定理的证明十分精彩，几乎把前面所学到的知识的板块，集训似的演练一遍。  </p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>（位置在书本的第十八面，定理1.13）  </p>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/1.jpg">  </p>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/2.jpg">  </p>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/3.jpg">  </p>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/4.jpg">  </p>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/5.jpg">  </p>
-<h3 id="证明α是数列极限"><a href="#证明α是数列极限" class="headerlink" title="证明α是数列极限"></a>证明α是数列极限</h3><p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/6.jpg">  </p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>从定义上认真理解到位，很重要。</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://wikipedia.hk.wjbk.site/wiki/%E6%9F%AF%E8%A5%BF%E5%88%A4%E5%88%A5%E6%B3%95">维基百科_柯西判别法</a></li>
-</ul>
-<p><img src="/2019/11/23/turing-read-introduce-to-calculus-day7/day7.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Learn-math</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-        <tag>TURING</tag>
       </tags>
   </entry>
   <entry>
