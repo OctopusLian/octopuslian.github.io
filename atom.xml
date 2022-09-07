@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-09-07T07:12:48.117Z</updated>
+  <updated>2022-09-07T14:06:57.295Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kubernetes编排原理——Pod</title>
+    <link href="https://octopuslian.github.io/2022/09/07/kubernetes-arrange-principle-pod/"/>
+    <id>https://octopuslian.github.io/2022/09/07/kubernetes-arrange-principle-pod/</id>
+    <published>2022-09-07T07:33:09.000Z</published>
+    <updated>2022-09-07T14:06:57.295Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将开始系统学习&lt;code&gt;Kubernetes&lt;/code&gt;的编排原理，因此先从最重要最基本的&lt;code&gt;Pod&lt;/code&gt;开始。  &lt;/p&gt;
+&lt;h1 id=&quot;为什么需要Pod&quot;&gt;&lt;a href=&quot;#为什么需要Pod&quot; class=&quot;headerlink&quot; title=&quot;为什么需要Pod&quot;&gt;&lt;/a&gt;为什么需要Pod&lt;/h1&gt;&lt;p&gt;首先需要记住：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Pod&lt;/code&gt;是&lt;code&gt;Kubernetes&lt;/code&gt;项目的院子调度单位；  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Namespace&lt;/code&gt;做隔离，&lt;code&gt;Cgroups&lt;/code&gt;做限制，&lt;code&gt;rootfs&lt;/code&gt;做文件系统  &lt;/li&gt;
+&lt;li&gt;容器的本质是进程，&lt;code&gt;Kubernetes&lt;/code&gt;的本质是操作系统。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Pod的实现原理&quot;&gt;&lt;a href=&quot;#Pod的实现原理&quot; class=&quot;headerlink&quot; title=&quot;Pod的实现原理&quot;&gt;&lt;/a&gt;Pod的实现原理&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="编排原理" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="pod" scheme="https://octopuslian.github.io/tags/pod/"/>
+    
+  </entry>
   
   <entry>
     <title>第一个Kubernetes应用</title>
@@ -456,27 +486,6 @@
     
     
     <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 10- I. 斐波那契数列</title>
-    <link href="https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/"/>
-    <id>https://octopuslian.github.io/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/</id>
-    <published>2022-05-08T04:58:04.000Z</published>
-    <updated>2022-05-08T08:30:19.417Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/&quot;&gt;剑指 Offer 10- I. 斐波那契数列&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;我的复试：&lt;br&gt;&lt;img src=&quot;/2022/05/08/leetcode-lcof-10-i-fei-bo-na-qi-shu-lie/yanshi.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;DP&quot;&gt;&lt;a href=&quot;#DP&quot; class=&quot;headerlink&quot; title=&quot;DP&quot;&gt;&lt;/a&gt;DP&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="数列" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E5%88%97/"/>
     
   </entry>
   
