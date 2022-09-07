@@ -1596,6 +1596,72 @@
       </tags>
   </entry>
   <entry>
+    <title>第一个Kubernetes应用</title>
+    <url>/2022/09/06/first-kubernetes-app/</url>
+    <content><![CDATA[<p>本文将以创建一个<code>nginx</code>的<code>deployment</code>为例体验<code>Kubernetes</code>的基础使用  </p>
+<p><code>Kubernetes</code>跟<code>Docker</code>等很多项目最大的不同是：<strong>它不推荐你使用命令行方式的方式直接运行容器，而是希望你用YAML文件的方式，即把容器的定义、参数、配置都记录在一个YAML文件中</strong>，然后用  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl create -f test.yml</span><br></pre></td></tr></table></figure>
+
+<p>运行起来。  </p>
+<p>这么做最直接的好处就是，会有一个文件记录下<code>Kubernetes</code>到底运行了什么。  </p>
+<h1 id="编写YAML文件"><a href="#编写YAML文件" class="headerlink" title="编写YAML文件"></a>编写YAML文件</h1><p><code>nginx-deployment.yaml</code>文件内容：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span> <span class="comment"># API对象的类型</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span> </span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span> <span class="comment"># 过滤规则的定义</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span> <span class="comment"># 定义Pod副本个数为2</span></span><br><span class="line"> <span class="attr">template:</span> </span><br><span class="line">   <span class="attr">metadata: labels:</span> <span class="comment"># 元数据</span></span><br><span class="line">     <span class="attr">app:</span> <span class="string">nginx</span> <span class="comment"># labels，一组键值对的标签</span></span><br><span class="line">   <span class="attr">spec:</span> </span><br><span class="line">     <span class="attr">containers:</span> </span><br><span class="line">     <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span> </span><br><span class="line">       <span class="attr">image:</span> <span class="string">nginx:1.7.9</span> </span><br><span class="line">       <span class="attr">ports:</span> </span><br><span class="line">       <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Deployment</code>是一个定义多副本应用（多个副本Pod）的对象，此外，<code>Deployment</code>还负责在<code>Pod</code>定义发生变化时对每个副本进行滚动更新；  </li>
+<li><code>Pod</code>是<code>Kubernetes</code>世界里的”应用运行单元”，而一个应用运行单元可以由多个容器组成；  </li>
+<li>使用一种API对象（Deployment）管理另一种API对象（Pod），在<code>Kubernetes</code>中叫作控制器模式（<code>controller pattern</code>）  </li>
+<li><code>Labels</code>作用：可以通过它从<code>Kubernetes</code>中过滤出它所关心的被控制对象；  </li>
+<li>另外，在<code>Metadata</code>中，还有一个与<code>Labels</code>格式、层级完全相同的字段，叫做<code>Annotations</code>。它专门用来携带键值对格式的内部信息。所谓内部信息，指的是对这些信息感兴趣的是<code>Kubernetes</code>组件，而不是用户。所以大多数<code>Annotations</code>是在<code>Kubernetes</code>运行过程中被自动加在这个<code>API</code>对象上；  </li>
+<li>一个<code>Kubernetes</code>的<code>API</code>对象定义，大多可以分为<code>Metadata</code>和<code>Spec</code>两个部分，前者存放的是这个对象的元数据，而后者存放的是属于这个对象的定义，用来描述它所要表达的功能。</li>
+</ul>
+<h1 id="运行YAML文件"><a href="#运行YAML文件" class="headerlink" title="运行YAML文件"></a>运行YAML文件</h1><p>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl create -f nginx-default.yaml</span><br></pre></td></tr></table></figure>
+
+<p>然后，通过<code>kubectl get</code>命令检查这个<code>YAML</code>运行起来的状态  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pods -l app=nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl1.png">  </p>
+<p>此外，还可以使用<code>kubectl describe</code>命令查看一个API对象的细节，比如  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl describe pod nginx-deployment-67594d6bf6-4vkq9</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl2.png">  </p>
+<ul>
+<li>在<code>Kubernetes</code>执行的过程中，对API对象的所有重要操作都会被记录在这个对象的<code>Events</code>里，并且显示在<code>kubectl describe</code>指令返回的结果中。</li>
+</ul>
+<h1 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h1><p>接下来，如果要升级这个<code>Nginx</code>服务，把它的镜像版本从1.7.9升级到1.8，只需要修改这个YAML文件即可：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span> <span class="comment"># API对象的类型</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span> </span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span> <span class="comment"># 过滤规则的定义</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span> <span class="comment"># 定义Pod副本个数为2</span></span><br><span class="line"> <span class="attr">template:</span> </span><br><span class="line">   <span class="attr">metadata: labels:</span> <span class="comment"># 元数据</span></span><br><span class="line">     <span class="attr">app:</span> <span class="string">nginx</span> <span class="comment"># labels，一组键值对的标签</span></span><br><span class="line">   <span class="attr">spec:</span> </span><br><span class="line">     <span class="attr">containers:</span> </span><br><span class="line">     <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span> </span><br><span class="line">       <span class="attr">image:</span> <span class="string">nginx:1.8</span> <span class="comment"># 这里从1.7.9修改为1.8</span></span><br><span class="line">       <span class="attr">ports:</span> </span><br><span class="line">       <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>然后执行  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl apply -f nginx-deployment.yaml</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl3.png">  </p>
+<h2 id="声明书API"><a href="#声明书API" class="headerlink" title="声明书API"></a>声明书API</h2><p><code>kubectl apply -f</code>的操作方法是&#96;&#96;Kubernetes<code>声明式API所推荐的用法。也就说，作为用户，你不必关心当前的操作是创建还是更新，你执行的命令始终是</code>kubectl apply<code>，这个YAML文件描述的就是你这个应用的期望状态，或者说最终状态。而当这个文件发生变化后，</code>Kubernetes&#96;会根据具体的变化内容自动进行处理，将整个系统的状态向你所定义的最终状态“逐步逼近”，最终重新“达成一致”。  </p>
+<p>这个流程的好处是有助于开发人员和运维人员围绕可以版本化管理的YAML文件，而不是“行踪不定”的命令式进行写作，从而大大降低沟通成本。这种面向最终状态的分布式系统设计原则就被称为“声明式API”。  </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>所以，如果通过容器镜像能够保证应用本身在开发环境与部署环境中的一致性的话，那么现在<code>Kubernetes</code>项目通过YAML文件就保证了应用的“部署配置”在开发环境与部署环境中的一致性。而当应用本身发生变化时，开发人员和运维人员可以依靠容器镜像来进行同步，当应用部署参数发生变化时，这些YAML文件就是他们相互沟通和信任的媒介。  </p>
+<h1 id="在Deployment中声明Volume"><a href="#在Deployment中声明Volume" class="headerlink" title="在Deployment中声明Volume"></a>在Deployment中声明Volume</h1><p>在<code>Kubernetes</code>中，<code>Volume</code>属于<code>Pod</code>对象的一部分，所以，我们需要修改这个YAML文件里的<code>template.spec</code>字段：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span> <span class="comment"># API对象的类型</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span> </span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span> <span class="comment"># 过滤规则的定义</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span> <span class="comment"># 定义Pod副本个数为2</span></span><br><span class="line"> <span class="attr">template:</span> </span><br><span class="line">   <span class="attr">metadata: labels:</span> <span class="comment"># 元数据</span></span><br><span class="line">     <span class="attr">app:</span> <span class="string">nginx</span> <span class="comment"># labels，一组键值对的标签</span></span><br><span class="line">   <span class="attr">spec:</span> </span><br><span class="line">     <span class="attr">containers:</span> </span><br><span class="line">     <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span> </span><br><span class="line">       <span class="attr">image:</span> <span class="string">nginx:1.8</span></span><br><span class="line">       <span class="attr">ports:</span> </span><br><span class="line">       <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">       <span class="attr">volumeMounts:</span> </span><br><span class="line">       <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">&quot;/usr/share/nginx/html&quot;</span></span><br><span class="line">         <span class="attr">name:</span> <span class="string">nginx-vol</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx-vol</span> <span class="comment"># Volume的名称</span></span><br><span class="line">       <span class="attr">emptyDir:</span> &#123;&#125;    <span class="comment"># Volume的类型</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>emptyDir</code>类型等同于<code>Docker</code>的隐式<code>Volume</code>参数，即不显式声明宿主机目录的<code>Volume</code>。所以，<code>Kubernetes</code>也会在宿主机上创建一个临时目录，这个目录将会在被绑定挂载到容器所声明的<code>Volume</code>目录上。</li>
+</ul>
+<p>执行  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl apply -f nginx-deployment.yaml</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl4.png">  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl describe pod nginx-deployment-54d8dff7d7-r6z8t</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl5.png">  </p>
+<p>最后，还可以使用<code>kubectl exec</code>指令进入这个<code>Pod</code>中（容器的<code>Namespace</code>中）查看这个<code>Volume</code>目录：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl exec -it nginx-deployment-54d8dff7d7-r6z8t -- /bin/bash</span><br><span class="line"></span><br><span class="line">ls /usr/share/nginx/html</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl6.png">  </p>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p>若要从<code>Kubernetes</code>集群中删除这个<code>Nginx Deployment</code>，直接执行以下命令：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl delete -f nginx-deployment.yaml</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/06/first-kubernetes-app/kubectl7.png">  </p>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一次做项目学到的技术之外的东西</title>
     <url>/2019/03/28/first-work-project-havest/</url>
     <content><![CDATA[<p>三月初转正后开始接手公司内的一个有关流媒体收录系统服务器方面的项目，和部门老哥，产品，测试，运维，前端交流，对需求，看bug，学习到了很多编程之外的技能，写篇文章记录下来。  </p>
@@ -4963,6 +5029,107 @@
       </tags>
   </entry>
   <entry>
+    <title>Go高级工程师_第2课_语法背后的秘密</title>
+    <url>/2021/11/08/go-senior-engineer-2-grammar-behind-secret/</url>
+    <content><![CDATA[<h1 id="编译原理基础"><a href="#编译原理基础" class="headerlink" title="编译原理基础"></a>编译原理基础</h1><h2 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h2><h3 id="下面两段程序，哪个快一些"><a href="#下面两段程序，哪个快一些" class="headerlink" title="下面两段程序，哪个快一些?"></a>下面两段程序，哪个快一些?</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	age <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//case 1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> b = person&#123;<span class="number">111</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> a = &amp;b</span><br><span class="line">	<span class="built_in">println</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//case 2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> b = person&#123;<span class="number">111</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> a = &amp;b</span><br><span class="line">	<span class="built_in">println</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类型转换是啥原理"><a href="#类型转换是啥原理" class="headerlink" title="类型转换是啥原理?"></a>类型转换是啥原理?</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="string">&quot;hello&quot;</span></span><br><span class="line">	<span class="keyword">var</span> b = []<span class="type">byte</span>(a)</span><br><span class="line">	<span class="built_in">println</span>(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="怎么找make和new这些函数的具体实现"><a href="#怎么找make和new这些函数的具体实现" class="headerlink" title="怎么找make和new这些函数的具体实现?"></a>怎么找make和new这些函数的具体实现?</h3><h3 id="会员服务，给用户分等级"><a href="#会员服务，给用户分等级" class="headerlink" title="会员服务，给用户分等级"></a>会员服务，给用户分等级</h3><ul>
+<li>初级会员，发帖数&gt;10；</li>
+<li>中级会员，充值&gt;1000人民币；  </li>
+<li>高级会员，发帖数&gt;100，充值&gt;10000人民币。</li>
+</ul>
+<p>如果项目数 &#x3D; 几百，每个项目都有自己的会员规则，怎么办？  </p>
+<h3 id="封装统一的数值查询服务"><a href="#封装统一的数值查询服务" class="headerlink" title="封装统一的数值查询服务"></a>封装统一的数值查询服务</h3><p>用户提供查询条件，会经常变，代理去不同的模块查数据，外部模块没有统一的数据获取规范。  </p>
+<p>每次我们的用户提了需求，我们就一定要写一遍代码吗？  </p>
+<h3 id="公司想从Thrift切换到gRPC"><a href="#公司想从Thrift切换到gRPC" class="headerlink" title="公司想从Thrift切换到gRPC"></a>公司想从Thrift切换到gRPC</h3><p>已经有了大量的Thrift IDL，想提供gRPC接口，手工把Thrift IDL抄写成pb文件效率太低，怎么办？  </p>
+<h3 id="SQL审计"><a href="#SQL审计" class="headerlink" title="SQL审计"></a>SQL审计</h3><p>我是SQL专家，我知道怎么获取到表的索引，我可以把用户代码里的SQL扫描出来…<br>我想在上线的时候能自动做一些拦截，提醒用户去给表加索引，怎么办？  </p>
+<h3 id="公司卖出去的服务软件，客户要自己定制，但不想给客户源码"><a href="#公司卖出去的服务软件，客户要自己定制，但不想给客户源码" class="headerlink" title="公司卖出去的服务软件，客户要自己定制，但不想给客户源码"></a>公司卖出去的服务软件，客户要自己定制，但不想给客户源码</h3><p>要支持客户写的扩展代码能在我们的模块上运行。  </p>
+<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/by-process.png">  </p>
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="number">1</span> + <span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/lexical-analysis.png">  </p>
+<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/syntax-analysis.png">  </p>
+<h2 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> x <span class="type">int</span> = <span class="string">&quot;abc&quot;</span></span><br><span class="line">    <span class="built_in">println</span>(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/semantic-analysis.png">  </p>
+<p>在抽象语法树AST上做类型检查  </p>
+<h2 id="中间代码-SSA-生成与优化"><a href="#中间代码-SSA-生成与优化" class="headerlink" title="中间代码(SSA)生成与优化"></a>中间代码(SSA)生成与优化</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    c := <span class="number">8</span></span><br><span class="line">    <span class="keyword">return</span> a*<span class="number">4</span> + b*c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ssa.png">  </p>
+<p>SSA的两大要点：  </p>
+<ul>
+<li>Static：每个变量只能赋值一次；  </li>
+<li>Single：每个表达式只能做一个简单运算，对于复杂的表达式<code>a*b+c*d</code>要拆分成图片里的形式。</li>
+</ul>
+<h2 id="机器码生成"><a href="#机器码生成" class="headerlink" title="机器码生成"></a>机器码生成</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/mcode.png">  </p>
+<h2 id="虚拟地址重定位"><a href="#虚拟地址重定位" class="headerlink" title="虚拟地址重定位"></a>虚拟地址重定位</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/relocation.png">  </p>
+<h1 id="编译与反编译⼯具"><a href="#编译与反编译⼯具" class="headerlink" title="编译与反编译⼯具"></a>编译与反编译⼯具</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//hello.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="string">&quot;hello&quot;</span></span><br><span class="line">	<span class="keyword">var</span> b = []<span class="type">byte</span>(a)</span><br><span class="line">	<span class="built_in">println</span>(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>命令行输入<code>go tool compile -S ./hello.go | grep &quot;hello.go:5&quot;</code>  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;&quot;.main STEXT size=109 args=0x0 locals=0x58 funcid=0x0</span><br><span class="line">        0x0000 00000 (./hello.go:3)     TEXT    &quot;&quot;.main(SB), ABIInternal, $88-0</span><br><span class="line">        0x0000 00000 (./hello.go:3)     CMPQ    SP, 16(R14)</span><br><span class="line">        0x0004 00004 (./hello.go:3)     PCDATA  $0, $-2</span><br><span class="line">        0x0004 00004 (./hello.go:3)     JLS     102</span><br><span class="line">        0x0006 00006 (./hello.go:3)     PCDATA  $0, $-1</span><br><span class="line">        0x0006 00006 (./hello.go:3)     SUBQ    $88, SP</span><br><span class="line">        0x000a 00010 (./hello.go:3)     MOVQ    BP, 80(SP)</span><br><span class="line">        0x000f 00015 (./hello.go:3)     LEAQ    80(SP), BP</span><br><span class="line">        0x0014 00020 (./hello.go:3)     FUNCDATA        $0, gclocals·69c1753bd5f81501d95132d08af04464(SB)</span><br><span class="line">        0x0014 00020 (./hello.go:3)     FUNCDATA        $1, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB)</span><br><span class="line">        0x0014 00020 (./hello.go:5)     LEAQ    &quot;&quot;..autotmp_2+40(SP), AX</span><br><span class="line">        0x0019 00025 (./hello.go:5)     LEAQ    go.string.&quot;hello&quot;(SB), BX</span><br><span class="line">        0x0020 00032 (./hello.go:5)     MOVL    $5, CX</span><br><span class="line">        0x0025 00037 (./hello.go:5)     PCDATA  $1, $0</span><br><span class="line">        0x0025 00037 (./hello.go:5)     CALL    runtime.stringtoslicebyte(SB)  #var b = []byte(a)</span><br><span class="line">        0x002a 00042 (./hello.go:6)     MOVQ    AX, &quot;&quot;.b.ptr+72(SP)</span><br><span class="line">        0x002f 00047 (./hello.go:6)     MOVQ    BX, &quot;&quot;.b.len+24(SP)</span><br><span class="line">        0x0034 00052 (./hello.go:6)     MOVQ    CX, &quot;&quot;.b.cap+32(SP)</span><br><span class="line">        0x0039 00057 (./hello.go:6)     PCDATA  $1, $1</span><br><span class="line">        0x0039 00057 (./hello.go:6)     CALL    runtime.printlock(SB)</span><br><span class="line">        0x003e 00062 (./hello.go:6)     MOVQ    &quot;&quot;.b.ptr+72(SP), AX</span><br><span class="line">        0x0043 00067 (./hello.go:6)     MOVQ    &quot;&quot;.b.len+24(SP), BX</span><br><span class="line">        0x0048 00072 (./hello.go:6)     MOVQ    &quot;&quot;.b.cap+32(SP), CX</span><br><span class="line">        0x004d 00077 (./hello.go:6)     PCDATA  $1, $0</span><br><span class="line">        0x004d 00077 (./hello.go:6)     CALL    runtime.printslice(SB)</span><br><span class="line">        0x0052 00082 (./hello.go:6)     CALL    runtime.printnl(SB)</span><br><span class="line">        0x0057 00087 (./hello.go:6)     CALL    runtime.printunlock(SB)</span><br><span class="line">        0x005c 00092 (./hello.go:7)     MOVQ    80(SP), BP</span><br><span class="line">        0x0061 00097 (./hello.go:7)     ADDQ    $88, SP</span><br><span class="line">        0x0065 00101 (./hello.go:7)     RET</span><br><span class="line">        0x0066 00102 (./hello.go:7)     NOP</span><br><span class="line">        0x0066 00102 (./hello.go:3)     PCDATA  $1, $-1</span><br><span class="line">        0x0066 00102 (./hello.go:3)     PCDATA  $0, $-2</span><br><span class="line">        0x0066 00102 (./hello.go:3)     CALL    runtime.morestack_noctxt(SB)</span><br><span class="line">        0x006b 00107 (./hello.go:3)     PCDATA  $0, $-1</span><br><span class="line">        0x006b 00107 (./hello.go:3)     JMP     0</span><br><span class="line">        0x0000 49 3b 66 10 76 60 48 83 ec 58 48 89 6c 24 50 48  I;f.v`H..XH.l$PH</span><br><span class="line">        0x0010 8d 6c 24 50 48 8d 44 24 28 48 8d 1d 00 00 00 00  .l$PH.D$(H......</span><br><span class="line">        0x0020 b9 05 00 00 00 e8 00 00 00 00 48 89 44 24 48 48  ..........H.D$HH</span><br><span class="line">        0x0030 89 5c 24 18 48 89 4c 24 20 e8 00 00 00 00 48 8b  .\$.H.L$ .....H.</span><br><span class="line">        0x0040 44 24 48 48 8b 5c 24 18 48 8b 4c 24 20 e8 00 00  D$HH.\$.H.L$ ...</span><br><span class="line">        0x0050 00 00 e8 00 00 00 00 e8 00 00 00 00 48 8b 6c 24  ............H.l$</span><br><span class="line">        0x0060 50 48 83 c4 58 c3 e8 00 00 00 00 eb 93           PH..X........</span><br><span class="line">        rel 28+4 t=15 go.string.&quot;hello&quot;+0</span><br><span class="line">        rel 38+4 t=7 runtime.stringtoslicebyte+0</span><br><span class="line">        rel 58+4 t=7 runtime.printlock+0</span><br><span class="line">        rel 78+4 t=7 runtime.printslice+0</span><br><span class="line">        rel 83+4 t=7 runtime.printnl+0</span><br><span class="line">        rel 88+4 t=7 runtime.printunlock+0</span><br><span class="line">        rel 103+4 t=7 runtime.morestack_noctxt+0</span><br><span class="line">go.cuinfo.packagename. SDWARFCUINFO dupok size=0</span><br><span class="line">        0x0000 6d 61 69 6e                                      main</span><br><span class="line">&quot;&quot;..inittask SNOPTRDATA size=24</span><br><span class="line">        0x0000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">        0x0010 00 00 00 00 00 00 00 00                          ........</span><br><span class="line">go.string.&quot;hello&quot; SRODATA dupok size=5</span><br><span class="line">        0x0000 68 65 6c 6c 6f                                   hello</span><br><span class="line">gclocals·69c1753bd5f81501d95132d08af04464 SRODATA dupok size=8</span><br><span class="line">        0x0000 02 00 00 00 00 00 00 00                          ........</span><br><span class="line">gclocals·9fb7f0986f647f17cb53dda1484e0f7a SRODATA dupok size=10</span><br><span class="line">        0x0000 02 00 00 00 01 00 00 00 00 01                    ..........</span><br></pre></td></tr></table></figure>
+
+<h1 id="使⽤调试⼯具"><a href="#使⽤调试⼯具" class="headerlink" title="使⽤调试⼯具"></a>使⽤调试⼯具</h1><p>调试汇编时，使用SI到JMP目标位置  </p>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/jmp.png">  </p>
+<p>使用c(continue)从上一个断点到下一个断点  </p>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/c.png">  </p>
+<p>用disass反汇编  </p>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/disass.png">  </p>
+<p><a href="https://github.com/go-delve/delve/tree/master/Documentation/cli">官方文档</a>  </p>
+<h1 id="语法实现分析"><a href="#语法实现分析" class="headerlink" title="语法实现分析"></a>语法实现分析</h1><h2 id="go-func"><a href="#go-func" class="headerlink" title="go func"></a>go func</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	time.Sleep(time.Second * <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/gofunc.png">  </p>
+<h2 id="channel-send-amp-recv"><a href="#channel-send-amp-recv" class="headerlink" title="channel send &amp; recv"></a>channel send &amp; recv</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line">	a &lt;- <span class="number">666</span></span><br><span class="line"></span><br><span class="line">	x := &lt;-a</span><br><span class="line">	<span class="built_in">println</span>(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/chansr.png">  </p>
+<h2 id="非阻塞recv"><a href="#非阻塞recv" class="headerlink" title="非阻塞recv"></a>非阻塞recv</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch1 = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">	<span class="keyword">select</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> &lt;- ch1:</span><br><span class="line">		<span class="keyword">default</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/fzsrecv.png">  </p>
+<h2 id="找到这张图中所有报错的内部代码位置"><a href="#找到这张图中所有报错的内部代码位置" class="headerlink" title="找到这张图中所有报错的内部代码位置"></a>找到这张图中所有报错的内部代码位置</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch <span class="keyword">chan</span> <span class="type">int</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ go run hello.go </span><br><span class="line">panic: close of nil channel</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">main.main()</span><br><span class="line">        /home/neo/Code/go/src/test/hello.go:5 +0x1b</span><br><span class="line">exit status 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/send-to-nil.png">  </p>
+<h1 id="Parser-场景示例"><a href="#Parser-场景示例" class="headerlink" title="Parser 场景示例"></a>Parser 场景示例</h1><h2 id="内置AST工具"><a href="#内置AST工具" class="headerlink" title="内置AST工具"></a>内置AST工具</h2><h3 id="简单的规则引擎"><a href="#简单的规则引擎" class="headerlink" title="简单的规则引擎"></a>简单的规则引擎</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ast1.png">  </p>
+<h3 id="从Go的注释到swagger"><a href="#从Go的注释到swagger" class="headerlink" title="从Go的注释到swagger"></a>从Go的注释到swagger</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ast2.png">  </p>
+<h2 id="使用社区Parser"><a href="#使用社区Parser" class="headerlink" title="使用社区Parser"></a>使用社区Parser</h2><h3 id="从Thrift切换到gRPC"><a href="#从Thrift切换到gRPC" class="headerlink" title="从Thrift切换到gRPC"></a>从Thrift切换到gRPC</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/thrift.png">  </p>
+<h3 id="SQL审计-1"><a href="#SQL审计-1" class="headerlink" title="SQL审计"></a>SQL审计</h3><ul>
+<li>Vitess  </li>
+<li>PingCAP</li>
+</ul>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/sql1.png">  </p>
+<h3 id="统一数据接入服务"><a href="#统一数据接入服务" class="headerlink" title="统一数据接入服务"></a>统一数据接入服务</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/sql2.png">  </p>
+<h3 id="客户定制需求"><a href="#客户定制需求" class="headerlink" title="客户定制需求"></a>客户定制需求</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/xuqiu.png">  </p>
+<h1 id="函数调⽤规约"><a href="#函数调⽤规约" class="headerlink" title="函数调⽤规约"></a>函数调⽤规约</h1><h2 id="函数栈"><a href="#函数栈" class="headerlink" title="函数栈"></a>函数栈</h2><p>为什么Go可以一个函数多个返回值  </p>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/funchello.png">  </p>
+<p>局部变量，只要不逃逸，都在栈上分配空间。  </p>
+<p>当我们调用其它函数时：  </p>
+<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/callerBP.png" alt="callerBP">  </p>
+<p>函数调用规约：  </p>
+<ul>
+<li>The order in which atomic parameters,or individual parts of a complex parameters,are allocated  </li>
+<li>How parameters are passed(push on the stack,placed in registers,or a mix of both)  </li>
+<li>Which registers the called function must preserve for the caller(also known as:callee-saved registers or non-volatile registers)  </li>
+<li>How the task of preparing the stack for,and restoring after,a function call is divided between the caller and the callee.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://dev.to/nakabonne/digging-deeper-into-the-analysis-of-go-code-31af">Go 的词法分析和语法&#x2F;语义分析过程</a><br><a href="https://www.tutorialspoint.com/compiler_design/compiler_design_phases_of_compiler.htm">编译器各阶段的简单介绍</a><br><a href="https://golearn.coding.net/p/gonggongbanji/files/all/DF9">Linkers and loaders，只看内部对 linker 的职责描述就⾏，不⽤看原理</a><br><a href="https://mp.weixin.qq.com/s/UhxFOQBpW8EUVpFvqH2tMg">SSA 的简单介绍(*只做了解)</a><br><a href="https://eli.thegreenplace.net/2019/go-compiler-internals-adding-a-new-statement-to-go-part-2/">⽼外的写的如何定制 Go 编译器，⾥⾯对 Go 的编译过程介绍更详细，SSA 也说明得很好，只做了解</a><br><a href="https://sitano.github.io/2018/03/18/howto-read-gossa/">如何阅读 go 的 SSA,难，只做了解</a><br><a href="https://www.cs.cmu.edu/~fp/courses/15411-f08/lectures/09-ssa.pdf">CMU 的编译器课，讲 SSA，难，只做了解 </a><br><a href="https://malwareunicorn.org/#/workshops">对逆向感兴趣的话扩展内容</a><br><a href="https://github.com/xwb1989/sqlparser">Vitess 的 SQL Parser</a><br><a href="https://github.com//pingcap/parser">PingCAP 的 TiDB 的 SQL Parser</a><br><a href="https://gocn.vip/topics/12090">GoCN 上的 dlv 的新译⽂</a><br>[C语⾔调⽤规约](<a href="https://github.com/cch123/llp-trans/blob/master/part3/translation-details/function-calling-sequence/calling%02convention.md">https://github.com/cch123/llp-trans/blob/master/part3/translation-details/function-calling-sequence/callingconvention.md</a>)<br><a href="https://go.googlesource.com/proposal/+/refs/changes/78/248178/1/design/40724-register-calling.md">Go 语⾔新版调⽤规约</a></p>
+<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
+<li>C 语⾔的调⽤规约是寄存器与栈混合使⽤的，Go 语⾔⽬前只使⽤了栈(1.17 中会有⽤上寄存器的新⽅式)</li>
+<li>有⼀些⽐较奇怪的问题，可以⽤<code>SSA</code>的⽹⻚来看到底是哪个阶段导致的，⽐如：<a href="https://xargin.com/addr-of-empty-struct-may-not%02eq/%EF%BC%8C%E5%AF%B9%E4%BA%8E%E2%BC%A4%E5%A4%9A%E6%95%B0">https://xargin.com/addr-of-empty-struct-may-noteq/，对于⼤多数</a> Gopher 只要知道这件事情是优化阶段⼲的就可以了，不需要研究明⽩优化每个阶段都在⼲什么</li>
+<li>Go 语⾔的参数和返回值都是 caller 提供空间，在<code>callee</code>中需要根据<code>FP</code>寄存器找到位置，需要⼀定的汇编知识。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>GoSEC</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go高级工程师_第1课_Go程序是怎么跑起来的</title>
     <url>/2021/11/07/go-senior-engineer-1-how-does-the-go-program-run/</url>
     <content><![CDATA[<h1 id="开场闲聊"><a href="#开场闲聊" class="headerlink" title="开场闲聊"></a>开场闲聊</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><h3 id="语⾔深度"><a href="#语⾔深度" class="headerlink" title="语⾔深度"></a>语⾔深度</h3><p>调度原理、调试技巧、汇编反汇编、内部数据结构实现、常⻅ syscall、函数<br>调⽤规约(待定)、内存管理与垃圾回收、并发编程  </p>
@@ -5085,107 +5252,6 @@
       <tags>
         <tag>Go</tag>
         <tag>底层</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go高级工程师_第2课_语法背后的秘密</title>
-    <url>/2021/11/08/go-senior-engineer-2-grammar-behind-secret/</url>
-    <content><![CDATA[<h1 id="编译原理基础"><a href="#编译原理基础" class="headerlink" title="编译原理基础"></a>编译原理基础</h1><h2 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h2><h3 id="下面两段程序，哪个快一些"><a href="#下面两段程序，哪个快一些" class="headerlink" title="下面两段程序，哪个快一些?"></a>下面两段程序，哪个快一些?</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	age <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//case 1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> b = person&#123;<span class="number">111</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> a = &amp;b</span><br><span class="line">	<span class="built_in">println</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//case 2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> b = person&#123;<span class="number">111</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> a = &amp;b</span><br><span class="line">	<span class="built_in">println</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="类型转换是啥原理"><a href="#类型转换是啥原理" class="headerlink" title="类型转换是啥原理?"></a>类型转换是啥原理?</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="string">&quot;hello&quot;</span></span><br><span class="line">	<span class="keyword">var</span> b = []<span class="type">byte</span>(a)</span><br><span class="line">	<span class="built_in">println</span>(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="怎么找make和new这些函数的具体实现"><a href="#怎么找make和new这些函数的具体实现" class="headerlink" title="怎么找make和new这些函数的具体实现?"></a>怎么找make和new这些函数的具体实现?</h3><h3 id="会员服务，给用户分等级"><a href="#会员服务，给用户分等级" class="headerlink" title="会员服务，给用户分等级"></a>会员服务，给用户分等级</h3><ul>
-<li>初级会员，发帖数&gt;10；</li>
-<li>中级会员，充值&gt;1000人民币；  </li>
-<li>高级会员，发帖数&gt;100，充值&gt;10000人民币。</li>
-</ul>
-<p>如果项目数 &#x3D; 几百，每个项目都有自己的会员规则，怎么办？  </p>
-<h3 id="封装统一的数值查询服务"><a href="#封装统一的数值查询服务" class="headerlink" title="封装统一的数值查询服务"></a>封装统一的数值查询服务</h3><p>用户提供查询条件，会经常变，代理去不同的模块查数据，外部模块没有统一的数据获取规范。  </p>
-<p>每次我们的用户提了需求，我们就一定要写一遍代码吗？  </p>
-<h3 id="公司想从Thrift切换到gRPC"><a href="#公司想从Thrift切换到gRPC" class="headerlink" title="公司想从Thrift切换到gRPC"></a>公司想从Thrift切换到gRPC</h3><p>已经有了大量的Thrift IDL，想提供gRPC接口，手工把Thrift IDL抄写成pb文件效率太低，怎么办？  </p>
-<h3 id="SQL审计"><a href="#SQL审计" class="headerlink" title="SQL审计"></a>SQL审计</h3><p>我是SQL专家，我知道怎么获取到表的索引，我可以把用户代码里的SQL扫描出来…<br>我想在上线的时候能自动做一些拦截，提醒用户去给表加索引，怎么办？  </p>
-<h3 id="公司卖出去的服务软件，客户要自己定制，但不想给客户源码"><a href="#公司卖出去的服务软件，客户要自己定制，但不想给客户源码" class="headerlink" title="公司卖出去的服务软件，客户要自己定制，但不想给客户源码"></a>公司卖出去的服务软件，客户要自己定制，但不想给客户源码</h3><p>要支持客户写的扩展代码能在我们的模块上运行。  </p>
-<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/by-process.png">  </p>
-<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="number">1</span> + <span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/lexical-analysis.png">  </p>
-<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/syntax-analysis.png">  </p>
-<h2 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> x <span class="type">int</span> = <span class="string">&quot;abc&quot;</span></span><br><span class="line">    <span class="built_in">println</span>(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/semantic-analysis.png">  </p>
-<p>在抽象语法树AST上做类型检查  </p>
-<h2 id="中间代码-SSA-生成与优化"><a href="#中间代码-SSA-生成与优化" class="headerlink" title="中间代码(SSA)生成与优化"></a>中间代码(SSA)生成与优化</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    c := <span class="number">8</span></span><br><span class="line">    <span class="keyword">return</span> a*<span class="number">4</span> + b*c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ssa.png">  </p>
-<p>SSA的两大要点：  </p>
-<ul>
-<li>Static：每个变量只能赋值一次；  </li>
-<li>Single：每个表达式只能做一个简单运算，对于复杂的表达式<code>a*b+c*d</code>要拆分成图片里的形式。</li>
-</ul>
-<h2 id="机器码生成"><a href="#机器码生成" class="headerlink" title="机器码生成"></a>机器码生成</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/mcode.png">  </p>
-<h2 id="虚拟地址重定位"><a href="#虚拟地址重定位" class="headerlink" title="虚拟地址重定位"></a>虚拟地址重定位</h2><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/relocation.png">  </p>
-<h1 id="编译与反编译⼯具"><a href="#编译与反编译⼯具" class="headerlink" title="编译与反编译⼯具"></a>编译与反编译⼯具</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//hello.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="string">&quot;hello&quot;</span></span><br><span class="line">	<span class="keyword">var</span> b = []<span class="type">byte</span>(a)</span><br><span class="line">	<span class="built_in">println</span>(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>命令行输入<code>go tool compile -S ./hello.go | grep &quot;hello.go:5&quot;</code>  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;&quot;.main STEXT size=109 args=0x0 locals=0x58 funcid=0x0</span><br><span class="line">        0x0000 00000 (./hello.go:3)     TEXT    &quot;&quot;.main(SB), ABIInternal, $88-0</span><br><span class="line">        0x0000 00000 (./hello.go:3)     CMPQ    SP, 16(R14)</span><br><span class="line">        0x0004 00004 (./hello.go:3)     PCDATA  $0, $-2</span><br><span class="line">        0x0004 00004 (./hello.go:3)     JLS     102</span><br><span class="line">        0x0006 00006 (./hello.go:3)     PCDATA  $0, $-1</span><br><span class="line">        0x0006 00006 (./hello.go:3)     SUBQ    $88, SP</span><br><span class="line">        0x000a 00010 (./hello.go:3)     MOVQ    BP, 80(SP)</span><br><span class="line">        0x000f 00015 (./hello.go:3)     LEAQ    80(SP), BP</span><br><span class="line">        0x0014 00020 (./hello.go:3)     FUNCDATA        $0, gclocals·69c1753bd5f81501d95132d08af04464(SB)</span><br><span class="line">        0x0014 00020 (./hello.go:3)     FUNCDATA        $1, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB)</span><br><span class="line">        0x0014 00020 (./hello.go:5)     LEAQ    &quot;&quot;..autotmp_2+40(SP), AX</span><br><span class="line">        0x0019 00025 (./hello.go:5)     LEAQ    go.string.&quot;hello&quot;(SB), BX</span><br><span class="line">        0x0020 00032 (./hello.go:5)     MOVL    $5, CX</span><br><span class="line">        0x0025 00037 (./hello.go:5)     PCDATA  $1, $0</span><br><span class="line">        0x0025 00037 (./hello.go:5)     CALL    runtime.stringtoslicebyte(SB)  #var b = []byte(a)</span><br><span class="line">        0x002a 00042 (./hello.go:6)     MOVQ    AX, &quot;&quot;.b.ptr+72(SP)</span><br><span class="line">        0x002f 00047 (./hello.go:6)     MOVQ    BX, &quot;&quot;.b.len+24(SP)</span><br><span class="line">        0x0034 00052 (./hello.go:6)     MOVQ    CX, &quot;&quot;.b.cap+32(SP)</span><br><span class="line">        0x0039 00057 (./hello.go:6)     PCDATA  $1, $1</span><br><span class="line">        0x0039 00057 (./hello.go:6)     CALL    runtime.printlock(SB)</span><br><span class="line">        0x003e 00062 (./hello.go:6)     MOVQ    &quot;&quot;.b.ptr+72(SP), AX</span><br><span class="line">        0x0043 00067 (./hello.go:6)     MOVQ    &quot;&quot;.b.len+24(SP), BX</span><br><span class="line">        0x0048 00072 (./hello.go:6)     MOVQ    &quot;&quot;.b.cap+32(SP), CX</span><br><span class="line">        0x004d 00077 (./hello.go:6)     PCDATA  $1, $0</span><br><span class="line">        0x004d 00077 (./hello.go:6)     CALL    runtime.printslice(SB)</span><br><span class="line">        0x0052 00082 (./hello.go:6)     CALL    runtime.printnl(SB)</span><br><span class="line">        0x0057 00087 (./hello.go:6)     CALL    runtime.printunlock(SB)</span><br><span class="line">        0x005c 00092 (./hello.go:7)     MOVQ    80(SP), BP</span><br><span class="line">        0x0061 00097 (./hello.go:7)     ADDQ    $88, SP</span><br><span class="line">        0x0065 00101 (./hello.go:7)     RET</span><br><span class="line">        0x0066 00102 (./hello.go:7)     NOP</span><br><span class="line">        0x0066 00102 (./hello.go:3)     PCDATA  $1, $-1</span><br><span class="line">        0x0066 00102 (./hello.go:3)     PCDATA  $0, $-2</span><br><span class="line">        0x0066 00102 (./hello.go:3)     CALL    runtime.morestack_noctxt(SB)</span><br><span class="line">        0x006b 00107 (./hello.go:3)     PCDATA  $0, $-1</span><br><span class="line">        0x006b 00107 (./hello.go:3)     JMP     0</span><br><span class="line">        0x0000 49 3b 66 10 76 60 48 83 ec 58 48 89 6c 24 50 48  I;f.v`H..XH.l$PH</span><br><span class="line">        0x0010 8d 6c 24 50 48 8d 44 24 28 48 8d 1d 00 00 00 00  .l$PH.D$(H......</span><br><span class="line">        0x0020 b9 05 00 00 00 e8 00 00 00 00 48 89 44 24 48 48  ..........H.D$HH</span><br><span class="line">        0x0030 89 5c 24 18 48 89 4c 24 20 e8 00 00 00 00 48 8b  .\$.H.L$ .....H.</span><br><span class="line">        0x0040 44 24 48 48 8b 5c 24 18 48 8b 4c 24 20 e8 00 00  D$HH.\$.H.L$ ...</span><br><span class="line">        0x0050 00 00 e8 00 00 00 00 e8 00 00 00 00 48 8b 6c 24  ............H.l$</span><br><span class="line">        0x0060 50 48 83 c4 58 c3 e8 00 00 00 00 eb 93           PH..X........</span><br><span class="line">        rel 28+4 t=15 go.string.&quot;hello&quot;+0</span><br><span class="line">        rel 38+4 t=7 runtime.stringtoslicebyte+0</span><br><span class="line">        rel 58+4 t=7 runtime.printlock+0</span><br><span class="line">        rel 78+4 t=7 runtime.printslice+0</span><br><span class="line">        rel 83+4 t=7 runtime.printnl+0</span><br><span class="line">        rel 88+4 t=7 runtime.printunlock+0</span><br><span class="line">        rel 103+4 t=7 runtime.morestack_noctxt+0</span><br><span class="line">go.cuinfo.packagename. SDWARFCUINFO dupok size=0</span><br><span class="line">        0x0000 6d 61 69 6e                                      main</span><br><span class="line">&quot;&quot;..inittask SNOPTRDATA size=24</span><br><span class="line">        0x0000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">        0x0010 00 00 00 00 00 00 00 00                          ........</span><br><span class="line">go.string.&quot;hello&quot; SRODATA dupok size=5</span><br><span class="line">        0x0000 68 65 6c 6c 6f                                   hello</span><br><span class="line">gclocals·69c1753bd5f81501d95132d08af04464 SRODATA dupok size=8</span><br><span class="line">        0x0000 02 00 00 00 00 00 00 00                          ........</span><br><span class="line">gclocals·9fb7f0986f647f17cb53dda1484e0f7a SRODATA dupok size=10</span><br><span class="line">        0x0000 02 00 00 00 01 00 00 00 00 01                    ..........</span><br></pre></td></tr></table></figure>
-
-<h1 id="使⽤调试⼯具"><a href="#使⽤调试⼯具" class="headerlink" title="使⽤调试⼯具"></a>使⽤调试⼯具</h1><p>调试汇编时，使用SI到JMP目标位置  </p>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/jmp.png">  </p>
-<p>使用c(continue)从上一个断点到下一个断点  </p>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/c.png">  </p>
-<p>用disass反汇编  </p>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/disass.png">  </p>
-<p><a href="https://github.com/go-delve/delve/tree/master/Documentation/cli">官方文档</a>  </p>
-<h1 id="语法实现分析"><a href="#语法实现分析" class="headerlink" title="语法实现分析"></a>语法实现分析</h1><h2 id="go-func"><a href="#go-func" class="headerlink" title="go func"></a>go func</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	time.Sleep(time.Second * <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/gofunc.png">  </p>
-<h2 id="channel-send-amp-recv"><a href="#channel-send-amp-recv" class="headerlink" title="channel send &amp; recv"></a>channel send &amp; recv</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line">	a &lt;- <span class="number">666</span></span><br><span class="line"></span><br><span class="line">	x := &lt;-a</span><br><span class="line">	<span class="built_in">println</span>(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/chansr.png">  </p>
-<h2 id="非阻塞recv"><a href="#非阻塞recv" class="headerlink" title="非阻塞recv"></a>非阻塞recv</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch1 = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">	<span class="keyword">select</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> &lt;- ch1:</span><br><span class="line">		<span class="keyword">default</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/fzsrecv.png">  </p>
-<h2 id="找到这张图中所有报错的内部代码位置"><a href="#找到这张图中所有报错的内部代码位置" class="headerlink" title="找到这张图中所有报错的内部代码位置"></a>找到这张图中所有报错的内部代码位置</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch <span class="keyword">chan</span> <span class="type">int</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ go run hello.go </span><br><span class="line">panic: close of nil channel</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">main.main()</span><br><span class="line">        /home/neo/Code/go/src/test/hello.go:5 +0x1b</span><br><span class="line">exit status 2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/send-to-nil.png">  </p>
-<h1 id="Parser-场景示例"><a href="#Parser-场景示例" class="headerlink" title="Parser 场景示例"></a>Parser 场景示例</h1><h2 id="内置AST工具"><a href="#内置AST工具" class="headerlink" title="内置AST工具"></a>内置AST工具</h2><h3 id="简单的规则引擎"><a href="#简单的规则引擎" class="headerlink" title="简单的规则引擎"></a>简单的规则引擎</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ast1.png">  </p>
-<h3 id="从Go的注释到swagger"><a href="#从Go的注释到swagger" class="headerlink" title="从Go的注释到swagger"></a>从Go的注释到swagger</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/ast2.png">  </p>
-<h2 id="使用社区Parser"><a href="#使用社区Parser" class="headerlink" title="使用社区Parser"></a>使用社区Parser</h2><h3 id="从Thrift切换到gRPC"><a href="#从Thrift切换到gRPC" class="headerlink" title="从Thrift切换到gRPC"></a>从Thrift切换到gRPC</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/thrift.png">  </p>
-<h3 id="SQL审计-1"><a href="#SQL审计-1" class="headerlink" title="SQL审计"></a>SQL审计</h3><ul>
-<li>Vitess  </li>
-<li>PingCAP</li>
-</ul>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/sql1.png">  </p>
-<h3 id="统一数据接入服务"><a href="#统一数据接入服务" class="headerlink" title="统一数据接入服务"></a>统一数据接入服务</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/sql2.png">  </p>
-<h3 id="客户定制需求"><a href="#客户定制需求" class="headerlink" title="客户定制需求"></a>客户定制需求</h3><p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/xuqiu.png">  </p>
-<h1 id="函数调⽤规约"><a href="#函数调⽤规约" class="headerlink" title="函数调⽤规约"></a>函数调⽤规约</h1><h2 id="函数栈"><a href="#函数栈" class="headerlink" title="函数栈"></a>函数栈</h2><p>为什么Go可以一个函数多个返回值  </p>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/funchello.png">  </p>
-<p>局部变量，只要不逃逸，都在栈上分配空间。  </p>
-<p>当我们调用其它函数时：  </p>
-<p><img src="/2021/11/08/go-senior-engineer-2-grammar-behind-secret/callerBP.png" alt="callerBP">  </p>
-<p>函数调用规约：  </p>
-<ul>
-<li>The order in which atomic parameters,or individual parts of a complex parameters,are allocated  </li>
-<li>How parameters are passed(push on the stack,placed in registers,or a mix of both)  </li>
-<li>Which registers the called function must preserve for the caller(also known as:callee-saved registers or non-volatile registers)  </li>
-<li>How the task of preparing the stack for,and restoring after,a function call is divided between the caller and the callee.</li>
-</ul>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://dev.to/nakabonne/digging-deeper-into-the-analysis-of-go-code-31af">Go 的词法分析和语法&#x2F;语义分析过程</a><br><a href="https://www.tutorialspoint.com/compiler_design/compiler_design_phases_of_compiler.htm">编译器各阶段的简单介绍</a><br><a href="https://golearn.coding.net/p/gonggongbanji/files/all/DF9">Linkers and loaders，只看内部对 linker 的职责描述就⾏，不⽤看原理</a><br><a href="https://mp.weixin.qq.com/s/UhxFOQBpW8EUVpFvqH2tMg">SSA 的简单介绍(*只做了解)</a><br><a href="https://eli.thegreenplace.net/2019/go-compiler-internals-adding-a-new-statement-to-go-part-2/">⽼外的写的如何定制 Go 编译器，⾥⾯对 Go 的编译过程介绍更详细，SSA 也说明得很好，只做了解</a><br><a href="https://sitano.github.io/2018/03/18/howto-read-gossa/">如何阅读 go 的 SSA,难，只做了解</a><br><a href="https://www.cs.cmu.edu/~fp/courses/15411-f08/lectures/09-ssa.pdf">CMU 的编译器课，讲 SSA，难，只做了解 </a><br><a href="https://malwareunicorn.org/#/workshops">对逆向感兴趣的话扩展内容</a><br><a href="https://github.com/xwb1989/sqlparser">Vitess 的 SQL Parser</a><br><a href="https://github.com//pingcap/parser">PingCAP 的 TiDB 的 SQL Parser</a><br><a href="https://gocn.vip/topics/12090">GoCN 上的 dlv 的新译⽂</a><br>[C语⾔调⽤规约](<a href="https://github.com/cch123/llp-trans/blob/master/part3/translation-details/function-calling-sequence/calling%02convention.md">https://github.com/cch123/llp-trans/blob/master/part3/translation-details/function-calling-sequence/callingconvention.md</a>)<br><a href="https://go.googlesource.com/proposal/+/refs/changes/78/248178/1/design/40724-register-calling.md">Go 语⾔新版调⽤规约</a></p>
-<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
-<li>C 语⾔的调⽤规约是寄存器与栈混合使⽤的，Go 语⾔⽬前只使⽤了栈(1.17 中会有⽤上寄存器的新⽅式)</li>
-<li>有⼀些⽐较奇怪的问题，可以⽤<code>SSA</code>的⽹⻚来看到底是哪个阶段导致的，⽐如：<a href="https://xargin.com/addr-of-empty-struct-may-not%02eq/%EF%BC%8C%E5%AF%B9%E4%BA%8E%E2%BC%A4%E5%A4%9A%E6%95%B0">https://xargin.com/addr-of-empty-struct-may-noteq/，对于⼤多数</a> Gopher 只要知道这件事情是优化阶段⼲的就可以了，不需要研究明⽩优化每个阶段都在⼲什么</li>
-<li>Go 语⾔的参数和返回值都是 caller 提供空间，在<code>callee</code>中需要根据<code>FP</code>寄存器找到位置，需要⼀定的汇编知识。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>GoSEC</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>语法</tag>
       </tags>
   </entry>
   <entry>
@@ -8683,54 +8749,6 @@
       </tags>
   </entry>
   <entry>
-    <title>深入剖析Kubernetes</title>
-    <url>/2022/09/05/in-depth-kubernetes/</url>
-    <content><![CDATA[<h1 id="容器技术预习"><a href="#容器技术预习" class="headerlink" title="容器技术预习"></a>容器技术预习</h1><h2 id="Docker产生的背景"><a href="#Docker产生的背景" class="headerlink" title="Docker产生的背景"></a>Docker产生的背景</h2><p>2013~2014 年，以 Cloud Foundry 为代表的 PaaS 项目，逐渐完成了教育用户和开拓市<br>场的艰巨任务，也正是在这个将概念逐渐落地的过程中，应用“打包”困难这个问题，成了整个后端技术圈子的一块心病。Docker 项目的出现，则为这个根本性的问题提供了一个近乎完美的解决方案。这正是Docker 项目刚刚开源不久，就能够带领一家原本默默无闻的PaaS 创业公司脱颖而出，然后迅速占领了所有云计算领域头条的技术原因。  </p>
-<p>而在成为了基础设施领域近十年难得一见的技术明星之后，dotCloud 公司则在 2013 年底大胆改名为 Docker 公司。不过，这个在当时就颇具争议的改名举动，也成为了日后容器技术圈风云变幻的一个关键伏笔。  </p>
-<h2 id="Docker-项目在短时间内迅速崛起的三个重要原因"><a href="#Docker-项目在短时间内迅速崛起的三个重要原因" class="headerlink" title="Docker 项目在短时间内迅速崛起的三个重要原因"></a>Docker 项目在短时间内迅速崛起的三个重要原因</h2><ul>
-<li>1.Docker 镜像通过技术手段解决了 PaaS 的根本性问题；  </li>
-<li>2.Docker 容器同开发者之间有着与生俱来的密切关系；  </li>
-<li>3.PaaS 概念已经深入人心的完美契机。</li>
-</ul>
-<h1 id="容器技术概念入门"><a href="#容器技术概念入门" class="headerlink" title="容器技术概念入门"></a>容器技术概念入门</h1><h2 id="从进程开始"><a href="#从进程开始" class="headerlink" title="从进程开始"></a>从进程开始</h2><p>谈到为“进程划分一个独立空间”的思想，相信你一定会联想到虚拟机。<br>而且，你应该还看过一张虚拟机和容器的对比图。  </p>
-<p><img src="/2022/09/05/in-depth-kubernetes/vmvsdocker.png">  </p>
-<p>这幅图的左边，画出了虚拟机的工作原理。其中，名为 Hypervisor 的软件是虚拟机最主要的部分。它通过硬件虚拟化功能，模拟出了运行一个操作系统需要的各种硬件，比如CPU、内存、I&#x2F;O 设备等等。然后，它在这些虚拟的硬件上安装了一个新的操作系统，即Guest OS。  </p>
-<p>这样，用户的应用进程就可以运行在这个虚拟的机器中，它能看到的自然也只有 Guest OS的文件和目录，以及这个机器里的虚拟设备。这就是为什么虚拟机也能起到将不同的应用进<br>程相互隔离的作用。  </p>
-<p>而这幅图的右边，则用一个名为 Docker Engine 的软件替换了 Hypervisor。这也是为什么，很多人会把 Docker 项目称为“轻量级”虚拟化技术的原因，实际上就是把虚拟机的概念套在了容器上。  </p>
-<p><strong>可是这样的说法，却并不严谨。</strong>  </p>
-<p>在理解了 Namespace 的工作方式之后，你就会明白，跟真实存在的虚拟机不同，在使用<br>Docker 的时候，并没有一个真正的“Docker 容器”运行在宿主机里面。Docker 项目帮助用户启动的，还是原来的应用进程，只不过在创建这些进程时，Docker 为它们加上了各种各样的 Namespace 参数。  </p>
-<p>这时，这些进程就会觉得自己是各自 PID Namespace 里的第 1 号进程，只能看到各自<br>Mount Namespace 里挂载的目录和文件，只能访问到各自 Network Namespace 里的网<br>络设备，就仿佛运行在一个个“容器”里面，与世隔绝。  </p>
-<h2 id="隔离与限制"><a href="#隔离与限制" class="headerlink" title="隔离与限制"></a>隔离与限制</h2><p>一个正在运行的 Docker 容器，其实就是一个启用了多个 Linux Namespace 的应用进程，而这个进程能够使用的资源量，则受 Cgroups 配置的限制。  </p>
-<p>这也是容器技术中一个非常重要的概念，即：<strong>容器是一个“单进程”模型</strong>。  </p>
-<p>由于一个容器的本质就是一个进程，用户的应用进程实际上就是容器里 PID&#x3D;1 的进程，也<br>是其他后续创建的所有进程的父进程。这就意味着，在一个容器中，你没办法同时运行两个<br>不同的应用，除非你能事先找到一个公共的 PID&#x3D;1 的程序来充当两个不同应用的父进程，<br>这也是为什么很多人都会用 systemd 或者 supervisord 这样的软件来代替应用本身作为容器的启动进程。  </p>
-<p>另外，跟 Namespace 的情况类似，Cgroups 对资源的限制能力也有很多不完善的地方，<br>被提及最多的自然是 &#x2F;proc 文件系统的问题。  </p>
-<p>众所周知，Linux 下的 &#x2F;proc 目录存储的是记录当前内核运行状态的一系列特殊文件，用户可以通过访问这些文件，查看系统以及当前正在运行的进程的信息，比如 CPU 使用情况、内存占用率等，这些文件也是 top 指令查看系统信息的主要数据来源。  </p>
-<p>但是，你如果在容器里执行 top 指令，就会发现，它显示的信息居然是宿主机的 CPU 和内存数据，而不是当前容器的数据。造成这个问题的原因就是，&#x2F;proc 文件系统并不知道用户通过 Cgroups 给这个容器做了什么样的资源限制，即：&#x2F;proc 文件系统不了解 Cgroups 限制的存在。  </p>
-<p>在生产环境中，这个问题必须进行修正，否则应用程序在容器里读取到的 CPU 核数、<br>可用内存等信息都是宿主机上的数据，这会给应用的运行带来非常大的困惑和风险。  </p>
-<h2 id="深入理解容器镜像"><a href="#深入理解容器镜像" class="headerlink" title="深入理解容器镜像"></a>深入理解容器镜像</h2><p>Linux 容器文件系统的<code>rootfs</code>机制，也是我们提到的容器镜像。它只是一个操作系统的所有文件和目录，并不包含内核，最多也就几百兆。而相比之下，传统虚拟机的镜像大多是一个磁盘的“快照”，磁盘有多大，镜像就至少有多大。  </p>
-<p>通过结合使用 Mount Namespace 和 rootfs，容器就能够为进程构建出一个完善的文件系统隔离环境。当然，这个功能的实现还必须感谢 chroot 和 pivot_root 这两个系统调用切换进程根目录的能力。  </p>
-<p>而在 rootfs 的基础上，Docker 公司创新性地提出了使用多个增量 rootfs 联合挂载一个完整 rootfs 的方案，这就是容器镜像中“层”的概念。  </p>
-<p>通过“分层镜像”的设计，以 Docker 镜像为核心，来自不同公司、不同团队的技术人员被<br>紧密地联系在了一起。而且，由于容器镜像的操作是增量式的，这样每次镜像拉取、推送的<br>内容，比原本多个完整的操作系统的大小要小得多；而共享层的存在，可以使得所有这些容<br>器镜像需要的总空间，也比每个镜像的总和要小。这样就使得基于容器镜像的团队协作，要<br>比基于动则几个 GB 的虚拟机磁盘镜像的协作要敏捷得多。  </p>
-<p>更重要的是，一旦这个镜像被发布，那么你在全世界的任何一个地方下载这个镜像，得到的<br>内容都完全一致，可以完全复现这个镜像制作者当初的完整环境。这，就是容器技术“强一<br>致性”的重要体现。  </p>
-<p>而这种价值正是支撑 Docker 公司在 2014~2016 年间迅猛发展的核心动力。<br>容器镜像的发明，不仅打通了“开发 - 测试 - 部署”流程的每一个环节，更重要的是：<strong>容器镜像将会成为未来软件的主流发布方式。</strong>  </p>
-<h2 id="重新认识Docker容器"><a href="#重新认识Docker容器" class="headerlink" title="重新认识Docker容器"></a>重新认识Docker容器</h2><p><img src="/2022/09/05/in-depth-kubernetes/dockerview.png">  </p>
-<p>这个容器进程“python app.py”，运行在由 Linux Namespace 和 Cgroups 构成的隔离<br>环境里；而它运行所需要的各种文件，比如 python，app.py，以及整个操作系统文件，则由多个联合挂载在一起的 rootfs 层提供。  </p>
-<p>这些 rootfs 层的最下层，是来自 Docker 镜像的只读层。  </p>
-<p>在只读层之上，是 Docker 自己添加的 Init 层，用来存放被临时修改过的 &#x2F;etc&#x2F;hosts 等文件。  </p>
-<p>而 rootfs 的最上层是一个可读写层，它以 Copy-on-Write 的方式存放任何对只读层的修改，容器声明的 Volume 的挂载点，也出现在这一层。  </p>
-<h2 id="谈谈Kubernetes的本质"><a href="#谈谈Kubernetes的本质" class="headerlink" title="谈谈Kubernetes的本质"></a>谈谈Kubernetes的本质</h2><p>过去很多的集群管理项目（比如 Yarn、Mesos，以及 Swarm）所擅长的，都是把一个容器，按照某种规则，放置在某个最佳节点上运行起来。这种功能，我们称为“调度”。而 Kubernetes 项目所擅长的，是按照用户的意愿和整个系统的规则，完全自动化地处理<br>好容器之间的各种关系。这种功能，就是我们经常听到的一个概念：<strong>编排</strong>。  </p>
-<p>所以说，Kubernetes 项目的本质，是为用户提供一个具有普遍意义的容器编排工具。  </p>
-<p>不过，更重要的是，Kubernetes 项目为用户提供的不仅限于一个工具。它真正的价值，乃在于提供了一套基于容器构建分布式系统的基础依赖。  </p>
-<h1 id="Kubernetes集群搭建与实践"><a href="#Kubernetes集群搭建与实践" class="headerlink" title="Kubernetes集群搭建与实践"></a>Kubernetes集群搭建与实践</h1><h1 id="容器编排与Kubernetes作业管理"><a href="#容器编排与Kubernetes作业管理" class="headerlink" title="容器编排与Kubernetes作业管理"></a>容器编排与Kubernetes作业管理</h1><h2 id="为什么我们需要Pod？"><a href="#为什么我们需要Pod？" class="headerlink" title="为什么我们需要Pod？"></a>为什么我们需要Pod？</h2>]]></content>
-      <categories>
-        <category>LearnKubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>吊车尾</title>
     <url>/2019/05/23/in-the-end/</url>
     <content><![CDATA[<p>这一周感觉过得好慢，也许是我太压抑了的缘故吧。  </p>
@@ -9082,7 +9100,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#46;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;">&#x2e;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -11031,6 +11049,23 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
+    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
+<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leetcode-cn</code>执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
     <url>/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指 Offer 32 - I. 从上到下打印二叉树</a>  </p>
@@ -11049,23 +11084,6 @@
 
 <p><code>leetcode-cn</code>执行  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了97.77%的用户</span><br><span class="line">内存消耗：41.5 MB, 在所有 Java 提交中击败了28.48%的用户</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SwordToOffer</category>
-      </categories>
-      <tags>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
-    <url>/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>  </p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题和<a href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>解法很像。  </p>
-<p>需要注意，此题中将队列<code>queue</code>需要换成<strong>双端队列</strong>  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置 res 用来保存输出结果</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 边界情况处理</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 设置一个队列，用来存储二叉树中的元素</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 队列添加二叉树的根节点</span></span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="comment">// 用来判断当前的层数是否为奇数层，初始化在0层，为偶数层</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isOddNumber</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历队列，直到队列为空，说明访问了二叉树中所有的节点</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// 用来记录 queue 的长度，即每层节点的个数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 奇偶层总是交替出现的</span></span><br><span class="line">            <span class="comment">// 通过取反操作，判断当前的层数是否为奇偶层</span></span><br><span class="line">            <span class="comment">// 由于 isOddNumber 初始化为false，所以第一次进来这个 while 循环取反后为true，符合第一层是奇数层的含义</span></span><br><span class="line">            isOddNumber = !isOddNumber;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成一个双端队列temp，用来保存每一层节点，保存成功后添加到 res 中</span></span><br><span class="line">            LinkedList&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用 for 循环，将queue 中的元素按照给定的规则添加的 temp 中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; size;i++) &#123;</span><br><span class="line">                <span class="comment">// 从 queue 取出一个节点</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (isOddNumber) &#123;</span><br><span class="line">                    <span class="comment">// 如果是奇数层，那么按顺序添加到双端队列的尾部</span></span><br><span class="line">                    temp.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 如果是偶数层，那么按照顺序添加到双端队列的头部</span></span><br><span class="line">                    temp.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 判断当前节点的左子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="comment">// 判断当前节点的右子节点是否有值，如果有，则添加到queue中</span></span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 把存放了每一层元素的数组 temp 添加到结果数组中</span></span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>leetcode-cn</code>执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行用时：1 ms, 在所有 Java 提交中击败了96.57%的用户</span><br><span class="line">内存消耗：41.4 MB, 在所有 Java 提交中击败了69.13%的用户</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>SwordToOffer</category>
       </categories>

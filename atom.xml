@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-09-06T13:58:35.091Z</updated>
+  <updated>2022-09-07T07:12:48.117Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第一个Kubernetes应用</title>
+    <link href="https://octopuslian.github.io/2022/09/06/first-kubernetes-app/"/>
+    <id>https://octopuslian.github.io/2022/09/06/first-kubernetes-app/</id>
+    <published>2022-09-06T15:29:03.000Z</published>
+    <updated>2022-09-07T07:12:48.117Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将以创建一个&lt;code&gt;nginx&lt;/code&gt;的&lt;code&gt;deployment&lt;/code&gt;为例体验&lt;code&gt;Kubernetes&lt;/code&gt;的基础使用  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Kubernetes&lt;/code&gt;跟&lt;code&gt;Docker&lt;/code&gt;等很多项目最大的不同是：&lt;strong&gt;它不推荐你使用命令行方式的方式直接运行容器，而是希望你用YAML文件的方式，即把容器的定义、参数、配置都记录在一个YAML文件中&lt;/strong&gt;，然后用  &lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# kubectl create -f test.yml&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;运行起来。  &lt;/p&gt;
+&lt;p&gt;这么做最直接的好处就是，会有一个文件记录下&lt;code&gt;Kubernetes&lt;/code&gt;到底运行了什么。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何完美干净的卸载Kubernetes集群</title>
     <link href="https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/"/>
     <id>https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</id>
     <published>2022-09-06T13:49:55.000Z</published>
-    <updated>2022-09-06T13:58:35.091Z</updated>
+    <updated>2022-09-06T13:59:56.355Z</updated>
     
     
       
@@ -44,29 +68,6 @@
     <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
     
     <category term="卸载" scheme="https://octopuslian.github.io/tags/%E5%8D%B8%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入剖析Kubernetes</title>
-    <link href="https://octopuslian.github.io/2022/09/05/in-depth-kubernetes/"/>
-    <id>https://octopuslian.github.io/2022/09/05/in-depth-kubernetes/</id>
-    <published>2022-09-05T02:28:09.000Z</published>
-    <updated>2022-09-05T03:28:52.976Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;容器技术预习&quot;&gt;&lt;a href=&quot;#容器技术预习&quot; class=&quot;headerlink&quot; title=&quot;容器技术预习&quot;&gt;&lt;/a&gt;容器技术预习&lt;/h1&gt;&lt;h2 id=&quot;Docker产生的背景&quot;&gt;&lt;a href=&quot;#Docker产生的背景&quot; class=&quot;headerlink&quot; title=&quot;Docker产生的背景&quot;&gt;&lt;/a&gt;Docker产生的背景&lt;/h2&gt;&lt;p&gt;2013~2014 年，以 Cloud Foundry 为代表的 PaaS 项目，逐渐完成了教育用户和开拓市&lt;br&gt;场的艰巨任务，也正是在这个将概念逐渐落地的过程中，应用“打包”困难这个问题，成了整个后端技术圈子的一块心病。Docker 项目的出现，则为这个根本性的问题提供了一个近乎完美的解决方案。这正是Docker 项目刚刚开源不久，就能够带领一家原本默默无闻的PaaS 创业公司脱颖而出，然后迅速占领了所有云计算领域头条的技术原因。  &lt;/p&gt;
-&lt;p&gt;而在成为了基础设施领域近十年难得一见的技术明星之后，dotCloud 公司则在 2013 年底大胆改名为 Docker 公司。不过，这个在当时就颇具争议的改名举动，也成为了日后容器技术圈风云变幻的一个关键伏笔。  &lt;/p&gt;
-&lt;h2 id=&quot;Docker-项目在短时间内迅速崛起的三个重要原因&quot;&gt;&lt;a href=&quot;#Docker-项目在短时间内迅速崛起的三个重要原因&quot; class=&quot;headerlink&quot; title=&quot;Docker 项目在短时间内迅速崛起的三个重要原因&quot;&gt;&lt;/a&gt;Docker 项目在短时间内迅速崛起的三个重要原因&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
     
   </entry>
   
