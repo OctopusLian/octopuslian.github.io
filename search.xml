@@ -125,56 +125,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Golang中的内存泄露及解决方案</title>
-    <url>/2019/05/14/Golang-memory-leak-solution/</url>
-    <content><![CDATA[<p>工作中记一次碰到内存泄漏的解决过程。  </p>
-<h1 id="发现内存泄露"><a href="#发现内存泄露" class="headerlink" title="发现内存泄露"></a>发现内存泄露</h1><p>写的一个定时删除文件的服务，结果无缘无故被系统杀死了。  </p>
-<p>于是我设置了参数，每隔30s启动一次。并用<code>dmesg</code>命令查看  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[1700172.849656] Out of memory: Kill process 1195 (SliceDyson) score 730 or sacrifice child</span><br><span class="line">[1700172.849665] Killed process 1195 (SliceDyson) total-vm:13314968kB, anon-rss:8693980kB, file-rss:116kB</span><br></pre></td></tr></table></figure>
-<p>确定是内存泄露造成的。  </p>
-<h1 id="使用pprof分析造成内存泄露的原因"><a href="#使用pprof分析造成内存泄露的原因" class="headerlink" title="使用pprof分析造成内存泄露的原因"></a>使用pprof分析造成内存泄露的原因</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li><p><a href="https://golang.org/pkg/runtime/pprof/">golang pprof 的文档</a> 里面给了一个例子，如何把  <code>pprof</code> 信息输出到文件里面   </p>
-</li>
-<li><p><a href="https://www.reddit.com/r/golang/comments/6kv625/my_app_has_memory_leaks_how_to_find_them/">Reddit 上这篇文章</a>，提到了如何通过对比两次 <code>heap</code> 的结构，来判断到底哪些内存没有释放：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">One thing you can do is to compare 2 heap pprofs. You can do it like this:</span><br><span class="line"></span><br><span class="line">    Extract a heap profile heap0.pprof</span><br><span class="line"></span><br><span class="line">    Add some load to the application</span><br><span class="line"></span><br><span class="line">    Extract another heap profile heap1.pprof</span><br><span class="line"></span><br><span class="line">    Compare them with go tool pprof -base heap0.pprof &lt;bin&gt; heap1.pprof</span><br><span class="line"></span><br><span class="line">This way you can see exactly what is increasing over time.</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://blog.golang.org/profiling-go-programs">https://blog.golang.org/profiling-go-programs</a></li>
-</ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li>分析生成的<code>.pprof</code>文件</li>
-</ul>
-<p>　　</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ go tool pprof 120.pprof </span><br><span class="line">Type: inuse_space</span><br><span class="line">Time: Mar 6, 2019 at 9:27pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 603.20MB, 99.67% of 605.20MB total</span><br><span class="line">Dropped 1 node (cum &lt;= 3.03MB)</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">  603.20MB 99.67% 99.67%   605.20MB   100%  main.main</span><br><span class="line">         0     0% 99.67%   605.20MB   100%  runtime.main</span><br><span class="line">(pprof) ^C</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ go tool pprof 240.pprof </span><br><span class="line">Type: inuse_space</span><br><span class="line">Time: Mar 6, 2019 at 11:42pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 2.81GB, 99.86% of 2.81GB total</span><br><span class="line">Dropped 6 nodes (cum &lt;= 0.01GB)</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">    2.81GB 99.86% 99.86%     2.81GB   100%  main.main</span><br><span class="line">         0     0% 99.86%     2.81GB   100%  runtime.main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>分析各个函数的占比情况</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">File: SliceDyson</span><br><span class="line">Type: inuse_objects</span><br><span class="line">Time: Mar 7, 2019 at 2:52pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) web</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 6810, 100% of 6810 total</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">      6554 96.24% 96.24%       6554 96.24%  main.GetXMLFiles</span><br><span class="line">       256  3.76%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.addDecoderNode</span><br><span class="line">         0     0%   100%        256  3.76%  main.init</span><br><span class="line">         0     0%   100%       6554 96.24%  main.main</span><br><span class="line">         0     0%   100%        256  3.76%  net/http.init</span><br><span class="line">         0     0%   100%       6810   100%  runtime.main</span><br><span class="line">         0     0%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.init</span><br><span class="line">         0     0%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.init.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后定位到造成内存泄露的原因，是<code>GetXMLFiles</code>函数造成的。  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlFilesPath []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> LoopGetXmlFilesPath []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> AllTasks []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> tasks []*Task</span><br><span class="line"><span class="keyword">for</span> _, RootPath := <span class="keyword">range</span> ParseStorageINI(StorageINIPath) &#123;</span><br><span class="line">	xmlFilesPath = GetXMLFiles(RootPath)</span><br><span class="line">	<span class="keyword">for</span> _, xmlFilesPath_str := <span class="keyword">range</span> xmlFilesPath &#123;</span><br><span class="line">		LoopGetXmlFilesPath = <span class="built_in">append</span>(LoopGetXmlFilesPath, xmlFilesPath_str)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>把<code>xmlFilesPath</code>放到<code>for range</code>循环里面声明初始化即可  </p>
-<h1 id="是什么原因会导致内存泄露"><a href="#是什么原因会导致内存泄露" class="headerlink" title="是什么原因会导致内存泄露"></a>是什么原因会导致内存泄露</h1><h1 id="什么时候需要垃圾回收-GC"><a href="#什么时候需要垃圾回收-GC" class="headerlink" title="什么时候需要垃圾回收(GC)"></a>什么时候需要垃圾回收(GC)</h1><h1 id="参考文章和资源"><a href="#参考文章和资源" class="headerlink" title="参考文章和资源"></a>参考文章和资源</h1><ul>
-<li><a href="https://stackoverflow.com/questions/48618201/how-to-release-memory-allocated-by-a-slice">how-to-release-memory-allocated-by-a-slice</a>  </li>
-<li><a href="https://stackoverflow.com/questions/37382600/cannot-free-memory-once-occupied-by-bytes-buffer">cannot-free-memory-once-occupied-by-bytes-buffer</a>  </li>
-<li><a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang垃圾回收剖析</a>  </li>
-<li><a href="https://golang.org/pkg/runtime/pprof/">pprof</a>  </li>
-<li><a href="https://www.reddit.com/r/golang/comments/6kv625/my_app_has_memory_leaks_how_to_find_them/">my_app_has_memory_leaks_how_to_find_them</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Solution-notes</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>解决方案</tag>
-        <tag>内存泄露</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一位朋友面试字节跳动游戏开发岗经验</title>
     <url>/2020/06/26/a-friend-interview-bytedance-game-develop-experience/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>一位好友在西安某211读研究生，主攻图形学方向，下面是他面试字节跳动游戏开发岗的流程。  </p>
@@ -268,6 +218,56 @@
       <tags>
         <tag>工作</tag>
         <tag>进步</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Golang中的内存泄露及解决方案</title>
+    <url>/2019/05/14/Golang-memory-leak-solution/</url>
+    <content><![CDATA[<p>工作中记一次碰到内存泄漏的解决过程。  </p>
+<h1 id="发现内存泄露"><a href="#发现内存泄露" class="headerlink" title="发现内存泄露"></a>发现内存泄露</h1><p>写的一个定时删除文件的服务，结果无缘无故被系统杀死了。  </p>
+<p>于是我设置了参数，每隔30s启动一次。并用<code>dmesg</code>命令查看  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[1700172.849656] Out of memory: Kill process 1195 (SliceDyson) score 730 or sacrifice child</span><br><span class="line">[1700172.849665] Killed process 1195 (SliceDyson) total-vm:13314968kB, anon-rss:8693980kB, file-rss:116kB</span><br></pre></td></tr></table></figure>
+<p>确定是内存泄露造成的。  </p>
+<h1 id="使用pprof分析造成内存泄露的原因"><a href="#使用pprof分析造成内存泄露的原因" class="headerlink" title="使用pprof分析造成内存泄露的原因"></a>使用pprof分析造成内存泄露的原因</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li><p><a href="https://golang.org/pkg/runtime/pprof/">golang pprof 的文档</a> 里面给了一个例子，如何把  <code>pprof</code> 信息输出到文件里面   </p>
+</li>
+<li><p><a href="https://www.reddit.com/r/golang/comments/6kv625/my_app_has_memory_leaks_how_to_find_them/">Reddit 上这篇文章</a>，提到了如何通过对比两次 <code>heap</code> 的结构，来判断到底哪些内存没有释放：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">One thing you can do is to compare 2 heap pprofs. You can do it like this:</span><br><span class="line"></span><br><span class="line">    Extract a heap profile heap0.pprof</span><br><span class="line"></span><br><span class="line">    Add some load to the application</span><br><span class="line"></span><br><span class="line">    Extract another heap profile heap1.pprof</span><br><span class="line"></span><br><span class="line">    Compare them with go tool pprof -base heap0.pprof &lt;bin&gt; heap1.pprof</span><br><span class="line"></span><br><span class="line">This way you can see exactly what is increasing over time.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://blog.golang.org/profiling-go-programs">https://blog.golang.org/profiling-go-programs</a></li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li>分析生成的<code>.pprof</code>文件</li>
+</ul>
+<p>　　</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ go tool pprof 120.pprof </span><br><span class="line">Type: inuse_space</span><br><span class="line">Time: Mar 6, 2019 at 9:27pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 603.20MB, 99.67% of 605.20MB total</span><br><span class="line">Dropped 1 node (cum &lt;= 3.03MB)</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">  603.20MB 99.67% 99.67%   605.20MB   100%  main.main</span><br><span class="line">         0     0% 99.67%   605.20MB   100%  runtime.main</span><br><span class="line">(pprof) ^C</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ go tool pprof 240.pprof </span><br><span class="line">Type: inuse_space</span><br><span class="line">Time: Mar 6, 2019 at 11:42pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 2.81GB, 99.86% of 2.81GB total</span><br><span class="line">Dropped 6 nodes (cum &lt;= 0.01GB)</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">    2.81GB 99.86% 99.86%     2.81GB   100%  main.main</span><br><span class="line">         0     0% 99.86%     2.81GB   100%  runtime.main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>分析各个函数的占比情况</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">File: SliceDyson</span><br><span class="line">Type: inuse_objects</span><br><span class="line">Time: Mar 7, 2019 at 2:52pm (CST)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) web</span><br><span class="line">(pprof) top</span><br><span class="line">Showing nodes accounting for 6810, 100% of 6810 total</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">      6554 96.24% 96.24%       6554 96.24%  main.GetXMLFiles</span><br><span class="line">       256  3.76%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.addDecoderNode</span><br><span class="line">         0     0%   100%        256  3.76%  main.init</span><br><span class="line">         0     0%   100%       6554 96.24%  main.main</span><br><span class="line">         0     0%   100%        256  3.76%  net/http.init</span><br><span class="line">         0     0%   100%       6810   100%  runtime.main</span><br><span class="line">         0     0%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.init</span><br><span class="line">         0     0%   100%        256  3.76%  vendor/golang_org/x/net/http2/hpack.init.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后定位到造成内存泄露的原因，是<code>GetXMLFiles</code>函数造成的。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlFilesPath []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> LoopGetXmlFilesPath []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> AllTasks []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> tasks []*Task</span><br><span class="line"><span class="keyword">for</span> _, RootPath := <span class="keyword">range</span> ParseStorageINI(StorageINIPath) &#123;</span><br><span class="line">	xmlFilesPath = GetXMLFiles(RootPath)</span><br><span class="line">	<span class="keyword">for</span> _, xmlFilesPath_str := <span class="keyword">range</span> xmlFilesPath &#123;</span><br><span class="line">		LoopGetXmlFilesPath = <span class="built_in">append</span>(LoopGetXmlFilesPath, xmlFilesPath_str)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>把<code>xmlFilesPath</code>放到<code>for range</code>循环里面声明初始化即可  </p>
+<h1 id="是什么原因会导致内存泄露"><a href="#是什么原因会导致内存泄露" class="headerlink" title="是什么原因会导致内存泄露"></a>是什么原因会导致内存泄露</h1><h1 id="什么时候需要垃圾回收-GC"><a href="#什么时候需要垃圾回收-GC" class="headerlink" title="什么时候需要垃圾回收(GC)"></a>什么时候需要垃圾回收(GC)</h1><h1 id="参考文章和资源"><a href="#参考文章和资源" class="headerlink" title="参考文章和资源"></a>参考文章和资源</h1><ul>
+<li><a href="https://stackoverflow.com/questions/48618201/how-to-release-memory-allocated-by-a-slice">how-to-release-memory-allocated-by-a-slice</a>  </li>
+<li><a href="https://stackoverflow.com/questions/37382600/cannot-free-memory-once-occupied-by-bytes-buffer">cannot-free-memory-once-occupied-by-bytes-buffer</a>  </li>
+<li><a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang垃圾回收剖析</a>  </li>
+<li><a href="https://golang.org/pkg/runtime/pprof/">pprof</a>  </li>
+<li><a href="https://www.reddit.com/r/golang/comments/6kv625/my_app_has_memory_leaks_how_to_find_them/">my_app_has_memory_leaks_how_to_find_them</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Solution-notes</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>解决方案</tag>
+        <tag>内存泄露</tag>
       </tags>
   </entry>
   <entry>
@@ -1553,6 +1553,31 @@
       </tags>
   </entry>
   <entry>
+    <title>今年终于要开始忙了</title>
+    <url>/2021/04/17/first-entrepreneurship/</url>
+    <content><![CDATA[<p>昨天收到两条消息，我的副业&amp;创业终于要开始了。  </p>
+<p>聊天1：  </p>
+<p>和川大计算机硕士毕业的学长一起做一款程序，预计9月初上线。  </p>
+<p>这位学长我是意外在工作中认识的，后来他毕业后，我俩有次在望江楼公园闲聊，他说他第一眼看到我就觉得我是个非常<code>nice</code>的人。我笑了笑说，一般对我没有攻击的我我都会真诚以待，不造谣，隐私除外。  </p>
+<p>技术和市场都做完调研，但对我来说是一块全新的领域。  </p>
+<p>聊天2：  </p>
+<p>和清华在读博士的创业。  </p>
+<p>2月底他找到我时，问我有没有兴趣做这个，他目前拿到第一笔融资，想等9月中旬项目第一版上线后再去谈下一笔融资。我不懂融资，但我信过他这个人，从本科时接触他写的<a href="http://www.demongan.com/">恶魔的世界</a>，到硕士出了一本黑客书籍，并创办了<a href="https://www.write-bug.com/">WRITR-BUG技术共享平台</a>，在他身上我看到了许多将不可能转换为可能的事情。  </p>
+<p>2017年夏天我和他在北邮相遇，非常帅气的小伙子，带我逛了北邮，同时在他面前班门弄斧了一下汇编，哈哈  </p>
+<p>2月底他打电话说如果我要做的话，就会给我发工资，我说你即使不给我发工资我也愿意做。我嘛，总觉得按部就班的会缺少一些什么，你给我的这次机会，我要好好把握，我觉得我的一生，总要去尝试一些没有做过的事情。  </p>
+<p>半年时间，半年后，我会来这里还愿。  </p>
+<p>GOOD LUCK~</p>
+]]></content>
+      <categories>
+        <category>Try-to-Challenges</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+        <tag>融资</tag>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一款 iPad 和 Apple Pencil</title>
     <url>/2020/06/22/first-ipad-and-apple-pencil/</url>
     <content><![CDATA[<p>今天利用好友推荐的官网教育优惠，终于下单了<code>Apple Pencil 一代</code>！  </p>
@@ -1634,31 +1659,6 @@
       </categories>
       <tags>
         <tag>kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>今年终于要开始忙了</title>
-    <url>/2021/04/17/first-entrepreneurship/</url>
-    <content><![CDATA[<p>昨天收到两条消息，我的副业&amp;创业终于要开始了。  </p>
-<p>聊天1：  </p>
-<p>和川大计算机硕士毕业的学长一起做一款程序，预计9月初上线。  </p>
-<p>这位学长我是意外在工作中认识的，后来他毕业后，我俩有次在望江楼公园闲聊，他说他第一眼看到我就觉得我是个非常<code>nice</code>的人。我笑了笑说，一般对我没有攻击的我我都会真诚以待，不造谣，隐私除外。  </p>
-<p>技术和市场都做完调研，但对我来说是一块全新的领域。  </p>
-<p>聊天2：  </p>
-<p>和清华在读博士的创业。  </p>
-<p>2月底他找到我时，问我有没有兴趣做这个，他目前拿到第一笔融资，想等9月中旬项目第一版上线后再去谈下一笔融资。我不懂融资，但我信过他这个人，从本科时接触他写的<a href="http://www.demongan.com/">恶魔的世界</a>，到硕士出了一本黑客书籍，并创办了<a href="https://www.write-bug.com/">WRITR-BUG技术共享平台</a>，在他身上我看到了许多将不可能转换为可能的事情。  </p>
-<p>2017年夏天我和他在北邮相遇，非常帅气的小伙子，带我逛了北邮，同时在他面前班门弄斧了一下汇编，哈哈  </p>
-<p>2月底他打电话说如果我要做的话，就会给我发工资，我说你即使不给我发工资我也愿意做。我嘛，总觉得按部就班的会缺少一些什么，你给我的这次机会，我要好好把握，我觉得我的一生，总要去尝试一些没有做过的事情。  </p>
-<p>半年时间，半年后，我会来这里还愿。  </p>
-<p>GOOD LUCK~</p>
-]]></content>
-      <categories>
-        <category>Try-to-Challenges</category>
-      </categories>
-      <tags>
-        <tag>项目</tag>
-        <tag>融资</tag>
-        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
@@ -7753,75 +7753,6 @@
       </tags>
   </entry>
   <entry>
-    <title>毕业18个月，我终于在这座城市活了下来</title>
-    <url>/2019/12/30/graduate-18-months-i-finally-survived-in-the-city/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2019年12月19日，星期四，我在成都，写下了这句话，距离的毕业后的第一天入职，已经过去了整整十八个月。现在，我终于敢说，我在这座城市活了下来。  </p>
-<p>犹记得，大学还有半年就毕业时，经历了考研失败的我，在考虑去哪座城市发展时，高中好友涛说，来成都嘛，找工作可以先住我家，于是，我跟父母说明情况后，就来到了成都。  </p>
-<p>在这里，我逐渐学会了如何独立成长，如何与自己独处，如何照顾自己，以及如何与他人协作。  </p>
-<p>从大一到大四，可能唯一的遗憾就是没有去实习过。  </p>
-<p>寒假时间短，冬天基本就是在家，或者出去看看那似曾相识的街道，在雪地里和妹妹打雪仗。  </p>
-<p>犹记得，最快乐最有意义的时光都是在暑假度过————支教，远途旅行，以及在家准备考研。  </p>
-<p>毕业后的18个月，失去父母庇护的我，学习着如何写简历，投简历，面试，以及签下了我的第一份劳务合同，第一个月拿到了试用期的薪资，那一刻我放佛觉得我长大了，不再需要问父母要生活费，可以自己自给自足。  </p>
-<h2 id="亲爱的小孩，今天有没有哭"><a href="#亲爱的小孩，今天有没有哭" class="headerlink" title="亲爱的小孩，今天有没有哭"></a>亲爱的小孩，今天有没有哭</h2><h3 id="关于工作"><a href="#关于工作" class="headerlink" title="关于工作"></a>关于工作</h3><p>毕业后最大的收获，就在于适应了职场生存的法则。  </p>
-<p>犹记得，刚入职的时候，第一次用<code>Go</code>写一个定时删除服务，涉及了大量的文件处理，设计模式和并发等知识点，当我写完后，我感觉很有成就感，后来，当这个服务产品化后，出现了一个内存泄露的问题，我又用性能分析工具层层剖析，解决了它。  </p>
-<p>但我知道这只是小试牛刀，接着我有接手了一个核心调度的项目，然而这个项目给我的打击太大，比如逻辑很复杂，导致和产品对需求的时候，都不敢保证这个需求什么时候能做出来；又比如当整个系统出来了问题时，会把所有的<code>Bug</code>都指派给我，然后我就挨个去打断点，看日志去排查；又比如有一次，因为需求太多，做不完，每天被<code>leader</code>和其他同事催着赶进度时，我只能偷偷跑到卫生间去哭上五分钟，然后擦干眼泪继续做。  </p>
-<p>为什么我对这两件事这么记忆尤新呢，因为它让我看到了一个程序员工作的缩影：提需求——编码——测试——改<code>Bug</code>——新的需求…周而复始。  </p>
-<p>在工作中，我也总结了一些研发和改<code>Bug</code>的经验  </p>
-<ul>
-<li>1，和产品经理沟通是双向的，当他&#x2F;她提出一个需求时，最好是根据自己的理解把他&#x2F;她的话再复述一遍，以确认是否信息一致，当然最好写在文档里，后面可以防止产品频繁变需求（虽然这个愿望有些微小）；  </li>
-<li>2，编码时，最好理清逻辑，在脑海中画好逻辑时序图，接着写代码就会轻松许多；  </li>
-<li>3，最好在容易出错，以及频繁赋值的地方打上日志，后期出现<code>Bug</code>时好及时有效地定位问题；  </li>
-<li>4，如果出现<code>Bug</code>了，最好在已经出现<code>Bug</code>的机器上再复现一遍，当然也可以在本地搭一个完整的测试环境，这样最好；  </li>
-<li>5，运用性能分析工具，解决完<code>Bug</code>后，最好详细将<code>Bug</code>出现的原因和解决过程个最终结果记录下来，方便以后自己查阅；  </li>
-<li>6，将自己的研发时间定在25-35分钟一块，中间最好不要被别人打断；  </li>
-<li>7，学会使用搜索引擎，尽量用<code>Google</code>和<code>Bing</code>，将问题切换成英文描述，搜出来的文章质量会高一些；  </li>
-<li>8，是你的问题，及时承担，不是你的问题，找到证据后迅速甩锅。</li>
-</ul>
-<p>以上是我个人在写程序的经验小结。  </p>
-<h3 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h3><ul>
-<li>1，自己做的饭真好吃</li>
-</ul>
-<p>2019年最大的感受就是学会了做饭。  </p>
-<p>自己买了电磁炉，照着网上的步骤开始学会炒素菜，炒荤菜。接着依葫芦画瓢，不断调整酱油、盐、鸡精的比例，味道和颜色也好了许多。  </p>
-<p>我想今年过年家里又多了个做饭的帮手。  </p>
-<ul>
-<li>2，一觉睡到自然醒的感觉真爽</li>
-</ul>
-<p>项目不忙的时候，六点半下班，回去看看书，玩玩手机，十一点前关灯睡觉，早上一觉睡到自然醒，再看看表，八点多，没事，还来得及。  </p>
-<p>这段<code>一觉睡到自然醒</code>的时光，让我又找回了睡觉的乐趣，同时对<code>996</code>的厌恶又加深了一些。  </p>
-<ul>
-<li>3，睡前水乳护肤很舒服</li>
-</ul>
-<p>从大学买的一套曼秀雷敦，到18年毕业时买的高夫男士全套，再到今年的百雀羚，我逐渐学会了护肤这一技能。  </p>
-<p>先用清水洗一遍脸，再涂上洗面奶清一遍，再用爽肤水，护肤乳，后面还可以用面霜，眼霜除皱纹，上班时还可以抹一层隔离霜，每次护理完，感觉脸像生命一样在自由的呼吸，很清爽。  </p>
-<h3 id="在这座城市，哭过，笑过"><a href="#在这座城市，哭过，笑过" class="headerlink" title="在这座城市，哭过，笑过"></a>在这座城市，哭过，笑过</h3><p>在一座陌生的城市，给我最大的感触就是，一切都只能靠自己。  </p>
-<p>找房子，你需要现场去验房，签合同；找工作，需要自己投简历，面试，签劳动合同；工作完成不了，你需要自己加班赶进度。  </p>
-<p>折磨你，也在成就你。  </p>
-<p>谢谢你，让我变得更坚强。  </p>
-<h2 id="要感谢的人"><a href="#要感谢的人" class="headerlink" title="要感谢的人"></a>要感谢的人</h2><ul>
-<li>感谢我的父母对我只身前往陌生城市的支持；  </li>
-<li>感谢我的女友，教会为如何护肤，告诫我不要一到周末就想着外面吃，要自己买菜做饭；  </li>
-<li>感谢我在成都结识的好友，在知道我要面试时，分享了他宝贵的面试经验并整理成文档分享给我；  </li>
-<li>感谢我在健身房结识的一位好友，一起健身，劳逸结合，在健身中释放一天的压力；  </li>
-<li>感谢我在游戏公司时结识的一位前辈，他教会我把眼界放长远一些；  </li>
-<li>感谢我在公司部门内刚入职时带我的导师，教会我如何设计程序，分享他的所见所闻和工作经验；</li>
-</ul>
-<p>谢谢你们的帮助，让我在这一年内学会了许多技能，它们是我在这黑暗森林中得以生存的资本。  </p>
-<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><ul>
-<li><a href="https://octopuslian.github.io/2019/03/28/first-work-project-havest/">第一次做项目学到的技术之外的东西</a>  </li>
-<li><a href="https://octopuslian.github.io/2019/05/31/a-project-deadline-note/">记一次项目演示前赶deadline的经历</a></li>
-</ul>
-<p><img src="/2019/12/30/graduate-18-months-i-finally-survived-in-the-city/live.jpg">  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>成长</tag>
-        <tag>年终总结</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>再见乌鲁木齐，再见新疆</title>
     <url>/2019/05/11/goodbye-urumqi-goodbye-xinjiang/</url>
     <content><![CDATA[<p><a href="./plane"></a>  </p>
@@ -7920,6 +7851,75 @@
         <tag>新疆</tag>
         <tag>乌鲁木齐</tag>
         <tag>告别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>毕业18个月，我终于在这座城市活了下来</title>
+    <url>/2019/12/30/graduate-18-months-i-finally-survived-in-the-city/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2019年12月19日，星期四，我在成都，写下了这句话，距离的毕业后的第一天入职，已经过去了整整十八个月。现在，我终于敢说，我在这座城市活了下来。  </p>
+<p>犹记得，大学还有半年就毕业时，经历了考研失败的我，在考虑去哪座城市发展时，高中好友涛说，来成都嘛，找工作可以先住我家，于是，我跟父母说明情况后，就来到了成都。  </p>
+<p>在这里，我逐渐学会了如何独立成长，如何与自己独处，如何照顾自己，以及如何与他人协作。  </p>
+<p>从大一到大四，可能唯一的遗憾就是没有去实习过。  </p>
+<p>寒假时间短，冬天基本就是在家，或者出去看看那似曾相识的街道，在雪地里和妹妹打雪仗。  </p>
+<p>犹记得，最快乐最有意义的时光都是在暑假度过————支教，远途旅行，以及在家准备考研。  </p>
+<p>毕业后的18个月，失去父母庇护的我，学习着如何写简历，投简历，面试，以及签下了我的第一份劳务合同，第一个月拿到了试用期的薪资，那一刻我放佛觉得我长大了，不再需要问父母要生活费，可以自己自给自足。  </p>
+<h2 id="亲爱的小孩，今天有没有哭"><a href="#亲爱的小孩，今天有没有哭" class="headerlink" title="亲爱的小孩，今天有没有哭"></a>亲爱的小孩，今天有没有哭</h2><h3 id="关于工作"><a href="#关于工作" class="headerlink" title="关于工作"></a>关于工作</h3><p>毕业后最大的收获，就在于适应了职场生存的法则。  </p>
+<p>犹记得，刚入职的时候，第一次用<code>Go</code>写一个定时删除服务，涉及了大量的文件处理，设计模式和并发等知识点，当我写完后，我感觉很有成就感，后来，当这个服务产品化后，出现了一个内存泄露的问题，我又用性能分析工具层层剖析，解决了它。  </p>
+<p>但我知道这只是小试牛刀，接着我有接手了一个核心调度的项目，然而这个项目给我的打击太大，比如逻辑很复杂，导致和产品对需求的时候，都不敢保证这个需求什么时候能做出来；又比如当整个系统出来了问题时，会把所有的<code>Bug</code>都指派给我，然后我就挨个去打断点，看日志去排查；又比如有一次，因为需求太多，做不完，每天被<code>leader</code>和其他同事催着赶进度时，我只能偷偷跑到卫生间去哭上五分钟，然后擦干眼泪继续做。  </p>
+<p>为什么我对这两件事这么记忆尤新呢，因为它让我看到了一个程序员工作的缩影：提需求——编码——测试——改<code>Bug</code>——新的需求…周而复始。  </p>
+<p>在工作中，我也总结了一些研发和改<code>Bug</code>的经验  </p>
+<ul>
+<li>1，和产品经理沟通是双向的，当他&#x2F;她提出一个需求时，最好是根据自己的理解把他&#x2F;她的话再复述一遍，以确认是否信息一致，当然最好写在文档里，后面可以防止产品频繁变需求（虽然这个愿望有些微小）；  </li>
+<li>2，编码时，最好理清逻辑，在脑海中画好逻辑时序图，接着写代码就会轻松许多；  </li>
+<li>3，最好在容易出错，以及频繁赋值的地方打上日志，后期出现<code>Bug</code>时好及时有效地定位问题；  </li>
+<li>4，如果出现<code>Bug</code>了，最好在已经出现<code>Bug</code>的机器上再复现一遍，当然也可以在本地搭一个完整的测试环境，这样最好；  </li>
+<li>5，运用性能分析工具，解决完<code>Bug</code>后，最好详细将<code>Bug</code>出现的原因和解决过程个最终结果记录下来，方便以后自己查阅；  </li>
+<li>6，将自己的研发时间定在25-35分钟一块，中间最好不要被别人打断；  </li>
+<li>7，学会使用搜索引擎，尽量用<code>Google</code>和<code>Bing</code>，将问题切换成英文描述，搜出来的文章质量会高一些；  </li>
+<li>8，是你的问题，及时承担，不是你的问题，找到证据后迅速甩锅。</li>
+</ul>
+<p>以上是我个人在写程序的经验小结。  </p>
+<h3 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h3><ul>
+<li>1，自己做的饭真好吃</li>
+</ul>
+<p>2019年最大的感受就是学会了做饭。  </p>
+<p>自己买了电磁炉，照着网上的步骤开始学会炒素菜，炒荤菜。接着依葫芦画瓢，不断调整酱油、盐、鸡精的比例，味道和颜色也好了许多。  </p>
+<p>我想今年过年家里又多了个做饭的帮手。  </p>
+<ul>
+<li>2，一觉睡到自然醒的感觉真爽</li>
+</ul>
+<p>项目不忙的时候，六点半下班，回去看看书，玩玩手机，十一点前关灯睡觉，早上一觉睡到自然醒，再看看表，八点多，没事，还来得及。  </p>
+<p>这段<code>一觉睡到自然醒</code>的时光，让我又找回了睡觉的乐趣，同时对<code>996</code>的厌恶又加深了一些。  </p>
+<ul>
+<li>3，睡前水乳护肤很舒服</li>
+</ul>
+<p>从大学买的一套曼秀雷敦，到18年毕业时买的高夫男士全套，再到今年的百雀羚，我逐渐学会了护肤这一技能。  </p>
+<p>先用清水洗一遍脸，再涂上洗面奶清一遍，再用爽肤水，护肤乳，后面还可以用面霜，眼霜除皱纹，上班时还可以抹一层隔离霜，每次护理完，感觉脸像生命一样在自由的呼吸，很清爽。  </p>
+<h3 id="在这座城市，哭过，笑过"><a href="#在这座城市，哭过，笑过" class="headerlink" title="在这座城市，哭过，笑过"></a>在这座城市，哭过，笑过</h3><p>在一座陌生的城市，给我最大的感触就是，一切都只能靠自己。  </p>
+<p>找房子，你需要现场去验房，签合同；找工作，需要自己投简历，面试，签劳动合同；工作完成不了，你需要自己加班赶进度。  </p>
+<p>折磨你，也在成就你。  </p>
+<p>谢谢你，让我变得更坚强。  </p>
+<h2 id="要感谢的人"><a href="#要感谢的人" class="headerlink" title="要感谢的人"></a>要感谢的人</h2><ul>
+<li>感谢我的父母对我只身前往陌生城市的支持；  </li>
+<li>感谢我的女友，教会为如何护肤，告诫我不要一到周末就想着外面吃，要自己买菜做饭；  </li>
+<li>感谢我在成都结识的好友，在知道我要面试时，分享了他宝贵的面试经验并整理成文档分享给我；  </li>
+<li>感谢我在健身房结识的一位好友，一起健身，劳逸结合，在健身中释放一天的压力；  </li>
+<li>感谢我在游戏公司时结识的一位前辈，他教会我把眼界放长远一些；  </li>
+<li>感谢我在公司部门内刚入职时带我的导师，教会我如何设计程序，分享他的所见所闻和工作经验；</li>
+</ul>
+<p>谢谢你们的帮助，让我在这一年内学会了许多技能，它们是我在这黑暗森林中得以生存的资本。  </p>
+<h2 id="文章链接"><a href="#文章链接" class="headerlink" title="文章链接"></a>文章链接</h2><ul>
+<li><a href="https://octopuslian.github.io/2019/03/28/first-work-project-havest/">第一次做项目学到的技术之外的东西</a>  </li>
+<li><a href="https://octopuslian.github.io/2019/05/31/a-project-deadline-note/">记一次项目演示前赶deadline的经历</a></li>
+</ul>
+<p><img src="/2019/12/30/graduate-18-months-i-finally-survived-in-the-city/live.jpg">  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>成长</tag>
+        <tag>年终总结</tag>
       </tags>
   </entry>
   <entry>
@@ -9100,7 +9100,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#46;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#46;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9219,6 +9219,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Kubernetes编排原理——容器化守护进程DaemonSet</title>
+    <url>/2022/09/08/kubernetes-arrange-principle-daemonset/</url>
+    <content><![CDATA[<h1 id="DaemonSet特征"><a href="#DaemonSet特征" class="headerlink" title="DaemonSet特征"></a>DaemonSet特征</h1><p><code>DaemonSet</code>的主要作用是在<code>Kubernetes</code>集群里运行一个<code>Daemon Pod</code>时，这个<code>Pod</code>具有3个特征：  </p>
+<ul>
+<li>1，每个<code>Pod</code>在<code>Kubernetes</code>集群里的每一个节点上运行；  </li>
+<li>2，每个节点上只有一个这样的<code>Pod</code>实例；  </li>
+<li>3，当有新节点加入<code>Kubernetes</code>集群后，该<code>Pod</code>会自动地在新节点上被创建出来；而当旧节点被删除后，它上面的<code>Pod</code>也会相应地被回收。</li>
+</ul>
+<h1 id="DaemonSet工作原理"><a href="#DaemonSet工作原理" class="headerlink" title="DaemonSet工作原理"></a>DaemonSet工作原理</h1><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">application:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">DaemonSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">fluentd-elasticsearch</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kube-system</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">k8s-app:</span> <span class="string">fluentd-logging</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">fluentd-logging</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">fluentd-elasticsearch</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">tolerations:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">node-role.kubernetes.io/master</span></span><br><span class="line">        <span class="attr">effect:</span> <span class="string">NoSchedule</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">fluentd-elasticsearch</span></span><br><span class="line">        <span class="comment"># 该镜像的功能：通过fluentd将Docker容器里的日志转发到Elasticsearch</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">quay.io/fluentd-elasticsearch/fluentd:v3.0.0</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">200Mi</span></span><br><span class="line">        <span class="attr">requests:</span></span><br><span class="line">          <span class="attr">cpu:</span> <span class="string">100m</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">200Mi</span></span><br><span class="line">      <span class="attr">volumeMounts:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">varlog</span></span><br><span class="line">        <span class="attr">mountPath:</span> <span class="string">/var/log</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">varlibdockercontainers</span></span><br><span class="line">        <span class="attr">readOnly:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">terminationGracePeriodSeconds:</span> <span class="number">30</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">varlog</span></span><br><span class="line">        <span class="attr">hostPath:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">/var/lib/docker/containers</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>Docker</code>容器里应用的日志默认保存在宿主机的<code>/var/lib/docker/containers/&#123;&#123;容器ID&#125;&#125;/&#123;&#123;容器ID&#125;&#125;-json.log</code>文件里。  </p>
+<h2 id="DaemonSet是如何保证每个节点上有且仅有一个被管理的Pod？"><a href="#DaemonSet是如何保证每个节点上有且仅有一个被管理的Pod？" class="headerlink" title="DaemonSet是如何保证每个节点上有且仅有一个被管理的Pod？"></a>DaemonSet是如何保证每个节点上有且仅有一个被管理的Pod？</h2><p><code>DaemonSet Controller</code>首先从<code>etcd</code>里获取所有的节点列表，然后遍历所有节点。这时去检查当前这个节点是否有一个携带了<code>name: fluentd-elasticsearch</code>标签的<code>Pod</code>在运行。检查结果可能有3种情况：  </p>
+<ul>
+<li>1，没有这种<code>Pod</code>，这就意味着要在该节点上创建这样一个<code>Pod</code>；  </li>
+<li>2，有这种<code>Pod</code>，但是数量大于1，说明要删除该节点上多余的<code>Pod</code>；  </li>
+<li>3，正好只有一个这种<code>Pod</code>，说明该节点是正常的。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>编排原理</tag>
+        <tag>DaemonSet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes编排原理——作业副本与水平拓展/收缩</title>
     <url>/2022/09/08/kubernetes-arrange-principle-job-copy-and-horizontal-out-or-in/</url>
     <content><![CDATA[<p>本文讲解<code>Kubernetes</code>中第一个控制器模式的完整实现：<code>Deployment</code>。它实现了<code>Kubernetes</code>项目中非常重要的功能：<strong>Pod的水平扩展&#x2F;收缩。</strong>  </p>
@@ -9282,6 +9310,33 @@
         <tag>作业副本</tag>
         <tag>水平拓展</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes编排原理——离线业务Job与Cronjob</title>
+    <url>/2022/09/08/kubernetes-arrange-principle-job-cronjob/</url>
+    <content><![CDATA[<h1 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h1><p><code>API</code>对象定义：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">resouer/ubuntu-bc</span></span><br><span class="line">        <span class="comment"># scale=10000 意思是 计算出的结果取小数点后 10000位</span></span><br><span class="line">        <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;echo &#x27;scale=10000; 4*a(1)&#x27; | bc -l &quot;</span>]</span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">Never</span> <span class="comment"># 离线计算的Pod永远不应该被重启</span></span><br><span class="line">  <span class="attr">backoffLimit:</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>在这个模板中，我们定义了一个<code>Ubuntu</code>镜像的容器，他运行计算<code>π</code>的程序，所以，这是一个计算<code>π</code>的容器。  </p>
+<p>创建成功后，查看一下这个<code>Job</code>对象：<br>&#x2F;&#x2F;TODO:<br>可以看到，在这个<code>Job</code>对象创建后，它的<code>Pod</code>模板被自动加上了一个<code>controller-uid=&lt;一个随机字符串&gt;</code>这样的<code>Label</code>。从而保证了<code>Job</code>与它所管理的<code>Pod</code>之间的匹配关系。  </p>
+<h2 id="离线作业失败了要怎么办？"><a href="#离线作业失败了要怎么办？" class="headerlink" title="离线作业失败了要怎么办？"></a>离线作业失败了要怎么办？</h2><h2 id="Job-Controller工作原理"><a href="#Job-Controller工作原理" class="headerlink" title="Job Controller工作原理"></a>Job Controller工作原理</h2><p>首先，<code>Job Controller</code>控制的对象直接就是<code>Pod</code>。  </p>
+<p>其次，<code>Job Controller</code>在控制循环中进行的调谐操作，是根据实际<code>Running</code>状态的<code>Pod</code>的数目、已经成功退出的<code>Pod</code>的数目，以及<code>parallelism</code>、<code>completions</code>参数的值共同计算出在这个周期里应该创建或者删除的<code>Pod</code>数目，然后调用<code>Kubernetes API</code>来执行这个操作。  </p>
+<p>因此，<code>Job Controller</code>实际上控制了作业执行的并行度（<code>parallelism</code>），以及总共需要完成的任务数（<code>completions</code>）这两个重要参数。而在实际使用时，需要根据作业的特性来决定并行度和任务数的合理取值。  </p>
+<h1 id="CronJob"><a href="#CronJob" class="headerlink" title="CronJob"></a>CronJob</h1><p><code>CronJob</code>描述的是定时任务，它的<code>API</code>对象如下：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">CronJob</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">schedule:</span> <span class="string">&quot;*/1 * * * *&quot;</span> <span class="comment"># 从当前开始，每一分钟执行一次</span></span><br><span class="line">  <span class="attr">jobTemplate:</span>  <span class="comment"># 关键！</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">template:</span></span><br><span class="line">        <span class="attr">spec:</span></span><br><span class="line">          <span class="attr">template:</span></span><br><span class="line">            <span class="attr">spec:</span></span><br><span class="line">              <span class="attr">containers:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line">                <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">                <span class="attr">args:</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">/bin/sh</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">-c</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">date;</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">from</span> <span class="string">the</span> <span class="string">Kubernetes</span> <span class="string">cluster</span></span><br><span class="line">              <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br></pre></td></tr></table></figure>
+
+<p>原来<code>CronJob</code>是一个<code>Job</code>对象的控制器。  </p>
+<p>通过以上例子，创建<code>CronJob</code>对象后，每一分钟后就会有一个<code>Job</code>产生：  </p>
+<p>&#x2F;&#x2F;TODO:</p>
+<p>此时，<code>CronJob</code>对象会记录下这次<code>Job</code>执行的时间：  </p>
+<p>注意：由于定时任务的特殊性，很可能某个<code>Job</code>还没有执行完，另外一个新<code>Job</code>就产生了。此时，可以通过<code>spec.concurrenyPolicy</code>字段来定义具体的处理策略：  </p>
+<ul>
+<li>1，<code>concurrenyPolicy=Allow</code>：这是默认情况，它意味着这些<code>Job</code>可以同时存在；  </li>
+<li>2，<code>concurrenyPolicy=Forbid</code>：这意味着不会创建新的<code>Pod</code>，该创建周期被跳过；  </li>
+<li>3，<code>concurrenyPolicy=Replace</code>：这意味着新产生的<code>Job</code>会替换旧的、未执行完的<code>Job</code>。</li>
+</ul>
+<p>而如果某一次<code>Job</code>创建失败，这次创建就会被标记为<code>&quot;miss&quot;</code>。当在指定的时间窗口内<code>miss</code>的数目达到100时，<code>CronJob</code>会停止再创建这个<code>Job</code>。  </p>
+<p>这个时间段可以由<code>spec.startingDeadlineSeconds</code>字段指定。比如，<code>startingDeadlineSeconds=200</code>，意味着在过去200s里，如果<code>miss</code>的数目达到了100，那么这个<code>Job</code>就不会被创建执行了。  </p>
+]]></content>
   </entry>
   <entry>
     <title>Kubernetes编排原理——Pod</title>
@@ -9405,6 +9460,60 @@
         <tag>kubernetes</tag>
         <tag>编排原理</tag>
         <tag>pod</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes编排原理——StatefulSet</title>
+    <url>/2022/09/08/kubernetes-arrange-principle-statefulset/</url>
+    <content><![CDATA[<h1 id="什么是StatefulSet"><a href="#什么是StatefulSet" class="headerlink" title="什么是StatefulSet"></a>什么是StatefulSet</h1><p>在分布式应用中，它的多个实例之间往往有依赖关系，比如主从关系、主备关系；还有数据存储类应用，它的多个实例往往会在本地磁盘上保存一份数据，而这些实例一旦被结束，即便重建出来，实例与数据之间的对应关系也已经丢失，从而导致应用失败。  </p>
+<p>所以，这种实例之间有不对等关系，以及实例对外部数据有依赖关系的应用，就称为<strong>有状态应用（stateful application）。</strong>  </p>
+<p>得益于控制器模式的设计思想，<code>Kubernetes</code>项目在<code>Deployment</code>基础上扩展出了对有状态应用的初步支持。这个编排功能就是<strong>StatefulSet</strong>。  </p>
+<h1 id="拓扑状态"><a href="#拓扑状态" class="headerlink" title="拓扑状态"></a>拓扑状态</h1><p>应用的多个实例之间不是完全对等的。这些应用实例必须按照某种顺序启动，比如应用的主节点A要先于从节点B启动。而如果删除A和B两个<code>Pod</code>，它们再次被创建出来时也必须严格按照这个顺序执行。并且，新创建出来的<code>Pod</code>必须和原来<code>Pod</code>的网络标识一样，这样原先的访问者才能使用同样的方法访问到这个新<code>Pod</code>。  </p>
+<h2 id="Headless-Service"><a href="#Headless-Service" class="headerlink" title="Headless Service"></a>Headless Service</h2><p><code>Service</code>是<code>Kubernetes</code>项目中用来将一组<code>Pod</code>暴露给外界访问的一种机制。  </p>
+<p>Service如何被访问  </p>
+<ul>
+<li>1，以<code>Service</code>的VIP（<code>virtualIP</code>，虚拟IP）方式。比如，当我访问10.0.23.1这个<code>Service</code>的IP地址时，10.0.23.1其实就是一个VIP，它会把请求转发到该<code>Service</code>所代理的某一个<code>Pod</code>上。  </li>
+<li>2，以<code>Service</code>的DNS方式。比如，此时我只要访问<code>my-svc.my-namespace.svc.cluster.local</code>这条DNS记录，就可以访问到名叫<code>my-svc</code>的<code>Service</code>所代理的某一个<code>Pod</code>。</li>
+</ul>
+<p>在第二种Service DNS的方式下，具体又可以分为两种处理办法：  </p>
+<ul>
+<li>(1)<code>Normal Service</code>：在这种情况下，你访问<code>my-svc.my-service.svc.cluster.local</code>解析到的，正是<code>my-svc</code>这个<code>Service</code>的VIP，后面的流程就跟VIP方式一致了。  </li>
+<li>(2)<code>Headless Service</code>：在这种情况下，你访问<code>my-svc.my-service.svc.cluster.local</code>解析到的，直接就是<code>my-svc</code>代理的某一个<code>Pod</code>的IP地址。这里的区别在于，<code>Headless Service</code>不需要分配一个VIP，而是可以直接以DNS记录的方式解析出被代理<code>Pod</code>的IP地址。</li>
+</ul>
+<h3 id="Headless-Service定义"><a href="#Headless-Service定义" class="headerlink" title="Headless Service定义"></a>Headless Service定义</h3><p>标准的<code>Headless Service</code>对应的YAML文件：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">  <span class="attr">clusterIP:</span> <span class="string">None</span> <span class="comment"># 注意</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
+<p>因此<code>Headless Service</code>的含义是<strong>这个Service没有一个VIP作为 “头”。</strong><br>所以，这个<code>Service</code>被创建后并不会被分配VIP，而是会以DNS记录的方式暴露出它所代理的<code>Pod</code>。而它所代理的<code>Pod</code>，依然是通过<code>Label Selector</code>机制选出的，即所有携带了<code>app: nginx</code>标签的<code>Pod</code>都会被这个<code>Service</code>代理。  </p>
+<p>当你按照这样的方式创建了一个<code>Headless Service</code>之后，它所代理的所有<code>Pod</code>的IP地址都会被绑定一个如下格式的DNS记录：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;pod-name&gt;.&lt;svc-name&gt;.&lt;namespace&gt;.svc.cluster.local</span><br></pre></td></tr></table></figure>
+
+<p>这个DNS记录，正是<code>Kubernetes</code>项目为<code>Pod</code>分配的唯一<strong>可解析身份（resolvable idenetity）。</strong>  </p>
+<h2 id="StatefulSet如何使用DNS记录来维持Pod的拓扑状态"><a href="#StatefulSet如何使用DNS记录来维持Pod的拓扑状态" class="headerlink" title="StatefulSet如何使用DNS记录来维持Pod的拓扑状态"></a>StatefulSet如何使用DNS记录来维持Pod的拓扑状态</h2><p>编写一个<code>StatefulSet</code>的YAML文件：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StatefulSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceName:</span> <span class="string">&quot;nginx&quot;</span> <span class="comment"># 告诉StatefulSet控制器，在执行循环时请使用Nginx这个 Headless Service来保证Pod解析</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">template:</span></span><br><span class="line">      <span class="attr">metadata:</span></span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">spec:</span></span><br><span class="line">        <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">nginx:1.9.1</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">web</span></span><br></pre></td></tr></table></figure>
+<p>通过<code>kubectl create -f</code>创建，查看对象：<br><img src="/2022/09/08/kubernetes-arrange-principle-statefulset/kubectl1.png">  </p>
+<p>从上面这个<code>Pod</code>的创建过程可以看出，<code>StatefulSet</code>给它所管理的所有<code>Pod</code>的名字进行了编号，编号规则是：<code>-</code>。而且这些编号都是从0开始累加的，与<code>StatefulSet</code>的每个<code>Pod</code>实例一一对应，绝不重复。  </p>
+<p>而且，这些<code>Pod</code>的创建也是严格按照编号顺序进行的。比如<code>web-0</code>进入<code>Running</code><br>状态，并且细分状态变为<code>Ready</code>之前，<code>web-1</code>会一直处于<code>Pending</code>状态。  </p>
+<p>使用<code>kubectl exec</code>进入容器查看它们的<code>hostname</code>：<br><img src="/2022/09/08/kubernetes-arrange-principle-statefulset/kubectl2.png">  </p>
+<p>可以看到这两个<code>Pod</code>的<code>hostname</code>与<code>Pod</code>名字是一致的，都被分配了对应的编号。  </p>
+<p>我们再试着以<code>DNS</code>方式访问这个<code>Headless Service</code>：  </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启动了一个一次性Pod</span></span><br><span class="line">kubectl run -i --<span class="built_in">tty</span> --image busybox dns-test --restart=Never --<span class="built_in">rm</span> /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>在这个<code>Pod</code>里面，我们尝试用<code>nslookup</code>命令解析<code>Pod</code>对应的<code>Headless Service</code>：<br><img src="/2022/09/08/kubernetes-arrange-principle-statefulset/gk1.png">  </p>
+<p>当我们把这两个有状态应用的<code>Pod</code>删掉：<br><img src="/2022/09/08/kubernetes-arrange-principle-statefulset/kubectl3.png">  </p>
+<p>可以看到，<code>Kubernetes</code>会按照原先编号的顺序重新创建出两个<code>Pod</code>，并且分配了原来相同的网络身份。  </p>
+<p>这样<code>StatefulSet</code>就保证了<code>Pod</code>网络标识的稳定性。  </p>
+<h1 id="存储状态"><a href="#存储状态" class="headerlink" title="存储状态"></a>存储状态</h1><p>应用的多个实例分别绑定了不同的存储数据。对于这些应用实例来说，<code>Pod A</code>第一次读取到的数据和隔了10分钟之后再次读取到的数据应该是同一份，哪怕在此期间<code>Pod A</code>被重新创建过。典型例子：一个数据库应用的多个存储实例。  </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><code>StatefulSet</code>的核心功能，就是通过某种方式记录这些状态，然后在<code>Pod</code>被重新创建时，能够为新<code>Pod</code>恢复这些状态。  </li>
+<li><code>StatefulSet</code>这个控制器的主要作用之一，就是使用<code>Pod</code>模板创建<code>Pod</code>时对它们进行编号，并且按照编号的顺序逐一完成创建工作。而当<code>StatefulSet</code>的“控制循环”发现<code>Pod</code>的实际状态与期望状态不一致，需要新建或者删除<code>Pod</code>以进行“调谐”时，它会严格按照这些<code>Pod</code>编号的顺序逐一完成这些操作。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>编排原理</tag>
+        <tag>StatefulSet</tag>
       </tags>
   </entry>
   <entry>
@@ -11157,18 +11266,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer 26. 树的子结构</title>
-    <url>/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/">剑指 Offer 26. 树的子结构</a>  </p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="一次遍历"><a href="#一次遍历" class="headerlink" title="一次遍历"></a>一次遍历</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSubStructure</span><span class="params">(TreeNode A, TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// 一开始如果 A 或者 B为空，直接返回false</span></span><br><span class="line">        <span class="comment">// 因为题目约定空树不是任意一个树的子结构</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span> || B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接下来考虑以下几种情况</span></span><br><span class="line">        <span class="comment">// A的根节点 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 1、A的根节点和B的根节点相同情况，依次比较它们的子节点</span></span><br><span class="line">        <span class="comment">// 2、A的根节点和B的根节点不相同情况，A的左子树 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 3、A的根节点和B的根节点不相同情况，A的右子树 VS B的根节点</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isSub</span><span class="params">(TreeNode A,TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// A和B 不匹配的情况有很多，我们需要一开始去找它们完全匹配的情况</span></span><br><span class="line">        <span class="comment">// 即遍历完B，直接为null，说明B的全部节点和A的子结构匹配上</span></span><br><span class="line">        <span class="keyword">if</span> (B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A中的节点为空，但B中的节点不为空，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A和B都不为空，但数值不同，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A.val != B.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 此时，当前这个点是匹配的，继续递归判断左子树和右字树是否 分别匹配</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A.left,B.left) &amp;&amp; isSub(A.right,B.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SwordToOffer</category>
-      </categories>
-      <tags>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer 25. 合并两个排序的链表</title>
     <url>/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">剑指 Offer 25. 合并两个排序的链表</a>  </p>
@@ -11184,6 +11281,18 @@
       </categories>
       <tags>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 26. 树的子结构</title>
+    <url>/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/">剑指 Offer 26. 树的子结构</a>  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="一次遍历"><a href="#一次遍历" class="headerlink" title="一次遍历"></a>一次遍历</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSubStructure</span><span class="params">(TreeNode A, TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// 一开始如果 A 或者 B为空，直接返回false</span></span><br><span class="line">        <span class="comment">// 因为题目约定空树不是任意一个树的子结构</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span> || B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接下来考虑以下几种情况</span></span><br><span class="line">        <span class="comment">// A的根节点 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 1、A的根节点和B的根节点相同情况，依次比较它们的子节点</span></span><br><span class="line">        <span class="comment">// 2、A的根节点和B的根节点不相同情况，A的左子树 VS B的根节点</span></span><br><span class="line">        <span class="comment">// 3、A的根节点和B的根节点不相同情况，A的右子树 VS B的根节点</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isSub</span><span class="params">(TreeNode A,TreeNode B)</span> &#123;</span><br><span class="line">        <span class="comment">// A和B 不匹配的情况有很多，我们需要一开始去找它们完全匹配的情况</span></span><br><span class="line">        <span class="comment">// 即遍历完B，直接为null，说明B的全部节点和A的子结构匹配上</span></span><br><span class="line">        <span class="keyword">if</span> (B == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A中的节点为空，但B中的节点不为空，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A和B都不为空，但数值不同，说明不匹配</span></span><br><span class="line">        <span class="keyword">if</span> (A.val != B.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 此时，当前这个点是匹配的，继续递归判断左子树和右字树是否 分别匹配</span></span><br><span class="line">        <span class="keyword">return</span> isSub(A.left,B.left) &amp;&amp; isSub(A.right,B.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -11828,31 +11937,6 @@
       </tags>
   </entry>
   <entry>
-    <title>雪中回忆</title>
-    <url>/2016/11/22/memories-in-the-snow/</url>
-    <content><![CDATA[<p>今天凌晨一不小心又熬夜了，插上耳机听着BBC，睡了五个小时后自然醒来，看到宿舍窗外一阵白色的反光，我想，难道冬天的第一场雪就这么来了？  </p>
-<p>是的，我没有猜错，今年冬天的第一场雪就这样悄悄地来了。这意味着我又要把衣服加厚，去上学的路上又要注意脚下的积雪…  </p>
-<p>突然想起，曾经上大学前，下雪的厚度都能盖过膝盖。每次下雪，心中的童心就会被无限放大。男生女生在操场上打雪仗，我会在不经意间把一个同学撂倒，然后摁在地上，让其他同学围上来把他活埋，如果觉得还不过瘾，可以搭建一个小雪山，然后把某个幸运儿扔进去，看着他在雪山里快乐地翻滚；又或者捧起一大块雪，拧成一个团，带回教室做成房子，然后看着它慢慢地融化；看书看累了，刷理科题刷烦了，我会约上一两个朋友在雪地里打一架，当然点到为止，至今记得是一胜一负一平的战绩。我想，那时候应该是我冬天最快乐的时光吧。  </p>
-<p>新疆的冬天，一般是10点钟天亮，我记得那时候我早晨8点半就得到学校。有一次我独自一人在操场上散步，周围静得吓人，我尝试坐在雪地里，闭上眼睛，倾听周围的声音。刚开始我很害怕，害怕背后突然有人给我一棍子，然后把我拐走，有几次很想睁开眼睛看看周围的情况，结果都被我克制住了。过了段时间，我听到了一百米外居民楼上炒菜的声音；我听到了有人关上防盗门走下楼梯的声音；最后，我听到了自己的心跳声。  </p>
-<p>是的，我听到了自己的心跳声，让我知道我还是个人，而不是机器。在那段浸泡在缺氧的书堆中的日子，我曾把自己想象成一台机器，一台天天只知道听课，刷题，中午去吃“机油”的机器。我放弃了我的乒乓球，我的编程，放弃了我喜欢的人，只为全身心去参加那个遥不可及，却无比重要的考试。是的，老师说了：只要过了那场考试，你们就自由了！  </p>
-<p>是吗？我不知道。我只知道我现在依旧没有自由，我要面临着课程设计，面临着就业的压力，当然还有同行的竞争。  </p>
-<p>下雪了，我忍不住伸手托起一片雪花，静静地看着它从我的手心上融化，透心的冰凉，转瞬被体温掩盖。回忆，终究是要埋藏在记忆深处，在适当的时间跑出来回味，至少证明，我曾经拥有过。  </p>
-<p>现在在大学里的我过得很好，尝试了许多以前一直想做，却不敢做的事情。日子平平淡淡，如水房的自来水般细水长流，没有学生会的头衔，没有社团的标签，却知道每天自己该做什么。  </p>
-<p>现在的我过得也很幸福。黑夜中，我不再害怕一个人独处，校园里的夜景，我愿带着她一一走过。  </p>
-<p>也许，这就是我目前最简单，最平凡，也是对我来说最满足的生活吧。我如一台老式计算机，在机器上运行着C程序，编译速度虽然慢了一点，却从没有停止过运转。  </p>
-<p>雪停了，冬天来了。就让这份记忆像ROM存储器一样永远存放在回忆中。  </p>
-<p>只有放下思想的包袱，才能身轻如燕地去追逐梦想。  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>快乐</tag>
-        <tag>回忆</tag>
-        <tag>下雪</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>6 小时掌握 Docker 与 K8s 架构核心</title>
     <url>/2021/10/19/master-core-docker-and-k8s-architecture-in-six-hours/</url>
     <content><![CDATA[<h1 id="Docker-核心技术"><a href="#Docker-核心技术" class="headerlink" title="Docker 核心技术"></a>Docker 核心技术</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
@@ -11909,6 +11993,31 @@
       <tags>
         <tag>Docker</tag>
         <tag>K8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雪中回忆</title>
+    <url>/2016/11/22/memories-in-the-snow/</url>
+    <content><![CDATA[<p>今天凌晨一不小心又熬夜了，插上耳机听着BBC，睡了五个小时后自然醒来，看到宿舍窗外一阵白色的反光，我想，难道冬天的第一场雪就这么来了？  </p>
+<p>是的，我没有猜错，今年冬天的第一场雪就这样悄悄地来了。这意味着我又要把衣服加厚，去上学的路上又要注意脚下的积雪…  </p>
+<p>突然想起，曾经上大学前，下雪的厚度都能盖过膝盖。每次下雪，心中的童心就会被无限放大。男生女生在操场上打雪仗，我会在不经意间把一个同学撂倒，然后摁在地上，让其他同学围上来把他活埋，如果觉得还不过瘾，可以搭建一个小雪山，然后把某个幸运儿扔进去，看着他在雪山里快乐地翻滚；又或者捧起一大块雪，拧成一个团，带回教室做成房子，然后看着它慢慢地融化；看书看累了，刷理科题刷烦了，我会约上一两个朋友在雪地里打一架，当然点到为止，至今记得是一胜一负一平的战绩。我想，那时候应该是我冬天最快乐的时光吧。  </p>
+<p>新疆的冬天，一般是10点钟天亮，我记得那时候我早晨8点半就得到学校。有一次我独自一人在操场上散步，周围静得吓人，我尝试坐在雪地里，闭上眼睛，倾听周围的声音。刚开始我很害怕，害怕背后突然有人给我一棍子，然后把我拐走，有几次很想睁开眼睛看看周围的情况，结果都被我克制住了。过了段时间，我听到了一百米外居民楼上炒菜的声音；我听到了有人关上防盗门走下楼梯的声音；最后，我听到了自己的心跳声。  </p>
+<p>是的，我听到了自己的心跳声，让我知道我还是个人，而不是机器。在那段浸泡在缺氧的书堆中的日子，我曾把自己想象成一台机器，一台天天只知道听课，刷题，中午去吃“机油”的机器。我放弃了我的乒乓球，我的编程，放弃了我喜欢的人，只为全身心去参加那个遥不可及，却无比重要的考试。是的，老师说了：只要过了那场考试，你们就自由了！  </p>
+<p>是吗？我不知道。我只知道我现在依旧没有自由，我要面临着课程设计，面临着就业的压力，当然还有同行的竞争。  </p>
+<p>下雪了，我忍不住伸手托起一片雪花，静静地看着它从我的手心上融化，透心的冰凉，转瞬被体温掩盖。回忆，终究是要埋藏在记忆深处，在适当的时间跑出来回味，至少证明，我曾经拥有过。  </p>
+<p>现在在大学里的我过得很好，尝试了许多以前一直想做，却不敢做的事情。日子平平淡淡，如水房的自来水般细水长流，没有学生会的头衔，没有社团的标签，却知道每天自己该做什么。  </p>
+<p>现在的我过得也很幸福。黑夜中，我不再害怕一个人独处，校园里的夜景，我愿带着她一一走过。  </p>
+<p>也许，这就是我目前最简单，最平凡，也是对我来说最满足的生活吧。我如一台老式计算机，在机器上运行着C程序，编译速度虽然慢了一点，却从没有停止过运转。  </p>
+<p>雪停了，冬天来了。就让这份记忆像ROM存储器一样永远存放在回忆中。  </p>
+<p>只有放下思想的包袱，才能身轻如燕地去追逐梦想。  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>快乐</tag>
+        <tag>回忆</tag>
+        <tag>下雪</tag>
       </tags>
   </entry>
   <entry>
