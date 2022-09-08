@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-09-07T14:55:58.364Z</updated>
+  <updated>2022-09-08T08:14:48.419Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kubernetes编排原理——作业副本与水平拓展/收缩</title>
+    <link href="https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-copy-and-horizontal-out-or-in/"/>
+    <id>https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-copy-and-horizontal-out-or-in/</id>
+    <published>2022-09-08T02:22:20.000Z</published>
+    <updated>2022-09-08T08:14:48.419Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文讲解&lt;code&gt;Kubernetes&lt;/code&gt;中第一个控制器模式的完整实现：&lt;code&gt;Deployment&lt;/code&gt;。它实现了&lt;code&gt;Kubernetes&lt;/code&gt;项目中非常重要的功能：&lt;strong&gt;Pod的水平扩展&amp;#x2F;收缩。&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;例如，如果你更新了&lt;code&gt;Deployment&lt;/code&gt;的&lt;code&gt;Pod&lt;/code&gt;模板，那么&lt;code&gt;Deployment&lt;/code&gt;就需要遵循一种叫作&lt;strong&gt;滚动更新（rolling update）&lt;/strong&gt;的方式来升级现有容器。而这个能力的实现依赖&lt;code&gt;Kubernetes&lt;/code&gt;项目中一个非常重要的概念（API对象）：&lt;code&gt;ReplicaSet&lt;/code&gt;。  &lt;/p&gt;
+&lt;h1 id=&quot;ReplicaSet&quot;&gt;&lt;a href=&quot;#ReplicaSet&quot; class=&quot;headerlink&quot; title=&quot;ReplicaSet&quot;&gt;&lt;/a&gt;ReplicaSet&lt;/h1&gt;&lt;p&gt;一个&lt;code&gt;ReplicaSet&lt;/code&gt;对象是由副本数目的定义和一个&lt;code&gt;Pod&lt;/code&gt;模板组成的。  &lt;/p&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;apiVersion:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;v1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;kind:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;ReplicaSet&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx-set&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;replicas:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;selector:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;matchLabels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;template:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;containers:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;image:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx:1.7.9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="编排原理" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="作业副本" scheme="https://octopuslian.github.io/tags/%E4%BD%9C%E4%B8%9A%E5%89%AF%E6%9C%AC/"/>
+    
+    <category term="水平拓展" scheme="https://octopuslian.github.io/tags/%E6%B0%B4%E5%B9%B3%E6%8B%93%E5%B1%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Kubernetes编排原理——“控制器”设计思想</title>
@@ -472,27 +500,6 @@
     <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
     <category term="排序" scheme="https://octopuslian.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 18. 删除链表的节点</title>
-    <link href="https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/"/>
-    <id>https://octopuslian.github.io/2022/05/09/leetcode-lcof-18-shan-chu-lian-biao-de-jie-dian/</id>
-    <published>2022-05-09T15:04:49.000Z</published>
-    <updated>2022-05-09T15:23:14.443Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/&quot;&gt;剑指 Offer 18. 删除链表的节点&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;我的复述：&lt;br&gt;假如有一个链表是&lt;code&gt;4-&amp;gt;1-&amp;gt;5-&amp;gt;9&lt;/code&gt;，指定删除节点5，那么返回新的链表为&lt;code&gt;4-&amp;gt;1-&amp;gt;9&lt;/code&gt;。  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;双指针&quot;&gt;&lt;a href=&quot;#双指针&quot; class=&quot;headerlink&quot; title=&quot;双指针&quot;&gt;&lt;/a&gt;双指针&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="链表" scheme="https://octopuslian.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
