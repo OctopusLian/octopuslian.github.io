@@ -1360,7 +1360,16 @@
 <h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>检查三个容器的运行情况：  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                                                                                                                                  NAMES</span><br><span class="line">3dcbe51c07db   nginx:alpine             &quot;/docker-entrypoint.…&quot;   20 seconds ago   Up 19 seconds   0.0.0.0:82-&gt;80/tcp, :::82-&gt;80/tcp                                                                                                      silly_booth</span><br><span class="line">03b25fef47dc   wordpress:5              &quot;docker-entrypoint.s…&quot;   6 minutes ago    Up 6 minutes    80/tcp                                                                                                                                 silly_montalcini</span><br><span class="line">44a276483f97   mariadb:10               &quot;docker-entrypoint.s…&quot;   10 minutes ago   Up 10 minutes   3306/tcp                                                                                                                               infallible_feistel</span><br><span class="line">77936b6bce8e   registry                 &quot;/entrypoint.sh /etc…&quot;   32 minutes ago   Up 32 minutes   0.0.0.0:5000-&gt;5000/tcp, :::5000-&gt;5000/tcp</span><br></pre></td></tr></table></figure>
 
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>容器技术思维导图：<br><img src="/2022/10/04/docker-deploy-wordpress/map.png">  </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>容器技术是后端应用领域的一项重大创新，它彻底变革了应用的开发、交付与部署方式，是“云原生”的根本。  </p>
+<p>容器基于 Linux 底层的 namespace、cgroup、chroot 等功能，虽然它们很早就出现了，但直到 Docker“横空出世”，把它们整合在一起，容器才真正走近了大众的视野，逐渐为广大开发者所熟知。  </p>
+<p>容器技术中有三个核心概念：容器（Container）、镜像（Image），以及镜像仓库（Registry）：<br><img src="/2022/10/04/docker-deploy-wordpress/%E5%AE%B9%E5%99%A8%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5.png">  </p>
+<p>从本质上来说，容器属于虚拟化技术的一种，和虚拟机（Virtual Machine）很类似，都能够分拆系统资源，隔离应用进程，但容器更加轻量级，运行效率更高，比虚拟机更适合云计算的需求。  </p>
+<p>镜像是容器的静态形式，它把应用程序连同依赖的操作系统、配置文件、环境变量等等都打包到了一起，因而能够在任何系统上运行，免除了很多部署运维和平台迁移的麻烦。  </p>
+<p>镜像内部由多个层（Layer）组成，每一层都是一组文件，多个层会使用<code>Union FS</code>技术合并成一个文件系统供容器使用。这种细粒度结构的好处是相同的层可以共享、复用，节约磁盘存储和网络传输的成本，也让构建镜像的工作变得更加容易。  </p>
+<p>为了方便管理镜像，就出现了镜像仓库，它集中存放各种容器化的应用，用户可以任意上传下载，是分发镜像的最佳方式。  </p>
+<p>容器技术有很多具体的实现，Docker 是最初也是最流行的容器技术，它的主要形态是运行在 Linux 上的“Docker Engine”。我们日常使用的 docker 命令其实只是一个前端工具，它必须与后台服务“Docker daemon”通信才能实现各种功能。  </p>
+<p>操作容器的常用命令有 docker ps、docker run、docker exec、docker stop 等；操作镜像的常用命令有 docker images、docker rmi、docker build、docker tag 等；操作镜像仓库的常用命令有 docker pull、docker push 等。  </p>
+<p>容器技术思维导图：<br><img src="/2022/10/04/docker-deploy-wordpress/map.png">  </p>
 ]]></content>
       <categories>
         <category>LearnDocker</category>
@@ -9201,7 +9210,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#46;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x2e;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9744,9 +9753,154 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes集群部署WordPress网站</title>
+    <title>Kubernetes集群部署WordPress网站-版本2</title>
+    <url>/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/</url>
+    <content><![CDATA[<h1 id="版本更新描述"><a href="#版本更新描述" class="headerlink" title="版本更新描述"></a>版本更新描述</h1><p>完全舍弃了 Docker，把所有的应用都放在 Kubernetes 集群里运行，部署方式也不再是裸 Pod，<strong>而是使用 Deployment，稳定性大幅度提升。</strong>  </p>
+<h1 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h1><p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/%E6%9E%B6%E6%9E%84%E5%9B%BE.png">  </p>
+<p>原来的 Nginx 的作用是反向代理，那么在 Kubernetes 里它就升级成了具有相同功能的 Ingress Controller。WordPress 原来只有一个实例，现在变成了两个实例（你也可以任意横向扩容），可用性也就因此提高了不少。而 MariaDB 数据库因为要保证数据的一致性，暂时还是一个实例。  </p>
+<p>因为 Kubernetes 内置了服务发现机制 Service，我们再也不需要去手动查看 Pod 的 IP 地址了，只为它们定义了 Service 对象，然后使用域名就可以访问 MariaDB、WordPress 这些服务。  </p>
+<p>网站对外提供服务我选择了两种方式：  </p>
+<ul>
+<li>1，让 WordPress 的 Service 对象以 NodePort 的方式直接对外暴露端口 30088，方便测试；  </li>
+<li>2，给 Nginx Ingress Controller 添加“hostNetwork”属性，直接使用节点上的端口号，类似 Docker 的 host 网络模式，好处是可以避开 NodePort 的端口范围限制。</li>
+</ul>
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="WordPress-网站部署-MariaDB"><a href="#WordPress-网站部署-MariaDB" class="headerlink" title="WordPress 网站部署 MariaDB"></a>WordPress 网站部署 MariaDB</h2><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-cm</span></span><br><span class="line"></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">DATABASE:</span> <span class="string">&#x27;db&#x27;</span></span><br><span class="line">  <span class="attr">USER:</span> <span class="string">&#x27;wp&#x27;</span></span><br><span class="line">  <span class="attr">PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line">  <span class="attr">ROOT_PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要把 MariaDB 由 Pod 改成 Deployment 的方式，replicas 设置成 1 个，template 里面的 Pod 部分没有任何变化，还是要用 envFrom把配置信息以环境变量的形式注入 Pod，相当于把 Pod 套了一个 Deployment 的“外壳”：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-dep</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">mariadb:10</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">mariadb</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">3306</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">envFrom:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">prefix:</span> <span class="string">&#x27;MARIADB_&#x27;</span></span><br><span class="line">          <span class="attr">configMapRef:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">maria-cm</span></span><br></pre></td></tr></table></figure>
+
+<p>我们还需要再为 MariaDB 定义一个 Service 对象，映射端口 3306，让其他应用不再关心 IP 地址，直接用 Service 对象的名字来访问数据库服务：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-svc</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">3306</span></span><br><span class="line">    <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">3306</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br></pre></td></tr></table></figure>
+
+<p>因为这三个对象都是数据库相关的，所以可以在一个 YAML 文件里书写，对象之间用 — 分开，这样用 kubectl apply 就可以一次性创建好：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># wp-maria.yml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-cm</span></span><br><span class="line"></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">DATABASE:</span> <span class="string">&#x27;db&#x27;</span></span><br><span class="line">  <span class="attr">USER:</span> <span class="string">&#x27;wp&#x27;</span></span><br><span class="line">  <span class="attr">PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line">  <span class="attr">ROOT_PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-dep</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">mariadb:10</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">mariadb</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">3306</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">envFrom:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">prefix:</span> <span class="string">&#x27;MARIADB_&#x27;</span></span><br><span class="line">          <span class="attr">configMapRef:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">maria-cm</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-svc</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">3306</span></span><br><span class="line">    <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">3306</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-dep</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，你应该用 kubectl get 查看对象是否创建成功，是否正常运行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># kubectl apply -f wp-maria.yml </span><br><span class="line">configmap/maria-cm created</span><br><span class="line">deployment.apps/maria-dep created</span><br><span class="line">service/maria-svc created</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/1.png">  </p>
+<h2 id="WordPress-网站部署-WordPress"><a href="#WordPress-网站部署-WordPress" class="headerlink" title="WordPress 网站部署 WordPress"></a>WordPress 网站部署 WordPress</h2><p>因为刚才创建了 MariaDB 的 Service，所以在写 ConfigMap 配置的时候“HOST”就不应该是 IP 地址了，而<strong>应该是 DNS 域名，也就是 Service 的名字maria-svc，这点需要特别注意</strong>：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-cm</span></span><br><span class="line"></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">HOST:</span> <span class="string">&#x27;maria-svc&#x27;</span></span><br><span class="line">  <span class="attr">USER:</span> <span class="string">&#x27;wp&#x27;</span></span><br><span class="line">  <span class="attr">PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line">  <span class="attr">NAME:</span> <span class="string">&#x27;db&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>WordPress 的 Deployment 写法和 MariaDB 也是一样的，给 Pod 套一个 Deployment 的“外壳”，replicas 设置成 2 个，用字段“envFrom”配置环境变量：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">wp-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-dep</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">wp-dep</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">wp-dep</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">wordpress:5</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">wordpress</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">envFrom:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">prefix:</span> <span class="string">&#x27;WORDPRESS_DB_&#x27;</span></span><br><span class="line">          <span class="attr">configMapRef:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">wp-cm</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们仍然要为 WordPress 创建 Service 对象，这里我使用了“NodePort”类型，并且手工指定了端口号“30088”（必须在 30000~32767 之间）：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">wp-dep</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-svc</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">http80</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">nodePort:</span> <span class="number">30088</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">wp-dep</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br></pre></td></tr></table></figure>
+
+<p>用 kubectl apply 部署 WordPress：  </p>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/2.png">  </p>
+<p>因为 WordPress 的 Service 对象是 NodePort 类型的，我们可以在集群的每个节点上访问 WordPress 服务。  </p>
+<p>比如一个节点的 IP 地址是“192.168.10.210”，那么你就在浏览器的地址栏里输入“<a href="http://192.168.10.210:30088”，其中的“30088”就是在">http://192.168.10.210:30088”，其中的“30088”就是在</a> Service 里指定的节点端口号，然后就能够看到 WordPress 的安装界面了：  </p>
+<h2 id="WordPress-网站部署-Nginx-Ingress-Controller"><a href="#WordPress-网站部署-Nginx-Ingress-Controller" class="headerlink" title="WordPress 网站部署 Nginx Ingress Controller"></a>WordPress 网站部署 Nginx Ingress Controller</h2><p>首先我们需要定义 Ingress Class，名字就叫“wp-ink”：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">IngressClass</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-ink</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">controller:</span> <span class="string">nginx.org/ingress-controller</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用 kubectl create 命令生成 Ingress 的样板文件，指定域名是“wp.test”，后端 Service 是“wp-svc:80”，Ingress Class 就是刚定义的“wp-ink”：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl create ing wp-ing --rule=&quot;wp.test/=wp-svc:80&quot; --class=wp-ink $out</span><br></pre></td></tr></table></figure>
+
+<p>得到的 Ingress YAML 就是这样，注意路径类型我还是用的前缀匹配“Prefix”：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-ing</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ingressClassName:</span> <span class="string">wp-ink</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">wp.test</span></span><br><span class="line">    <span class="attr">http:</span></span><br><span class="line">      <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">        <span class="attr">pathType:</span> <span class="string">Prefix</span></span><br><span class="line">        <span class="attr">backend:</span></span><br><span class="line">          <span class="attr">service:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">wp-svc</span></span><br><span class="line">            <span class="attr">port:</span></span><br><span class="line">              <span class="attr">number:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来就是最关键的 Ingress Controller 对象了，它仍然需要从 Nginx 项目的示例 YAML 修改而来，要改动名字、标签，还有参数里的 Ingress Class。  </p>
+<p>这个 Ingress Controller 不使用 Service，而是给它的 Pod 加上一个特殊字段 hostNetwork，让 Pod 能够使用宿主机的网络，相当于另一种形式的 NodePort：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-kic-dep</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">nginx-ingress</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">wp-kic-dep</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">wp-kic-dep</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">serviceAccountName:</span> <span class="string">nginx-ingress</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># use host network</span></span><br><span class="line">      <span class="attr">hostNetwork:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<p>准备好 Ingress 资源后，我们创建这些对象：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ kubectl apply -f wp-ing.yml -f wp-kic.yml</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Kubernetes 是云原生时代的操作系统，它能够管理大量节点构成的集群，让计算资源“池化”，从而能够自动地调度运维各种形式的应用。  </p>
+<p>搭建多节点的 Kubernetes 集群是一件颇具挑战性的工作，好在社区里及时出现了 kubeadm 这样的工具，可以“一键操作”，使用 kubeadm init、kubeadm join 等命令从无到有地搭建出生产级别的集群。  </p>
+<p>kubeadm 使用容器技术封装了 Kubernetes 组件，所以只要节点上安装了容器运行时（Docker、containerd 等），它就可以自动从网上拉取镜像，然后以容器的方式运行组件，非常简单方便。  </p>
+<p>在这个更接近实际生产环境的 Kubernetes 集群里，学习了Deployment、DaemonSet、Service、Ingress、Ingress Controller 等 API 对象：  </p>
+<ul>
+<li><p>Deployment 是用来管理 Pod 的一种对象，它代表了运维工作中最常见的一类在线业务，在集群中部署应用的多个实例，而且可以很容易地增加或者减少实例数量，从容应对流量压力。<br>Deployment 的定义里有两个关键字段：一个是 replicas，它指定了实例的数量；另一个是 selector，它的作用是使用标签“筛选”出被 Deployment 管理的 Pod，这是一种非常灵活的关联机制，实现了 API 对象之间的松耦合。  </p>
+</li>
+<li><p>DaemonSet 是另一种部署在线业务的方式，它很类似 Deployment，但会在集群里的每一个节点上运行一个 Pod 实例，类似 Linux 系统里的“守护进程”，适合日志、监控等类型的应用。<br>DaemonSet 能够任意部署 Pod 的关键概念是“污点”（taint）和“容忍度”（toleration）。Node 会有各种“污点”，而 Pod 可以使用“容忍度”来忽略“污点”，合理使用这两个概念就可以调整 Pod 在集群里的部署策略。</p>
+</li>
+</ul>
+<p>由 Deployment 和 DaemonSet 部署的 Pod，在集群中处于“动态平衡”的状态，总数量保持恒定，但也有临时销毁重建的可能，所以 IP 地址是变化的，这就为微服务等应用架构带来了麻烦。  </p>
+<ul>
+<li><p>Service 是对 Pod IP 地址的抽象，它拥有一个固定的 IP 地址，再使用 iptables 规则把流量负载均衡到后面的 Pod，节点上的 kube-proxy 组件会实时维护被代理的 Pod 状态，保证 Service 只会转发给健康的 Pod。<br>Service 还基于 DNS 插件支持域名，所以客户端就不再需要关心 Pod 的具体情况，只要通过 Service 这个稳定的中间层，就能够访问到 Pod 提供的服务。<br>Service 是四层的负载均衡，但现在的绝大多数应用都是 HTTP&#x2F;HTTPS 协议，要实现七层的负载均衡就要使用 Ingress 对象。  </p>
+</li>
+<li><p>Ingress 定义了基于 HTTP 协议的路由规则，但要让规则生效，还需要 Ingress Controller 和 Ingress Class 来配合工作。<br>Ingress Controller 是真正的集群入口，应用 Ingress 规则调度、分发流量，此外还能够扮演反向代理的角色，提供安全防护、TLS 卸载等更多功能。<br>Ingress Class 是用来管理 Ingress 和 Ingress Controller 的概念，方便我们分组路由规则，降低维护成本。</p>
+</li>
+</ul>
+<p>不过 Ingress Controller 本身也是一个 Pod，想要把服务暴露到集群外部还是要依靠 Service。Service 支持 NodePort、LoadBalancer 等方式，但 NodePort 的端口范围有限，LoadBalancer 又依赖于云服务厂商，都不是很灵活。折中的办法是用少量 NodePort 暴露 Ingress Controller，用 Ingress 路由到内部服务，外部再用反向代理或者 LoadBalancer 把流量引进来。  </p>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/k8s-%E4%B8%AD%E7%BA%A7map.png">  </p>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes集群部署WordPress网站-版本3</title>
+    <url>/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/</url>
+    <content><![CDATA[<h1 id="版本更新描述"><a href="#版本更新描述" class="headerlink" title="版本更新描述"></a>版本更新描述</h1><p>在基于<a href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2">版本2</a>的基础上继续优化 WordPress 网站的部署，其中的关键是<strong>让数据库 MariaDB 实现数据持久化。</strong>  </p>
+<h1 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h1><p>网站的整体架构图变化不大，前面的 Nginx、WordPress 还是原样，只需要修改 MariaDB：  </p>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/%E6%9E%B6%E6%9E%84%E5%9B%BE.png">  </p>
+<p>因为 MariaDB 由 Deployment 改成了 StatefulSet，所以我们要修改 YAML，添加“serviceName”“volumeClaimTemplates”这两个字段，定义网络标识和 NFS 动态存储卷，然后在容器部分用“volumeMounts”挂载到容器里的数据目录“&#x2F;var&#x2F;lib&#x2F;mysql”，从而实现持久化。  </p>
+<h1 id="优化步骤"><a href="#优化步骤" class="headerlink" title="优化步骤"></a>优化步骤</h1><h2 id="修改MariaDB"><a href="#修改MariaDB" class="headerlink" title="修改MariaDB"></a>修改MariaDB</h2><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># maria-sts.yml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StatefulSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">maria-sts</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-sts</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="comment"># headless svc</span></span><br><span class="line">  <span class="attr">serviceName:</span> <span class="string">maria-svc</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># pvc</span></span><br><span class="line">  <span class="attr">volumeClaimTemplates:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">maria-100m-pvc</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">storageClassName:</span> <span class="string">nfs-client</span></span><br><span class="line">      <span class="attr">accessModes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">ReadWriteMany</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">requests:</span></span><br><span class="line">          <span class="attr">storage:</span> <span class="string">100Mi</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">maria-sts</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">maria-sts</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">mariadb:10</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">mariadb</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">3306</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">envFrom:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">prefix:</span> <span class="string">&#x27;MARIADB_&#x27;</span></span><br><span class="line">          <span class="attr">configMapRef:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">maria-cm</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">maria-100m-pvc</span></span><br><span class="line">          <span class="attr">mountPath:</span> <span class="string">/var/lib/mysql</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改WordPress"><a href="#修改WordPress" class="headerlink" title="修改WordPress"></a>修改WordPress</h2><p>StatefulSet 管理的每个 Pod 都有自己的域名，所以要把 WordPress 的环境变量改成 MariaDB 的新名字，也就是“maria-sts-0.maria-svc”：  </p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">wp-cm</span></span><br><span class="line"></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">HOST:</span> <span class="string">&#x27;maria-sts-0.maria-svc&#x27;</span>  <span class="comment">#注意这里</span></span><br><span class="line">  <span class="attr">USER:</span> <span class="string">&#x27;wp&#x27;</span></span><br><span class="line">  <span class="attr">PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line">  <span class="attr">NAME:</span> <span class="string">&#x27;db&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="检验StatefulSet的持久化存储是否生效"><a href="#检验StatefulSet的持久化存储是否生效" class="headerlink" title="检验StatefulSet的持久化存储是否生效"></a>检验StatefulSet的持久化存储是否生效</h2><p>你可以把这些对象都删除后重新创建，再进入网站，看看是否原来的数据依然存在。或者更简单一点，直接查看 NFS 的存储目录，应该可以看到 MariaDB 生成的一些数据库文件：  </p>
+<h1 id="部署-Dashboard"><a href="#部署-Dashboard" class="headerlink" title="部署 Dashboard"></a>部署 Dashboard</h1><p>首先，你应该先去 Dashboard 的项目网站（<a href="https://github.com/kubernetes/dashboard%EF%BC%89%EF%BC%8C%E7%9C%8B%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3%EF%BC%8C%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5%E3%80%82">https://github.com/kubernetes/dashboard），看一下它的说明文档，了解一下它的基本情况。</a>  </p>
+<p>安装：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.0/aio/deploy/recommended.yaml</span><br></pre></td></tr></table></figure>
+
+<p>这个 YAML 里包含了很多对象，虽然文件比较大，但现在的你应该基本都能够看懂了，要点有这么几个：  </p>
+<ul>
+<li>所有的对象都属于“kubernetes-dashboard”名字空间。  </li>
+<li>Dashboard 使用 Deployment 部署了一个实例，端口号是 8443。  </li>
+<li>容器启用了 Liveness 探针，使用 HTTPS 方式检查存活状态。  </li>
+<li>Service 对象使用的是 443 端口，它映射了 Dashboard 的 8443 端口。</li>
+</ul>
+<p>使用命令 kubectl apply部署：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl apply -f dashboard.yaml</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="API-对象"><a href="#API-对象" class="headerlink" title="API 对象"></a>API 对象</h2><ul>
+<li>PersistentVolume：简称 PV，是 Kubernetes 对持久化存储的抽象，代表了 LocalDisk、NFS、Ceph 等存储设备，和 CPU、内存一样，属于集群的公共资源。</li>
+</ul>
+<p>因为不同存储设备之间的差异很大，为了更好地描述 PV 特征，就出现了 StorageClass，它的作用是分类存储设备，让我们更容易去选择 PV 对象。  </p>
+<p>PV 一般由系统管理员来创建，我们如果要使用 PV 就要用 PVC（PersistentVolumeClaim）去申请，说清楚需求的容量、访问模式等参数，然后 Kubernetes 就会查找最合适的 PV 分配给我们使用。  </p>
+<p>手动创建 PV 的工作量很大，麻烦而且容易出错，所以就有了“动态存储卷”的概念，需要在 StorageClass 里绑定一个 Provisioner 对象，由它来代替人工，根据 PVC 自动创建出符合要求的 PV。  </p>
+<p>有了 PV 和 PVC，我们就可以在 Pod 里用“persistentVolumeClaim”来引用 PVC，创建出可供容器使用的 Volume，然后在容器里用“volumeMounts”把它挂载到某个路径上，这样容器就可以读写 PV，实现数据的持久化存储了。  </p>
+<p>持久化存储的一个重要应用领域就是保存应用的状态数据，管理有状态的应用，就要使用新的对象 StatefulSet，可以认为它是管理无状态应用对象 Deployment 的一个特例。  </p>
+<ul>
+<li>StatefulSet：YAML 描述和 Deployment 非常像，“spec”里只是多了一个“serviceName”字段，但它部署应用的方式却与 Deployment 差距很大——<strong>Deployment 创建的 Pod 是随机的名字，而 StatefulSet 会对 Pod 顺序编号、顺序创建，保证应用有一个确定的启动先后次序，这样就可以实现主从、主备等关系。</strong></li>
+</ul>
+<p>在使用 Service 为 StatefulSet 创建服务的时候，它也会为每个 Pod 单独创建域名，同样也是顺序编号，保证 Pod 有稳定的网络标识，外部用户就可以用这个域名来准确地访问到某个具体的 Pod。  </p>
+<p>StatefulSet 还使用“volumeClaimTemplates”字段来定义持久化存储，里面其实就是一个 PVC，每个 Pod 可以用这个模板来生成自己的 PVC 去申请 PV，实现存储卷与 Pod 的独立绑定。  </p>
+<p>通过<strong>启动顺序、稳定域名和存储模板</strong>这三个关键能力，StatefulSet 就可以很好地处理 Redis、MySQL 等有状态应用了。  </p>
+<h2 id="应用管理"><a href="#应用管理" class="headerlink" title="应用管理"></a>应用管理</h2><h3 id="滚动更新"><a href="#滚动更新" class="headerlink" title="滚动更新"></a>滚动更新</h3><p>只要编写一个新的 YAML（Deployment、DaemonSet、StatefulSet），再用 kubectl apply 应用就可以了。Kubernetes 采用的是“滚动更新”策略，实际上是两个同步进行的“扩容”和“缩容”动作，这样在更新的过程中始终会有 Pod 处于可用状态，能够平稳地对外提供服务。  </p>
+<p>应用的更新历史可以用命令 kubectl rollout history 查看，如果有什么意外，就可以用 kubectl rollout undo 来回退。这两个命令相当于给我们的更新流程上了一个保险，可以放心大胆操作，失败就用“S&#x2F;L 大法”。  </p>
+<h3 id="资源配额"><a href="#资源配额" class="headerlink" title="资源配额"></a>资源配额</h3><p>能够限制容器申请的 CPU 和内存数量，不至于过多或者过少，保持在一个合理的程度，更有利于 Kubernetes 调度。  </p>
+<h3 id="健康检查（探针）"><a href="#健康检查（探针）" class="headerlink" title="健康检查（探针）"></a>健康检查（探针）</h3><p>检查探针是 Kubernetes 内置的应用监控工具，有 Startup、Liveness、Readiness 三种，分别探测启动、存活、就绪状态，探测的方式也有 exec、tcpSocket、httpGet 三种。组合运用这些就可以灵活地检查容器的状态，Kubernetes 发现不可用就会重启容器，让应用在总体上处于健康水平。  </p>
+<h2 id="集群管理"><a href="#集群管理" class="headerlink" title="集群管理"></a>集群管理</h2><h3 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h3><p>Kubernetes 的集群里虽然有很多计算资源，但毕竟是有限的，除了要给 Pod 加上资源配额，我们也要为集群加上资源配额，方法就是用名字空间，把整体的资源池切分成多个小块，按需分配给不同的用户使用。  </p>
+<p>名字空间的资源配额使用的是“ResourceQuota”，除了基本的 CPU 和内存，它还能够限制存储容量和各种 API 对象的数量，这样就可以避免多用户互相挤占，更高效地利用集群资源。  </p>
+<h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><p>Kubernetes 提供了 Metrics Server 和 Prometheus 两个工具：  </p>
+<ul>
+<li>Metrics Server 专门用来收集 Kubernetes 核心资源指标，可以用 kubectl top 来查看集群的状态，它也是水平自动伸缩对象 HorizontalPodAutoscaler 的前提条件。  </li>
+<li>Prometheus，继 Kubernetes 之后的第二个 CNCF 毕业项目，是云原生监控领域的“事实标准”，在集群里部署之后就可以用 Grafana 可视化监控各种指标，还可以集成自动报警等功能。</li>
+</ul>
+<h3 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h3><p>对于底层的基础网络设施，Kubernetes 定义了平坦的网络模型“IP-per-pod”，实现它就要符合 CNI 标准。常用的网络插件有 Flannel、Calico、Cilium 等，Flannel 使用 Overlay 模式，性能较低，Calico 使用 Route 模式，性能较高。  </p>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/k8s-%E9%AB%98%E7%BA%A7map.png">  </p>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes集群部署WordPress网站-版本1</title>
     <url>/2022/10/04/kubernetes-cluster-deploy-wordpress/</url>
-    <content><![CDATA[<h1 id="逻辑关系"><a href="#逻辑关系" class="headerlink" title="逻辑关系"></a>逻辑关系</h1><p>本文我将尝试用<code>Kubernetes</code>集群上搭建一个<code>WordPress</code>网站，他们的内部逻辑关系如下：<br><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png">  </p>
+    <content><![CDATA[<h1 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h1><p>本文我将尝试用<code>Kubernetes</code>集群上搭建一个<code>WordPress</code>网站，他们的内部逻辑关系如下：<br><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png">  </p>
 <h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="编排-MariaDB-对象"><a href="#编排-MariaDB-对象" class="headerlink" title="编排 MariaDB 对象"></a>编排 MariaDB 对象</h2><p><code>MariaDB</code>需要4个环境变量，比如数据库名、用户名、密码等，在<code>Docker</code>里我们是在命令行里使用参数<code>--env</code>，而在<code>Kubernetes</code>里我们就应该使用<strong>ConfigMap</strong>，为此需要定义一个<code>maria-cm</code>对象：  </p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">maria-cm</span></span><br><span class="line"></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">DATABASE:</span> <span class="string">&#x27;db&#x27;</span></span><br><span class="line">  <span class="attr">USER:</span> <span class="string">&#x27;wp&#x27;</span></span><br><span class="line">  <span class="attr">PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br><span class="line">  <span class="attr">ROOT_PASSWORD:</span> <span class="string">&#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
 
@@ -9786,7 +9940,28 @@
 <h1 id="答疑"><a href="#答疑" class="headerlink" title="答疑"></a>答疑</h1><h2 id="Kubernetes-系统和-Docker-系统的区别在哪里？"><a href="#Kubernetes-系统和-Docker-系统的区别在哪里？" class="headerlink" title="Kubernetes 系统和 Docker 系统的区别在哪里？"></a>Kubernetes 系统和 Docker 系统的区别在哪里？</h2><p>关键就在<strong>对应用的封装</strong>和<strong>网络环境</strong>这两点上。  </p>
 <p>现在 WordPress、MariaDB 这两个应用被封装成了 Pod（由于它们都是在线业务，所以 Job&#x2F;CronJob 在这里派不上用场），运行所需的环境变量也都被改写成 ConfigMap，统一用“声明式”来管理，比起 Shell 脚本更容易阅读和版本化管理。  </p>
 <p>另外，Kubernetes 集群在内部维护了一个自己的专用网络，这个网络和外界隔离，要用特殊的“端口转发”方式来传递数据，还需要在集群之外用 Nginx 反向代理这个地址，这样才能实现内外沟通。  </p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/%E5%88%9D%E7%BA%A7map.png">  </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>容器技术开启了云原生的大潮，但成熟的容器技术，到生产环境的应用部署的时候，却显得“步履维艰”。因为容器只是针对单个进程的隔离和封装，而实际的应用场景却是要求许多的应用进程互相协同工作，其中的各种关系和需求非常复杂，在容器这个技术层次很难掌控。  </p>
+<p>为了解决这个问题，容器编排（Container Orchestration）就出现了，它可以说是以前的运维工作在云原生世界的落地实践，本质上还是在集群里调度管理应用程序，只不过管理的主体由人变成了计算机，管理的目标由原生进程变成了容器和镜像。  </p>
+<p>而现在，容器编排领域的王者就是——Kubernetes。  </p>
+<p>Kubernetes 源自 Borg 系统，它凝聚了 Google 的内部经验和 CNCF 的社区智慧，所以战胜了竞争对手 Apache Mesos 和 Docker Swarm，成为了容器编排领域的事实标准，也成为了云原生时代的基础操作系统，学习云原生就必须要掌握 Kubernetes。  </p>
+<p>Kubernetes 的 Master&#x2F;Node 架构是它具有自动化运维能力的关键：<br><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/k8s%E6%9E%B6%E6%9E%84.png">  </p>
+<p>Kubernetes 把集群里的计算资源定义为节点（Node），其中又划分成控制面和数据面两类。  </p>
+<ul>
+<li>控制面是 Master 节点，负责管理集群和运维监控应用，里面的核心组件是 apiserver、etcd、scheduler、controller-manager。  </li>
+<li>数据面是 Worker 节点，受 Master 节点的管控，里面的核心组件是 kubelet、kube-proxy、container-runtime。</li>
+</ul>
+<p>此外，Kubernetes 还支持插件机制，能够灵活扩展各项功能，常用的插件有 DNS 和 Dashboard。  </p>
+<p>为了更好地管理集群和业务应用，Kubernetes 从现实世界中抽象出了许多概念，称为“API 对象”，描述这些对象就需要使用 YAML 语言。  </p>
+<p>YAML 是 JSON 的超集，但语法更简洁，表现能力更强，更重要的是它以“声明式”来表述对象的状态，不涉及具体的操作细节，这样 Kubernetes 就能够依靠存储在 etcd 里集群的状态信息，不断地“调控”对象，直至实际状态与期望状态相同，这个过程就是 Kubernetes 的自动化运维管理。  </p>
+<p>Kubernetes 里有很多的 API 对象，其中最核心的对象是“Pod”，它捆绑了一组存在密切协作关系的容器，容器之间共享网络和存储，在集群里必须一起调度一起运行。通过 Pod 这个概念，Kubernetes 就简化了对容器的管理工作，其他的所有任务都是通过对 Pod 这个最小单位的再包装来实现的。  </p>
+<p>除了核心的 Pod 对象，基于“单一职责”和“对象组合”这两个基本原则，又有了 Job&#x2F;CronJob 和 ConfigMap&#x2F;Secret：  </p>
+<ul>
+<li>Job&#x2F;CronJob 对应的是离线作业，它们逐层包装了 Pod，添加了作业控制和定时规则  </li>
+<li>ConfigMap&#x2F;Secret 对应的是配置信息，需要以环境变量或者存储卷的形式注入进 Pod，然后进程才能在运行时使用</li>
+</ul>
+<p>和 Docker 类似，Kubernetes 也提供一个客户端工具，名字叫“kubectl”，它直接与 Master 节点的 apiserver 通信，把 YAML 文件发送给 RESTful 接口，从而触发 Kubernetes 的对象管理工作流程。  </p>
+<p>使用 YAML 描述 API 对象也有固定的格式，必须写的“头字段”是“apiVersion”“kind”“metadata”，它们表示对象的版本、种类和名字等元信息。实体对象如 Pod、Job、CronJob 会再有“spec”字段描述对象的期望状态，最基本的就是容器信息，非实体对象如 ConfigMap、Secret 使用的是“data”字段，记录一些静态的字符串信息。  </p>
+<p><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/%E5%88%9D%E7%BA%A7map.png">  </p>
 ]]></content>
       <categories>
         <category>LearnKubernetes</category>
@@ -11856,6 +12031,19 @@
       <tags>
         <tag>二叉树</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 40. 最小的k个数</title>
+    <url>/2022/10/04/leetcode-lcof-40-zui-xiao-de-kge-shu/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/">剑指 Offer 40. 最小的k个数</a>  </p>
+<p>题意就是从一个整数数组中，取出前k个最小的数。  </p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="简单直接"><a href="#简单直接" class="headerlink" title="简单直接"></a>简单直接</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Go</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sort&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getLeastNumbers</span><span class="params">(arr []<span class="type">int</span>, k <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    sort.Ints(arr)  <span class="comment">// 按从小到大排序</span></span><br><span class="line">    <span class="keyword">return</span> arr[:k]  <span class="comment">// 从下表0开始算，取前k个最小值后返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/solution/jian-zhi-offer-40-zui-xiao-de-k-ge-shu-j-9yze/">剑指 Offer 40. 最小的 k 个数（基于快速排序的数组划分，清晰图解)</a>  </p>
+]]></content>
+      <categories>
+        <category>SwordToOffer</category>
+      </categories>
   </entry>
   <entry>
     <title>LeetBook-binary-search | 二分查找</title>
@@ -15359,6 +15547,411 @@
       </tags>
   </entry>
   <entry>
+    <title>云原生训练营_第1课_Go语言特性</title>
+    <url>/2021/11/21/cloud-native-1-go-features/</url>
+    <content><![CDATA[<h1 id="为什么需要-Go-语言"><a href="#为什么需要-Go-语言" class="headerlink" title="为什么需要 Go 语言"></a>为什么需要 Go 语言</h1><h2 id="Go-语言的原则"><a href="#Go-语言的原则" class="headerlink" title="Go 语言的原则"></a>Go 语言的原则</h2><p>Less is exponentially more<br>– Rob Pike, Go Designer  </p>
+<p>Do Less, Enable More<br>– Russ Cox, Go Tech Lead  </p>
+<h2 id="为什么需要-Go-语言-1"><a href="#为什么需要-Go-语言-1" class="headerlink" title="为什么需要 Go 语言"></a>为什么需要 Go 语言</h2><p>其他编程语言的弊端：  </p>
+<ul>
+<li>硬件发展速度远远超过软件。  </li>
+<li>C 语言等原生语言缺乏好的依赖管理 (依赖头文件）。  </li>
+<li>Java 和 C++ 等语言过于笨重。  </li>
+<li>系统语言对垃圾回收和并行计算等基础功能缺乏支持。  </li>
+<li>对多核计算机缺乏支持。</li>
+</ul>
+<p>Go 语言是一个<strong>可以编译高效，支持高并发的，面向垃圾回收</strong>的全新语言：  </p>
+<ul>
+<li>秒级完成大型程序的单节点编译。  </li>
+<li>依赖管理清晰。  </li>
+<li>不支持继承，程序员无需花费精力定义不同类型之间的关系。  </li>
+<li>支持垃圾回收，支持并发执行，支持多线程通讯。  </li>
+<li>对多核计算机支持友好。</li>
+</ul>
+<h2 id="Go-语言不支持的特性"><a href="#Go-语言不支持的特性" class="headerlink" title="Go 语言不支持的特性"></a>Go 语言不支持的特性</h2><ul>
+<li>不支持函数重载和操作符重载</li>
+<li>为了避免在 C&#x2F;C++ 开发中的一些 Bug 和混乱，不支持隐式转换  </li>
+<li>支持接口抽象，不支持继承  </li>
+<li>不支持动态加载代码  </li>
+<li>不支持动态链接库  </li>
+<li>通过 recover 和 panic 来替代异常机制  </li>
+<li>不支持断言  </li>
+<li>不支持静态变量</li>
+</ul>
+<h2 id="Go-语言特性衍生来源"><a href="#Go-语言特性衍生来源" class="headerlink" title="Go 语言特性衍生来源"></a>Go 语言特性衍生来源</h2><p><img src="/2021/11/21/cloud-native-1-go-features/Go%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E8%A1%8D%E7%94%9F%E6%9D%A5%E6%BA%90.png">  </p>
+<h1 id="Go-语言编译环境设置"><a href="#Go-语言编译环境设置" class="headerlink" title="Go 语言编译环境设置"></a>Go 语言编译环境设置</h1><p>下载编译运行可以参考这篇文章<a href="https://octopuslian.github.io/2021/07/16/golang-vscode-setting-and-git-feature/">VSCode下Golang的配置以及Git分支合并注意事项</a>  </p>
+<h1 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h1><h2 id="If"><a href="#If" class="headerlink" title="If"></a>If</h2><p>基本形式：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition1 &#123;</span><br><span class="line"><span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> condition2 &#123;</span><br><span class="line"><span class="comment">// do something else</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">// catch-all or default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if 的简短语句：<br>同 for 一样， if 语句可以在条件表达式前执行一个简单的语句。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> v := x - <span class="number">100</span>; v &lt; <span class="number">0</span>&#123;</span><br><span class="line"><span class="keyword">return</span> v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> var1 &#123;</span><br><span class="line"><span class="keyword">case</span> val1: <span class="comment">//空分支</span></span><br><span class="line"><span class="keyword">case</span> val2:</span><br><span class="line"><span class="keyword">fallthrough</span> <span class="comment">//执行case3中的f()</span></span><br><span class="line"><span class="keyword">case</span> val3:</span><br><span class="line">f()</span><br><span class="line"><span class="keyword">default</span>: <span class="comment">//默认分支</span></span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><p>Go 只有一种循环结构：for 循环。  </p>
+<h3 id="计入计时器的循环"><a href="#计入计时器的循环" class="headerlink" title="计入计时器的循环"></a>计入计时器的循环</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for 初始化语句; 条件语句; 修饰语句 &#123;&#125;</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    sum += i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化语句和后置语句是可选的，此场景与-while-等价（Go-语言不支持-while）"><a href="#初始化语句和后置语句是可选的，此场景与-while-等价（Go-语言不支持-while）" class="headerlink" title="初始化语句和后置语句是可选的，此场景与 while 等价（Go 语言不支持 while）"></a>初始化语句和后置语句是可选的，此场景与 while 等价（Go 语言不支持 while）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ; sum &lt; <span class="number">1000</span>; &#123;</span><br><span class="line">    sum += sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> condition1 &#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="for-range"><a href="#for-range" class="headerlink" title="for-range"></a>for-range</h2><p>遍历数组，切片，字符串，Map 等  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index, char := <span class="keyword">range</span> myString &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> MyMap &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> index, value := <span class="keyword">range</span> MyArray &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意：如果 for range 遍历指针数组，则 value 取出的指针地址为原指针地址的拷贝。  </p>
+<h1 id="Go-语言常用数据结构"><a href="#Go-语言常用数据结构" class="headerlink" title="Go 语言常用数据结构"></a>Go 语言常用数据结构</h1><h2 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h2><p>常量：<code>const identifier type</code>  </p>
+<p>变量：<code>var identifier type</code>  </p>
+<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<li>var 语句用于声明一个变量列表，跟函数的参数列表一样，类型在最后。</li>
+<li>var c, python, java bool</li>
+</ul>
+<h3 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h3><ul>
+<li>变量声明可以包含初始值，每个变量对应一个。  </li>
+<li>如果初始化值已存在，则可以省略类型；变量会从初始值中获得类型。  </li>
+<li>var i, j int &#x3D; 1, 2</li>
+</ul>
+<h3 id="短变量声明"><a href="#短变量声明" class="headerlink" title="短变量声明"></a>短变量声明</h3><ul>
+<li>在函数中，简洁赋值语句 :&#x3D; 可在类型明确的地方代替 var 声明。  </li>
+<li>函数外的每个语句都必须以关键字开始（var, func 等等），因此 :&#x3D; 结构不能在函数外使用。  </li>
+<li>c, python, java :&#x3D; true, false, “no!”</li>
+</ul>
+<h2 id="类型转换与推导"><a href="#类型转换与推导" class="headerlink" title="类型转换与推导"></a>类型转换与推导</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>表达式 T(v) 将值 v 转换为类型 T。  </p>
+<p>一些关于数值的转换：  </p>
+<ul>
+<li>var i int &#x3D; 42  </li>
+<li>var f float64 &#x3D; float64(i)  </li>
+<li>var u uint &#x3D; uint(f)</li>
+</ul>
+<p>或者，更加简单的形式：  </p>
+<ul>
+<li>i :&#x3D; 42  </li>
+<li>f :&#x3D; float64(i)  </li>
+<li>u :&#x3D; uint(f)</li>
+</ul>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>在声明一个变量而不指定其类型时（即使用不带类型的 :&#x3D; 语法或 var &#x3D; 表达式语法），变量的类型由右值推导得出。  </p>
+<ul>
+<li>var i int  </li>
+<li>j :&#x3D; i &#x2F;&#x2F; j 也是一个 int</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>相同类型且长度固定连续内存片段  </li>
+<li>以编号访问每个元素  </li>
+<li>定义方法：<code>var identifier [len]type</code>  </li>
+<li>示例<br>myArray :&#x3D; [3]int{1,2,3}</li>
+</ul>
+<h2 id="切片-slice"><a href="#切片-slice" class="headerlink" title="切片(slice)"></a>切片(slice)</h2><ul>
+<li><p>切片是对数组一个连续片段的引用  </p>
+</li>
+<li><p>数组定义中不指定长度即为切片<br>var identifier []type  </p>
+</li>
+<li><p>切片在未初始化之前默认为nil， 长度为0  </p>
+</li>
+<li><p>常用方法</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    myArray := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">    mySlice := myArray[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">    fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br><span class="line">    fullSlice := myArray[:]</span><br><span class="line">    remove3rdItem := deleteItem(fullSlice, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;remove3rdItem %+v\n&quot;</span>,</span><br><span class="line">    remove3rdItem)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteItem</span><span class="params">(slice []<span class="type">int</span>, index <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">append</span>(slice[:index], slice[index+<span class="number">1</span>:]...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Make-和-New"><a href="#Make-和-New" class="headerlink" title="Make 和 New"></a>Make 和 New</h2><ul>
+<li>New 返回指针地址  </li>
+<li>Make 返回第一个元素，可预设内存空间，避免未来的内存拷贝  </li>
+<li>示例</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">mySlice1 := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">mySlice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">mySlice3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">10</span>)</span><br><span class="line">mySlice4 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/21/cloud-native-1-go-features/mySlice.png">  </p>
+<h2 id="关于切片的常见问题"><a href="#关于切片的常见问题" class="headerlink" title="关于切片的常见问题"></a>关于切片的常见问题</h2><ul>
+<li>切片是连续内存并且可以动态扩展，由此引发的问题？</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">a := []<span class="type">int</span></span><br><span class="line">b := []<span class="type">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">c := a</span><br><span class="line">a = <span class="built_in">append</span>(b, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改切片的值？</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">mySlice := []<span class="type">int</span>&#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;</span><br><span class="line"><span class="keyword">for</span> _, value := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    value *= <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br><span class="line"><span class="keyword">for</span> index, _ := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    mySlice[index] *= <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
+<li>声明方法：<code>var map1 map[keytype]valuetype</code>  </li>
+<li>示例</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, <span class="number">10</span>)</span><br><span class="line">myMap[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;b&quot;</span></span><br><span class="line">myFuncMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span>&#123;</span><br><span class="line">    <span class="string">&quot;funcA&quot;</span>: <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;,</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(myFuncMap)</span><br><span class="line">f := myFuncMap[<span class="string">&quot;funcA&quot;</span>]</span><br><span class="line">fmt.Println(f())</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问-Map-元素"><a href="#访问-Map-元素" class="headerlink" title="访问 Map 元素"></a>访问 Map 元素</h2><p>按 Key 取值：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">value, exists := myMap[<span class="string">&quot;a&quot;</span>]</span><br><span class="line"><span class="keyword">if</span> exists &#123;</span><br><span class="line">    <span class="built_in">println</span>(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历 Map：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> myMap &#123;</span><br><span class="line">    <span class="built_in">println</span>(k, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体和指针"><a href="#结构体和指针" class="headerlink" title="结构体和指针"></a>结构体和指针</h2><ul>
+<li>通过 type … struct 关键字自定义结构体  </li>
+<li>Go 语言支持指针，但不支持指针运算：指针变量的值为内存地址；未赋值的指针为 nil。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MyType <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printMyType</span><span class="params">(t *MyType)</span></span>&#123;</span><br><span class="line">    <span class="built_in">println</span>(t.Name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    t := MyType&#123;Name: <span class="string">&quot;test&quot;</span>&#125;</span><br><span class="line">    printMyType(&amp;t)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体标签"><a href="#结构体标签" class="headerlink" title="结构体标签"></a>结构体标签</h2><ul>
+<li>结构体中的字段除了有名字和类型外，还可以有一个可选的标签（tag）  </li>
+<li>使用场景：Kubernetes APIServer 对所有资源的定义都用 Json tag 和 protoBuff tag<br>NodeName string <code>json:&quot;nodeName,omitempty&quot; protobuf:&quot;bytes,10,opt,name=nodeName&quot;</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MyType <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    mt := MyType&#123;Name: <span class="string">&quot;test&quot;</span>&#125;</span><br><span class="line">    myType := reflect.TypeOf(mt)</span><br><span class="line">    name := myType.Field(<span class="number">0</span>)</span><br><span class="line">    tag := name.Tag.Get(<span class="string">&quot;json&quot;</span>)</span><br><span class="line">    <span class="built_in">println</span>(tag)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Service Type string describes ingress methods for a service</span></span><br><span class="line"><span class="keyword">type</span> ServiceType <span class="type">string</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    <span class="comment">// ServiceTypeClusterIP means a service will only be accessible inside the</span></span><br><span class="line">    <span class="comment">// cluster, via the ClusterIP.</span></span><br><span class="line">    ServiceTypeClusterIP ServiceType = <span class="string">&quot;ClusterIP&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeNodePort means a service will be exposed on one port of</span></span><br><span class="line">    <span class="comment">// every node, in addition to &#x27;ClusterIP&#x27; type.</span></span><br><span class="line">    ServiceTypeNodePort ServiceType = <span class="string">&quot;NodePort&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeLoadBalancer means a service will be exposed via an</span></span><br><span class="line">    <span class="comment">// external load balancer (if the cloud provider supports it), in addition</span></span><br><span class="line">    <span class="comment">// to &#x27;NodePort&#x27; type.</span></span><br><span class="line">    ServiceTypeLoadBalancer ServiceType = <span class="string">&quot;LoadBalancer&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeExternalName means a service consists of only a reference to</span></span><br><span class="line">    <span class="comment">// an external name that kubedns or equivalent will return as a CNAME</span></span><br><span class="line">    <span class="comment">// record, with no exposing or proxying of any pods involved.</span></span><br><span class="line">    ServiceTypeExternalName ServiceType = <span class="string">&quot;ExternalName&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="课后练习1-1"><a href="#课后练习1-1" class="headerlink" title="课后练习1.1"></a>课后练习1.1</h2><p>编写一个小程序，给定一个字符串数组<code>[&quot;I&quot;,&quot;am&quot;,&quot;stupid&quot;,&quot;and&quot;,&quot;weak&quot;]</code>，用 for 循环遍历该数组并修改为<code>[&quot;I&quot;,&quot;am&quot;,&quot;smart&quot;,&quot;and&quot;,&quot;strong&quot;]</code>。  </p>
+<h1 id="Go-语言函数调用"><a href="#Go-语言函数调用" class="headerlink" title="Go 语言函数调用"></a>Go 语言函数调用</h1><h2 id="Main函数"><a href="#Main函数" class="headerlink" title="Main函数"></a>Main函数</h2><ul>
+<li>每个 Go 语言程序都应该有个 main package  </li>
+<li>Main package 里的 main 函数是 Go 语言程序入口</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">args := os.Args</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(<span class="string">&quot;Do not accept any argument&quot;</span>)</span><br><span class="line">        os.Exit(<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Hello world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h2><ul>
+<li>请注意 main 函数与其他语言不同，没有类似 java 的 []string args 参数  </li>
+<li>Go 语言如何传入参数呢？</li>
+</ul>
+<p>方法1：<code>fmt.Println(&quot;os args is:&quot;, os.Args)</code><br>方法2：<code>name := flag.String(&quot;name&quot;, &quot;world&quot;, &quot;specify the name you want to say hi&quot;)</code>；<code>flag.Parse()</code>  </p>
+<h2 id="Init-函数"><a href="#Init-函数" class="headerlink" title="Init 函数"></a>Init 函数</h2><ul>
+<li>Init 函数：会在包初始化时运行  </li>
+<li>谨慎使用 init 函数<br>当多个依赖项目引用统一项目，且被引用项目的初始化在 init 中完成，并且不可重复运行时，会导致启动错误</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">var</span> myVariable = <span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    myVariable = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><ul>
+<li><p>多值返回：函数可以返回任意数量的返回值  </p>
+</li>
+<li><p>命名返回值：<br>Go 的返回值可被命名，它们会被视作定义在函数顶部的变量。<br>返回值的名称应当具有一定的意义，它可以作为文档使用。<br>没有参数的 return 语句返回已命名的返回值。也就是直接返回。  </p>
+</li>
+<li><p>调用者忽略部分返回值：<code>result, _ = strconv.Atoi(origStr)</code></p>
+</li>
+</ul>
+<h2 id="传递变长参数"><a href="#传递变长参数" class="headerlink" title="传递变长参数"></a>传递变长参数</h2><p>Go 语言中的可变长参数允许调用方传递任意多个相同类型的参数  </p>
+<ul>
+<li>函数定义：func append(slice []Type, elems …Type) []Type  </li>
+<li>调用方法：<code>myArray := []string&#123;&#125;</code>；<code>myArray = append(myArray, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;)</code></li>
+</ul>
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p><img src="/2021/11/21/cloud-native-1-go-features/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.png">  </p>
+<h2 id="回调函数-Callback"><a href="#回调函数-Callback" class="headerlink" title="回调函数(Callback)"></a>回调函数(Callback)</h2><ul>
+<li>函数作为参数传入其它函数，并在其他函数内部调用执行<br><code>strings.IndexFunc(line, unicode.IsSpace)</code><br><code>Kubernetes controller的leaderelection</code></li>
+</ul>
+<p>示例：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    DoOperation(<span class="number">1</span>, increase)</span><br><span class="line">    DoOperation(<span class="number">1</span>, decrease)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">increase</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(“increase result is:”, a+b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoOperation</span><span class="params">(y <span class="type">int</span>, f <span class="keyword">func</span>(<span class="type">int</span>, <span class="type">int</span>)</span></span>) &#123;</span><br><span class="line">    (y, <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">decrease</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;decrease result is:&quot;</span>, a-b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
+<li>不能独立存在  </li>
+<li>可以赋值给其他变量：<code>x:= func()&#123;&#125;</code>  </li>
+<li>可以直接调用：<code>func(x,y int)&#123;println(x+y)&#125;(1,2)</code>  </li>
+<li>可作为函数返回值<code>func Add() (func(b int) int)</code>  </li>
+<li>使用场景</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> r := <span class="built_in">recover</span>(); r != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(“recovered in FuncX”)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li>方法：作用在接收者上的函数<code>func (recv receiver_type) methodName(parameter_list) (return_value_list)</code>  </li>
+<li>使用场景<br>很多场景下，函数需要的上下文可以保存在receiver属性中，通过定义 receiver 的方法，该方法可以直接访问 receiver 属性，减少参数传递需求</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// StartTLS starts TLS on a server from NewUnstartedServer.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span></span> StartTLS() &#123;</span><br><span class="line">    <span class="keyword">if</span> s.URL != “” &#123;</span><br><span class="line">        <span class="built_in">panic</span>(“Server already started”)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s.client == <span class="literal">nil</span> &#123;</span><br><span class="line">        s.client = &amp;http.Client&#123;Transport: &amp;http.Transport&#123;&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="传值还是传指针"><a href="#传值还是传指针" class="headerlink" title="传值还是传指针"></a>传值还是传指针</h2><ul>
+<li>Go 语言只有一种规则-传值  </li>
+<li>函数内修改参数的值不会影响函数外原始变量的值  </li>
+<li>可以传递指针参数将变量地址传递给调用函数，Go 语言会复制该指针作为函数内的地址，但指向同一地址  </li>
+<li>思考：当我们写代码的时候，函数的参数传递应该用struct还是pointer？</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li><p>接口定义一组方法集合  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IF <span class="keyword">interface</span> &#123;</span><br><span class="line">    Method1(param_list) return_type</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>适用场景：Kubernetes 中有大量的接口抽象和多种实现  </p>
+</li>
+<li><p>Struct 无需显示声明实现 interface，只需直接实现方法  </p>
+</li>
+<li><p>Struct 除实现 interface 定义的接口外，还可以有额外的方法  </p>
+</li>
+<li><p>一个类型可实现多个接口（Go 语言的多重继承）  </p>
+</li>
+<li><p>Go 语言中接口不接受属性定义  </p>
+</li>
+<li><p>接口可以嵌套其他接口</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IF <span class="keyword">interface</span> &#123;</span><br><span class="line">	getName() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Human <span class="keyword">struct</span> &#123;</span><br><span class="line">	firstName, lastName <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *Human)</span></span> getName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> h.firstName + <span class="string">&quot;,&quot;</span> + h.lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Car <span class="keyword">struct</span> &#123;</span><br><span class="line">	factory, model <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Car)</span></span> getName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> c.factory + <span class="string">&quot;-&quot;</span> + c.model</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	interfaces := []IF&#123;&#125;</span><br><span class="line">	h := <span class="built_in">new</span>(Human)</span><br><span class="line">	h.firstName = <span class="string">&quot;first&quot;</span></span><br><span class="line"></span><br><span class="line">	h.lastName = <span class="string">&quot;last&quot;</span></span><br><span class="line"></span><br><span class="line">	interfaces = <span class="built_in">append</span>(interfaces, h)</span><br><span class="line">	c := <span class="built_in">new</span>(Car)</span><br><span class="line"></span><br><span class="line">	c.factory = <span class="string">&quot;benz&quot;</span></span><br><span class="line">	c.model = <span class="string">&quot;s&quot;</span></span><br><span class="line">	interfaces = <span class="built_in">append</span>(interfaces, c)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, f := <span class="keyword">range</span> interfaces &#123;</span><br><span class="line">		fmt.Println(f.getName())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>Interface 是可能为 nil 的，所以针对 interface 的使用一定要预先判空，否则会引起程序 crash(nil panic)  </li>
+<li>Struct 初始化意味着空间分配，对 struct 的引用不会出现空指针</li>
+</ul>
+<h2 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h2><ul>
+<li>reflect.TypeOf ()返回被检查对象的类型  </li>
+<li>reflect.ValueOf()返回被检查对象的值  </li>
+<li>示例</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, <span class="number">10</span>)</span><br><span class="line">myMap[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;b&quot;</span></span><br><span class="line">t := reflect.TypeOf(myMap)</span><br><span class="line">fmt.Println(<span class="string">&quot;type:&quot;</span>, t)</span><br><span class="line">v := reflect.ValueOf(myMap)</span><br><span class="line">fmt.Println(<span class="string">&quot;value:&quot;</span>, v)</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于-struct-的反射"><a href="#基于-struct-的反射" class="headerlink" title="基于 struct 的反射"></a>基于 struct 的反射</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// struct</span></span><br><span class="line">myStruct := T&#123;A: <span class="string">&quot;a&quot;</span>&#125;</span><br><span class="line">v1 := reflect.ValueOf(myStruct)</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; v1.NumField(); i++ &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Field %d: %v\n&quot;</span>, i, v1.Field(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; v1.NumMethod(); i++ &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Method %d: %v\n&quot;</span>, i, v1.Method(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 需要注意 receive 是 struct 还是指针</span></span><br><span class="line">result := v1.Method(<span class="number">0</span>).Call(<span class="literal">nil</span>)</span><br><span class="line">fmt.Println(<span class="string">&quot;result:&quot;</span>, result)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Go-语言中的面向对象编程"><a href="#Go-语言中的面向对象编程" class="headerlink" title="Go 语言中的面向对象编程"></a>Go 语言中的面向对象编程</h2><ul>
+<li><p>可见性控制<br>public - 常量、变量、类型、接口、结构、函数等的名称大写<br>private - 非大写就只能在包内使用  </p>
+</li>
+<li><p>继承<br>通过组合实现，内嵌一个或多个 struct  </p>
+</li>
+<li><p>多态<br>通过接口实现，通过接口定义方法集，编写多套实现</p>
+</li>
+</ul>
+<h2 id="Json-编解码"><a href="#Json-编解码" class="headerlink" title="Json 编解码"></a>Json 编解码</h2><ul>
+<li>Unmarshal: 从 string 转换至 struct</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unmarshal2Struct</span><span class="params">(humanStr <span class="type">string</span>)</span></span>Human &#123;</span><br><span class="line">    h := Human&#123;&#125;</span><br><span class="line">    err := json.Unmarshal([]<span class="type">byte</span>(humanStr), &amp;h)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Marshal: 从 struct 转换至 string</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">marshal2JsonString</span><span class="params">(h Human)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    h.Age = <span class="number">30</span></span><br><span class="line">    updatedBytes, err := json.Marshal(&amp;h)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">string</span>(updatedBytes)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>json 包使用 map[string]interface{} 和 []interface{} 类型保存任意对象  </li>
+<li>可通过如下逻辑解析任意 json</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">err := json.Unmarshal([]<span class="type">byte</span>(humanStr), &amp;obj)</span><br><span class="line">objMap, ok := obj.(<span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> objMap &#123;</span><br><span class="line">    <span class="keyword">switch</span> value := v.(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">string</span>:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is string, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">interface</span>&#123;&#125;:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is interface&#123;&#125;, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is wrong, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h1><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><ul>
+<li>Go 语言无内置 exceptio 机制，只提供 error 接口供定义错误</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">error</span> <span class="keyword">interface</span> &#123;</span><br><span class="line">    Error() <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可通过 errors.New 或 fmt.Errorf 创建新的 error：<code>var errNotFound error = errors.New(&quot;NotFound&quot;)</code>  </li>
+<li>通常应用程序对 error 的处理大部分是判断 error 是否为 nil</li>
+</ul>
+<p>如需将 error 归类，通常交给应用程序自定义，比如 kubernetes 自定义了与 apiserver 交互的不同类型错误  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> StatusError <span class="keyword">struct</span> &#123;</span><br><span class="line">    ErrStatus metav1.Status</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> _ <span class="type">error</span> = &amp;StatusError&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error implements the Error interface.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *StatusError)</span></span> Error() <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> e.ErrStatus.Message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><ul>
+<li>函数返回之前执行某个语句或函数：<code>等同于 Java 和 C# 的 finally</code>  </li>
+<li>常见的 defer 使用场景：<strong>记得关闭你打开的资源</strong><br>defer file.Close()<br>defer mu.Unlock()<br>defer println(“”)</li>
+</ul>
+<h2 id="Panic-和-Recover"><a href="#Panic-和-Recover" class="headerlink" title="Panic 和 Recover"></a>Panic 和 Recover</h2><ul>
+<li>panic: 可在系统出现不可恢复错误时主动调用 panic, panic 会使当前线程直接 crash  </li>
+<li>defer: 保证执行并把控制权交还给接收到 panic 的函数调用者  </li>
+<li>recover: 函数从 panic 或 错误场景中恢复</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;defer func is called&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err := <span class="built_in">recover</span>(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">panic</span>(<span class="string">&quot;a panic is triggered&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h2><p><img src="/2021/11/21/cloud-native-1-go-features/%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C.png">  </p>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>分配系统资源（CPU 时间、内存等）基本单位  </li>
+<li>有独立的内存空间，切换开销大</li>
+</ul>
+<h3 id="线程：进程的一个执行流，是-CPU-调度并能独立运行的的基本单位"><a href="#线程：进程的一个执行流，是-CPU-调度并能独立运行的的基本单位" class="headerlink" title="线程：进程的一个执行流，是 CPU 调度并能独立运行的的基本单位"></a>线程：进程的一个执行流，是 CPU 调度并能独立运行的的基本单位</h3><ul>
+<li>同一进程中的多线程共享内存空间，线程切换代价小  </li>
+<li>多线程通信方便  </li>
+<li>从内核层面来看线程其实也是一种特殊的进程，它跟父进程共享了打开的文件和文件系统信息，共享了地址空间和信号处理函数</li>
+</ul>
+<h3 id="协程-1"><a href="#协程-1" class="headerlink" title="协程"></a>协程</h3><ul>
+<li>Go 语言中的轻量级线程实现  </li>
+<li>Golang 在 runtime、系统调用等多方面对 goroutine 调度进行了封装和处理，当遇到长时间执行或者进行系统调用时，会主动把当前 goroutine 的 CPU (P) 转让出去，让其他 goroutine 能被调度并执行，也就是 Golang 从语言层面支持了协程</li>
+</ul>
+<h2 id="Communicating-Sequential-Process"><a href="#Communicating-Sequential-Process" class="headerlink" title="Communicating Sequential Process"></a>Communicating Sequential Process</h2><h3 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h3><p>描述两个独立的并发实体通过共享的通讯 channel 进行通信的并发模型。  </p>
+<h3 id="Go-协程-goroutine"><a href="#Go-协程-goroutine" class="headerlink" title="Go 协程 goroutine"></a>Go 协程 goroutine</h3><ul>
+<li>是一种轻量线程，它不是操作系统的线程，而是将一个操作系统线程分段使用，通过调度器实现协作式调度。  </li>
+<li>是一种绿色线程，微线程，它与 Coroutine 协程也有区别，能够在发现堵塞后启动新的微线程。</li>
+</ul>
+<h3 id="通道-channel"><a href="#通道-channel" class="headerlink" title="通道 channel"></a>通道 channel</h3><ul>
+<li>类似 Unix 的 Pipe，用于协程之间通讯和同步。  </li>
+<li>协程之间虽然解耦，但是它们和 Channel 有着耦合。</li>
+</ul>
+<h2 id="线程和协程的差异"><a href="#线程和协程的差异" class="headerlink" title="线程和协程的差异"></a>线程和协程的差异</h2><p>每个 goroutine (协程) 默认占用内存远比 Java 、C 的线程少。  </p>
+<ul>
+<li>goroutine：2KB  </li>
+<li>线程：8MB</li>
+</ul>
+<p>线程&#x2F;goroutine 切换开销方面，goroutine 远比线程小  </p>
+<ul>
+<li>线程：涉及模式切换(从用户态切换到内核态)、16个寄存器、PC、SP…等寄存器的刷新  </li>
+<li>goroutine：只有三个寄存器的值修改 - PC &#x2F; SP &#x2F; DX.</li>
+</ul>
+<p>GOMAXPROCS：控制并行线程数量  </p>
+<h2 id="协程示例"><a href="#协程示例" class="headerlink" title="协程示例"></a>协程示例</h2><p>启动新协程：go functionName()  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">go</span> fmt.Println(i)</span><br><span class="line">&#125;</span><br><span class="line">time.Sleep(time.Second)</span><br></pre></td></tr></table></figure>
+
+<h2 id="channel-多线程通信"><a href="#channel-多线程通信" class="headerlink" title="channel - 多线程通信"></a>channel - 多线程通信</h2><h3 id="Channel-是多个协程之间通讯的管道"><a href="#Channel-是多个协程之间通讯的管道" class="headerlink" title="Channel 是多个协程之间通讯的管道"></a>Channel 是多个协程之间通讯的管道</h3><ul>
+<li>一端发送数据，一端接收数据  </li>
+<li>同一时间只有一个协程可以访问数据，无共享内存模式可能出现的内存竞争  </li>
+<li>协调协程的执行顺序</li>
+</ul>
+<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><ul>
+<li>var identifier chan datatype  </li>
+<li>操作符&lt;-</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;hello from goroutine&quot;</span>)</span><br><span class="line">    ch &lt;- <span class="number">0</span> <span class="comment">//数据写入Channel</span></span><br><span class="line">&#125;()</span><br><span class="line">i := &lt;-ch<span class="comment">//从Channel中取数据并赋值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="通道缓冲"><a href="#通道缓冲" class="headerlink" title="通道缓冲"></a>通道缓冲</h2><ul>
+<li>基于 Channel 的通信是同步的  </li>
+<li>当缓冲区满时，数据的发送是阻塞的  </li>
+<li>通过 make 关键字创建通道时可定义缓冲区容量，默认缓冲区容量为 0  </li>
+<li>下面两个定义的区别？  <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="遍历通道缓冲区"><a href="#遍历通道缓冲区" class="headerlink" title="遍历通道缓冲区"></a>遍历通道缓冲区</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		rand.Seed(time.Now().UnixNano())</span><br><span class="line">		n := rand.Intn(<span class="number">10</span>) <span class="comment">// n will be between 0 and 10</span></span><br><span class="line">		fmt.Println(<span class="string">&quot;putting: &quot;</span>, n)</span><br><span class="line">		ch &lt;- n</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">&#125;()</span><br><span class="line">fmt.Println(<span class="string">&quot;hello from main&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;receiving: &quot;</span>, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单向通道"><a href="#单向通道" class="headerlink" title="单向通道"></a>单向通道</h2><p>只发送通道：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sendOnly <span class="keyword">chan</span>&lt;- <span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+<p>只接收通道：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> readOnly &lt;-<span class="keyword">chan</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+<p>Istio webhook controller：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *WebhookCertPatcher)</span></span> runWebhookController(stopChan &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何用: 双向通道转换：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">go</span> prod(c)</span><br><span class="line"><span class="keyword">go</span> consume(c)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">prod</span><span class="params">(ch <span class="keyword">chan</span>&lt;- <span class="type">int</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> &#123; ch &lt;- <span class="number">1</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">consume</span><span class="params">(ch &lt;-<span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123; &lt;-ch &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关闭通道"><a href="#关闭通道" class="headerlink" title="关闭通道"></a>关闭通道</h2><ul>
+<li>通道无需每次关闭  </li>
+<li>关闭的作用是告诉接收者该通道再无新数据发送  </li>
+<li>只有发送方需要关闭通道</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">defer</span> <span class="built_in">close</span>(ch)</span><br><span class="line"><span class="keyword">if</span> v, notClosed := &lt;-ch; notClosed &#123;</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>当多个协程同时运行时，可通过 select 轮询多个通道  </p>
+<ul>
+<li>如果所有通道都阻塞则等待，如定义了 default 则执行 default  </li>
+<li>如多个通道就绪则随机选择</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> v:= &lt;- ch1:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">case</span> v:= &lt;- ch2:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="定时器-Timer"><a href="#定时器-Timer" class="headerlink" title="定时器 Timer"></a>定时器 Timer</h2><ul>
+<li>time.Ticker 以指定的时间间隔重复的向通道 C 发送时间值  </li>
+<li>使用场景：为协程设定超时时间</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">timer := time.NewTimer(time.Second)</span><br><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="comment">// check normal channel</span></span><br><span class="line">    <span class="keyword">case</span> &lt;-ch:</span><br><span class="line">        fmt.Println(<span class="string">&quot;received from ch&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> &lt;-timer.C:</span><br><span class="line">        fmt.Println(<span class="string">&quot;timeout waiting from channel ch&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="上下文-Context"><a href="#上下文-Context" class="headerlink" title="上下文 Context"></a>上下文 Context</h2><ul>
+<li><p>超时、取消操作或者一些异常情况，往往需要进行抢占操作或者中断后续操作  </p>
+</li>
+<li><p>Context 是设置截止日期、同步信号，传递请求相关值的结构体  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Context <span class="keyword">interface</span> &#123;</span><br><span class="line">    Deadline() (deadline time.Time, ok <span class="type">bool</span>)</span><br><span class="line">    Done() &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line">    Err() <span class="type">error</span></span><br><span class="line">    Value(key <span class="keyword">interface</span>&#123;&#125;) <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用法  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">context.Background</span><br><span class="line">context.TODO</span><br><span class="line">context.WithDeadline</span><br><span class="line">context.WithValue</span><br><span class="line">context.WithCancel</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="如何停止一个子协程"><a href="#如何停止一个子协程" class="headerlink" title="如何停止一个子协程"></a>如何停止一个子协程</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">done := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">bool</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-done:</span><br><span class="line">			fmt.Println(<span class="string">&quot;done channel is triggerred, exit child go routine&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">close</span>(done)</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于-Context-停止子协程"><a href="#基于-Context-停止子协程" class="headerlink" title="基于 Context 停止子协程"></a>基于 Context 停止子协程</h2><p>Context 是 Go 语言对 go routine 和 timer 的封装  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ctx, cancel := context.WithTimeout(context.Background(), time.Second)</span><br><span class="line"><span class="keyword">defer</span> cancel()</span><br><span class="line"><span class="keyword">go</span> process(ctx, <span class="number">100</span>*time.Millisecond)</span><br><span class="line">&lt;-ctx.Done()</span><br><span class="line">fmt.Println(<span class="string">&quot;main:&quot;</span>, ctx.Err())</span><br></pre></td></tr></table></figure>
+
+<h2 id="课后练习1-2"><a href="#课后练习1-2" class="headerlink" title="课后练习1.2"></a>课后练习1.2</h2><ul>
+<li>基于 Channel 编写一个简单的单线程生产者消费者模型  </li>
+<li>队列：<br>队列长度10，队列元素类型为 int  </li>
+<li>生产者：<br>每1秒往队列中放入一个类型为 int 的元素，队列满时生产者可以阻塞  </li>
+<li>消费者：<br>每一秒从队列中获取一个元素并打印，队列为空时消费者阻塞</li>
+</ul>
+<p><a href="https://github.com/OctopusLian/CloudNativeCampHomework/tree/main/lesson1/range">作业1.1</a><br><a href="https://github.com/OctopusLian/CloudNativeCampHomework/tree/main/lesson1/single-producer-customer">作业1.2</a>  </p>
+]]></content>
+      <categories>
+        <category>Learn-go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>特性</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>云原生训练营_第2课_Go进阶</title>
     <url>/2021/11/22/cloud-native-2-go-advanced/</url>
     <content><![CDATA[<h1 id="线程加锁"><a href="#线程加锁" class="headerlink" title="线程加锁"></a>线程加锁</h1><h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><ul>
@@ -16490,411 +17083,6 @@
       <tags>
         <tag>算法</tag>
         <tag>复杂度</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>云原生训练营_第1课_Go语言特性</title>
-    <url>/2021/11/21/cloud-native-1-go-features/</url>
-    <content><![CDATA[<h1 id="为什么需要-Go-语言"><a href="#为什么需要-Go-语言" class="headerlink" title="为什么需要 Go 语言"></a>为什么需要 Go 语言</h1><h2 id="Go-语言的原则"><a href="#Go-语言的原则" class="headerlink" title="Go 语言的原则"></a>Go 语言的原则</h2><p>Less is exponentially more<br>– Rob Pike, Go Designer  </p>
-<p>Do Less, Enable More<br>– Russ Cox, Go Tech Lead  </p>
-<h2 id="为什么需要-Go-语言-1"><a href="#为什么需要-Go-语言-1" class="headerlink" title="为什么需要 Go 语言"></a>为什么需要 Go 语言</h2><p>其他编程语言的弊端：  </p>
-<ul>
-<li>硬件发展速度远远超过软件。  </li>
-<li>C 语言等原生语言缺乏好的依赖管理 (依赖头文件）。  </li>
-<li>Java 和 C++ 等语言过于笨重。  </li>
-<li>系统语言对垃圾回收和并行计算等基础功能缺乏支持。  </li>
-<li>对多核计算机缺乏支持。</li>
-</ul>
-<p>Go 语言是一个<strong>可以编译高效，支持高并发的，面向垃圾回收</strong>的全新语言：  </p>
-<ul>
-<li>秒级完成大型程序的单节点编译。  </li>
-<li>依赖管理清晰。  </li>
-<li>不支持继承，程序员无需花费精力定义不同类型之间的关系。  </li>
-<li>支持垃圾回收，支持并发执行，支持多线程通讯。  </li>
-<li>对多核计算机支持友好。</li>
-</ul>
-<h2 id="Go-语言不支持的特性"><a href="#Go-语言不支持的特性" class="headerlink" title="Go 语言不支持的特性"></a>Go 语言不支持的特性</h2><ul>
-<li>不支持函数重载和操作符重载</li>
-<li>为了避免在 C&#x2F;C++ 开发中的一些 Bug 和混乱，不支持隐式转换  </li>
-<li>支持接口抽象，不支持继承  </li>
-<li>不支持动态加载代码  </li>
-<li>不支持动态链接库  </li>
-<li>通过 recover 和 panic 来替代异常机制  </li>
-<li>不支持断言  </li>
-<li>不支持静态变量</li>
-</ul>
-<h2 id="Go-语言特性衍生来源"><a href="#Go-语言特性衍生来源" class="headerlink" title="Go 语言特性衍生来源"></a>Go 语言特性衍生来源</h2><p><img src="/2021/11/21/cloud-native-1-go-features/Go%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E8%A1%8D%E7%94%9F%E6%9D%A5%E6%BA%90.png">  </p>
-<h1 id="Go-语言编译环境设置"><a href="#Go-语言编译环境设置" class="headerlink" title="Go 语言编译环境设置"></a>Go 语言编译环境设置</h1><p>下载编译运行可以参考这篇文章<a href="https://octopuslian.github.io/2021/07/16/golang-vscode-setting-and-git-feature/">VSCode下Golang的配置以及Git分支合并注意事项</a>  </p>
-<h1 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h1><h2 id="If"><a href="#If" class="headerlink" title="If"></a>If</h2><p>基本形式：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition1 &#123;</span><br><span class="line"><span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> condition2 &#123;</span><br><span class="line"><span class="comment">// do something else</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">// catch-all or default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>if 的简短语句：<br>同 for 一样， if 语句可以在条件表达式前执行一个简单的语句。  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> v := x - <span class="number">100</span>; v &lt; <span class="number">0</span>&#123;</span><br><span class="line"><span class="keyword">return</span> v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> var1 &#123;</span><br><span class="line"><span class="keyword">case</span> val1: <span class="comment">//空分支</span></span><br><span class="line"><span class="keyword">case</span> val2:</span><br><span class="line"><span class="keyword">fallthrough</span> <span class="comment">//执行case3中的f()</span></span><br><span class="line"><span class="keyword">case</span> val3:</span><br><span class="line">f()</span><br><span class="line"><span class="keyword">default</span>: <span class="comment">//默认分支</span></span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><p>Go 只有一种循环结构：for 循环。  </p>
-<h3 id="计入计时器的循环"><a href="#计入计时器的循环" class="headerlink" title="计入计时器的循环"></a>计入计时器的循环</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for 初始化语句; 条件语句; 修饰语句 &#123;&#125;</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    sum += i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="初始化语句和后置语句是可选的，此场景与-while-等价（Go-语言不支持-while）"><a href="#初始化语句和后置语句是可选的，此场景与-while-等价（Go-语言不支持-while）" class="headerlink" title="初始化语句和后置语句是可选的，此场景与 while 等价（Go 语言不支持 while）"></a>初始化语句和后置语句是可选的，此场景与 while 等价（Go 语言不支持 while）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ; sum &lt; <span class="number">1000</span>; &#123;</span><br><span class="line">    sum += sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> condition1 &#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="for-range"><a href="#for-range" class="headerlink" title="for-range"></a>for-range</h2><p>遍历数组，切片，字符串，Map 等  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index, char := <span class="keyword">range</span> myString &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> MyMap &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> index, value := <span class="keyword">range</span> MyArray &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意：如果 for range 遍历指针数组，则 value 取出的指针地址为原指针地址的拷贝。  </p>
-<h1 id="Go-语言常用数据结构"><a href="#Go-语言常用数据结构" class="headerlink" title="Go 语言常用数据结构"></a>Go 语言常用数据结构</h1><h2 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h2><p>常量：<code>const identifier type</code>  </p>
-<p>变量：<code>var identifier type</code>  </p>
-<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
-<li>var 语句用于声明一个变量列表，跟函数的参数列表一样，类型在最后。</li>
-<li>var c, python, java bool</li>
-</ul>
-<h3 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h3><ul>
-<li>变量声明可以包含初始值，每个变量对应一个。  </li>
-<li>如果初始化值已存在，则可以省略类型；变量会从初始值中获得类型。  </li>
-<li>var i, j int &#x3D; 1, 2</li>
-</ul>
-<h3 id="短变量声明"><a href="#短变量声明" class="headerlink" title="短变量声明"></a>短变量声明</h3><ul>
-<li>在函数中，简洁赋值语句 :&#x3D; 可在类型明确的地方代替 var 声明。  </li>
-<li>函数外的每个语句都必须以关键字开始（var, func 等等），因此 :&#x3D; 结构不能在函数外使用。  </li>
-<li>c, python, java :&#x3D; true, false, “no!”</li>
-</ul>
-<h2 id="类型转换与推导"><a href="#类型转换与推导" class="headerlink" title="类型转换与推导"></a>类型转换与推导</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>表达式 T(v) 将值 v 转换为类型 T。  </p>
-<p>一些关于数值的转换：  </p>
-<ul>
-<li>var i int &#x3D; 42  </li>
-<li>var f float64 &#x3D; float64(i)  </li>
-<li>var u uint &#x3D; uint(f)</li>
-</ul>
-<p>或者，更加简单的形式：  </p>
-<ul>
-<li>i :&#x3D; 42  </li>
-<li>f :&#x3D; float64(i)  </li>
-<li>u :&#x3D; uint(f)</li>
-</ul>
-<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>在声明一个变量而不指定其类型时（即使用不带类型的 :&#x3D; 语法或 var &#x3D; 表达式语法），变量的类型由右值推导得出。  </p>
-<ul>
-<li>var i int  </li>
-<li>j :&#x3D; i &#x2F;&#x2F; j 也是一个 int</li>
-</ul>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li>相同类型且长度固定连续内存片段  </li>
-<li>以编号访问每个元素  </li>
-<li>定义方法：<code>var identifier [len]type</code>  </li>
-<li>示例<br>myArray :&#x3D; [3]int{1,2,3}</li>
-</ul>
-<h2 id="切片-slice"><a href="#切片-slice" class="headerlink" title="切片(slice)"></a>切片(slice)</h2><ul>
-<li><p>切片是对数组一个连续片段的引用  </p>
-</li>
-<li><p>数组定义中不指定长度即为切片<br>var identifier []type  </p>
-</li>
-<li><p>切片在未初始化之前默认为nil， 长度为0  </p>
-</li>
-<li><p>常用方法</p>
-</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    myArray := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">    mySlice := myArray[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">    fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br><span class="line">    fullSlice := myArray[:]</span><br><span class="line">    remove3rdItem := deleteItem(fullSlice, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;remove3rdItem %+v\n&quot;</span>,</span><br><span class="line">    remove3rdItem)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteItem</span><span class="params">(slice []<span class="type">int</span>, index <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">append</span>(slice[:index], slice[index+<span class="number">1</span>:]...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Make-和-New"><a href="#Make-和-New" class="headerlink" title="Make 和 New"></a>Make 和 New</h2><ul>
-<li>New 返回指针地址  </li>
-<li>Make 返回第一个元素，可预设内存空间，避免未来的内存拷贝  </li>
-<li>示例</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">mySlice1 := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">mySlice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">mySlice3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">10</span>)</span><br><span class="line">mySlice4 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/21/cloud-native-1-go-features/mySlice.png">  </p>
-<h2 id="关于切片的常见问题"><a href="#关于切片的常见问题" class="headerlink" title="关于切片的常见问题"></a>关于切片的常见问题</h2><ul>
-<li>切片是连续内存并且可以动态扩展，由此引发的问题？</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">a := []<span class="type">int</span></span><br><span class="line">b := []<span class="type">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">c := a</span><br><span class="line">a = <span class="built_in">append</span>(b, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>修改切片的值？</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">mySlice := []<span class="type">int</span>&#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;</span><br><span class="line"><span class="keyword">for</span> _, value := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    value *= <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br><span class="line"><span class="keyword">for</span> index, _ := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    mySlice[index] *= <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;mySlice %+v\n&quot;</span>, mySlice)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ul>
-<li>声明方法：<code>var map1 map[keytype]valuetype</code>  </li>
-<li>示例</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, <span class="number">10</span>)</span><br><span class="line">myMap[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;b&quot;</span></span><br><span class="line">myFuncMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span>&#123;</span><br><span class="line">    <span class="string">&quot;funcA&quot;</span>: <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;,</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(myFuncMap)</span><br><span class="line">f := myFuncMap[<span class="string">&quot;funcA&quot;</span>]</span><br><span class="line">fmt.Println(f())</span><br></pre></td></tr></table></figure>
-
-<h2 id="访问-Map-元素"><a href="#访问-Map-元素" class="headerlink" title="访问 Map 元素"></a>访问 Map 元素</h2><p>按 Key 取值：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">value, exists := myMap[<span class="string">&quot;a&quot;</span>]</span><br><span class="line"><span class="keyword">if</span> exists &#123;</span><br><span class="line">    <span class="built_in">println</span>(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>遍历 Map：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> myMap &#123;</span><br><span class="line">    <span class="built_in">println</span>(k, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结构体和指针"><a href="#结构体和指针" class="headerlink" title="结构体和指针"></a>结构体和指针</h2><ul>
-<li>通过 type … struct 关键字自定义结构体  </li>
-<li>Go 语言支持指针，但不支持指针运算：指针变量的值为内存地址；未赋值的指针为 nil。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MyType <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printMyType</span><span class="params">(t *MyType)</span></span>&#123;</span><br><span class="line">    <span class="built_in">println</span>(t.Name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    t := MyType&#123;Name: <span class="string">&quot;test&quot;</span>&#125;</span><br><span class="line">    printMyType(&amp;t)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结构体标签"><a href="#结构体标签" class="headerlink" title="结构体标签"></a>结构体标签</h2><ul>
-<li>结构体中的字段除了有名字和类型外，还可以有一个可选的标签（tag）  </li>
-<li>使用场景：Kubernetes APIServer 对所有资源的定义都用 Json tag 和 protoBuff tag<br>NodeName string <code>json:&quot;nodeName,omitempty&quot; protobuf:&quot;bytes,10,opt,name=nodeName&quot;</code></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MyType <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    mt := MyType&#123;Name: <span class="string">&quot;test&quot;</span>&#125;</span><br><span class="line">    myType := reflect.TypeOf(mt)</span><br><span class="line">    name := myType.Field(<span class="number">0</span>)</span><br><span class="line">    tag := name.Tag.Get(<span class="string">&quot;json&quot;</span>)</span><br><span class="line">    <span class="built_in">println</span>(tag)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Service Type string describes ingress methods for a service</span></span><br><span class="line"><span class="keyword">type</span> ServiceType <span class="type">string</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    <span class="comment">// ServiceTypeClusterIP means a service will only be accessible inside the</span></span><br><span class="line">    <span class="comment">// cluster, via the ClusterIP.</span></span><br><span class="line">    ServiceTypeClusterIP ServiceType = <span class="string">&quot;ClusterIP&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeNodePort means a service will be exposed on one port of</span></span><br><span class="line">    <span class="comment">// every node, in addition to &#x27;ClusterIP&#x27; type.</span></span><br><span class="line">    ServiceTypeNodePort ServiceType = <span class="string">&quot;NodePort&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeLoadBalancer means a service will be exposed via an</span></span><br><span class="line">    <span class="comment">// external load balancer (if the cloud provider supports it), in addition</span></span><br><span class="line">    <span class="comment">// to &#x27;NodePort&#x27; type.</span></span><br><span class="line">    ServiceTypeLoadBalancer ServiceType = <span class="string">&quot;LoadBalancer&quot;</span></span><br><span class="line">    <span class="comment">// ServiceTypeExternalName means a service consists of only a reference to</span></span><br><span class="line">    <span class="comment">// an external name that kubedns or equivalent will return as a CNAME</span></span><br><span class="line">    <span class="comment">// record, with no exposing or proxying of any pods involved.</span></span><br><span class="line">    ServiceTypeExternalName ServiceType = <span class="string">&quot;ExternalName&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h2 id="课后练习1-1"><a href="#课后练习1-1" class="headerlink" title="课后练习1.1"></a>课后练习1.1</h2><p>编写一个小程序，给定一个字符串数组<code>[&quot;I&quot;,&quot;am&quot;,&quot;stupid&quot;,&quot;and&quot;,&quot;weak&quot;]</code>，用 for 循环遍历该数组并修改为<code>[&quot;I&quot;,&quot;am&quot;,&quot;smart&quot;,&quot;and&quot;,&quot;strong&quot;]</code>。  </p>
-<h1 id="Go-语言函数调用"><a href="#Go-语言函数调用" class="headerlink" title="Go 语言函数调用"></a>Go 语言函数调用</h1><h2 id="Main函数"><a href="#Main函数" class="headerlink" title="Main函数"></a>Main函数</h2><ul>
-<li>每个 Go 语言程序都应该有个 main package  </li>
-<li>Main package 里的 main 函数是 Go 语言程序入口</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">args := os.Args</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(<span class="string">&quot;Do not accept any argument&quot;</span>)</span><br><span class="line">        os.Exit(<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Hello world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h2><ul>
-<li>请注意 main 函数与其他语言不同，没有类似 java 的 []string args 参数  </li>
-<li>Go 语言如何传入参数呢？</li>
-</ul>
-<p>方法1：<code>fmt.Println(&quot;os args is:&quot;, os.Args)</code><br>方法2：<code>name := flag.String(&quot;name&quot;, &quot;world&quot;, &quot;specify the name you want to say hi&quot;)</code>；<code>flag.Parse()</code>  </p>
-<h2 id="Init-函数"><a href="#Init-函数" class="headerlink" title="Init 函数"></a>Init 函数</h2><ul>
-<li>Init 函数：会在包初始化时运行  </li>
-<li>谨慎使用 init 函数<br>当多个依赖项目引用统一项目，且被引用项目的初始化在 init 中完成，并且不可重复运行时，会导致启动错误</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">var</span> myVariable = <span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    myVariable = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><ul>
-<li><p>多值返回：函数可以返回任意数量的返回值  </p>
-</li>
-<li><p>命名返回值：<br>Go 的返回值可被命名，它们会被视作定义在函数顶部的变量。<br>返回值的名称应当具有一定的意义，它可以作为文档使用。<br>没有参数的 return 语句返回已命名的返回值。也就是直接返回。  </p>
-</li>
-<li><p>调用者忽略部分返回值：<code>result, _ = strconv.Atoi(origStr)</code></p>
-</li>
-</ul>
-<h2 id="传递变长参数"><a href="#传递变长参数" class="headerlink" title="传递变长参数"></a>传递变长参数</h2><p>Go 语言中的可变长参数允许调用方传递任意多个相同类型的参数  </p>
-<ul>
-<li>函数定义：func append(slice []Type, elems …Type) []Type  </li>
-<li>调用方法：<code>myArray := []string&#123;&#125;</code>；<code>myArray = append(myArray, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;)</code></li>
-</ul>
-<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p><img src="/2021/11/21/cloud-native-1-go-features/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.png">  </p>
-<h2 id="回调函数-Callback"><a href="#回调函数-Callback" class="headerlink" title="回调函数(Callback)"></a>回调函数(Callback)</h2><ul>
-<li>函数作为参数传入其它函数，并在其他函数内部调用执行<br><code>strings.IndexFunc(line, unicode.IsSpace)</code><br><code>Kubernetes controller的leaderelection</code></li>
-</ul>
-<p>示例：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    DoOperation(<span class="number">1</span>, increase)</span><br><span class="line">    DoOperation(<span class="number">1</span>, decrease)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">increase</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(“increase result is:”, a+b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoOperation</span><span class="params">(y <span class="type">int</span>, f <span class="keyword">func</span>(<span class="type">int</span>, <span class="type">int</span>)</span></span>) &#123;</span><br><span class="line">    (y, <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">decrease</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;decrease result is:&quot;</span>, a-b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
-<li>不能独立存在  </li>
-<li>可以赋值给其他变量：<code>x:= func()&#123;&#125;</code>  </li>
-<li>可以直接调用：<code>func(x,y int)&#123;println(x+y)&#125;(1,2)</code>  </li>
-<li>可作为函数返回值<code>func Add() (func(b int) int)</code>  </li>
-<li>使用场景</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> r := <span class="built_in">recover</span>(); r != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(“recovered in FuncX”)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
-<li>方法：作用在接收者上的函数<code>func (recv receiver_type) methodName(parameter_list) (return_value_list)</code>  </li>
-<li>使用场景<br>很多场景下，函数需要的上下文可以保存在receiver属性中，通过定义 receiver 的方法，该方法可以直接访问 receiver 属性，减少参数传递需求</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// StartTLS starts TLS on a server from NewUnstartedServer.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span></span> StartTLS() &#123;</span><br><span class="line">    <span class="keyword">if</span> s.URL != “” &#123;</span><br><span class="line">        <span class="built_in">panic</span>(“Server already started”)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s.client == <span class="literal">nil</span> &#123;</span><br><span class="line">        s.client = &amp;http.Client&#123;Transport: &amp;http.Transport&#123;&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="传值还是传指针"><a href="#传值还是传指针" class="headerlink" title="传值还是传指针"></a>传值还是传指针</h2><ul>
-<li>Go 语言只有一种规则-传值  </li>
-<li>函数内修改参数的值不会影响函数外原始变量的值  </li>
-<li>可以传递指针参数将变量地址传递给调用函数，Go 语言会复制该指针作为函数内的地址，但指向同一地址  </li>
-<li>思考：当我们写代码的时候，函数的参数传递应该用struct还是pointer？</li>
-</ul>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
-<li><p>接口定义一组方法集合  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IF <span class="keyword">interface</span> &#123;</span><br><span class="line">    Method1(param_list) return_type</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>适用场景：Kubernetes 中有大量的接口抽象和多种实现  </p>
-</li>
-<li><p>Struct 无需显示声明实现 interface，只需直接实现方法  </p>
-</li>
-<li><p>Struct 除实现 interface 定义的接口外，还可以有额外的方法  </p>
-</li>
-<li><p>一个类型可实现多个接口（Go 语言的多重继承）  </p>
-</li>
-<li><p>Go 语言中接口不接受属性定义  </p>
-</li>
-<li><p>接口可以嵌套其他接口</p>
-</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IF <span class="keyword">interface</span> &#123;</span><br><span class="line">	getName() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Human <span class="keyword">struct</span> &#123;</span><br><span class="line">	firstName, lastName <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *Human)</span></span> getName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> h.firstName + <span class="string">&quot;,&quot;</span> + h.lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Car <span class="keyword">struct</span> &#123;</span><br><span class="line">	factory, model <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Car)</span></span> getName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> c.factory + <span class="string">&quot;-&quot;</span> + c.model</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	interfaces := []IF&#123;&#125;</span><br><span class="line">	h := <span class="built_in">new</span>(Human)</span><br><span class="line">	h.firstName = <span class="string">&quot;first&quot;</span></span><br><span class="line"></span><br><span class="line">	h.lastName = <span class="string">&quot;last&quot;</span></span><br><span class="line"></span><br><span class="line">	interfaces = <span class="built_in">append</span>(interfaces, h)</span><br><span class="line">	c := <span class="built_in">new</span>(Car)</span><br><span class="line"></span><br><span class="line">	c.factory = <span class="string">&quot;benz&quot;</span></span><br><span class="line">	c.model = <span class="string">&quot;s&quot;</span></span><br><span class="line">	interfaces = <span class="built_in">append</span>(interfaces, c)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, f := <span class="keyword">range</span> interfaces &#123;</span><br><span class="line">		fmt.Println(f.getName())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>Interface 是可能为 nil 的，所以针对 interface 的使用一定要预先判空，否则会引起程序 crash(nil panic)  </li>
-<li>Struct 初始化意味着空间分配，对 struct 的引用不会出现空指针</li>
-</ul>
-<h2 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h2><ul>
-<li>reflect.TypeOf ()返回被检查对象的类型  </li>
-<li>reflect.ValueOf()返回被检查对象的值  </li>
-<li>示例</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, <span class="number">10</span>)</span><br><span class="line">myMap[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;b&quot;</span></span><br><span class="line">t := reflect.TypeOf(myMap)</span><br><span class="line">fmt.Println(<span class="string">&quot;type:&quot;</span>, t)</span><br><span class="line">v := reflect.ValueOf(myMap)</span><br><span class="line">fmt.Println(<span class="string">&quot;value:&quot;</span>, v)</span><br></pre></td></tr></table></figure>
-
-<h2 id="基于-struct-的反射"><a href="#基于-struct-的反射" class="headerlink" title="基于 struct 的反射"></a>基于 struct 的反射</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// struct</span></span><br><span class="line">myStruct := T&#123;A: <span class="string">&quot;a&quot;</span>&#125;</span><br><span class="line">v1 := reflect.ValueOf(myStruct)</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; v1.NumField(); i++ &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Field %d: %v\n&quot;</span>, i, v1.Field(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; v1.NumMethod(); i++ &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Method %d: %v\n&quot;</span>, i, v1.Method(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 需要注意 receive 是 struct 还是指针</span></span><br><span class="line">result := v1.Method(<span class="number">0</span>).Call(<span class="literal">nil</span>)</span><br><span class="line">fmt.Println(<span class="string">&quot;result:&quot;</span>, result)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Go-语言中的面向对象编程"><a href="#Go-语言中的面向对象编程" class="headerlink" title="Go 语言中的面向对象编程"></a>Go 语言中的面向对象编程</h2><ul>
-<li><p>可见性控制<br>public - 常量、变量、类型、接口、结构、函数等的名称大写<br>private - 非大写就只能在包内使用  </p>
-</li>
-<li><p>继承<br>通过组合实现，内嵌一个或多个 struct  </p>
-</li>
-<li><p>多态<br>通过接口实现，通过接口定义方法集，编写多套实现</p>
-</li>
-</ul>
-<h2 id="Json-编解码"><a href="#Json-编解码" class="headerlink" title="Json 编解码"></a>Json 编解码</h2><ul>
-<li>Unmarshal: 从 string 转换至 struct</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unmarshal2Struct</span><span class="params">(humanStr <span class="type">string</span>)</span></span>Human &#123;</span><br><span class="line">    h := Human&#123;&#125;</span><br><span class="line">    err := json.Unmarshal([]<span class="type">byte</span>(humanStr), &amp;h)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Marshal: 从 struct 转换至 string</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">marshal2JsonString</span><span class="params">(h Human)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    h.Age = <span class="number">30</span></span><br><span class="line">    updatedBytes, err := json.Marshal(&amp;h)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">println</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">string</span>(updatedBytes)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>json 包使用 map[string]interface{} 和 []interface{} 类型保存任意对象  </li>
-<li>可通过如下逻辑解析任意 json</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">err := json.Unmarshal([]<span class="type">byte</span>(humanStr), &amp;obj)</span><br><span class="line">objMap, ok := obj.(<span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> objMap &#123;</span><br><span class="line">    <span class="keyword">switch</span> value := v.(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">string</span>:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is string, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">interface</span>&#123;&#125;:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is interface&#123;&#125;, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        fmt.Printf(<span class="string">&quot;type of %s is wrong, value is %v\n&quot;</span>, k, value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h1><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><ul>
-<li>Go 语言无内置 exceptio 机制，只提供 error 接口供定义错误</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">error</span> <span class="keyword">interface</span> &#123;</span><br><span class="line">    Error() <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>可通过 errors.New 或 fmt.Errorf 创建新的 error：<code>var errNotFound error = errors.New(&quot;NotFound&quot;)</code>  </li>
-<li>通常应用程序对 error 的处理大部分是判断 error 是否为 nil</li>
-</ul>
-<p>如需将 error 归类，通常交给应用程序自定义，比如 kubernetes 自定义了与 apiserver 交互的不同类型错误  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> StatusError <span class="keyword">struct</span> &#123;</span><br><span class="line">    ErrStatus metav1.Status</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> _ <span class="type">error</span> = &amp;StatusError&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error implements the Error interface.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *StatusError)</span></span> Error() <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> e.ErrStatus.Message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><ul>
-<li>函数返回之前执行某个语句或函数：<code>等同于 Java 和 C# 的 finally</code>  </li>
-<li>常见的 defer 使用场景：<strong>记得关闭你打开的资源</strong><br>defer file.Close()<br>defer mu.Unlock()<br>defer println(“”)</li>
-</ul>
-<h2 id="Panic-和-Recover"><a href="#Panic-和-Recover" class="headerlink" title="Panic 和 Recover"></a>Panic 和 Recover</h2><ul>
-<li>panic: 可在系统出现不可恢复错误时主动调用 panic, panic 会使当前线程直接 crash  </li>
-<li>defer: 保证执行并把控制权交还给接收到 panic 的函数调用者  </li>
-<li>recover: 函数从 panic 或 错误场景中恢复</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;defer func is called&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err := <span class="built_in">recover</span>(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">panic</span>(<span class="string">&quot;a panic is triggered&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h2><p><img src="/2021/11/21/cloud-native-1-go-features/%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C.png">  </p>
-<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
-<li>分配系统资源（CPU 时间、内存等）基本单位  </li>
-<li>有独立的内存空间，切换开销大</li>
-</ul>
-<h3 id="线程：进程的一个执行流，是-CPU-调度并能独立运行的的基本单位"><a href="#线程：进程的一个执行流，是-CPU-调度并能独立运行的的基本单位" class="headerlink" title="线程：进程的一个执行流，是 CPU 调度并能独立运行的的基本单位"></a>线程：进程的一个执行流，是 CPU 调度并能独立运行的的基本单位</h3><ul>
-<li>同一进程中的多线程共享内存空间，线程切换代价小  </li>
-<li>多线程通信方便  </li>
-<li>从内核层面来看线程其实也是一种特殊的进程，它跟父进程共享了打开的文件和文件系统信息，共享了地址空间和信号处理函数</li>
-</ul>
-<h3 id="协程-1"><a href="#协程-1" class="headerlink" title="协程"></a>协程</h3><ul>
-<li>Go 语言中的轻量级线程实现  </li>
-<li>Golang 在 runtime、系统调用等多方面对 goroutine 调度进行了封装和处理，当遇到长时间执行或者进行系统调用时，会主动把当前 goroutine 的 CPU (P) 转让出去，让其他 goroutine 能被调度并执行，也就是 Golang 从语言层面支持了协程</li>
-</ul>
-<h2 id="Communicating-Sequential-Process"><a href="#Communicating-Sequential-Process" class="headerlink" title="Communicating Sequential Process"></a>Communicating Sequential Process</h2><h3 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h3><p>描述两个独立的并发实体通过共享的通讯 channel 进行通信的并发模型。  </p>
-<h3 id="Go-协程-goroutine"><a href="#Go-协程-goroutine" class="headerlink" title="Go 协程 goroutine"></a>Go 协程 goroutine</h3><ul>
-<li>是一种轻量线程，它不是操作系统的线程，而是将一个操作系统线程分段使用，通过调度器实现协作式调度。  </li>
-<li>是一种绿色线程，微线程，它与 Coroutine 协程也有区别，能够在发现堵塞后启动新的微线程。</li>
-</ul>
-<h3 id="通道-channel"><a href="#通道-channel" class="headerlink" title="通道 channel"></a>通道 channel</h3><ul>
-<li>类似 Unix 的 Pipe，用于协程之间通讯和同步。  </li>
-<li>协程之间虽然解耦，但是它们和 Channel 有着耦合。</li>
-</ul>
-<h2 id="线程和协程的差异"><a href="#线程和协程的差异" class="headerlink" title="线程和协程的差异"></a>线程和协程的差异</h2><p>每个 goroutine (协程) 默认占用内存远比 Java 、C 的线程少。  </p>
-<ul>
-<li>goroutine：2KB  </li>
-<li>线程：8MB</li>
-</ul>
-<p>线程&#x2F;goroutine 切换开销方面，goroutine 远比线程小  </p>
-<ul>
-<li>线程：涉及模式切换(从用户态切换到内核态)、16个寄存器、PC、SP…等寄存器的刷新  </li>
-<li>goroutine：只有三个寄存器的值修改 - PC &#x2F; SP &#x2F; DX.</li>
-</ul>
-<p>GOMAXPROCS：控制并行线程数量  </p>
-<h2 id="协程示例"><a href="#协程示例" class="headerlink" title="协程示例"></a>协程示例</h2><p>启动新协程：go functionName()  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">go</span> fmt.Println(i)</span><br><span class="line">&#125;</span><br><span class="line">time.Sleep(time.Second)</span><br></pre></td></tr></table></figure>
-
-<h2 id="channel-多线程通信"><a href="#channel-多线程通信" class="headerlink" title="channel - 多线程通信"></a>channel - 多线程通信</h2><h3 id="Channel-是多个协程之间通讯的管道"><a href="#Channel-是多个协程之间通讯的管道" class="headerlink" title="Channel 是多个协程之间通讯的管道"></a>Channel 是多个协程之间通讯的管道</h3><ul>
-<li>一端发送数据，一端接收数据  </li>
-<li>同一时间只有一个协程可以访问数据，无共享内存模式可能出现的内存竞争  </li>
-<li>协调协程的执行顺序</li>
-</ul>
-<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><ul>
-<li>var identifier chan datatype  </li>
-<li>操作符&lt;-</li>
-</ul>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;hello from goroutine&quot;</span>)</span><br><span class="line">    ch &lt;- <span class="number">0</span> <span class="comment">//数据写入Channel</span></span><br><span class="line">&#125;()</span><br><span class="line">i := &lt;-ch<span class="comment">//从Channel中取数据并赋值</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="通道缓冲"><a href="#通道缓冲" class="headerlink" title="通道缓冲"></a>通道缓冲</h2><ul>
-<li>基于 Channel 的通信是同步的  </li>
-<li>当缓冲区满时，数据的发送是阻塞的  </li>
-<li>通过 make 关键字创建通道时可定义缓冲区容量，默认缓冲区容量为 0  </li>
-<li>下面两个定义的区别？  <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="遍历通道缓冲区"><a href="#遍历通道缓冲区" class="headerlink" title="遍历通道缓冲区"></a>遍历通道缓冲区</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		rand.Seed(time.Now().UnixNano())</span><br><span class="line">		n := rand.Intn(<span class="number">10</span>) <span class="comment">// n will be between 0 and 10</span></span><br><span class="line">		fmt.Println(<span class="string">&quot;putting: &quot;</span>, n)</span><br><span class="line">		ch &lt;- n</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">&#125;()</span><br><span class="line">fmt.Println(<span class="string">&quot;hello from main&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;receiving: &quot;</span>, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="单向通道"><a href="#单向通道" class="headerlink" title="单向通道"></a>单向通道</h2><p>只发送通道：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sendOnly <span class="keyword">chan</span>&lt;- <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<p>只接收通道：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> readOnly &lt;-<span class="keyword">chan</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<p>Istio webhook controller：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *WebhookCertPatcher)</span></span> runWebhookController(stopChan &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;) &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如何用: 双向通道转换：  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">go</span> prod(c)</span><br><span class="line"><span class="keyword">go</span> consume(c)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">prod</span><span class="params">(ch <span class="keyword">chan</span>&lt;- <span class="type">int</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> &#123; ch &lt;- <span class="number">1</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">consume</span><span class="params">(ch &lt;-<span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123; &lt;-ch &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关闭通道"><a href="#关闭通道" class="headerlink" title="关闭通道"></a>关闭通道</h2><ul>
-<li>通道无需每次关闭  </li>
-<li>关闭的作用是告诉接收者该通道再无新数据发送  </li>
-<li>只有发送方需要关闭通道</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">defer</span> <span class="built_in">close</span>(ch)</span><br><span class="line"><span class="keyword">if</span> v, notClosed := &lt;-ch; notClosed &#123;</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>当多个协程同时运行时，可通过 select 轮询多个通道  </p>
-<ul>
-<li>如果所有通道都阻塞则等待，如定义了 default 则执行 default  </li>
-<li>如多个通道就绪则随机选择</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> v:= &lt;- ch1:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">case</span> v:= &lt;- ch2:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="定时器-Timer"><a href="#定时器-Timer" class="headerlink" title="定时器 Timer"></a>定时器 Timer</h2><ul>
-<li>time.Ticker 以指定的时间间隔重复的向通道 C 发送时间值  </li>
-<li>使用场景：为协程设定超时时间</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">timer := time.NewTimer(time.Second)</span><br><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="comment">// check normal channel</span></span><br><span class="line">    <span class="keyword">case</span> &lt;-ch:</span><br><span class="line">        fmt.Println(<span class="string">&quot;received from ch&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> &lt;-timer.C:</span><br><span class="line">        fmt.Println(<span class="string">&quot;timeout waiting from channel ch&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="上下文-Context"><a href="#上下文-Context" class="headerlink" title="上下文 Context"></a>上下文 Context</h2><ul>
-<li><p>超时、取消操作或者一些异常情况，往往需要进行抢占操作或者中断后续操作  </p>
-</li>
-<li><p>Context 是设置截止日期、同步信号，传递请求相关值的结构体  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Context <span class="keyword">interface</span> &#123;</span><br><span class="line">    Deadline() (deadline time.Time, ok <span class="type">bool</span>)</span><br><span class="line">    Done() &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line">    Err() <span class="type">error</span></span><br><span class="line">    Value(key <span class="keyword">interface</span>&#123;&#125;) <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用法  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">context.Background</span><br><span class="line">context.TODO</span><br><span class="line">context.WithDeadline</span><br><span class="line">context.WithValue</span><br><span class="line">context.WithCancel</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="如何停止一个子协程"><a href="#如何停止一个子协程" class="headerlink" title="如何停止一个子协程"></a>如何停止一个子协程</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">done := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">bool</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-done:</span><br><span class="line">			fmt.Println(<span class="string">&quot;done channel is triggerred, exit child go routine&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">close</span>(done)</span><br></pre></td></tr></table></figure>
-
-<h2 id="基于-Context-停止子协程"><a href="#基于-Context-停止子协程" class="headerlink" title="基于 Context 停止子协程"></a>基于 Context 停止子协程</h2><p>Context 是 Go 语言对 go routine 和 timer 的封装  </p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ctx, cancel := context.WithTimeout(context.Background(), time.Second)</span><br><span class="line"><span class="keyword">defer</span> cancel()</span><br><span class="line"><span class="keyword">go</span> process(ctx, <span class="number">100</span>*time.Millisecond)</span><br><span class="line">&lt;-ctx.Done()</span><br><span class="line">fmt.Println(<span class="string">&quot;main:&quot;</span>, ctx.Err())</span><br></pre></td></tr></table></figure>
-
-<h2 id="课后练习1-2"><a href="#课后练习1-2" class="headerlink" title="课后练习1.2"></a>课后练习1.2</h2><ul>
-<li>基于 Channel 编写一个简单的单线程生产者消费者模型  </li>
-<li>队列：<br>队列长度10，队列元素类型为 int  </li>
-<li>生产者：<br>每1秒往队列中放入一个类型为 int 的元素，队列满时生产者可以阻塞  </li>
-<li>消费者：<br>每一秒从队列中获取一个元素并打印，队列为空时消费者阻塞</li>
-</ul>
-<p><a href="https://github.com/OctopusLian/CloudNativeCampHomework/tree/main/lesson1/range">作业1.1</a><br><a href="https://github.com/OctopusLian/CloudNativeCampHomework/tree/main/lesson1/single-producer-customer">作业1.2</a>  </p>
-]]></content>
-      <categories>
-        <category>Learn-go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>特性</tag>
       </tags>
   </entry>
   <entry>

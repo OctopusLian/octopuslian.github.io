@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-10-04T06:53:44.380Z</updated>
+  <updated>2022-10-04T16:10:48.395Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,72 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kubernetes集群部署WordPress网站-版本3</title>
+    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/"/>
+    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/</id>
+    <published>2022-10-04T11:26:31.000Z</published>
+    <updated>2022-10-04T16:10:48.395Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;版本更新描述&quot;&gt;&lt;a href=&quot;#版本更新描述&quot; class=&quot;headerlink&quot; title=&quot;版本更新描述&quot;&gt;&lt;/a&gt;版本更新描述&lt;/h1&gt;&lt;p&gt;在基于&lt;a href=&quot;https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2&quot;&gt;版本2&lt;/a&gt;的基础上继续优化 WordPress 网站的部署，其中的关键是&lt;strong&gt;让数据库 MariaDB 实现数据持久化。&lt;/strong&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;网站的整体架构图变化不大，前面的 Nginx、WordPress 还是原样，只需要修改 MariaDB：  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/%E6%9E%B6%E6%9E%84%E5%9B%BE.png&quot;&gt;  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes集群部署WordPress网站-版本2</title>
+    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/"/>
+    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/</id>
+    <published>2022-10-04T11:09:14.000Z</published>
+    <updated>2022-10-04T15:37:32.929Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;版本更新描述&quot;&gt;&lt;a href=&quot;#版本更新描述&quot; class=&quot;headerlink&quot; title=&quot;版本更新描述&quot;&gt;&lt;/a&gt;版本更新描述&lt;/h1&gt;&lt;p&gt;完全舍弃了 Docker，把所有的应用都放在 Kubernetes 集群里运行，部署方式也不再是裸 Pod，&lt;strong&gt;而是使用 Deployment，稳定性大幅度提升。&lt;/strong&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/%E6%9E%B6%E6%9E%84%E5%9B%BE.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;原来的 Nginx 的作用是反向代理，那么在 Kubernetes 里它就升级成了具有相同功能的 Ingress Controller。WordPress 原来只有一个实例，现在变成了两个实例（你也可以任意横向扩容），可用性也就因此提高了不少。而 MariaDB 数据库因为要保证数据的一致性，暂时还是一个实例。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指 Offer 40. 最小的k个数</title>
+    <link href="https://octopuslian.github.io/2022/10/04/leetcode-lcof-40-zui-xiao-de-kge-shu/"/>
+    <id>https://octopuslian.github.io/2022/10/04/leetcode-lcof-40-zui-xiao-de-kge-shu/</id>
+    <published>2022-10-04T08:23:01.000Z</published>
+    <updated>2022-10-04T15:37:32.929Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/&quot;&gt;剑指 Offer 40. 最小的k个数&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;题意就是从一个整数数组中，取出前k个最小的数。  &lt;/p&gt;
+&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;简单直接&quot;&gt;&lt;a href=&quot;#简单直接&quot; class=&quot;headerlink&quot; title=&quot;简单直接&quot;&gt;&lt;/a&gt;简单直接&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Docker 搭建 WordPress 网站</title>
     <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/"/>
     <id>https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/</id>
     <published>2022-10-04T03:28:39.000Z</published>
-    <updated>2022-10-04T06:53:44.380Z</updated>
+    <updated>2022-10-04T11:05:58.262Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/docker-deploy-wordpress/1.png&quot;&gt;&lt;br&gt;MariaDB 作为后面的关系型数据库，端口号是 3306；WordPress 是中间的应用服务器，使用 MariaDB 来存储数据，它的端口是 80；Nginx 是前面的反向代理，它对外暴露 80 端口，然后把请求转发给 WordPress。  &lt;/p&gt;
@@ -65,14 +126,14 @@
   </entry>
   
   <entry>
-    <title>Kubernetes集群部署WordPress网站</title>
+    <title>Kubernetes集群部署WordPress网站-版本1</title>
     <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/"/>
     <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/</id>
     <published>2022-10-04T02:33:56.000Z</published>
-    <updated>2022-10-04T06:55:35.016Z</updated>
+    <updated>2022-10-04T14:47:47.895Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;逻辑关系&quot;&gt;&lt;a href=&quot;#逻辑关系&quot; class=&quot;headerlink&quot; title=&quot;逻辑关系&quot;&gt;&lt;/a&gt;逻辑关系&lt;/h1&gt;&lt;p&gt;本文我将尝试用&lt;code&gt;Kubernetes&lt;/code&gt;集群上搭建一个&lt;code&gt;WordPress&lt;/code&gt;网站，他们的内部逻辑关系如下：&lt;br&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png&quot;&gt;  &lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;本文我将尝试用&lt;code&gt;Kubernetes&lt;/code&gt;集群上搭建一个&lt;code&gt;WordPress&lt;/code&gt;网站，他们的内部逻辑关系如下：&lt;br&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png&quot;&gt;  &lt;/p&gt;
 &lt;h1 id=&quot;搭建步骤&quot;&gt;&lt;a href=&quot;#搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;搭建步骤&quot;&gt;&lt;/a&gt;搭建步骤&lt;/h1&gt;&lt;h2 id=&quot;编排-MariaDB-对象&quot;&gt;&lt;a href=&quot;#编排-MariaDB-对象&quot; class=&quot;headerlink&quot; title=&quot;编排 MariaDB 对象&quot;&gt;&lt;/a&gt;编排 MariaDB 对象&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MariaDB&lt;/code&gt;需要4个环境变量，比如数据库名、用户名、密码等，在&lt;code&gt;Docker&lt;/code&gt;里我们是在命令行里使用参数&lt;code&gt;--env&lt;/code&gt;，而在&lt;code&gt;Kubernetes&lt;/code&gt;里我们就应该使用&lt;strong&gt;ConfigMap&lt;/strong&gt;，为此需要定义一个&lt;code&gt;maria-cm&lt;/code&gt;对象：  &lt;/p&gt;</summary>
     
     
@@ -459,82 +520,6 @@
     <category term="编排原理" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92%E5%8E%9F%E7%90%86/"/>
     
     <category term="pod" scheme="https://octopuslian.github.io/tags/pod/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一个Kubernetes应用</title>
-    <link href="https://octopuslian.github.io/2022/09/06/first-kubernetes-app/"/>
-    <id>https://octopuslian.github.io/2022/09/06/first-kubernetes-app/</id>
-    <published>2022-09-06T15:29:03.000Z</published>
-    <updated>2022-09-14T02:47:14.870Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文将以创建一个&lt;code&gt;nginx&lt;/code&gt;的&lt;code&gt;deployment&lt;/code&gt;为例体验&lt;code&gt;Kubernetes&lt;/code&gt;的基础使用  &lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Kubernetes&lt;/code&gt;跟&lt;code&gt;Docker&lt;/code&gt;等很多项目最大的不同是：&lt;strong&gt;它不推荐你使用命令行方式的方式直接运行容器，而是希望你用YAML文件的方式，即把容器的定义、参数、配置都记录在一个YAML文件中&lt;/strong&gt;，然后用  &lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# kubectl create -f test.yml&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;运行起来。  &lt;/p&gt;
-&lt;p&gt;这么做最直接的好处就是，会有一个文件记录下&lt;code&gt;Kubernetes&lt;/code&gt;到底运行了什么。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何完美干净的卸载Kubernetes集群</title>
-    <link href="https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/"/>
-    <id>https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</id>
-    <published>2022-09-06T13:49:55.000Z</published>
-    <updated>2022-09-13T14:22:41.377Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;因为某些原因，需要卸载&lt;code&gt;kubernetes&lt;/code&gt;集群，本文将分享完整卸载&lt;code&gt;kubernetes&lt;/code&gt;的方法。  &lt;/p&gt;
-&lt;p&gt;默认是&lt;code&gt;root&lt;/code&gt;用户操作  &lt;/p&gt;
-&lt;figure</summary>
-        
-      
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="集群" scheme="https://octopuslian.github.io/tags/%E9%9B%86%E7%BE%A4/"/>
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="卸载" scheme="https://octopuslian.github.io/tags/%E5%8D%B8%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 32 - III. 从上到下打印二叉树 III</title>
-    <link href="https://octopuslian.github.io/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/"/>
-    <id>https://octopuslian.github.io/2022/08/30/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-iii/</id>
-    <published>2022-08-30T14:33:36.000Z</published>
-    <updated>2022-08-30T14:58:55.396Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/&quot;&gt;剑指 Offer 32 - III. 从上到下打印二叉树 III&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;p&gt;该题和&lt;a href=&quot;https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/&quot;&gt;剑指 Offer 32 - II. 从上到下打印二叉树 II&lt;/a&gt;解法很像。  &lt;/p&gt;
-&lt;p&gt;需要注意，此题中将队列&lt;code&gt;queue&lt;/code&gt;需要换成&lt;strong&gt;双端队列&lt;/strong&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
