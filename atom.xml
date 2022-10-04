@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-09-08T15:45:00.933Z</updated>
+  <updated>2022-10-04T06:53:44.380Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,289 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Docker 搭建 WordPress 网站</title>
+    <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/"/>
+    <id>https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/</id>
+    <published>2022-10-04T03:28:39.000Z</published>
+    <updated>2022-10-04T06:53:44.380Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/docker-deploy-wordpress/1.png&quot;&gt;&lt;br&gt;MariaDB 作为后面的关系型数据库，端口号是 3306；WordPress 是中间的应用服务器，使用 MariaDB 来存储数据，它的端口是 80；Nginx 是前面的反向代理，它对外暴露 80 端口，然后把请求转发给 WordPress。  &lt;/p&gt;
+&lt;h1 id=&quot;使用-docker-pull-拉取镜像&quot;&gt;&lt;a href=&quot;#使用-docker-pull-拉取镜像&quot; class=&quot;headerlink&quot; title=&quot;使用 docker pull 拉取镜像&quot;&gt;&lt;/a&gt;使用 docker pull 拉取镜像&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull wordpress:5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull mariadb:10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull nginx:alpine&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;启动-MariaDB&quot;&gt;&lt;a href=&quot;#启动-MariaDB&quot; class=&quot;headerlink&quot; title=&quot;启动 MariaDB&quot;&gt;&lt;/a&gt;启动 MariaDB&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+    <category term="wordpress" scheme="https://octopuslian.github.io/tags/wordpress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker搭建私有镜像仓库-registry</title>
+    <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-private-image-repository-registry/"/>
+    <id>https://octopuslian.github.io/2022/10/04/docker-deploy-private-image-repository-registry/</id>
+    <published>2022-10-04T03:14:52.000Z</published>
+    <updated>2022-10-04T06:53:44.380Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将介绍如何搭建最简单的私有镜像仓库——&lt;code&gt;Docker Registry&lt;/code&gt;。  &lt;/p&gt;
+&lt;p&gt;首先，你需要使用 docker pull 命令拉取镜像：  &lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# docker pull registry&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;然后，我们需要做一个端口映射，对外暴露端口，这样 Docker Registry 才能提供服务。它的容器内端口是 5000，简单起见，我们在外面也使用同样的 5000 端口，所以运行命令：  &lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# docker run -d -p 5000:5000 registry&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes集群部署WordPress网站</title>
+    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/"/>
+    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/</id>
+    <published>2022-10-04T02:33:56.000Z</published>
+    <updated>2022-10-04T06:55:35.016Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;逻辑关系&quot;&gt;&lt;a href=&quot;#逻辑关系&quot; class=&quot;headerlink&quot; title=&quot;逻辑关系&quot;&gt;&lt;/a&gt;逻辑关系&lt;/h1&gt;&lt;p&gt;本文我将尝试用&lt;code&gt;Kubernetes&lt;/code&gt;集群上搭建一个&lt;code&gt;WordPress&lt;/code&gt;网站，他们的内部逻辑关系如下：&lt;br&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;搭建步骤&quot;&gt;&lt;a href=&quot;#搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;搭建步骤&quot;&gt;&lt;/a&gt;搭建步骤&lt;/h1&gt;&lt;h2 id=&quot;编排-MariaDB-对象&quot;&gt;&lt;a href=&quot;#编排-MariaDB-对象&quot; class=&quot;headerlink&quot; title=&quot;编排 MariaDB 对象&quot;&gt;&lt;/a&gt;编排 MariaDB 对象&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MariaDB&lt;/code&gt;需要4个环境变量，比如数据库名、用户名、密码等，在&lt;code&gt;Docker&lt;/code&gt;里我们是在命令行里使用参数&lt;code&gt;--env&lt;/code&gt;，而在&lt;code&gt;Kubernetes&lt;/code&gt;里我们就应该使用&lt;strong&gt;ConfigMap&lt;/strong&gt;，为此需要定义一个&lt;code&gt;maria-cm&lt;/code&gt;对象：  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="wordpress" scheme="https://octopuslian.github.io/tags/wordpress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Go语言精进之路》笔记</title>
+    <link href="https://octopuslian.github.io/2022/10/03/book-go-programming-from-beginner-to-master/"/>
+    <id>https://octopuslian.github.io/2022/10/03/book-go-programming-from-beginner-to-master/</id>
+    <published>2022-10-03T10:28:15.000Z</published>
+    <updated>2022-10-04T06:53:44.376Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Go语言诞生和演进&quot;&gt;&lt;a href=&quot;#Go语言诞生和演进&quot; class=&quot;headerlink&quot; title=&quot;Go语言诞生和演进&quot;&gt;&lt;/a&gt;Go语言诞生和演进&lt;/h1&gt;&lt;h1 id=&quot;defer让函数更简洁，更健壮&quot;&gt;&lt;a href=&quot;#defer让函数更简洁，更健壮&quot; class=&quot;headerlink&quot; title=&quot;defer让函数更简洁，更健壮&quot;&gt;&lt;/a&gt;defer让函数更简洁，更健壮&lt;/h1&gt;&lt;h2 id=&quot;运作机制&quot;&gt;&lt;a href=&quot;#运作机制&quot; class=&quot;headerlink&quot; title=&quot;运作机制&quot;&gt;&lt;/a&gt;运作机制&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在&lt;code&gt;Go&lt;/code&gt;中，只有在函数和方法内部才能使用&lt;code&gt;defer&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;defer&lt;/code&gt;关键字后面只能接函数和方法，这些函数被称为&lt;code&gt;defered&lt;/code&gt;函数。&lt;code&gt;defer&lt;/code&gt;将它们注册到其所在&lt;code&gt;goroutine&lt;/code&gt;用于存放&lt;code&gt;defered&lt;/code&gt;函数的栈数据结构中，在执行&lt;code&gt;defer&lt;/code&gt;的函数退出前被按后进先出（LIFO）的顺序调度执行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;常见用法&quot;&gt;&lt;a href=&quot;#常见用法&quot; class=&quot;headerlink&quot; title=&quot;常见用法&quot;&gt;&lt;/a&gt;常见用法&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
+    
+    
+    <category term="go" scheme="https://octopuslian.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装ClickHouse</title>
+    <link href="https://octopuslian.github.io/2022/09/28/ubuntu-install-clickhouse/"/>
+    <id>https://octopuslian.github.io/2022/09/28/ubuntu-install-clickhouse/</id>
+    <published>2022-09-28T02:14:15.000Z</published>
+    <updated>2022-10-04T07:09:45.128Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;ClickHouse简介&quot;&gt;&lt;a href=&quot;#ClickHouse简介&quot; class=&quot;headerlink&quot; title=&quot;ClickHouse简介&quot;&gt;&lt;/a&gt;ClickHouse简介&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS);  &lt;/li&gt;
+&lt;li&gt;列式数据库更适合于OLAP场景(对于大多数查询而言，处理速度至少提高了100倍);&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;安装部署&quot;&gt;&lt;a href=&quot;#安装部署&quot; class=&quot;headerlink&quot; title=&quot;安装部署&quot;&gt;&lt;/a&gt;安装部署&lt;/h1&gt;&lt;h2 id=&quot;在线&quot;&gt;&lt;a href=&quot;#在线&quot; class=&quot;headerlink&quot; title=&quot;在线&quot;&gt;&lt;/a&gt;在线&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 更新&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudp apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 安装&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get install clickhouse-client clickhouse-server&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 开启服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo service clickhouse-server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 客户端连接&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 默认无密码，执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;clickhouse-client &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 有密码的话，执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;clickhouse-client --password 123456&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnClickHouse" scheme="https://octopuslian.github.io/categories/LearnClickHouse/"/>
+    
+    
+    <category term="clickhouse" scheme="https://octopuslian.github.io/tags/clickhouse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes网络原理——Ingress对象</title>
+    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-ingress/"/>
+    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-ingress/</id>
+    <published>2022-09-12T14:21:33.000Z</published>
+    <updated>2022-10-04T06:53:44.384Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;全局的、为了代理不同后端 Service 而设置的负载均衡服务，就是 Kubernetes 里的Ingress 服务。  &lt;/p&gt;
+&lt;p&gt;所以，Ingress 的功能其实很容易理解：&lt;strong&gt;所谓 Ingress，就是 Service 的“Service”&lt;/strong&gt;。  &lt;/p&gt;
+&lt;p&gt;假如我现在有这样一个站点：&lt;code&gt;https://cafe.example.com&lt;/code&gt;，其中&lt;code&gt;https://cafe.example.com/coffee&lt;/code&gt;对应的是“咖啡点餐系统”，而&lt;code&gt;https://cafe.example.com/tea&lt;/code&gt;对应的是&lt;code&gt;茶水点餐系统&lt;/code&gt;，这两个系统，分别由名叫&lt;code&gt;coffee&lt;/code&gt;和&lt;code&gt;tea&lt;/code&gt;两个&lt;code&gt;Deployment&lt;/code&gt;来提供服。  &lt;/p&gt;
+&lt;p&gt;那么，我如何能使用 Kubernetes 的 Ingress 来创建一个统一的负载均衡器，从而实现当用户访问不同的域名时，能够访问到不同的 Deployment 呢？&lt;br&gt;上述功能，在 Kubernetes 里就需要通过 Ingress 对象来描述：  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="Ingress" scheme="https://octopuslian.github.io/tags/Ingress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes网络原理——网络模型与CNI网络插件</title>
+    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/"/>
+    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/</id>
+    <published>2022-09-12T10:10:34.000Z</published>
+    <updated>2022-10-04T06:53:44.388Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Kubernetes网络模型&quot;&gt;&lt;a href=&quot;#Kubernetes网络模型&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes网络模型&quot;&gt;&lt;/a&gt;Kubernetes网络模型&lt;/h1&gt;&lt;p&gt;Kubernetes 是通过一个叫作 CNI 的接口，维护了一个单独的网桥来代替 docker0。&lt;br&gt;这个网桥的名字就叫作：CNI 网桥，它在宿主机上的设备名称默认是：cni0。&lt;br&gt;&lt;img src=&quot;/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/1.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;在这里，Kubernetes 为 Flannel 分配的子网范围是 10.244.0.0&amp;#x2F;16。&lt;br&gt;这个参数可以在部署的时候指定，比如：  &lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;kubeadm init --pod-network-cidr=10.244.0.0/16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;注：也可以在部署完成后，通过修改 kube-controller-manager 的配置文件来指定。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="CNI" scheme="https://octopuslian.github.io/tags/CNI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes网络原理——容器跨主机网络</title>
+    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-container-accross-host-network/"/>
+    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-container-accross-host-network/</id>
+    <published>2022-09-12T08:52:57.000Z</published>
+    <updated>2022-10-04T06:53:44.384Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Flannel介绍&quot;&gt;&lt;a href=&quot;#Flannel介绍&quot; class=&quot;headerlink&quot; title=&quot;Flannel介绍&quot;&gt;&lt;/a&gt;Flannel介绍&lt;/h1&gt;&lt;p&gt;要理解容器“跨主通信”的原理，就一定要先从&lt;code&gt;Flannel&lt;/code&gt;这个项目开始。  &lt;/p&gt;
+&lt;p&gt;Flannel 项目是 CoreOS 公司主推的容器网络方案。事实上，Flannel 项目本身只是一个框架，真正为我们提供容器网络功能的，是 Flannel 的后端实现。目前，Flannel 支持三种后端实现（种容器跨主网络的主流实现方法。），分别是：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VXLAN  &lt;/li&gt;
+&lt;li&gt;host-gw  &lt;/li&gt;
+&lt;li&gt;UDP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;UDP模式&quot;&gt;&lt;a href=&quot;#UDP模式&quot; class=&quot;headerlink&quot; title=&quot;UDP模式&quot;&gt;&lt;/a&gt;UDP模式&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="跨主机" scheme="https://octopuslian.github.io/tags/%E8%B7%A8%E4%B8%BB%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes网络原理——单机容器网络</title>
+    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-a-single-machine-container/"/>
+    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-a-single-machine-container/</id>
+    <published>2022-09-12T06:38:54.000Z</published>
+    <updated>2022-10-04T06:53:44.384Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;h2 id=&quot;网络栈&quot;&gt;&lt;a href=&quot;#网络栈&quot; class=&quot;headerlink&quot; title=&quot;网络栈&quot;&gt;&lt;/a&gt;网络栈&lt;/h2&gt;&lt;p&gt;包括了：网卡（Network Interface）、回环设备（Loopback Device）、路由表（Routing Table）和 iptables 规则。对于一个进程来说，这些要素，其实就构成了它发起和响应网络请求的基本环境。  &lt;/p&gt;
+&lt;p&gt;注意：作为一个容器，它可以声明直接使用宿主机的网络栈（–net&amp;#x3D;host），即：不开启 Network Namespace，比如：  &lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 容器启动后，直接监听的就是宿主机的 80 端口。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run –d –net=host --name nginx-host nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes存储原理——深入理解本地持久化数据卷</title>
+    <link href="https://octopuslian.github.io/2022/09/09/kubernetes-storage-principle-local-persistent-data-volume/"/>
+    <id>https://octopuslian.github.io/2022/09/09/kubernetes-storage-principle-local-persistent-data-volume/</id>
+    <published>2022-09-09T01:38:26.000Z</published>
+    <updated>2022-10-04T06:53:44.388Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;关于本地持久化存储&quot;&gt;&lt;a href=&quot;#关于本地持久化存储&quot; class=&quot;headerlink&quot; title=&quot;关于本地持久化存储&quot;&gt;&lt;/a&gt;关于本地持久化存储&lt;/h1&gt;&lt;p&gt;用户希望 Kubernetes 能够直接使用宿主机上的本地磁盘目录，而不依赖于远程存储服务，来提供“持久化”的容器&lt;code&gt;Volume&lt;/code&gt;。  &lt;/p&gt;
+&lt;p&gt;这样做的好处就是：由于这个&lt;code&gt;Volume&lt;/code&gt;直接使用的是本地磁盘，尤其是&lt;code&gt;SSD&lt;/code&gt;盘，它的读&lt;br&gt;写性能相比于大多数远程存储来说，要好得多。  &lt;/p&gt;
+&lt;h1 id=&quot;Local-PV的设计难点&quot;&gt;&lt;a href=&quot;#Local-PV的设计难点&quot; class=&quot;headerlink&quot; title=&quot;Local PV的设计难点&quot;&gt;&lt;/a&gt;Local PV的设计难点&lt;/h1&gt;&lt;h2 id=&quot;如何把本地磁盘抽象成PV&quot;&gt;&lt;a href=&quot;#如何把本地磁盘抽象成PV&quot; class=&quot;headerlink&quot; title=&quot;如何把本地磁盘抽象成PV&quot;&gt;&lt;/a&gt;如何把本地磁盘抽象成PV&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="存储原理" scheme="https://octopuslian.github.io/tags/%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes存储原理——PV和PVC的设计和实现</title>
+    <link href="https://octopuslian.github.io/2022/09/09/kubernetes-storage-principle-pv-pvc/"/>
+    <id>https://octopuslian.github.io/2022/09/09/kubernetes-storage-principle-pv-pvc/</id>
+    <published>2022-09-09T01:36:40.000Z</published>
+    <updated>2022-10-04T06:53:44.388Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;PV和PVC&quot;&gt;&lt;a href=&quot;#PV和PVC&quot; class=&quot;headerlink&quot; title=&quot;PV和PVC&quot;&gt;&lt;/a&gt;PV和PVC&lt;/h1&gt;&lt;p&gt;&lt;code&gt;PV&lt;/code&gt;是持久化存储数据卷。  &lt;/p&gt;
+&lt;p&gt;这个&lt;code&gt;API&lt;/code&gt;对象主要定义的是一个持久化存储在宿主机上的目录，比如一个&lt;code&gt;NFS&lt;/code&gt;的挂载目录。  &lt;/p&gt;
+&lt;p&gt;下面来定义一个&lt;code&gt;NFS&lt;/code&gt;类型的&lt;code&gt;PV&lt;/code&gt;：  &lt;/p&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;apiVersion:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;v1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;kind:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;PersistentVolume&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nfs&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;storageClassName:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;manual&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;capacity:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;storage:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;1Gi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;accessModes:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;ReadWriteMany&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;nfs:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;server:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;10.244&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;path:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="存储原理" scheme="https://octopuslian.github.io/tags/%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="持久化存储" scheme="https://octopuslian.github.io/tags/%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/"/>
+    
+    <category term="PV" scheme="https://octopuslian.github.io/tags/PV/"/>
+    
+    <category term="PVC" scheme="https://octopuslian.github.io/tags/PVC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kubernetes编排原理——离线业务Job与Cronjob</title>
     <link href="https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-cronjob/"/>
     <id>https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-cronjob/</id>
     <published>2022-09-08T08:21:05.000Z</published>
-    <updated>2022-09-08T15:45:00.933Z</updated>
+    <updated>2022-09-14T01:38:28.363Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Job&quot;&gt;&lt;a href=&quot;#Job&quot; class=&quot;headerlink&quot; title=&quot;Job&quot;&gt;&lt;/a&gt;Job&lt;/h1&gt;&lt;p&gt;&lt;code&gt;API&lt;/code&gt;对象定义：  &lt;/p&gt;
@@ -31,6 +309,16 @@
     
     
     
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="编排原理" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="Job" scheme="https://octopuslian.github.io/tags/Job/"/>
+    
+    <category term="Cronjob" scheme="https://octopuslian.github.io/tags/Cronjob/"/>
     
   </entry>
   
@@ -39,7 +327,7 @@
     <link href="https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-daemonset/"/>
     <id>https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-daemonset/</id>
     <published>2022-09-08T08:20:48.000Z</published>
-    <updated>2022-09-08T15:14:21.794Z</updated>
+    <updated>2022-09-14T02:05:03.385Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;DaemonSet特征&quot;&gt;&lt;a href=&quot;#DaemonSet特征&quot; class=&quot;headerlink&quot; title=&quot;DaemonSet特征&quot;&gt;&lt;/a&gt;DaemonSet特征&lt;/h1&gt;&lt;p&gt;&lt;code&gt;DaemonSet&lt;/code&gt;的主要作用是在&lt;code&gt;Kubernetes&lt;/code&gt;集群里运行一个&lt;code&gt;Daemon Pod&lt;/code&gt;时，这个&lt;code&gt;Pod&lt;/code&gt;具有3个特征：  &lt;/p&gt;
@@ -48,7 +336,7 @@
 &lt;li&gt;2，每个节点上只有一个这样的&lt;code&gt;Pod&lt;/code&gt;实例；  &lt;/li&gt;
 &lt;li&gt;3，当有新节点加入&lt;code&gt;Kubernetes&lt;/code&gt;集群后，该&lt;code&gt;Pod&lt;/code&gt;会自动地在新节点上被创建出来；而当旧节点被删除后，它上面的&lt;code&gt;Pod&lt;/code&gt;也会相应地被回收。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;DaemonSet工作原理&quot;&gt;&lt;a href=&quot;#DaemonSet工作原理&quot; class=&quot;headerlink&quot; title=&quot;DaemonSet工作原理&quot;&gt;&lt;/a&gt;DaemonSet工作原理&lt;/h1&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;application:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;apps/v1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;kind:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;DaemonSet&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;fluentd-elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;namespace:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;kube-system&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;k8s-app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;fluentd-logging&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;selector:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;matchLabels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;fluentd-logging&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;template:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;fluentd-elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;tolerations:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;key:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;node-role.kubernetes.io/master&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;effect:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;NoSchedule&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;containers:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;fluentd-elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# 该镜像的功能：通过fluentd将Docker容器里的日志转发到Elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;image:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;quay.io/fluentd-elasticsearch/fluentd:v3.0.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;resources:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;limits:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;attr&quot;&gt;memory:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;200Mi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;requests:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;attr&quot;&gt;cpu:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;100m&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;attr&quot;&gt;memory:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;200Mi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;volumeMounts:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;varlog&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;mountPath:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/var/log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;varlibdockercontainers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;readOnly:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;terminationGracePeriodSeconds:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;volumes:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;varlog&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;hostPath:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;attr&quot;&gt;path:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/var/lib/docker/containers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;h1 id=&quot;DaemonSet工作原理&quot;&gt;&lt;a href=&quot;#DaemonSet工作原理&quot; class=&quot;headerlink&quot; title=&quot;DaemonSet工作原理&quot;&gt;&lt;/a&gt;DaemonSet工作原理&lt;/h1&gt;&lt;p&gt;&lt;code&gt;API&lt;/code&gt;对象定义：  &lt;/p&gt;</summary>
     
     
     
@@ -68,7 +356,7 @@
     <link href="https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-statefulset/"/>
     <id>https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-statefulset/</id>
     <published>2022-09-08T08:20:19.000Z</published>
-    <updated>2022-09-08T10:10:40.605Z</updated>
+    <updated>2022-09-13T07:11:08.020Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是StatefulSet&quot;&gt;&lt;a href=&quot;#什么是StatefulSet&quot; class=&quot;headerlink&quot; title=&quot;什么是StatefulSet&quot;&gt;&lt;/a&gt;什么是StatefulSet&lt;/h1&gt;&lt;p&gt;在分布式应用中，它的多个实例之间往往有依赖关系，比如主从关系、主备关系；还有数据存储类应用，它的多个实例往往会在本地磁盘上保存一份数据，而这些实例一旦被结束，即便重建出来，实例与数据之间的对应关系也已经丢失，从而导致应用失败。  &lt;/p&gt;
@@ -94,11 +382,11 @@
     <link href="https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-copy-and-horizontal-out-or-in/"/>
     <id>https://octopuslian.github.io/2022/09/08/kubernetes-arrange-principle-job-copy-and-horizontal-out-or-in/</id>
     <published>2022-09-08T02:22:20.000Z</published>
-    <updated>2022-09-08T08:16:26.814Z</updated>
+    <updated>2022-09-14T02:17:38.786Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文讲解&lt;code&gt;Kubernetes&lt;/code&gt;中第一个控制器模式的完整实现：&lt;code&gt;Deployment&lt;/code&gt;。它实现了&lt;code&gt;Kubernetes&lt;/code&gt;项目中非常重要的功能：&lt;strong&gt;Pod的水平扩展&amp;#x2F;收缩。&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;例如，如果你更新了&lt;code&gt;Deployment&lt;/code&gt;的&lt;code&gt;Pod&lt;/code&gt;模板，那么&lt;code&gt;Deployment&lt;/code&gt;就需要遵循一种叫作&lt;strong&gt;滚动更新（rolling update）&lt;/strong&gt;的方式来升级现有容器。而这个能力的实现依赖&lt;code&gt;Kubernetes&lt;/code&gt;项目中一个非常重要的概念（API对象）：&lt;code&gt;ReplicaSet&lt;/code&gt;。  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;本文讲解&lt;code&gt;Kubernetes&lt;/code&gt;中第一个控制器模式的完整实现：&lt;code&gt;Deployment&lt;/code&gt;。它实现了&lt;code&gt;Kubernetes&lt;/code&gt;项目中非常重要的功能：&lt;strong&gt;Pod的水平扩展&amp;#x2F;收缩&lt;/strong&gt;。  &lt;/p&gt;
+&lt;p&gt;例如，如果你更新了&lt;code&gt;Deployment&lt;/code&gt;的&lt;code&gt;Pod&lt;/code&gt;模板，那么&lt;code&gt;Deployment&lt;/code&gt;就需要遵循一种叫作&lt;strong&gt;滚动更新rolling update&lt;/strong&gt;的方式来升级现有容器。而这个能力的实现依赖&lt;code&gt;Kubernetes&lt;/code&gt;项目中一个非常重要的概念（API对象）：&lt;code&gt;ReplicaSet&lt;/code&gt;。  &lt;/p&gt;
 &lt;h1 id=&quot;ReplicaSet&quot;&gt;&lt;a href=&quot;#ReplicaSet&quot; class=&quot;headerlink&quot; title=&quot;ReplicaSet&quot;&gt;&lt;/a&gt;ReplicaSet&lt;/h1&gt;&lt;p&gt;一个&lt;code&gt;ReplicaSet&lt;/code&gt;对象是由副本数目的定义和一个&lt;code&gt;Pod&lt;/code&gt;模板组成的。  &lt;/p&gt;
 &lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;apiVersion:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;v1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;kind:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;ReplicaSet&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx-set&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;replicas:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;selector:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;matchLabels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;template:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;metadata:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;labels:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;app:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;spec:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;containers:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;image:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;nginx:1.7.9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
@@ -149,7 +437,7 @@
     <link href="https://octopuslian.github.io/2022/09/07/kubernetes-arrange-principle-pod/"/>
     <id>https://octopuslian.github.io/2022/09/07/kubernetes-arrange-principle-pod/</id>
     <published>2022-09-07T07:33:09.000Z</published>
-    <updated>2022-09-07T14:07:05.307Z</updated>
+    <updated>2022-09-13T14:26:02.642Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文将开始系统学习&lt;code&gt;Kubernetes&lt;/code&gt;的编排原理，因此先从最重要最基本的&lt;code&gt;Pod&lt;/code&gt;开始。  &lt;/p&gt;
@@ -179,7 +467,7 @@
     <link href="https://octopuslian.github.io/2022/09/06/first-kubernetes-app/"/>
     <id>https://octopuslian.github.io/2022/09/06/first-kubernetes-app/</id>
     <published>2022-09-06T15:29:03.000Z</published>
-    <updated>2022-09-07T07:12:48.117Z</updated>
+    <updated>2022-09-14T02:47:14.870Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文将以创建一个&lt;code&gt;nginx&lt;/code&gt;的&lt;code&gt;deployment&lt;/code&gt;为例体验&lt;code&gt;Kubernetes&lt;/code&gt;的基础使用  &lt;/p&gt;
@@ -203,7 +491,7 @@
     <link href="https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/"/>
     <id>https://octopuslian.github.io/2022/09/06/how-to-perfect-uninstall-kubernetes-cluster/</id>
     <published>2022-09-06T13:49:55.000Z</published>
-    <updated>2022-09-06T13:59:56.355Z</updated>
+    <updated>2022-09-13T14:22:41.377Z</updated>
     
     
       
@@ -247,266 +535,6 @@
     
     
     <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成都Zadig Meetup</title>
-    <link href="https://octopuslian.github.io/2022/08/28/china-chengdu-zadig-meetup/"/>
-    <id>https://octopuslian.github.io/2022/08/28/china-chengdu-zadig-meetup/</id>
-    <published>2022-08-28T08:36:44.000Z</published>
-    <updated>2022-08-29T13:00:20.543Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;2022.8.24（周三）晚上，我参加了&lt;code&gt;Zadig&lt;/code&gt;的线下MeetUp。  &lt;/p&gt;
-&lt;p&gt;而与&lt;code&gt;Zadig&lt;/code&gt;结缘是因为关注了一个云原生公众号，他们推送了有关&lt;code&gt;Zadig&lt;/code&gt;的消息后，我想，既然在成都，而且是晚上，那就去参加一下呗，见一见各位大佬，结果确实是大佬云集的一次线下聚会。  &lt;/p&gt;
-&lt;h1 id=&quot;缘聚&quot;&gt;&lt;a href=&quot;#缘聚&quot; class=&quot;headerlink&quot; title=&quot;缘聚&quot;&gt;&lt;/a&gt;缘聚&lt;/h1&gt;&lt;p&gt;周三晚上，我和周如约而至在成都市大跃啤酒。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MeetUp" scheme="https://octopuslian.github.io/categories/MeetUp/"/>
-    
-    
-    <category term="遇见" scheme="https://octopuslian.github.io/tags/%E9%81%87%E8%A7%81/"/>
-    
-    <category term="云原生" scheme="https://octopuslian.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
-    
-    <category term="meetup" scheme="https://octopuslian.github.io/tags/meetup/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 32 - II. 从上到下打印二叉树 II</title>
-    <link href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/"/>
-    <id>https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/</id>
-    <published>2022-08-28T08:19:15.000Z</published>
-    <updated>2022-08-28T14:32:46.700Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/&quot;&gt;剑指 Offer 32 - II. 从上到下打印二叉树 II&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;队列-二维数组&quot;&gt;&lt;a href=&quot;#队列-二维数组&quot; class=&quot;headerlink&quot; title=&quot;队列+二维数组&quot;&gt;&lt;/a&gt;队列+二维数组&lt;/h2&gt;&lt;p&gt;过程：&lt;br&gt;&lt;img src=&quot;/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu-ii/1.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 32 - I. 从上到下打印二叉树</title>
-    <link href="https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/"/>
-    <id>https://octopuslian.github.io/2022/08/28/leetcode-lcof-32-cong-shang-dao-xia-da-yin-er-cha-shu/</id>
-    <published>2022-08-28T07:56:32.000Z</published>
-    <updated>2022-08-28T14:32:46.700Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/&quot;&gt;剑指 Offer 32 - I. 从上到下打印二叉树&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;队列&quot;&gt;&lt;a href=&quot;#队列&quot; class=&quot;headerlink&quot; title=&quot;队列&quot;&gt;&lt;/a&gt;队列&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;初始化队列&lt;code&gt;queue&lt;/code&gt;和结果数组&lt;code&gt;res&lt;/code&gt;，从二叉树根节点3开始  &lt;/li&gt;
-&lt;li&gt;先将3推入到队列&lt;code&gt;queue&lt;/code&gt;中，看3有没有左子树和右子树  &lt;/li&gt;
-&lt;li&gt;有的话，将3从队列&lt;code&gt;queue&lt;/code&gt;中取出，放入结果数组&lt;code&gt;res&lt;/code&gt;的第一位，此时&lt;code&gt;res = []int&amp;#123;3&amp;#125;&lt;/code&gt;  &lt;/li&gt;
-&lt;li&gt;访问3的左子树节点9，将9推入到队列&lt;code&gt;queue&lt;/code&gt;中  &lt;/li&gt;
-&lt;li&gt;此时看9有没有左子树和右子树，没有，将9从队列&lt;code&gt;queue&lt;/code&gt;中取出放入结果数组&lt;code&gt;res&lt;/code&gt;中，此时&lt;code&gt;res = []int&amp;#123;3,9&amp;#125;&lt;/code&gt;  &lt;/li&gt;
-&lt;li&gt;访问3的右子树节点20，将20推入到队列&lt;code&gt;queue&lt;/code&gt;中  &lt;/li&gt;
-&lt;li&gt;此时看20有没有左子树和右子树，有，将左子树15推入队列&lt;code&gt;queue&lt;/code&gt;中&lt;/li&gt;
-&lt;li&gt;看15有没有左子树和右子树，没有，将队列中的20，15依次取出放入结果数组&lt;code&gt;res&lt;/code&gt;，此时&lt;code&gt;res = []int&amp;#123;3,9,20,15&amp;#125;&lt;/code&gt;  &lt;/li&gt;
-&lt;li&gt;访问20的右子树7，发现7没有左子树和右子树，将7推入进队列&lt;code&gt;queue&lt;/code&gt;中，然后取出放入&lt;code&gt;res&lt;/code&gt;，此时&lt;code&gt;res = []int&amp;#123;3,9,20,15,7&amp;#125;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 30. 包含min函数的栈</title>
-    <link href="https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/"/>
-    <id>https://octopuslian.github.io/2022/08/23/leetcode-lcof-30-bao-han-minhan-shu-de-zhan/</id>
-    <published>2022-08-23T15:54:37.000Z</published>
-    <updated>2022-08-23T16:26:54.601Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/&quot;&gt;剑指 Offer 30. 包含min函数的栈&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;栈的特点：先进后出，后进先出。  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;数据栈和辅助栈&quot;&gt;&lt;a href=&quot;#数据栈和辅助栈&quot; class=&quot;headerlink&quot; title=&quot;数据栈和辅助栈&quot;&gt;&lt;/a&gt;数据栈和辅助栈&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="栈" scheme="https://octopuslian.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 28. 对称的二叉树</title>
-    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-28-dui-cheng-de-er-cha-shu/"/>
-    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-28-dui-cheng-de-er-cha-shu/</id>
-    <published>2022-08-17T15:24:26.000Z</published>
-    <updated>2022-08-17T15:37:43.479Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/&quot;&gt;剑指 Offer 28. 对称的二叉树&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;1，从根节点出发，先判断左子树的值和右子树的是否相等；  &lt;/li&gt;
-&lt;li&gt;2，若相等，从左子树的节点递归出发，以及右子树的节点递归出发，继续判断是否相等；&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 27. 二叉树的镜像</title>
-    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/"/>
-    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/</id>
-    <published>2022-08-17T15:12:33.000Z</published>
-    <updated>2022-08-17T15:37:43.479Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof/&quot;&gt;剑指 Offer 27. 二叉树的镜像&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;相当于复制后做一下翻转，本来是左子树变为右子树，同理右子树变左子树：&lt;br&gt;&lt;img src=&quot;/2022/08/17/leetcode-lcof-27-er-cha-shu-de-jing-xiang/1.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 26. 树的子结构</title>
-    <link href="https://octopuslian.github.io/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/"/>
-    <id>https://octopuslian.github.io/2022/08/17/leetcode-lcof-26-shu-de-zi-jie-gou/</id>
-    <published>2022-08-17T14:57:51.000Z</published>
-    <updated>2022-08-17T15:37:43.479Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/&quot;&gt;剑指</summary>
-        
-      
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="二叉树" scheme="https://octopuslian.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gin框架数据绑定和验证</title>
-    <link href="https://octopuslian.github.io/2022/06/12/gin-data-binding-and-validation/"/>
-    <id>https://octopuslian.github.io/2022/06/12/gin-data-binding-and-validation/</id>
-    <published>2022-06-12T09:23:36.000Z</published>
-    <updated>2022-08-17T15:37:43.479Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;数据绑定介绍&quot;&gt;&lt;a href=&quot;#数据绑定介绍&quot; class=&quot;headerlink&quot; title=&quot;数据绑定介绍&quot;&gt;&lt;/a&gt;数据绑定介绍&lt;/h1&gt;&lt;p&gt;Gin提供了两类绑定方法：  &lt;/p&gt;
-&lt;h2 id=&quot;Must-bind&quot;&gt;&lt;a href=&quot;#Must-bind&quot; class=&quot;headerlink&quot; title=&quot;Must bind&quot;&gt;&lt;/a&gt;Must bind&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Methods: Bind,BindJSON,BindXML,BindQuery,BindYAML  &lt;/li&gt;
-&lt;li&gt;这些方法属于MustBindWith的具体调用。 如果发生绑定错误，则请求终止，并触发 c.AbortWithError(400, err).SetType(ErrorTypeBind) 。响应状态码被设置为 400 并且Content-Type被设置为text&amp;#x2F;plain; charset&amp;#x3D;utf-8 。 如果您在此之后尝试设置响应状态码，Gin会输出日志[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 422 。 如果您希望更好地控制绑定，考虑使用ShouldBind等效方法。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Should-bind&quot;&gt;&lt;a href=&quot;#Should-bind&quot; class=&quot;headerlink&quot; title=&quot;Should bind&quot;&gt;&lt;/a&gt;Should bind&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="LearnGin" scheme="https://octopuslian.github.io/categories/LearnGin/"/>
-    
-    
-    <category term="Gin" scheme="https://octopuslian.github.io/tags/Gin/"/>
-    
-    <category term="数据绑定" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gin框架介绍</title>
-    <link href="https://octopuslian.github.io/2022/06/12/introduction-to-gin-framework/"/>
-    <id>https://octopuslian.github.io/2022/06/12/introduction-to-gin-framework/</id>
-    <published>2022-06-12T09:06:32.000Z</published>
-    <updated>2022-08-17T15:37:43.479Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;gin框架介绍&quot;&gt;&lt;a href=&quot;#gin框架介绍&quot; class=&quot;headerlink&quot; title=&quot;gin框架介绍&quot;&gt;&lt;/a&gt;gin框架介绍&lt;/h1&gt;&lt;p&gt;gin是用go语言开发的一个web框架，简单易用，是一个轻量级框架。  &lt;/p&gt;
-&lt;h2 id=&quot;为什么选择Gin&quot;&gt;&lt;a href=&quot;#为什么选择Gin&quot; class=&quot;headerlink&quot; title=&quot;为什么选择Gin&quot;&gt;&lt;/a&gt;为什么选择Gin&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;1.运行响应非常快  &lt;/li&gt;
-&lt;li&gt;2.快速开发  &lt;/li&gt;
-&lt;li&gt;3.文档齐全  &lt;/li&gt;
-&lt;li&gt;4.社区活跃&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="LearnGin" scheme="https://octopuslian.github.io/categories/LearnGin/"/>
-    
-    
-    <category term="框架" scheme="https://octopuslian.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
-    
-    <category term="Gin" scheme="https://octopuslian.github.io/tags/Gin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 25. 合并两个排序的链表</title>
-    <link href="https://octopuslian.github.io/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/"/>
-    <id>https://octopuslian.github.io/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/</id>
-    <published>2022-05-24T15:22:52.000Z</published>
-    <updated>2022-05-24T16:06:40.467Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/&quot;&gt;剑指 Offer 25. 合并两个排序的链表&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/p1.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;合并后：&lt;br&gt;&lt;img src=&quot;/2022/05/24/leetcode-lcof-25-he-bing-liang-ge-pai-xu-de-lian-biao/p2.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="链表" scheme="https://octopuslian.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 24. 反转链表</title>
-    <link href="https://octopuslian.github.io/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/"/>
-    <id>https://octopuslian.github.io/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/</id>
-    <published>2022-05-19T15:40:30.000Z</published>
-    <updated>2022-05-24T15:21:56.250Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/&quot;&gt;剑指 Offer 24. 反转链表&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;p&gt;1，先递归到链表的尾部：&lt;br&gt;&lt;img src=&quot;/2022/05/19/leetcode-lcof-24-fan-zhuan-lian-biao/r1.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="链表" scheme="https://octopuslian.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
