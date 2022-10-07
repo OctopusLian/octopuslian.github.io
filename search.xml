@@ -606,27 +606,202 @@
       </tags>
   </entry>
   <entry>
-    <title>《Go语言精进之路》笔记</title>
-    <url>/2022/10/03/book-go-programming-from-beginner-to-master/</url>
-    <content><![CDATA[<h1 id="Go语言诞生和演进"><a href="#Go语言诞生和演进" class="headerlink" title="Go语言诞生和演进"></a>Go语言诞生和演进</h1><h1 id="defer让函数更简洁，更健壮"><a href="#defer让函数更简洁，更健壮" class="headerlink" title="defer让函数更简洁，更健壮"></a>defer让函数更简洁，更健壮</h1><h2 id="运作机制"><a href="#运作机制" class="headerlink" title="运作机制"></a>运作机制</h2><ul>
-<li>在<code>Go</code>中，只有在函数和方法内部才能使用<code>defer</code>  </li>
-<li><code>defer</code>关键字后面只能接函数和方法，这些函数被称为<code>defered</code>函数。<code>defer</code>将它们注册到其所在<code>goroutine</code>用于存放<code>defered</code>函数的栈数据结构中，在执行<code>defer</code>的函数退出前被按后进先出（LIFO）的顺序调度执行。</li>
-</ul>
-<h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><ul>
-<li>拦截panic  </li>
-<li>修改函数的具名返回值  </li>
-<li>输出调试信息  </li>
-<li>还原变量旧值</li>
-</ul>
-<h2 id="几个关键问题"><a href="#几个关键问题" class="headerlink" title="几个关键问题"></a>几个关键问题</h2><h1 id="理解方法的本质以选择正确的receiver类型"><a href="#理解方法的本质以选择正确的receiver类型" class="headerlink" title="理解方法的本质以选择正确的receiver类型"></a>理解方法的本质以选择正确的receiver类型</h1><h1 id="方法集合决定接口实现"><a href="#方法集合决定接口实现" class="headerlink" title="方法集合决定接口实现"></a>方法集合决定接口实现</h1><p>第五部分：接口  </p>
-<p>第六部分：并发编程  </p>
-<p>第七部分：错误处理  </p>
+    <title>Go语言精进——了解切片原理并高效使用</title>
+    <url>/2022/10/06/book-go-programming-from-beginner-to-master-13/</url>
+    <content><![CDATA[<h1 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h1><h2 id="数组有哪些基本特性"><a href="#数组有哪些基本特性" class="headerlink" title="数组有哪些基本特性"></a>数组有哪些基本特性</h2><p>Go 语言的数组是一个长度固定的、由同构类型元素组成的连续序列。<br>因此Go 的数组类型包含两个重要属性：元素的类型和数组长度（元素的个数）。<br>所以，Go 语言中数组类型变量的声明：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr [N]T <span class="comment">//声明了一个数组变量 arr，它的类型为[N]T，其中元素的类型为 T，数组的长度为N。</span></span><br></pre></td></tr></table></figure>
+
+<p>通过声明，我们可以得出一个结论：<strong>如果两个数组类型的元素类型 T 与数组长度 N 都是一样的，那么这两个数组类型是等价的，如果有一个属性不同，它们就是两个不同的数组类型。</strong>  </p>
+<p>数组类型不仅是逻辑上的连续序列，而且在实际内存分配时也占据着一整块内存。<br>Go 编译器在为数组类型的变量实际分配内存时，会为 Go 数组分配一整块、可以容纳它所有元素的连续内存，如下图所示：<br><img src="/2022/10/06/book-go-programming-from-beginner-to-master-13/array.png">  </p>
+<p>我们从这个数组类型的内存表示中可以看出来，这块内存全部空间都被用来表示数组元素，所以说这块内存的大小，就等于各个数组元素的大小之和。如果两个数组所分配的内存大小不同，那么它们肯定是不同的数组类型。  </p>
+<p>Go 提供了预定义函数 len 可以用于获取一个数组类型变量的长度，通过 unsafe 包提供的 Sizeof 函数，我们可以获得一个数组变量的总大小。  </p>
+<h2 id="多维数组怎么解？"><a href="#多维数组怎么解？" class="headerlink" title="多维数组怎么解？"></a>多维数组怎么解？</h2><p>例如：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mArr [<span class="number">2</span>][<span class="number">3</span>][<span class="number">4</span>]<span class="type">int</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/06/book-go-programming-from-beginner-to-master-13/marr.png">  </p>
+<h1 id="什么是切片"><a href="#什么是切片" class="headerlink" title="什么是切片"></a>什么是切片</h1><p>数组作为最基本同构类型在 Go 语言中被保留了下来，但数组在使用上确有两点不足：<strong>固定的元素个数，以及传值机制下导致的开销较大</strong>。于是，引入了另外一种同构复合类型：切片（slice），来弥补数组的这两处不足。  </p>
+<p>声明并初始化一个切片变量：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = []<span class="type">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>与数组声明相比，切片声明仅仅是少了一个“长度”属性。去掉“长度”这一束缚后，切片展现出更为灵活的特性。  </p>
+<p>虽然切片变量缺少了“长度”属性，但不代表它没有长度，而是长度一直在变化。  </p>
+<p>我们可以通过 len 函数获得切片类型变量的长度，通过 Go 内置函数 append，我们可以动态地向切片中添加元素。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">fmt.Println(<span class="built_in">len</span>(nums)) <span class="comment">// 6</span></span><br><span class="line">nums = <span class="built_in">append</span>(nums,<span class="number">7</span>) <span class="comment">// [1,2,3,4,5,6,7]</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(nums)) <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Go是如何实现切片类型的"><a href="#Go是如何实现切片类型的" class="headerlink" title="Go是如何实现切片类型的"></a>Go是如何实现切片类型的</h1><p>Go 切片在运行时其实是一个三元组结构，它在 Go 运行时中的表示如下：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> slice <span class="keyword">struct</span> &#123;</span><br><span class="line">    array unsafe.Pointer  <span class="comment">//指向底层数组的指针</span></span><br><span class="line">    <span class="built_in">len</span> <span class="type">int</span>  <span class="comment">//是切片的长度，即切片中当前元素的个数</span></span><br><span class="line">    <span class="built_in">cap</span> <span class="type">int</span>  <span class="comment">//是底层数组的长度，也是切片的最大容量，cap 值永远大于等于 len 值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/06/book-go-programming-from-beginner-to-master-13/slice1.png">  </p>
+<p>Go 编译器会自动为每个新创建的切片，建立一个底层数组，默认底层数组的长度与切片初始元素个数相同。  </p>
+<h2 id="通过-make-函数来创建切片，并指定底层数组的长度"><a href="#通过-make-函数来创建切片，并指定底层数组的长度" class="headerlink" title="通过 make 函数来创建切片，并指定底层数组的长度"></a>通过 make 函数来创建切片，并指定底层数组的长度</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">sl := <span class="built_in">make</span>([]<span class="type">byte</span>,<span class="number">6</span>,<span class="number">10</span>)  <span class="comment">//其中10为cap值，即底层数组长度，6为切片的初始长度</span></span><br></pre></td></tr></table></figure>
+
+<p>如果没有在 make 中指定 cap 参数，那么底层数组长度 cap 就等于 len，比如：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">sl := <span class="built_in">make</span>([]<span class="type">byte</span>,<span class="number">6</span>)  <span class="comment">// cap = len = 6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="采用-array-low-high-max-语法基于一个已存在的数组创建切片"><a href="#采用-array-low-high-max-语法基于一个已存在的数组创建切片" class="headerlink" title="采用 array[low : high : max]语法基于一个已存在的数组创建切片"></a>采用 array[low : high : max]语法基于一个已存在的数组创建切片</h2><p>这种方式被称为数组的切片化。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">arr := [<span class="number">10</span>]<span class="type">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;</span><br><span class="line">sl := arr[<span class="number">3</span>:<span class="number">7</span>:<span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/06/book-go-programming-from-beginner-to-master-13/slice2.png">  </p>
+<p>通过类比，发现切片好比打开了一个访问与修改数组的“窗口”，通过这个窗口，我们可以直接操作底层数组中的部分元素。  </p>
+<p>在 Go 语言中，数组更多是“退居幕后”，承担的是底层存储空间的角色。切片就是数组的“描述符”，也正是因为这一特性，切片才能在函数参数传递时避免较大性能开销。  </p>
+<p>另外，针对一个已存在的数组，我们还可以建立多个操作数组的切片，这些切片共享同一底层数组，切片对底层数组的操作也同样会反映到其他切片中。<br><img src="/2022/10/06/book-go-programming-from-beginner-to-master-13/slice3.png">  </p>
+<h2 id="基于切片创建切片"><a href="#基于切片创建切片" class="headerlink" title="基于切片创建切片"></a>基于切片创建切片</h2><h1 id="切片的动态扩容"><a href="#切片的动态扩容" class="headerlink" title="切片的动态扩容"></a>切片的动态扩容</h1><p>“动态扩容”指的就是，当我们通过 append 操作向切片追加数据的时候，如果这时切片的 len 值和 cap 值是相等的，也就是说切片底层数组已经没有空闲空间再来存储追加的值了，Go 运行时就会对这个切片做扩容操作，来保证切片始终能存储下追加的新值。<br>例如：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> s []<span class="type">int</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">1</span>)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))  <span class="comment">//1 1</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">2</span>)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))  <span class="comment">//2 2</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">3</span>)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))  <span class="comment">//3 4</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">4</span>)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))  <span class="comment">//4 4</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">5</span>)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))  <span class="comment">//5 8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们看到，append 会根据切片的需要，在当前底层数组容量无法满足的情况下，动态分配新的数组，新数组长度会按一定规律扩展。在上面这段代码中，针对元素是 int 型的数组，新数组的容量是当前数组的 2 倍。  </p>
+<p>新数组建立后，append 会把旧数组中的数据拷贝到新数组中，之后新数组便成为了切片的底层数组，旧数组会被垃圾回收掉。  </p>
+<h2 id="小陷阱"><a href="#小陷阱" class="headerlink" title="小陷阱"></a>小陷阱</h2><p>不过 append 操作的这种自动扩容行为，有些时候会给我们开发者带来一些困惑，比如基于一个已有数组建立的切片，一旦追加的数据操作触碰到切片的容量上限（实质上也是数组容量的上界)，切片就会和原数组解除“绑定”，后续对切片的任何修改都不会反映到原数组中了。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	u := [...]<span class="type">int</span>&#123;<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;array:&quot;</span>, u) <span class="comment">// array: [11 12 13 14 15]</span></span><br><span class="line">	s := u[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">	fmt.Printf(<span class="string">&quot;slice(len=%d, cap=%d): %v\n&quot;</span>, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s),s) <span class="comment">// slice(len=2, cap=4): [12 13]</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">24</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;after append 24, array:&quot;</span>, u)  <span class="comment">// after append 24, array: [11 12 13 24 15]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;after append 24, slice(len=%d, cap=%d): %v\n&quot;</span>, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s), s)  <span class="comment">// after append 24, slice(len=3, cap=4): [12 13 24]</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">25</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;after append 25, array:&quot;</span>, u)  <span class="comment">// after append 25, array: [11 12 13 24 25]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;after append 25, slice(len=%d, cap=%d): %v\n&quot;</span>, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s), s)  <span class="comment">// after append 25, slice(len=4, cap=4): [12 13 24 25]</span></span><br><span class="line">	s = <span class="built_in">append</span>(s, <span class="number">26</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;after append 26, array:&quot;</span>, u)  <span class="comment">// after append 26, array: [11 12 13 24 25]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;after append 26, slice(len=%d, cap=%d): %v\n&quot;</span>, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s), s)  <span class="comment">// after append 26, slice(len=5, cap=8): [12 13 24 25 26]</span></span><br><span class="line"></span><br><span class="line">	s[<span class="number">0</span>] = <span class="number">22</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;after reassign 1st elem of slice, array:&quot;</span>, u)  <span class="comment">// after reassign 1st elem of slice, array: [11 12 13 24 25]</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;after reassign 1st elem of slice, slice(len=%d, cap=%d): %v\n&quot;</span>, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s), s)  <span class="comment">// after reassign 1st elem of slice, slice(len=5, cap=8): [22 13 24 25 26]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 append 25 之后，切片的元素已经触碰到了底层数组 u 的边界了。<br>然后我们再append 26 之后，append 发现底层数组已经无法满足 append 的要求，于是新创建了一个底层数组（数组长度为 cap(s) 的 2 倍，即 8），并将 slice 的元素拷贝到新数组中了。  </p>
+<p>在这之后，我们即便再修改切片的第一个元素值，原数组 u 的元素也不会发生改变了，因为这个时候切片 s 与数组 u 已经解除了“绑定关系”，s 已经不再是数组 u 的“描述符”了。  </p>
 ]]></content>
       <categories>
         <category>LearnGo</category>
       </categories>
       <tags>
-        <tag>go</tag>
+        <tag>切片</tag>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言精进——了解map原理并高效使用</title>
+    <url>/2022/10/07/book-go-programming-from-beginner-to-master-14/</url>
+    <content><![CDATA[<h1 id="什么是Map"><a href="#什么是Map" class="headerlink" title="什么是Map"></a>什么是Map</h1><p>map 是 Go 语言提供的一种抽象数据类型，它表示一组无序的键值对。  </p>
+<p><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map1.png">  </p>
+<p><code>map</code>的声明：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">map</span>[key_type]value_type</span><br></pre></td></tr></table></figure>
+
+<p>key 与 value 的类型可以相同，也可以不同：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>  <span class="comment">// key与value元素的类型相同</span></span><br><span class="line"><span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>     <span class="comment">// key与value元素的类型不同</span></span><br></pre></td></tr></table></figure>
+<p>如果两个 map 类型的 key 元素类型相同，value 元素类型也相同，那么我们可以说它们是同一个 map 类型，否则就是不同的 map 类型。  </p>
+<p>map 类型对 value 的类型没有限制，但是对 key 的类型却有严格要求，因为 map 类型要保证 key 的唯一性。<strong>Go 语言中要求，key 的类型必须支持“&#x3D;&#x3D;”和“!&#x3D;”两种比较操作符</strong>。  </p>
+<p>在Go语言中，函数类型、map类型本身，以及切片只支持与nil的比较，而不支持同类型两个变量的比较：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s1 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line">	s2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">2</span>)</span><br><span class="line">	f1 := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">	f2 := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">	m1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>)</span><br><span class="line">	m2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>)</span><br><span class="line">	<span class="built_in">println</span>(s1 == s2) <span class="comment">// invalid operation: s1 == s2 (slice can only be compared to nil)</span></span><br><span class="line">	<span class="built_in">println</span>(f1 == f2) <span class="comment">// invalid operation: f1 == f2 (func can only be compared to nil)</span></span><br><span class="line">	<span class="built_in">println</span>(m1 == m2) <span class="comment">// invalid operation: m1 == m2 (map can only be compared to nil)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结论：<strong>函数类型、map 类型自身，以及切片类型是不能作为 map的 key 类型的</strong>。  </p>
+<h1 id="map基本操作"><a href="#map基本操作" class="headerlink" title="map基本操作"></a>map基本操作</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明一个map</span></span><br><span class="line"><span class="keyword">var</span> m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span> <span class="comment">// 一个 map[string]int 类型的变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值会报错</span></span><br><span class="line">m[<span class="string">&quot;keys&quot;</span>] = <span class="number">1</span>  <span class="comment">// panic: assignment to entry in nil map</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用复合字面值初始化-map-类型变量"><a href="#使用复合字面值初始化-map-类型变量" class="headerlink" title="使用复合字面值初始化 map 类型变量"></a>使用复合字面值初始化 map 类型变量</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">m := <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-make-为-map-类型变量进行显式初始化"><a href="#使用-make-为-map-类型变量进行显式初始化" class="headerlink" title="使用 make 为 map 类型变量进行显式初始化"></a>使用 make 为 map 类型变量进行显式初始化</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">m1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>)  <span class="comment">// 未指定初始容量</span></span><br><span class="line">m2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>,<span class="number">8</span>) <span class="comment">// 指定初始容量为8</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="插入新键值对"><a href="#插入新键值对" class="headerlink" title="插入新键值对"></a>插入新键值对</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">string</span>)</span><br><span class="line">m[<span class="number">1</span>] = <span class="string">&quot;v1&quot;</span></span><br><span class="line">m[<span class="number">2</span>] = <span class="string">&quot;v2&quot;</span></span><br><span class="line">m[<span class="number">3</span>] = <span class="string">&quot;v3&quot;</span></span><br><span class="line"></span><br><span class="line">m[<span class="number">1</span>] = <span class="string">&quot;v1-back&quot;</span>  <span class="comment">// 会覆盖掉1所对应的值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取键值对数量"><a href="#获取键值对数量" class="headerlink" title="获取键值对数量"></a>获取键值对数量</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>&#123;</span><br><span class="line">		<span class="string">&quot;key1&quot;</span>: <span class="number">1</span>,</span><br><span class="line">		<span class="string">&quot;key2&quot;</span>: <span class="number">2</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(m))  <span class="comment">// 2</span></span><br><span class="line">	m[<span class="string">&quot;key3&quot;</span>] = <span class="number">3</span></span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(m)) <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：我们不能对 map 类型变量调用 cap，来获取当前容量。  </p>
+<h2 id="查找和数据读取"><a href="#查找和数据读取" class="headerlink" title="查找和数据读取"></a>查找和数据读取</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">v, ok := m[<span class="string">&quot;key1&quot;</span>]</span><br><span class="line"><span class="keyword">if</span> !ok &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;not exist&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(v) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>在 Go 语言中，请使用“comma ok”惯用法对 map 进行键查找和键值读取操作</strong>。  </p>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">fmt.Println(m) <span class="comment">// map[key1:1 key2:2 key3:3]</span></span><br><span class="line"><span class="built_in">delete</span>(m, <span class="string">&quot;key1&quot;</span>)</span><br><span class="line">fmt.Println(m) <span class="comment">// map[key2:2 key3:3]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<strong>delete 函数是从 map 中删除键的唯一方法</strong>。即便传给 delete 的键在map 中并不存在，delete 函数的执行也不会失败，更不会抛出运行时的异常。  </p>
+<h2 id="遍历-map-中的键值数据"><a href="#遍历-map-中的键值数据" class="headerlink" title="遍历 map 中的键值数据"></a>遍历 map 中的键值数据</h2><p>像对待切片那样通过 for range 语句对 map 数据进行遍历：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">	fmt.Printf(<span class="string">&quot;&#123; &quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;%v: %v\n&quot;</span>, k, v)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;&#125;\n&quot;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123; key1: 1</span></span><br><span class="line"><span class="comment">key2: 2</span></span><br><span class="line"><span class="comment">key3: 3</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="map的内部实现"><a href="#map的内部实现" class="headerlink" title="map的内部实现"></a>map的内部实现</h1><p>Go 运行时使用一张哈希表来实现抽象的map 类型。运行时实现了 map 类型操作的所有功能，包括查找、插入、删除等。在编译阶段，Go 编译器会将 Go 语法层面的 map 操作，重写成运行时对应的函数调用。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// makemap implements Go map creation for make(map[k]v, hint).</span></span><br><span class="line"><span class="comment">// If the compiler has determined that the map or the first bucket</span></span><br><span class="line"><span class="comment">// can be created on the stack, h and/or bucket may be non-nil.</span></span><br><span class="line"><span class="comment">// If h != nil, the map can be created directly in h.</span></span><br><span class="line"><span class="comment">// If h.buckets != nil, bucket pointed to can be used as the first bucket.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makemap</span><span class="params">(t *maptype, hint <span class="type">int</span>, h *hmap)</span></span> *hmap&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// mapaccess1 returns a pointer to h[key].  Never returns nil, instead</span></span><br><span class="line"><span class="comment">// it will return a reference to the zero object for the elem type if</span></span><br><span class="line"><span class="comment">// the key is not in the map.</span></span><br><span class="line"><span class="comment">// <span class="doctag">NOTE:</span> The returned pointer may keep the whole map live, so don&#x27;t</span></span><br><span class="line"><span class="comment">// hold onto it for very long.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapaccess1</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> unsafe.Pointer&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapaccess2</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> (unsafe.Pointer, <span class="type">bool</span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapdelete</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="map-类型在-Go-运行时层实现的示意图"><a href="#map-类型在-Go-运行时层实现的示意图" class="headerlink" title="map 类型在 Go 运行时层实现的示意图"></a>map 类型在 Go 运行时层实现的示意图</h2><p><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map2.png">  </p>
+<h3 id="初始状态"><a href="#初始状态" class="headerlink" title="初始状态"></a>初始状态</h3><p>与语法层面 map 类型变量（m）一一对应的是 runtime.hmap 的实例。<br>hmap 类型是 map 类型的头部结构（header），也就是map 类型的描述符，它存储了后续 map 类型操作所需的所有信息，包括：<br><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map3.png">  </p>
+<p>真正用来存储键值对数据的是桶，也就是 bucket，每个 bucket 中存储的是 Hash 值低<br>bit 位数值相同的元素，默认的元素个数为 BUCKETSIZE(值为 8，在$GOROOT&#x2F;src&#x2F;cmd&#x2F;compile&#x2F;internal&#x2F;gc&#x2F;reflect.go 中定义，与 runtime&#x2F;map.go 中常量 bucketCnt 保持一致）  </p>
+<p><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map4.png">  </p>
+<p>当某个 bucket（比如 buckets[0]) 的 8 个空槽 slot）都填满了，且 map 尚未达到扩容的条件的情况下，运行时会建立 overflow bucket，并将这个 overflow bucket 挂在上面bucket（如 buckets[0]）末尾的 overflow 指针上，这样两个 buckets 形成了一个链表结构，直到下一次 map 扩容之前，这个结构都会一直存在。  </p>
+<p>从图中我们可以看到，每个 bucket 由三部分组成，从上到下分别是 tophash 区域、<br>key存储区域和 value 存储区域。  </p>
+<h4 id="tophash-区域"><a href="#tophash-区域" class="headerlink" title="tophash 区域"></a>tophash 区域</h4><p>当我们向 map 插入一条数据，或者是从 map 按 key 查询数据的时候，运行时都会使用哈希函数对 key 做哈希运算，并获得一个哈希值（hashcode）。这个 hashcode 非常关键，运行时会把 hashcode“一分为二”来看待，其中低位区的值用于选定 bucket，高位区的值用于在某个 bucket 中确定 key 的位置。  </p>
+<p><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map5.png">  </p>
+<p>因此，每个 bucket 的 tophash 区域其实是用来快速定位 key 位置的，这样就避免了逐个key 进行比较这种代价较大的操作。尤其是当 key 是 size 较大的字符串类型时，好处就更突出了。这是一种以空间换时间的思路。  </p>
+<h4 id="key-存储区域"><a href="#key-存储区域" class="headerlink" title="key 存储区域"></a>key 存储区域</h4><p>tophash 区域下面是一块连续的内存区域，存储的是这个 bucket 承载的所有 key 数据。运行时在分配 bucket 的时候需要知道 key 的 Size。——<strong>Go 运行时就是利用 maptype 参数中的信息确定 key 的类型和大小的</strong>。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> maptype <span class="keyword">struct</span> &#123;</span><br><span class="line">	typ    _type</span><br><span class="line">	key    *_type</span><br><span class="line">	elem   *_type</span><br><span class="line">	bucket *_type <span class="comment">// internal type representing a hash bucket</span></span><br><span class="line">	<span class="comment">// function for hashing keys (ptr to key, seed) -&gt; hash</span></span><br><span class="line">	hasher     <span class="function"><span class="keyword">func</span><span class="params">(unsafe.Pointer, <span class="type">uintptr</span>)</span></span> <span class="type">uintptr</span></span><br><span class="line">	keysize    <span class="type">uint8</span>  <span class="comment">// size of key slot</span></span><br><span class="line">	elemsize   <span class="type">uint8</span>  <span class="comment">// size of elem slot</span></span><br><span class="line">	bucketsize <span class="type">uint16</span> <span class="comment">// size of bucket</span></span><br><span class="line">	flags      <span class="type">uint32</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="value-存储区域"><a href="#value-存储区域" class="headerlink" title="value 存储区域"></a>value 存储区域</h4><p>key 存储区域下方的另外一块连续的内存区域，这个区域存储的是 key 对应的 value。<br>和 key 一样，这个区域的创建也是得到了 maptype 中信息的帮助。Go 运行时采用了把 key 和 value 分开存储的方式，而不是采用一个 kv 接着一个 kv 的 kv 紧邻方式<br>存储，这带来的其实是算法上的复杂性，但却减少了因内存对齐带来的内存浪费。  </p>
+<p>我们以 map[int8]int64 为例，看看下面的存储空间利用率对比图：<br><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map6.png">  </p>
+<p>当前 Go 运行时使用的方案内存利用效率很高，而 kv 紧邻存储的方案在map[int8]int64 这样的例子中内存浪费十分严重，它的内存利用率是 72&#x2F;128&#x3D;56.25%，有近一半的空间都浪费掉了。  </p>
+<p>注意：<strong>如果 key 或 value 的数据长度大于一定数值，那么运行时不会在 bucket 中直接存储数据，而是会存储 key 或 value 数据的指针。</strong><br>目前 Go 运行时定义的最大 key 和 value 的长度是这样的：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// $GOROOT/src/runtime/map.go</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    maxKeySize  = <span class="number">128</span></span><br><span class="line">	maxElemSize = <span class="number">128</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="map扩容"><a href="#map扩容" class="headerlink" title="map扩容"></a>map扩容</h1><p>map 会对底层使用的内存进行自动管理。<br>因此，在使用过程中，当插入元素个数超出一定数值后，map 一定会存在自动扩容的问题，也就是怎么扩充 bucket 的数量，并重新在 bucket 间均衡分配数据的问题。  </p>
+<p>那么 map 在什么情况下会进行扩容呢？<br>Go 运行时的 map 实现中引入了一个LoadFactor（负载因子），当count &gt; LoadFactor * 2^B或 overflow bucket 过多时，运行时会自动对 map 进行扩容。  </p>
+<p>目前 Go 最新 1.17 版本以上 LoadFactor 设置为6.5（loadFactorNumloadFactorDen）。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// $GOROOT/src/runtime/map.go</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    loadFactorNum = <span class="number">13</span></span><br><span class="line">	loadFactorDen = <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Like mapaccess, but allocates a slot for the key if it is not present in the map.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapassign</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> unsafe.Pointer&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果是因为 overflowbucket 过多导致的“扩容”，实际上运行时会新建一个和现有规模一样的 bucket 数组，然后在 assign 和 delete 时做排空和迁移。  </p>
+</li>
+<li><p>如果是因为当前数据数量超出 LoadFactor 指定水位而进行的扩容，那么运行时会立一个两倍于现有规模的 bucket 数组，但真正的排空和迁移工作也是在 assign 和 delete 时逐步进行的。原 bucket 数组会挂在 hmap 的 oldbuckets 指针下面，直到原 buckets 数组中所有数据都迁移到新数组后，原 buckets 数组才会被释放。<br><img src="/2022/10/07/book-go-programming-from-beginner-to-master-14/map7.png"></p>
+</li>
+</ul>
+<h1 id="map与并发"><a href="#map与并发" class="headerlink" title="map与并发"></a>map与并发</h1><p>从上面的实现原理来看，充当 map 描述符角色的 hmap实例自身是有状态的（hmap.flags），而且对状态的读写是没有并发保护的。所以，map实例不是并发写安全的，也不支持并发读写。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doIteration</span><span class="params">(m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		_ = fmt.Sprintf(<span class="string">&quot;[%d, %d] &quot;</span>, k, v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doWrite</span><span class="params">(m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		m[k] = v + <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;</span><br><span class="line">		<span class="number">1</span>: <span class="number">11</span>,</span><br><span class="line">		<span class="number">2</span>: <span class="number">12</span>,</span><br><span class="line">		<span class="number">3</span>: <span class="number">13</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">			doIteration(m)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">			doWrite(m)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// fatal error: concurrent map iteration and map write</span></span><br></pre></td></tr></table></figure>
+
+<p>如果我们仅仅是进行并发读，map 是没有问题的。  </p>
+<p>Go 1.9 版本中引入了支持并发写安全的 sync.Map 类型，可以用来在并发读写的场景下替换掉 map。  </p>
+<p>注意：考虑到 map 可以自动扩容，map 中数据元素的 value 位置可能在这一过程中发生变化，所以<strong>Go 不允许获取 map 中 value 的地址，这个约束是在编译期间就生效的</strong>。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">p := &amp;m[key]<span class="comment">//can not take the address of m[key]</span></span><br><span class="line">fmt.Println(p)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LearnGo</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言精进——了解goroutine的调度原理</title>
+    <url>/2022/10/06/book-go-programming-from-beginner-to-master-32/</url>
+    <content><![CDATA[<h1 id="什么是goroutine"><a href="#什么是goroutine" class="headerlink" title="什么是goroutine"></a>什么是goroutine</h1><p><code>goroutine</code>是由Go运行时管理的用户层轻量级线程。  </p>
+<p>相比较于操作系统线程，<code>goroutine</code>的资源占用和使用代价都要小得多，可以创建几十个、几百个甚至成千上万个<code>goroutine</code>也不会造成系统资源的枯竭，<code>Go</code>的运行时负责对<code>goroutine</code>进行管理。而所谓的管理 &#x3D;&#x3D; 调度。  </p>
+<h1 id="goroutine调度器"><a href="#goroutine调度器" class="headerlink" title="goroutine调度器"></a>goroutine调度器</h1><p>一个Go程序中可以创建成千上万个并发的<code>goroutine</code>，而将这些<code>goroutine</code>按照一定算法放到CPU上执行的程序就称为<strong>goroutine调度器</strong>。  </p>
+<p>一个Go程序对于操作系统来说只是一个用户层程序，操作系统眼中只有线程，<code>goroutine</code>的调度全要靠Go自己完成。  </p>
+<h1 id="goroutine调度器原理"><a href="#goroutine调度器原理" class="headerlink" title="goroutine调度器原理"></a>goroutine调度器原理</h1><h2 id="G、P、M"><a href="#G、P、M" class="headerlink" title="G、P、M"></a>G、P、M</h2><ul>
+<li>G：代表<code>goroutine</code>，存储了<code>goroutine</code>的执行栈信息，<code>goroutine</code>状态以及<code>goroutine</code>的任务函数等。另外G对象是可以重用的。  </li>
+<li>P：代表逻辑<code>processor</code>，P的数量决定了系统内最大可并行的G的数量。P中最有用的是其拥有的各种G对象队列、链表、一些缓存和状态。  </li>
+<li>M：代表真正的执行计算资源。在绑定有效的P后，进入一个调度循环；而调度循环的机制大致是从各种队列、P的本地运行队列中获取G，切换到G的执行栈上并执行G的函数，调用goexit做清理工作并回到M。如此返回。M不保留G的状态，这是G可以跨M调度的基础。</li>
+</ul>
+<h2 id="G被抢占调度"><a href="#G被抢占调度" class="headerlink" title="G被抢占调度"></a>G被抢占调度</h2><h2 id="channel阻塞或网络I-x2F-O情况下的调度"><a href="#channel阻塞或网络I-x2F-O情况下的调度" class="headerlink" title="channel阻塞或网络I&#x2F;O情况下的调度"></a>channel阻塞或网络I&#x2F;O情况下的调度</h2><h2 id="系统调用阻塞情况下的调度"><a href="#系统调用阻塞情况下的调度" class="headerlink" title="系统调用阻塞情况下的调度"></a>系统调用阻塞情况下的调度</h2>]]></content>
+      <categories>
+        <category>LearnGo</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>goroutine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言精进——了解channel的妙用</title>
+    <url>/2022/10/06/book-go-programming-from-beginner-to-master-34/</url>
+    <content><![CDATA[<h1 id="什么是channel"><a href="#什么是channel" class="headerlink" title="什么是channel"></a>什么是channel</h1><p><code>channel</code>是Go语言提供的一种重要的并发原语。它在Go语言的<code>CSP</code>模型中扮演者重要的角色：  </p>
+<ul>
+<li>可以实现<code>goroutine</code>之间的通信；  </li>
+<li>可以实现<code>goroutine</code>之间的同步。</li>
+</ul>
+<p><code>channel</code>原语的使用：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)  <span class="comment">// 创建一个无缓冲的int类型的channel</span></span><br><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>,<span class="number">5</span>) <span class="comment">// 创建一个带缓冲的int类型的channel</span></span><br><span class="line">c &lt;- x  <span class="comment">// 向channel c 中发送一个值</span></span><br><span class="line">&lt;- c    <span class="comment">// 从channel c 中接收一个值</span></span><br><span class="line">x = &lt;- c  <span class="comment">// 从channel c 接收一个值并将其存储到变量x中</span></span><br><span class="line">x,ok = &lt;- c  <span class="comment">// 从channel c 接收一个值。若channel关闭了，ok将被置为false</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> c &#123;...&#125;</span><br><span class="line"><span class="built_in">close</span>(c)  <span class="comment">// 关闭channel c</span></span><br><span class="line"></span><br><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">chan</span> <span class="type">int</span>)  <span class="comment">// 创建一个无缓冲的chan int类型的channel</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">stream</span><span class="params">(ctx context.Context, out <span class="keyword">chan</span>&lt;- Value)</span></span> <span class="type">error</span>  <span class="comment">// 将只发送channel作为函数参数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">spwn</span><span class="params">(...)</span></span> &lt;-<span class="keyword">chan</span> T  <span class="comment">// 将只接收类型channel作为返回值</span></span><br></pre></td></tr></table></figure>
+
+<p>当需要同时对多个<code>channel</code>进行操作时，我们将使用另一个<code>CSP</code>模型提供的原语<code>select</code>：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> x := &lt;-c1:  <span class="comment">// 从channel c1接收数据</span></span><br><span class="line">    <span class="keyword">case</span> y,ok := &lt;-c2: <span class="comment">// 从channel c2接收数据，并根据ok值判断c2是否已经关闭</span></span><br><span class="line">    <span class="keyword">case</span> c3 &lt;- z: <span class="comment">// 将z值发送到channel c3中</span></span><br><span class="line">    <span class="keyword">default</span>:  <span class="comment">// 当上面的case中的channel通信无法实施时，执行该默认分支</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="无缓冲channel"><a href="#无缓冲channel" class="headerlink" title="无缓冲channel"></a>无缓冲channel</h1><ul>
+<li>发送动作一定发生在接收动作完成之前；  </li>
+<li>接收动作一定发生在发送动作完成之前。</li>
+</ul>
+<h2 id="用作信号传递"><a href="#用作信号传递" class="headerlink" title="用作信号传递"></a>用作信号传递</h2><h3 id="一对一通知信号"><a href="#一对一通知信号" class="headerlink" title="一对一通知信号"></a>一对一通知信号</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> signal <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;worker is working...&quot;</span>)</span><br><span class="line">	time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">spawn</span><span class="params">(f <span class="keyword">func</span>()</span></span>) &lt;-<span class="keyword">chan</span> signal &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> signal)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;worker start to work...&quot;</span>)</span><br><span class="line">		f()</span><br><span class="line">		c &lt;- signal(<span class="keyword">struct</span>&#123;&#125;&#123;&#125;)</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">return</span> c  <span class="comment">// 新goroutine退出的通知信号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;start a worker...&quot;</span>)</span><br><span class="line">	c := spawn(worker)</span><br><span class="line">	&lt;-c</span><br><span class="line">	fmt.Println(<span class="string">&quot;worker work done!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="一对多通知信号"><a href="#一对多通知信号" class="headerlink" title="一对多通知信号"></a>一对多通知信号</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> signal <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;worker %d: is working...\n&quot;</span>, i)</span><br><span class="line">	time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;worker %d: works done\n&quot;</span>, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">spawnGroup</span><span class="params">(f <span class="keyword">func</span>(i <span class="type">int</span>)</span></span>, num <span class="type">int</span>, groupSignal &lt;-<span class="keyword">chan</span> signal) &lt;-<span class="keyword">chan</span> signal &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> signal)</span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; num; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">			&lt;-groupSignal</span><br><span class="line">			fmt.Printf(<span class="string">&quot;worker %d: start to work...\n&quot;</span>, i)</span><br><span class="line">			f(i)</span><br><span class="line">			wg.Done()</span><br><span class="line">		&#125;(i + <span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		wg.Wait()</span><br><span class="line">		c &lt;- signal(<span class="keyword">struct</span>&#123;&#125;&#123;&#125;)</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;start a group of workers...&quot;</span>)</span><br><span class="line">	groupSignal := <span class="built_in">make</span>(<span class="keyword">chan</span> signal)</span><br><span class="line">	c := spawnGroup(worker, <span class="number">5</span>, groupSignal)  <span class="comment">// 创建一组5个 work goroutine</span></span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">	fmt.Println(<span class="string">&quot;the group of workers start to work...&quot;</span>)</span><br><span class="line">	<span class="built_in">close</span>(groupSignal)  <span class="comment">// 一起开始工作</span></span><br><span class="line">	&lt;-c</span><br><span class="line">	fmt.Println(<span class="string">&quot;the group of workers work done!&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">start a group of workers...</span></span><br><span class="line"><span class="comment">the group of workers start to work...</span></span><br><span class="line"><span class="comment">worker 4: start to work...</span></span><br><span class="line"><span class="comment">worker 4: is working...</span></span><br><span class="line"><span class="comment">worker 1: start to work...</span></span><br><span class="line"><span class="comment">worker 2: start to work...</span></span><br><span class="line"><span class="comment">worker 2: is working...</span></span><br><span class="line"><span class="comment">worker 1: is working...</span></span><br><span class="line"><span class="comment">worker 5: start to work...</span></span><br><span class="line"><span class="comment">worker 5: is working...</span></span><br><span class="line"><span class="comment">worker 3: start to work...</span></span><br><span class="line"><span class="comment">worker 3: is working...</span></span><br><span class="line"><span class="comment">worker 3: works done</span></span><br><span class="line"><span class="comment">worker 4: works done</span></span><br><span class="line"><span class="comment">worker 5: works done</span></span><br><span class="line"><span class="comment">worker 1: works done</span></span><br><span class="line"><span class="comment">worker 2: works done</span></span><br><span class="line"><span class="comment">the group of workers work done!</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="用于替代锁机制"><a href="#用于替代锁机制" class="headerlink" title="用于替代锁机制"></a>用于替代锁机制</h2><p>计数器实现方式  </p>
+<h3 id="基于共享内存-锁"><a href="#基于共享内存-锁" class="headerlink" title="基于共享内存+锁"></a>基于共享内存+锁</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> counter <span class="keyword">struct</span> &#123;</span><br><span class="line">	sync.Mutex</span><br><span class="line">	i <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cter counter</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Increase</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	cter.Lock()</span><br><span class="line">	<span class="keyword">defer</span> cter.Unlock()</span><br><span class="line">	cter.i++</span><br><span class="line">	<span class="keyword">return</span> cter.i</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">			v := Increase()</span><br><span class="line">			fmt.Printf(<span class="string">&quot;goroutine-%d: current counter value is %d\n&quot;</span>, i, v)</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="无缓冲channel-1"><a href="#无缓冲channel-1" class="headerlink" title="无缓冲channel"></a>无缓冲channel</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> counter <span class="keyword">struct</span> &#123;</span><br><span class="line">	c <span class="keyword">chan</span> <span class="type">int</span></span><br><span class="line">	i <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cter counter</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitCounter</span><span class="params">()</span></span> &#123;</span><br><span class="line">	cter = counter&#123;</span><br><span class="line">		c: <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>),</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			cter.i++</span><br><span class="line">			cter.c &lt;- cter.i</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	fmt.Println(<span class="string">&quot;counter init ok&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Increase</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &lt;-cter.c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	InitCounter()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">			v := Increase()</span><br><span class="line">			fmt.Printf(<span class="string">&quot;goroutine-%d: current counter value is %d\n&quot;</span>, i, v)</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>将计数器操作全部交给一个独立的<code>goroutine</code>处理，并通过无缓冲<code>channel</code>的同步阻塞特性实现计数器的控制。  </p>
+<p>这种设计更符合Go语言的原则——<strong>不要通过共享内存来通信，而应该通过通信来共享内存</strong>。  </p>
+<h1 id="带缓冲channel"><a href="#带缓冲channel" class="headerlink" title="带缓冲channel"></a>带缓冲channel</h1><h2 id="用作消息队列"><a href="#用作消息队列" class="headerlink" title="用作消息队列"></a>用作消息队列</h2><h2 id="用作计数信号量"><a href="#用作计数信号量" class="headerlink" title="用作计数信号量"></a>用作计数信号量</h2><h2 id="len-channel-的应用"><a href="#len-channel-的应用" class="headerlink" title="len(channel)的应用"></a>len(channel)的应用</h2><h1 id="nil-channel的用法"><a href="#nil-channel的用法" class="headerlink" title="nil channel的用法"></a>nil channel的用法</h1><p>对于没有初始化的<code>channel</code>进行读写操作会发生阻塞，比如：  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> c <span class="keyword">chan</span> <span class="type">int</span></span><br><span class="line">    &lt;-c</span><br><span class="line"></span><br><span class="line">    c &lt;- <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="与select结合"><a href="#与select结合" class="headerlink" title="与select结合"></a>与select结合</h1><h2 id="利用default分支避免阻塞"><a href="#利用default分支避免阻塞" class="headerlink" title="利用default分支避免阻塞"></a>利用default分支避免阻塞</h2><h2 id="实现超时机制"><a href="#实现超时机制" class="headerlink" title="实现超时机制"></a>实现超时机制</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">select</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> &lt;- c:</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        <span class="keyword">case</span> &lt;- time.After(<span class="number">30</span> * time.Second):</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现心跳机制"><a href="#实现心跳机制" class="headerlink" title="实现心跳机制"></a>实现心跳机制</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">()</span></span> &#123;</span><br><span class="line">    heartbeat := time.NewTicker(<span class="number">30</span> * time.Second)</span><br><span class="line">    <span class="keyword">defer</span> heartbeat.Stop()</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> &lt;- c:</span><br><span class="line">                <span class="comment">// ...</span></span><br><span class="line">            <span class="keyword">case</span> &lt;- heartbeat.C:</span><br><span class="line">                <span class="comment">// 处理心跳</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LearnGo</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>channel</tag>
       </tags>
   </entry>
   <entry>
@@ -6591,11 +6766,11 @@
         <category>GoATC</category>
       </categories>
       <tags>
-        <tag>并发</tag>
-        <tag>channel</tag>
         <tag>Golang</tag>
-        <tag>并行</tag>
         <tag>goroutine</tag>
+        <tag>channel</tag>
+        <tag>并发</tag>
+        <tag>并行</tag>
       </tags>
   </entry>
   <entry>
@@ -7699,9 +7874,9 @@
         <category>Solution-notes</category>
       </categories>
       <tags>
+        <tag>Golang</tag>
         <tag>并发</tag>
         <tag>协程</tag>
-        <tag>Golang</tag>
         <tag>WaitGroup</tag>
       </tags>
   </entry>
@@ -7765,9 +7940,9 @@
         <category>Learn-go</category>
       </categories>
       <tags>
+        <tag>Golang</tag>
         <tag>单元测试</tag>
         <tag>技巧</tag>
-        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -8955,8 +9130,8 @@
       </categories>
       <tags>
         <tag>数组</tag>
-        <tag>Golang</tag>
         <tag>切片</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -9210,7 +9385,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#46;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#46;&#64;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -9440,6 +9615,46 @@
         <tag>编排原理</tag>
         <tag>作业副本</tag>
         <tag>水平拓展</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes编排原理——离线业务Job与Cronjob</title>
+    <url>/2022/09/08/kubernetes-arrange-principle-job-cronjob/</url>
+    <content><![CDATA[<h1 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h1><p><code>API</code>对象定义：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">resouer/ubuntu-bc</span></span><br><span class="line">        <span class="comment"># scale=10000 意思是 计算出的结果取小数点后 10000位</span></span><br><span class="line">        <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;echo &#x27;scale=10000; 4*a(1)&#x27; | bc -l &quot;</span>]</span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">Never</span> <span class="comment"># 离线计算的Pod永远不应该被重启</span></span><br><span class="line">  <span class="attr">backoffLimit:</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>在这个模板中，我们定义了一个<code>Ubuntu</code>镜像的容器，他运行计算<code>π</code>的程序，所以，这是一个计算<code>π</code>的容器。  </p>
+<p>创建成功后，查看一下这个<code>Job</code>对象：<br>&#x2F;&#x2F;TODO:<br>可以看到，在这个<code>Job</code>对象创建后，它的<code>Pod</code>模板被自动加上了一个<code>controller-uid=&lt;一个随机字符串&gt;</code>这样的<code>Label</code>。从而保证了<code>Job</code>与它所管理的<code>Pod</code>之间的匹配关系。  </p>
+<h2 id="离线作业失败了要怎么办？"><a href="#离线作业失败了要怎么办？" class="headerlink" title="离线作业失败了要怎么办？"></a>离线作业失败了要怎么办？</h2><h2 id="Job-Controller工作原理"><a href="#Job-Controller工作原理" class="headerlink" title="Job Controller工作原理"></a>Job Controller工作原理</h2><p>首先，<code>Job Controller</code>控制的对象直接就是<code>Pod</code>。  </p>
+<p>其次，<code>Job Controller</code>在控制循环中进行的调谐操作，是根据实际<code>Running</code>状态的<code>Pod</code>的数目、已经成功退出的<code>Pod</code>的数目，以及<code>parallelism</code>、<code>completions</code>参数的值共同计算出在这个周期里应该创建或者删除的<code>Pod</code>数目，然后调用<code>Kubernetes API</code>来执行这个操作。  </p>
+<p>因此，<code>Job Controller</code>实际上控制了作业执行的并行度（<code>parallelism</code>），以及总共需要完成的任务数（<code>completions</code>）这两个重要参数。而在实际使用时，需要根据作业的特性来决定并行度和任务数的合理取值。  </p>
+<h1 id="CronJob"><a href="#CronJob" class="headerlink" title="CronJob"></a>CronJob</h1><p><code>CronJob</code>描述的是定时任务，它的<code>API</code>对象如下：  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">CronJob</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">schedule:</span> <span class="string">&quot;*/1 * * * *&quot;</span> <span class="comment"># 从当前开始，每一分钟执行一次</span></span><br><span class="line">  <span class="attr">jobTemplate:</span>  <span class="comment"># 关键！</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">template:</span></span><br><span class="line">        <span class="attr">spec:</span></span><br><span class="line">          <span class="attr">template:</span></span><br><span class="line">            <span class="attr">spec:</span></span><br><span class="line">              <span class="attr">containers:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line">                <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">                <span class="attr">args:</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">/bin/sh</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">-c</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">date;</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">from</span> <span class="string">the</span> <span class="string">Kubernetes</span> <span class="string">cluster</span></span><br><span class="line">              <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br></pre></td></tr></table></figure>
+
+<p>原来<code>CronJob</code>是一个<code>Job</code>对象的控制器。  </p>
+<p>通过以上例子，创建<code>CronJob</code>对象后，每一分钟后就会有一个<code>Job</code>产生：  </p>
+<p>&#x2F;&#x2F;TODO:</p>
+<p>此时，<code>CronJob</code>对象会记录下这次<code>Job</code>执行的时间：  </p>
+<p>注意：由于定时任务的特殊性，很可能某个<code>Job</code>还没有执行完，另外一个新<code>Job</code>就产生了。此时，可以通过<code>spec.concurrenyPolicy</code>字段来定义具体的处理策略：  </p>
+<ul>
+<li>1，<code>concurrenyPolicy=Allow</code>：这是默认情况，它意味着这些<code>Job</code>可以同时存在；  </li>
+<li>2，<code>concurrenyPolicy=Forbid</code>：这意味着不会创建新的<code>Pod</code>，该创建周期被跳过；  </li>
+<li>3，<code>concurrenyPolicy=Replace</code>：这意味着新产生的<code>Job</code>会替换旧的、未执行完的<code>Job</code>。</li>
+</ul>
+<p>而如果某一次<code>Job</code>创建失败，这次创建就会被标记为<code>&quot;miss&quot;</code>。当在指定的时间窗口内<code>miss</code>的数目达到100时，<code>CronJob</code>会停止再创建这个<code>Job</code>。  </p>
+<p>这个时间段可以由<code>spec.startingDeadlineSeconds</code>字段指定。比如，<code>startingDeadlineSeconds=200</code>，意味着在过去200s里，如果<code>miss</code>的数目达到了100，那么这个<code>Job</code>就不会被创建执行了。  </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><code>Job</code>是一次性执行的离线任务；  </li>
+<li><code>CronJob</code>是定时执行的离线任务，也就是说<code>CronJob</code>对象在控制<code>Job</code>对象，这也说明<strong>用一个对象控制另一个对象，是 Kubernetes 编排的精髓所在</strong>。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnKubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>编排原理</tag>
+        <tag>Job</tag>
+        <tag>Cronjob</tag>
       </tags>
   </entry>
   <entry>
@@ -10668,8 +10883,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>数组</tag>
-        <tag>字符串比较</tag>
         <tag>map</tag>
+        <tag>字符串比较</tag>
       </tags>
   </entry>
   <entry>
@@ -10805,8 +11020,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>循环</tag>
         <tag>map</tag>
+        <tag>循环</tag>
         <tag>array</tag>
       </tags>
   </entry>
@@ -10920,46 +11135,6 @@
       </categories>
       <tags>
         <tag>二分查找</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kubernetes编排原理——离线业务Job与Cronjob</title>
-    <url>/2022/09/08/kubernetes-arrange-principle-job-cronjob/</url>
-    <content><![CDATA[<h1 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h1><p><code>API</code>对象定义：  </p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">resouer/ubuntu-bc</span></span><br><span class="line">        <span class="comment"># scale=10000 意思是 计算出的结果取小数点后 10000位</span></span><br><span class="line">        <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;echo &#x27;scale=10000; 4*a(1)&#x27; | bc -l &quot;</span>]</span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">Never</span> <span class="comment"># 离线计算的Pod永远不应该被重启</span></span><br><span class="line">  <span class="attr">backoffLimit:</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p>在这个模板中，我们定义了一个<code>Ubuntu</code>镜像的容器，他运行计算<code>π</code>的程序，所以，这是一个计算<code>π</code>的容器。  </p>
-<p>创建成功后，查看一下这个<code>Job</code>对象：<br>&#x2F;&#x2F;TODO:<br>可以看到，在这个<code>Job</code>对象创建后，它的<code>Pod</code>模板被自动加上了一个<code>controller-uid=&lt;一个随机字符串&gt;</code>这样的<code>Label</code>。从而保证了<code>Job</code>与它所管理的<code>Pod</code>之间的匹配关系。  </p>
-<h2 id="离线作业失败了要怎么办？"><a href="#离线作业失败了要怎么办？" class="headerlink" title="离线作业失败了要怎么办？"></a>离线作业失败了要怎么办？</h2><h2 id="Job-Controller工作原理"><a href="#Job-Controller工作原理" class="headerlink" title="Job Controller工作原理"></a>Job Controller工作原理</h2><p>首先，<code>Job Controller</code>控制的对象直接就是<code>Pod</code>。  </p>
-<p>其次，<code>Job Controller</code>在控制循环中进行的调谐操作，是根据实际<code>Running</code>状态的<code>Pod</code>的数目、已经成功退出的<code>Pod</code>的数目，以及<code>parallelism</code>、<code>completions</code>参数的值共同计算出在这个周期里应该创建或者删除的<code>Pod</code>数目，然后调用<code>Kubernetes API</code>来执行这个操作。  </p>
-<p>因此，<code>Job Controller</code>实际上控制了作业执行的并行度（<code>parallelism</code>），以及总共需要完成的任务数（<code>completions</code>）这两个重要参数。而在实际使用时，需要根据作业的特性来决定并行度和任务数的合理取值。  </p>
-<h1 id="CronJob"><a href="#CronJob" class="headerlink" title="CronJob"></a>CronJob</h1><p><code>CronJob</code>描述的是定时任务，它的<code>API</code>对象如下：  </p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">CronJob</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">schedule:</span> <span class="string">&quot;*/1 * * * *&quot;</span> <span class="comment"># 从当前开始，每一分钟执行一次</span></span><br><span class="line">  <span class="attr">jobTemplate:</span>  <span class="comment"># 关键！</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">template:</span></span><br><span class="line">        <span class="attr">spec:</span></span><br><span class="line">          <span class="attr">template:</span></span><br><span class="line">            <span class="attr">spec:</span></span><br><span class="line">              <span class="attr">containers:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">hello</span></span><br><span class="line">                <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">                <span class="attr">args:</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">/bin/sh</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">-c</span></span><br><span class="line">                <span class="bullet">-</span> <span class="string">date;</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">from</span> <span class="string">the</span> <span class="string">Kubernetes</span> <span class="string">cluster</span></span><br><span class="line">              <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br></pre></td></tr></table></figure>
-
-<p>原来<code>CronJob</code>是一个<code>Job</code>对象的控制器。  </p>
-<p>通过以上例子，创建<code>CronJob</code>对象后，每一分钟后就会有一个<code>Job</code>产生：  </p>
-<p>&#x2F;&#x2F;TODO:</p>
-<p>此时，<code>CronJob</code>对象会记录下这次<code>Job</code>执行的时间：  </p>
-<p>注意：由于定时任务的特殊性，很可能某个<code>Job</code>还没有执行完，另外一个新<code>Job</code>就产生了。此时，可以通过<code>spec.concurrenyPolicy</code>字段来定义具体的处理策略：  </p>
-<ul>
-<li>1，<code>concurrenyPolicy=Allow</code>：这是默认情况，它意味着这些<code>Job</code>可以同时存在；  </li>
-<li>2，<code>concurrenyPolicy=Forbid</code>：这意味着不会创建新的<code>Pod</code>，该创建周期被跳过；  </li>
-<li>3，<code>concurrenyPolicy=Replace</code>：这意味着新产生的<code>Job</code>会替换旧的、未执行完的<code>Job</code>。</li>
-</ul>
-<p>而如果某一次<code>Job</code>创建失败，这次创建就会被标记为<code>&quot;miss&quot;</code>。当在指定的时间窗口内<code>miss</code>的数目达到100时，<code>CronJob</code>会停止再创建这个<code>Job</code>。  </p>
-<p>这个时间段可以由<code>spec.startingDeadlineSeconds</code>字段指定。比如，<code>startingDeadlineSeconds=200</code>，意味着在过去200s里，如果<code>miss</code>的数目达到了100，那么这个<code>Job</code>就不会被创建执行了。  </p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li><code>Job</code>是一次性执行的离线任务；  </li>
-<li><code>CronJob</code>是定时执行的离线任务，也就是说<code>CronJob</code>对象在控制<code>Job</code>对象，这也说明<strong>用一个对象控制另一个对象，是 Kubernetes 编排的精髓所在</strong>。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>LearnKubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>编排原理</tag>
-        <tag>Job</tag>
-        <tag>Cronjob</tag>
       </tags>
   </entry>
   <entry>
@@ -12598,22 +12773,6 @@
       </tags>
   </entry>
   <entry>
-    <title>低调成长</title>
-    <url>/2019/01/17/low-growth/</url>
-    <content><![CDATA[<h2 id="意外惊喜"><a href="#意外惊喜" class="headerlink" title="意外惊喜"></a>意外惊喜</h2><p>这段时间有两个意外发生在我的身上  </p>
-<h3 id="头条邀请"><a href="#头条邀请" class="headerlink" title="头条邀请"></a>头条邀请</h3><p>下午打开Gmail邮箱，意外发现了除了Medium的推送外，还夹带着一封头条后端开发岗的邀请…<br><img src="/2019/01/17/low-growth/%E5%A4%B4%E6%9D%A1%E9%9D%A2%E8%AF%95.png">  </p>
-<h3 id="写书邀请"><a href="#写书邀请" class="headerlink" title="写书邀请"></a>写书邀请</h3><p>除了面试邀请，还在前段时间在博客园上收到了一家北京出版社编辑发的写开发实战书籍的邀请。<br>（写书曾经想过写，但不是现在写，因为技术还没有积淀下来，写了也是浪费精力和纸张）  </p>
-<h2 id="低调成长"><a href="#低调成长" class="headerlink" title="低调成长"></a>低调成长</h2><p>想起两年前我大二，对于这样的邀请我是可望而不可即的，因为技术太渣，校招时四轮笔试做了一塌糊涂。<br>但是，当现在机会摆在我的面前时，我不禁想问下自己，现在接受真的合适吗？<br>最好的目前并不一定适合自己。<br>现在的还处于学习上升期阶段，除了在部门内负责流媒体服务外，还要学习网络，数据库和算法相关知识，需要巩固C&#x2F;C++和Go语言编程；不断的接受一些有挑战性的任务，在踩坑和写Bug中茁壮成长。<br>我一直相信，只要自己坚持做一件认为对的事情，培养成一个习惯（例如写日记，早起晨练，学习），那么这就是个如蛹化蝶的过程，最终将会振翅飞翔。<br><img src="/2019/01/17/low-growth/%E8%8A%B1%E6%B5%B7.jpg"></p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>成长</tag>
-        <tag>惊喜</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>6 小时掌握 Docker 与 K8s 架构核心</title>
     <url>/2021/10/19/master-core-docker-and-k8s-architecture-in-six-hours/</url>
     <content><![CDATA[<h1 id="Docker-核心技术"><a href="#Docker-核心技术" class="headerlink" title="Docker 核心技术"></a>Docker 核心技术</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
@@ -12670,6 +12829,22 @@
       <tags>
         <tag>Docker</tag>
         <tag>K8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>低调成长</title>
+    <url>/2019/01/17/low-growth/</url>
+    <content><![CDATA[<h2 id="意外惊喜"><a href="#意外惊喜" class="headerlink" title="意外惊喜"></a>意外惊喜</h2><p>这段时间有两个意外发生在我的身上  </p>
+<h3 id="头条邀请"><a href="#头条邀请" class="headerlink" title="头条邀请"></a>头条邀请</h3><p>下午打开Gmail邮箱，意外发现了除了Medium的推送外，还夹带着一封头条后端开发岗的邀请…<br><img src="/2019/01/17/low-growth/%E5%A4%B4%E6%9D%A1%E9%9D%A2%E8%AF%95.png">  </p>
+<h3 id="写书邀请"><a href="#写书邀请" class="headerlink" title="写书邀请"></a>写书邀请</h3><p>除了面试邀请，还在前段时间在博客园上收到了一家北京出版社编辑发的写开发实战书籍的邀请。<br>（写书曾经想过写，但不是现在写，因为技术还没有积淀下来，写了也是浪费精力和纸张）  </p>
+<h2 id="低调成长"><a href="#低调成长" class="headerlink" title="低调成长"></a>低调成长</h2><p>想起两年前我大二，对于这样的邀请我是可望而不可即的，因为技术太渣，校招时四轮笔试做了一塌糊涂。<br>但是，当现在机会摆在我的面前时，我不禁想问下自己，现在接受真的合适吗？<br>最好的目前并不一定适合自己。<br>现在的还处于学习上升期阶段，除了在部门内负责流媒体服务外，还要学习网络，数据库和算法相关知识，需要巩固C&#x2F;C++和Go语言编程；不断的接受一些有挑战性的任务，在踩坑和写Bug中茁壮成长。<br>我一直相信，只要自己坚持做一件认为对的事情，培养成一个习惯（例如写日记，早起晨练，学习），那么这就是个如蛹化蝶的过程，最终将会振翅飞翔。<br><img src="/2019/01/17/low-growth/%E8%8A%B1%E6%B5%B7.jpg"></p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>成长</tag>
+        <tag>惊喜</tag>
       </tags>
   </entry>
   <entry>
@@ -14898,24 +15073,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu安装ClickHouse</title>
-    <url>/2022/09/28/ubuntu-install-clickhouse/</url>
-    <content><![CDATA[<h1 id="ClickHouse简介"><a href="#ClickHouse简介" class="headerlink" title="ClickHouse简介"></a>ClickHouse简介</h1><ul>
-<li>ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS);  </li>
-<li>列式数据库更适合于OLAP场景(对于大多数查询而言，处理速度至少提高了100倍);</li>
-</ul>
-<h1 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h1><h2 id="在线"><a href="#在线" class="headerlink" title="在线"></a>在线</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新</span></span><br><span class="line">$ sudp apt update</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ sudo apt-get install clickhouse-client clickhouse-server</span><br><span class="line"><span class="comment"># 开启服务</span></span><br><span class="line">$ sudo service clickhouse-server start</span><br><span class="line"><span class="comment"># 客户端连接</span></span><br><span class="line"><span class="comment"># 默认无密码，执行</span></span><br><span class="line">clickhouse-client </span><br><span class="line"><span class="comment"># 有密码的话，执行</span></span><br><span class="line">clickhouse-client --password 123456</span><br></pre></td></tr></table></figure>
-
-<p>验证：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ clickhouse-client </span><br><span class="line">ClickHouse client version 18.16.1.</span><br><span class="line">Connecting to localhost:9000.</span><br><span class="line">Connected to ClickHouse server version 18.16.1 revision 54412.</span><br><span class="line">neo:)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LearnClickHouse</category>
-      </categories>
-      <tags>
-        <tag>clickhouse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu设置root账号登录</title>
     <url>/2019/06/04/ubuntu-set-up-root-login/</url>
     <content><![CDATA[<h2 id="这样做的原因"><a href="#这样做的原因" class="headerlink" title="这样做的原因"></a>这样做的原因</h2><p>如果你是用<code>root</code>权限去启动一个服务，而这个服务正在跑时，我又在根据它反馈的信息，对代码做调整，比如打日志，而修改完源代码后，你是无法保存文件的，原因是你用<code>root</code>执行它，而就应该用<code>root</code>权限去修改它，否则你的编辑是无效的，<code>push</code>上去的代码还是原来的。  </p>
@@ -14954,6 +15111,24 @@
         <tag>Linux</tag>
         <tag>root</tag>
         <tag>登录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu安装ClickHouse</title>
+    <url>/2022/09/28/ubuntu-install-clickhouse/</url>
+    <content><![CDATA[<h1 id="ClickHouse简介"><a href="#ClickHouse简介" class="headerlink" title="ClickHouse简介"></a>ClickHouse简介</h1><ul>
+<li>ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS);  </li>
+<li>列式数据库更适合于OLAP场景(对于大多数查询而言，处理速度至少提高了100倍);</li>
+</ul>
+<h1 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h1><h2 id="在线"><a href="#在线" class="headerlink" title="在线"></a>在线</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新</span></span><br><span class="line">$ sudp apt update</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ sudo apt-get install clickhouse-client clickhouse-server</span><br><span class="line"><span class="comment"># 开启服务</span></span><br><span class="line">$ sudo service clickhouse-server start</span><br><span class="line"><span class="comment"># 客户端连接</span></span><br><span class="line"><span class="comment"># 默认无密码，执行</span></span><br><span class="line">clickhouse-client </span><br><span class="line"><span class="comment"># 有密码的话，执行</span></span><br><span class="line">clickhouse-client --password 123456</span><br></pre></td></tr></table></figure>
+
+<p>验证：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ clickhouse-client </span><br><span class="line">ClickHouse client version 18.16.1.</span><br><span class="line">Connecting to localhost:9000.</span><br><span class="line">Connected to ClickHouse server version 18.16.1 revision 54412.</span><br><span class="line">neo:)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LearnClickHouse</category>
+      </categories>
+      <tags>
+        <tag>clickhouse</tag>
       </tags>
   </entry>
   <entry>
