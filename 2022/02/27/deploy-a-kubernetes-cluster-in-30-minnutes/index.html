@@ -29,8 +29,12 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/k8s%E6%9E%B6%E6%9E%84%E5%9B%BEmn.png">
+<meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard1.png">
+<meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard2.png">
+<meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard3.png">
+<meta property="og:image" content="https://octopuslian.github.io/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard4.png">
 <meta property="article:published_time" content="2022-02-27T07:46:53.000Z">
-<meta property="article:modified_time" content="2022-09-29T03:55:18.004Z">
+<meta property="article:modified_time" content="2022-10-07T09:07:54.296Z">
 <meta property="article:author" content="Neo Zhang">
 <meta property="article:tag" content="集群">
 <meta property="article:tag" content="kubernetes">
@@ -253,7 +257,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-29 11:55:18" itemprop="dateModified" datetime="2022-09-29T11:55:18+08:00">2022-09-29</time>
+                <time title="修改时间：2022-10-07 17:07:54" itemprop="dateModified" datetime="2022-10-07T17:07:54+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,14 +282,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
+              <span>5.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -380,7 +384,24 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl taint nodes --all node-role.kubernetes.io/master-</span><br></pre></td></tr></table></figure>
 
 <p>该命令含义是：移除所有以<code>node-role.kubernetes.io/master</code>为键的<code>Taint</code>  </p>
+<h1 id="部署Dashboard"><a href="#部署Dashboard" class="headerlink" title="部署Dashboard"></a>部署Dashboard</h1><p>在<code>master</code>上运行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd /root/k8s-ha-install/dashboard/</span><br><span class="line"># kubectl create -f .</span><br></pre></td></tr></table></figure>
+
+<p>更改dashboard的svc为NodePort：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard1.png">  </p>
+<p>因为<strong>ClusterIP只对集群内部可见，NodePort对外部可见</strong>。  </p>
+<p>然后查看端口号  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl get svc kubernetes-dashboard -n kubernetes-dashboard</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard2.png">  </p>
+<p>访问 ip:30036，即可访问k8s的仪表盘。  </p>
+<p>查看token值：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk &#x27;&#123;print $1&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>在仪表盘中输入<code>Token</code>即可。<br><img src="/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard3.png">  </p>
+<p><img src="/2022/02/27/deploy-a-kubernetes-cluster-in-30-minnutes/dashboard4.png">  </p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/architectforest/p/12982886.html">linux(centos8): 临时关闭&#x2F;永久关闭交换分区swap？</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dotbalo/k8s-ha-install">超全面、超详细的Kubernetes视频教程，基于最新K8s进行讲解</a>  </p>
 
     </div>
 
@@ -507,7 +528,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes%E6%9E%B6%E6%9E%84"><span class="nav-text">Kubernetes架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85Docker-x2F-kubeadm-x2F-kubelet"><span class="nav-text">所有节点安装Docker&#x2F;kubeadm&#x2F;kubelet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%85%AC%E9%92%A5"><span class="nav-text">添加访问公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%BA%90"><span class="nav-text">添加源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85kubeadm%EF%BC%8Ckubelet%E5%92%8Ckubectl"><span class="nav-text">安装kubeadm，kubelet和kubectl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Kubernetes-Master"><span class="nav-text">部署Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Pod%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6%EF%BC%88CNI%EF%BC%89"><span class="nav-text">部署Pod网络插件（CNI）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5Kubernetes-Node"><span class="nav-text">加入Kubernetes Node</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEMaster%E5%8D%95%E8%8A%82%E7%82%B9%E9%9B%86%E7%BE%A4"><span class="nav-text">设置Master单节点集群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes%E6%9E%B6%E6%9E%84"><span class="nav-text">Kubernetes架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85Docker-x2F-kubeadm-x2F-kubelet"><span class="nav-text">所有节点安装Docker&#x2F;kubeadm&#x2F;kubelet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%85%AC%E9%92%A5"><span class="nav-text">添加访问公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%BA%90"><span class="nav-text">添加源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85kubeadm%EF%BC%8Ckubelet%E5%92%8Ckubectl"><span class="nav-text">安装kubeadm，kubelet和kubectl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Kubernetes-Master"><span class="nav-text">部署Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Pod%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6%EF%BC%88CNI%EF%BC%89"><span class="nav-text">部署Pod网络插件（CNI）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5Kubernetes-Node"><span class="nav-text">加入Kubernetes Node</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEMaster%E5%8D%95%E8%8A%82%E7%82%B9%E9%9B%86%E7%BE%A4"><span class="nav-text">设置Master单节点集群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Dashboard"><span class="nav-text">部署Dashboard</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

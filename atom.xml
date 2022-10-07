@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-10-07T04:13:16.423Z</updated>
+  <updated>2022-10-07T04:13:29.815Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/"/>
     <id>https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/</id>
     <published>2022-10-07T14:51:12.000Z</published>
-    <updated>2022-10-07T04:13:16.423Z</updated>
+    <updated>2022-10-07T04:13:29.815Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是Map&quot;&gt;&lt;a href=&quot;#什么是Map&quot; class=&quot;headerlink&quot; title=&quot;什么是Map&quot;&gt;&lt;/a&gt;什么是Map&lt;/h1&gt;&lt;p&gt;map 是 Go 语言提供的一种抽象数据类型，它表示一组无序的键值对。  &lt;/p&gt;
@@ -45,7 +45,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/"/>
     <id>https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/</id>
     <published>2022-10-06T14:51:07.000Z</published>
-    <updated>2022-10-06T15:29:07.075Z</updated>
+    <updated>2022-10-07T04:13:29.811Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是数组&quot;&gt;&lt;a href=&quot;#什么是数组&quot; class=&quot;headerlink&quot; title=&quot;什么是数组&quot;&gt;&lt;/a&gt;什么是数组&lt;/h1&gt;&lt;h2 id=&quot;数组有哪些基本特性&quot;&gt;&lt;a href=&quot;#数组有哪些基本特性&quot; class=&quot;headerlink&quot; title=&quot;数组有哪些基本特性&quot;&gt;&lt;/a&gt;数组有哪些基本特性&lt;/h2&gt;&lt;p&gt;Go 语言的数组是一个长度固定的、由同构类型元素组成的连续序列。&lt;br&gt;因此Go 的数组类型包含两个重要属性：元素的类型和数组长度（元素的个数）。&lt;br&gt;所以，Go 语言中数组类型变量的声明：  &lt;/p&gt;
@@ -245,7 +245,7 @@
     <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/"/>
     <id>https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/</id>
     <published>2022-10-04T03:28:39.000Z</published>
-    <updated>2022-10-04T11:05:58.262Z</updated>
+    <updated>2022-10-07T07:44:37.442Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/docker-deploy-wordpress/1.png&quot;&gt;&lt;br&gt;MariaDB 作为后面的关系型数据库，端口号是 3306；WordPress 是中间的应用服务器，使用 MariaDB 来存储数据，它的端口是 80；Nginx 是前面的反向代理，它对外暴露 80 端口，然后把请求转发给 WordPress。  &lt;/p&gt;
@@ -293,7 +293,7 @@
     <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/"/>
     <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/</id>
     <published>2022-10-04T02:33:56.000Z</published>
-    <updated>2022-10-04T14:47:47.895Z</updated>
+    <updated>2022-10-07T08:21:50.232Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;本文我将尝试用&lt;code&gt;Kubernetes&lt;/code&gt;集群上搭建一个&lt;code&gt;WordPress&lt;/code&gt;网站，他们的内部逻辑关系如下：&lt;br&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png&quot;&gt;  &lt;/p&gt;

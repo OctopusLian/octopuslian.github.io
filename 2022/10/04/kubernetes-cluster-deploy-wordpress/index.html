@@ -28,13 +28,14 @@
 <meta property="og:description" content="架构图本文我将尝试用Kubernetes集群上搭建一个WordPress网站，他们的内部逻辑关系如下：   搭建步骤编排 MariaDB 对象MariaDB需要4个环境变量，比如数据库名、用户名、密码等，在Docker里我们是在命令行里使用参数--env，而在Kubernetes里我们就应该使用ConfigMap，为此需要定义一个maria-cm对象：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png">
+<meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/wp1.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/d1.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/d2.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/d3.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/k8s%E6%9E%B6%E6%9E%84.png">
 <meta property="og:image" content="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/%E5%88%9D%E7%BA%A7map.png">
 <meta property="article:published_time" content="2022-10-04T02:33:56.000Z">
-<meta property="article:modified_time" content="2022-10-04T14:47:47.895Z">
+<meta property="article:modified_time" content="2022-10-07T08:21:50.232Z">
 <meta property="article:author" content="Neo Zhang">
 <meta property="article:tag" content="kubernetes">
 <meta property="article:tag" content="wordpress">
@@ -249,10 +250,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-10-04 10:33:56 / 修改时间：22:47:47" itemprop="dateCreated datePublished" datetime="2022-10-04T10:33:56+08:00">2022-10-04</time>
+              <time title="创建时间：2022-10-04 10:33:56" itemprop="dateCreated datePublished" datetime="2022-10-04T10:33:56+08:00">2022-10-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 16:21:50" itemprop="dateModified" datetime="2022-10-07T16:21:50+08:00">2022-10-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -320,11 +327,12 @@
 <p>如果想关闭端口转发，需要敲命令 fg ，它会把后台的任务带回到前台，然后就可以简单地用“Ctrl + C”来停止转发了。  </p>
 <h2 id="创建反向代理的-Nginx，让我们的网站对外提供服务"><a href="#创建反向代理的-Nginx，让我们的网站对外提供服务" class="headerlink" title="创建反向代理的 Nginx，让我们的网站对外提供服务"></a>创建反向代理的 Nginx，让我们的网站对外提供服务</h2><p>因为 WordPress 网站使用了 URL 重定向，直接使用“8080”会导致跳转故障，所以为了让网站正常工作，我们还应该在 Kubernetes 之外启动 Nginx 反向代理，保证外界看到的仍然是“80”端口号。  </p>
 <p>Nginx 的配置文件：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  default_type text/html;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">      proxy_http_version 1.1;</span><br><span class="line">      proxy_set_header Host $host;</span><br><span class="line">      proxy_pass http://127.0.0.1:8080;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  default_type text/html;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">      proxy_http_version 1.1;</span><br><span class="line">      proxy_set_header Host $host;</span><br><span class="line">      proxy_pass http://127.0.0.1:8080;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后我们用 docker run -v 命令加载这个配置文件，以容器的方式启动这个 Nginx 代理：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --rm \</span><br><span class="line">    --net=host \</span><br><span class="line">    -v /tmp/proxy.conf:/etc/nginx/conf.d/default.conf \</span><br><span class="line">    nginx:alpine</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --rm --net=host -v `pwd`/wp.conf:/etc/nginx/conf.d/default.conf nginx:alpine</span><br></pre></td></tr></table></figure>
 
-<p>有了 Nginx 的反向代理之后，我们就可以打开浏览器，输入本机的“127.0.0.1”看到 WordPress 的界面：  </p>
+
+<p>有了 Nginx 的反向代理之后，我们就可以打开浏览器，输入本机的“127.0.0.1”看到 WordPress 的界面：<br><img src="/2022/10/04/kubernetes-cluster-deploy-wordpress/wp1.png">  </p>
 <p>也可以在 Kubernetes 里使用命令 kubectl logs 查看 WordPress、MariaDB 等 Pod 的运行日志，来验证它们是否已经正确地响应了请求：  </p>
 <h1 id="使用-Dashboard-管理-Kubernetes"><a href="#使用-Dashboard-管理-Kubernetes" class="headerlink" title="使用 Dashboard 管理 Kubernetes"></a>使用 Dashboard 管理 Kubernetes</h1><p>启动<code>Dashboard</code>  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube dashboard</span><br></pre></td></tr></table></figure>
