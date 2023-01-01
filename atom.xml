@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2022-10-08T06:34:17.027Z</updated>
+  <updated>2023-01-01T14:06:42.459Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,119 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Go代码安全指南</title>
+    <link href="https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/"/>
+    <id>https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/</id>
+    <published>2023-01-01T14:04:42.000Z</published>
+    <updated>2023-01-01T14:06:42.459Z</updated>
+    
+    
+    <summary type="html">&lt;!-- markdown=&quot;1&quot; is required for GitHub Pages to render the TOC properly. --&gt;
+
+&lt;details markdown=&quot;1&quot;&gt;
+  &lt;summary&gt;目录&lt;/summary&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#1&quot;&gt;1 通用类&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.1&quot;&gt;1.1 内存管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.2&quot;&gt;1.2 文件操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.3&quot;&gt;1.3 系统接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.4&quot;&gt;1.4 通信安全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.5&quot;&gt;1.5 敏感数据保护&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.6&quot;&gt;1.6 加密解密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.7&quot;&gt;1.7 正则表达式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#2&quot;&gt;2 后台类&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.1&quot;&gt;1.1 输入校验&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.2&quot;&gt;1.2 SQL操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.3&quot;&gt;1.3 网络请求&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.4&quot;&gt;1.4 服务器端渲染&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.5&quot;&gt;1.5 Web跨域&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.6&quot;&gt;1.6 响应输出&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.7&quot;&gt;1.7 会话管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.8&quot;&gt;1.8 访问控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.9&quot;&gt;1.9 并发保护&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/details&gt;
+
+
+
+
+
+&lt;p&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;通用类&quot;&gt;&lt;a href=&quot;#通用类&quot; class=&quot;headerlink&quot; title=&quot;通用类&quot;&gt;&lt;/a&gt;通用类&lt;/h1&gt;&lt;p&gt;&lt;a id=&quot;1.1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-代码实现类&quot;&gt;&lt;a href=&quot;#1-代码实现类&quot; class=&quot;headerlink&quot; title=&quot;1. 代码实现类&quot;&gt;&lt;/a&gt;1. 代码实现类&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
+    
+    
+    <category term="Go" scheme="https://octopuslian.github.io/tags/Go/"/>
+    
+    <category term="安全" scheme="https://octopuslian.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes部署Prometheus+Grafana搭建可视化监控告警平台</title>
+    <link href="https://octopuslian.github.io/2022/10/13/kubernetes-deploy-prometheus-and-grafana/"/>
+    <id>https://octopuslian.github.io/2022/10/13/kubernetes-deploy-prometheus-and-grafana/</id>
+    <published>2022-10-13T02:24:14.000Z</published>
+    <updated>2022-10-13T08:54:45.361Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Prometheus介绍&quot;&gt;&lt;a href=&quot;#Prometheus介绍&quot; class=&quot;headerlink&quot; title=&quot;Prometheus介绍&quot;&gt;&lt;/a&gt;Prometheus介绍&lt;/h1&gt;&lt;h2 id=&quot;Prometheus-是什么&quot;&gt;&lt;a href=&quot;#Prometheus-是什么&quot; class=&quot;headerlink&quot; title=&quot;Prometheus 是什么&quot;&gt;&lt;/a&gt;Prometheus 是什么&lt;/h2&gt;&lt;p&gt;Prometheus（普罗米修斯）是一个最初在SoundCloud上构建的监控系统。自2012年成为社区开源项目，拥有非常活跃的开发人员和用户社区。为强调开源及独立维护，Prometheus于2016年加入云原生云计算基金会（CNCF），成为继Kubernetes之后的第二个托管项目。  &lt;/p&gt;
+&lt;h2 id=&quot;Prometheus-组成及架构&quot;&gt;&lt;a href=&quot;#Prometheus-组成及架构&quot; class=&quot;headerlink&quot; title=&quot;Prometheus 组成及架构&quot;&gt;&lt;/a&gt;Prometheus 组成及架构&lt;/h2&gt;&lt;h1 id=&quot;部署Prometheus&quot;&gt;&lt;a href=&quot;#部署Prometheus&quot; class=&quot;headerlink&quot; title=&quot;部署Prometheus&quot;&gt;&lt;/a&gt;部署Prometheus&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="prometheus" scheme="https://octopuslian.github.io/tags/prometheus/"/>
+    
+    <category term="grafana" scheme="https://octopuslian.github.io/tags/grafana/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Go语言精进——了解sync包的正确用法</title>
+    <link href="https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/"/>
+    <id>https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/</id>
+    <published>2022-10-09T07:49:34.000Z</published>
+    <updated>2022-10-11T13:55:59.320Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cs = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 模拟临界区要保护的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; mu sync.Mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Lock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Unlock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	c &amp;lt;- &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;-c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByMutex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByChan()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByMutex-8   	76766581	        15.41 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByChan-8   	    32243965	        37.59 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;使用sync包的注意事项&quot;&gt;&lt;a href=&quot;#使用sync包的注意事项&quot; class=&quot;headerlink&quot; title=&quot;使用sync包的注意事项&quot;&gt;&lt;/a&gt;使用sync包的注意事项&lt;/h1&gt;&lt;p&gt;在&lt;code&gt;sync&lt;/code&gt;包源文件中，我们看到以下注释：  &lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Mutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A RWMutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Cond must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
+    
+    
+    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
+    
+    <category term="sync包" scheme="https://octopuslian.github.io/tags/sync%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Go语言精进——优先考虑并发设计</title>
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/</id>
     <published>2022-10-08T06:12:18.000Z</published>
-    <updated>2022-10-08T06:34:17.027Z</updated>
+    <updated>2022-10-08T12:31:12.583Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;并发与并行&quot;&gt;&lt;a href=&quot;#并发与并行&quot; class=&quot;headerlink&quot; title=&quot;并发与并行&quot;&gt;&lt;/a&gt;并发与并行&lt;/h1&gt;&lt;h2 id=&quot;并行方案&quot;&gt;&lt;a href=&quot;#并行方案&quot; class=&quot;headerlink&quot; title=&quot;并行方案&quot;&gt;&lt;/a&gt;并行方案&lt;/h2&gt;&lt;p&gt;在处理器核数充足的情况下启动多个单线程应用的实例，这样每个实例运行在一个核上，尽可能多地利用多核计算资源。  &lt;/p&gt;
@@ -44,7 +152,7 @@
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/</id>
     <published>2022-10-08T05:10:26.000Z</published>
-    <updated>2022-10-08T05:30:13.278Z</updated>
+    <updated>2022-10-08T12:31:12.583Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;defer的运作机制&quot;&gt;&lt;a href=&quot;#defer的运作机制&quot; class=&quot;headerlink&quot; title=&quot;defer的运作机制&quot;&gt;&lt;/a&gt;defer的运作机制&lt;/h1&gt;&lt;ul&gt;
@@ -69,7 +177,7 @@
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/</id>
     <published>2022-10-08T04:35:31.000Z</published>
-    <updated>2022-10-08T05:09:12.711Z</updated>
+    <updated>2022-10-08T12:31:12.583Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Go语言的字符串类型&quot;&gt;&lt;a href=&quot;#Go语言的字符串类型&quot; class=&quot;headerlink&quot; title=&quot;Go语言的字符串类型&quot;&gt;&lt;/a&gt;Go语言的字符串类型&lt;/h1&gt;&lt;p&gt;统一设置为&lt;code&gt;string&lt;/code&gt;：  &lt;/p&gt;
@@ -288,7 +396,7 @@
     <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/"/>
     <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/</id>
     <published>2022-10-04T11:09:14.000Z</published>
-    <updated>2022-10-04T15:37:32.929Z</updated>
+    <updated>2022-10-12T06:27:17.659Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;版本更新描述&quot;&gt;&lt;a href=&quot;#版本更新描述&quot; class=&quot;headerlink&quot; title=&quot;版本更新描述&quot;&gt;&lt;/a&gt;版本更新描述&lt;/h1&gt;&lt;p&gt;完全舍弃了 Docker，把所有的应用都放在 Kubernetes 集群里运行，部署方式也不再是裸 Pod，&lt;strong&gt;而是使用 Deployment，稳定性大幅度提升。&lt;/strong&gt;  &lt;/p&gt;
@@ -413,90 +521,6 @@
     
     
     <category term="clickhouse" scheme="https://octopuslian.github.io/tags/clickhouse/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes网络原理——Ingress对象</title>
-    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-ingress/"/>
-    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-ingress/</id>
-    <published>2022-09-12T14:21:33.000Z</published>
-    <updated>2022-10-04T06:53:44.384Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;全局的、为了代理不同后端 Service 而设置的负载均衡服务，就是 Kubernetes 里的Ingress 服务。  &lt;/p&gt;
-&lt;p&gt;所以，Ingress 的功能其实很容易理解：&lt;strong&gt;所谓 Ingress，就是 Service 的“Service”&lt;/strong&gt;。  &lt;/p&gt;
-&lt;p&gt;假如我现在有这样一个站点：&lt;code&gt;https://cafe.example.com&lt;/code&gt;，其中&lt;code&gt;https://cafe.example.com/coffee&lt;/code&gt;对应的是“咖啡点餐系统”，而&lt;code&gt;https://cafe.example.com/tea&lt;/code&gt;对应的是&lt;code&gt;茶水点餐系统&lt;/code&gt;，这两个系统，分别由名叫&lt;code&gt;coffee&lt;/code&gt;和&lt;code&gt;tea&lt;/code&gt;两个&lt;code&gt;Deployment&lt;/code&gt;来提供服。  &lt;/p&gt;
-&lt;p&gt;那么，我如何能使用 Kubernetes 的 Ingress 来创建一个统一的负载均衡器，从而实现当用户访问不同的域名时，能够访问到不同的 Deployment 呢？&lt;br&gt;上述功能，在 Kubernetes 里就需要通过 Ingress 对象来描述：  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="Ingress" scheme="https://octopuslian.github.io/tags/Ingress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes网络原理——网络模型与CNI网络插件</title>
-    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/"/>
-    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/</id>
-    <published>2022-09-12T10:10:34.000Z</published>
-    <updated>2022-10-04T06:53:44.388Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Kubernetes网络模型&quot;&gt;&lt;a href=&quot;#Kubernetes网络模型&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes网络模型&quot;&gt;&lt;/a&gt;Kubernetes网络模型&lt;/h1&gt;&lt;p&gt;Kubernetes 是通过一个叫作 CNI 的接口，维护了一个单独的网桥来代替 docker0。&lt;br&gt;这个网桥的名字就叫作：CNI 网桥，它在宿主机上的设备名称默认是：cni0。&lt;br&gt;&lt;img src=&quot;/2022/09/12/kubernetes-network-principle-network-model-and-cni-network-plug-in/1.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;在这里，Kubernetes 为 Flannel 分配的子网范围是 10.244.0.0&amp;#x2F;16。&lt;br&gt;这个参数可以在部署的时候指定，比如：  &lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;kubeadm init --pod-network-cidr=10.244.0.0/16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;注：也可以在部署完成后，通过修改 kube-controller-manager 的配置文件来指定。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="CNI" scheme="https://octopuslian.github.io/tags/CNI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes网络原理——容器跨主机网络</title>
-    <link href="https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-container-accross-host-network/"/>
-    <id>https://octopuslian.github.io/2022/09/12/kubernetes-network-principle-container-accross-host-network/</id>
-    <published>2022-09-12T08:52:57.000Z</published>
-    <updated>2022-10-04T06:53:44.384Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Flannel介绍&quot;&gt;&lt;a href=&quot;#Flannel介绍&quot; class=&quot;headerlink&quot; title=&quot;Flannel介绍&quot;&gt;&lt;/a&gt;Flannel介绍&lt;/h1&gt;&lt;p&gt;要理解容器“跨主通信”的原理，就一定要先从&lt;code&gt;Flannel&lt;/code&gt;这个项目开始。  &lt;/p&gt;
-&lt;p&gt;Flannel 项目是 CoreOS 公司主推的容器网络方案。事实上，Flannel 项目本身只是一个框架，真正为我们提供容器网络功能的，是 Flannel 的后端实现。目前，Flannel 支持三种后端实现（种容器跨主网络的主流实现方法。），分别是：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;VXLAN  &lt;/li&gt;
-&lt;li&gt;host-gw  &lt;/li&gt;
-&lt;li&gt;UDP&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;UDP模式&quot;&gt;&lt;a href=&quot;#UDP模式&quot; class=&quot;headerlink&quot; title=&quot;UDP模式&quot;&gt;&lt;/a&gt;UDP模式&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-    <category term="网络原理" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="跨主机" scheme="https://octopuslian.github.io/tags/%E8%B7%A8%E4%B8%BB%E6%9C%BA/"/>
     
   </entry>
   
