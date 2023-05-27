@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-01-01T14:06:42.459Z</updated>
+  <updated>2023-05-27T12:05:24.169Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,94 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>爬虫基础-技术选型</title>
+    <link href="https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/"/>
+    <id>https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/</id>
+    <published>2023-05-19T15:11:03.000Z</published>
+    <updated>2023-05-27T12:05:24.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Scrapy-VS-requests-beautifulsoup&quot;&gt;&lt;a href=&quot;#Scrapy-VS-requests-beautifulsoup&quot; class=&quot;headerlink&quot; title=&quot;Scrapy VS</summary>
+        
+      
+    
+    
+    
+    <category term="LearnCrawler" scheme="https://octopuslian.github.io/categories/LearnCrawler/"/>
+    
+    
+    <category term="爬虫" scheme="https://octopuslian.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="Scrapy" scheme="https://octopuslian.github.io/tags/Scrapy/"/>
+    
+    <category term="requests" scheme="https://octopuslian.github.io/tags/requests/"/>
+    
+    <category term="beautifulsoup" scheme="https://octopuslian.github.io/tags/beautifulsoup/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Go微服务框架go-micro v3快速入门</title>
+    <link href="https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/"/>
+    <id>https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/</id>
+    <published>2023-03-07T07:41:27.000Z</published>
+    <updated>2023-05-27T13:31:07.371Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;go-micro-v3和micro-v3是什么关系？&quot;&gt;&lt;a href=&quot;#go-micro-v3和micro-v3是什么关系？&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3和micro v3是什么关系？&quot;&gt;&lt;/a&gt;go-micro v3和micro v3是什么关系？&lt;/h1&gt;&lt;h2 id=&quot;go-micro是什么？&quot;&gt;&lt;a href=&quot;#go-micro是什么？&quot; class=&quot;headerlink&quot; title=&quot;go-micro是什么？&quot;&gt;&lt;/a&gt;go-micro是什么？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一个go微服务开放框架  &lt;/li&gt;
+&lt;li&gt;Framework（程序开放框架）：用来方便编写微服务  &lt;/li&gt;
+&lt;li&gt;Clients（多语言客户端）：支持多语言访问服务端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;go-micro-v3与micro-v3的关系&quot;&gt;&lt;a href=&quot;#go-micro-v3与micro-v3的关系&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3与micro v3的关系&quot;&gt;&lt;/a&gt;go-micro v3与micro v3的关系&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;micro v3版本类似isito把基础设施抽象成能力  &lt;/li&gt;
+&lt;li&gt;micro的技术体系和官方平台绑定较多  &lt;/li&gt;
+&lt;li&gt;go-micro v3为微服务开发框架，自由度相对较高&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="LearnMicroservices" scheme="https://octopuslian.github.io/categories/LearnMicroservices/"/>
+    
+    
+    <category term="微服务" scheme="https://octopuslian.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络编程基础</title>
+    <link href="https://octopuslian.github.io/2023/03/01/network-programming-base/"/>
+    <id>https://octopuslian.github.io/2023/03/01/network-programming-base/</id>
+    <published>2023-03-01T07:59:10.000Z</published>
+    <updated>2023-05-27T12:05:24.173Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;OSI七层网络协议&quot;&gt;&lt;a href=&quot;#OSI七层网络协议&quot; class=&quot;headerlink&quot; title=&quot;OSI七层网络协议&quot;&gt;&lt;/a&gt;OSI七层网络协议&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/osi7.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;经典协议与数据包&quot;&gt;&lt;a href=&quot;#经典协议与数据包&quot; class=&quot;headerlink&quot; title=&quot;经典协议与数据包&quot;&gt;&lt;/a&gt;经典协议与数据包&lt;/h1&gt;&lt;h2 id=&quot;TCP数据包构成&quot;&gt;&lt;a href=&quot;#TCP数据包构成&quot; class=&quot;headerlink&quot; title=&quot;TCP数据包构成&quot;&gt;&lt;/a&gt;TCP数据包构成&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/TCP%E6%95%B0%E6%8D%AE%E5%8C%85%E7%BB%93%E6%9E%84.png&quot;&gt;  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnComputerNetwork" scheme="https://octopuslian.github.io/categories/LearnComputerNetwork/"/>
+    
+    
+    <category term="编程" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="网络" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="计算机" scheme="https://octopuslian.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Go代码安全指南</title>
     <link href="https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/"/>
     <id>https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/</id>
     <published>2023-01-01T14:04:42.000Z</published>
-    <updated>2023-01-01T14:06:42.459Z</updated>
+    <updated>2023-01-01T14:08:37.456Z</updated>
     
     
     <summary type="html">&lt;!-- markdown=&quot;1&quot; is required for GitHub Pages to render the TOC properly. --&gt;
@@ -77,35 +160,11 @@
   </entry>
   
   <entry>
-    <title>Kubernetes部署Prometheus+Grafana搭建可视化监控告警平台</title>
-    <link href="https://octopuslian.github.io/2022/10/13/kubernetes-deploy-prometheus-and-grafana/"/>
-    <id>https://octopuslian.github.io/2022/10/13/kubernetes-deploy-prometheus-and-grafana/</id>
-    <published>2022-10-13T02:24:14.000Z</published>
-    <updated>2022-10-13T08:54:45.361Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Prometheus介绍&quot;&gt;&lt;a href=&quot;#Prometheus介绍&quot; class=&quot;headerlink&quot; title=&quot;Prometheus介绍&quot;&gt;&lt;/a&gt;Prometheus介绍&lt;/h1&gt;&lt;h2 id=&quot;Prometheus-是什么&quot;&gt;&lt;a href=&quot;#Prometheus-是什么&quot; class=&quot;headerlink&quot; title=&quot;Prometheus 是什么&quot;&gt;&lt;/a&gt;Prometheus 是什么&lt;/h2&gt;&lt;p&gt;Prometheus（普罗米修斯）是一个最初在SoundCloud上构建的监控系统。自2012年成为社区开源项目，拥有非常活跃的开发人员和用户社区。为强调开源及独立维护，Prometheus于2016年加入云原生云计算基金会（CNCF），成为继Kubernetes之后的第二个托管项目。  &lt;/p&gt;
-&lt;h2 id=&quot;Prometheus-组成及架构&quot;&gt;&lt;a href=&quot;#Prometheus-组成及架构&quot; class=&quot;headerlink&quot; title=&quot;Prometheus 组成及架构&quot;&gt;&lt;/a&gt;Prometheus 组成及架构&lt;/h2&gt;&lt;h1 id=&quot;部署Prometheus&quot;&gt;&lt;a href=&quot;#部署Prometheus&quot; class=&quot;headerlink&quot; title=&quot;部署Prometheus&quot;&gt;&lt;/a&gt;部署Prometheus&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="prometheus" scheme="https://octopuslian.github.io/tags/prometheus/"/>
-    
-    <category term="grafana" scheme="https://octopuslian.github.io/tags/grafana/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Go语言精进——了解sync包的正确用法</title>
     <link href="https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/"/>
     <id>https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/</id>
     <published>2022-10-09T07:49:34.000Z</published>
-    <updated>2022-10-11T13:55:59.320Z</updated>
+    <updated>2023-01-01T14:08:37.452Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cs = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 模拟临界区要保护的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; mu sync.Mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Lock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Unlock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	c &amp;lt;- &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;-c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByMutex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByChan()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByMutex-8   	76766581	        15.41 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByChan-8   	    32243965	        37.59 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -476,51 +535,6 @@
     
     
     <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes集群部署WordPress网站-版本1</title>
-    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/"/>
-    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress/</id>
-    <published>2022-10-04T02:33:56.000Z</published>
-    <updated>2022-10-07T08:21:50.232Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;本文我将尝试用&lt;code&gt;Kubernetes&lt;/code&gt;集群上搭建一个&lt;code&gt;WordPress&lt;/code&gt;网站，他们的内部逻辑关系如下：&lt;br&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress/1.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;搭建步骤&quot;&gt;&lt;a href=&quot;#搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;搭建步骤&quot;&gt;&lt;/a&gt;搭建步骤&lt;/h1&gt;&lt;h2 id=&quot;编排-MariaDB-对象&quot;&gt;&lt;a href=&quot;#编排-MariaDB-对象&quot; class=&quot;headerlink&quot; title=&quot;编排 MariaDB 对象&quot;&gt;&lt;/a&gt;编排 MariaDB 对象&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MariaDB&lt;/code&gt;需要4个环境变量，比如数据库名、用户名、密码等，在&lt;code&gt;Docker&lt;/code&gt;里我们是在命令行里使用参数&lt;code&gt;--env&lt;/code&gt;，而在&lt;code&gt;Kubernetes&lt;/code&gt;里我们就应该使用&lt;strong&gt;ConfigMap&lt;/strong&gt;，为此需要定义一个&lt;code&gt;maria-cm&lt;/code&gt;对象：  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-    <category term="wordpress" scheme="https://octopuslian.github.io/tags/wordpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu安装ClickHouse</title>
-    <link href="https://octopuslian.github.io/2022/09/28/ubuntu-install-clickhouse/"/>
-    <id>https://octopuslian.github.io/2022/09/28/ubuntu-install-clickhouse/</id>
-    <published>2022-09-28T02:14:15.000Z</published>
-    <updated>2022-10-04T07:09:45.128Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;ClickHouse简介&quot;&gt;&lt;a href=&quot;#ClickHouse简介&quot; class=&quot;headerlink&quot; title=&quot;ClickHouse简介&quot;&gt;&lt;/a&gt;ClickHouse简介&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS);  &lt;/li&gt;
-&lt;li&gt;列式数据库更适合于OLAP场景(对于大多数查询而言，处理速度至少提高了100倍);&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;安装部署&quot;&gt;&lt;a href=&quot;#安装部署&quot; class=&quot;headerlink&quot; title=&quot;安装部署&quot;&gt;&lt;/a&gt;安装部署&lt;/h1&gt;&lt;h2 id=&quot;在线&quot;&gt;&lt;a href=&quot;#在线&quot; class=&quot;headerlink&quot; title=&quot;在线&quot;&gt;&lt;/a&gt;在线&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 更新&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudp apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 安装&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get install clickhouse-client clickhouse-server&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 开启服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo service clickhouse-server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 客户端连接&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 默认无密码，执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;clickhouse-client &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 有密码的话，执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;clickhouse-client --password 123456&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnClickHouse" scheme="https://octopuslian.github.io/categories/LearnClickHouse/"/>
-    
-    
-    <category term="clickhouse" scheme="https://octopuslian.github.io/tags/clickhouse/"/>
     
   </entry>
   

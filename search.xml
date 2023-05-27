@@ -1129,7 +1129,7 @@
 <p>不同角色如何做好协同，避免出现生产故障。  </p>
 ]]></content>
       <categories>
-        <category>Learn-CloudNative</category>
+        <category>LearnKubernetes</category>
       </categories>
       <tags>
         <tag>云原生</tag>
@@ -1270,6 +1270,33 @@
         <tag>厨艺</tag>
         <tag>大盘鸡</tag>
         <tag>新疆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>爬虫基础-技术选型</title>
+    <url>/2023/05/19/crawler-basic-technology-selection/</url>
+    <content><![CDATA[<h1 id="Scrapy-VS-requests-beautifulsoup"><a href="#Scrapy-VS-requests-beautifulsoup" class="headerlink" title="Scrapy VS requests+beautifulsoup"></a>Scrapy VS requests+beautifulsoup</h1><ul>
+<li>1.<code>requests</code>和<code>beautifulsoup</code>都是库，<code>scrapy</code>是框架  </li>
+<li>2.<code>scrapy</code>框架中可以加入<code>requests</code>和<code>beautifulsoup</code>  </li>
+<li>3.<code>scrapy</code>基于<code>twisted</code>，性能是最大的优势  </li>
+<li>4.<code>scrapy</code>方便拓展，提供了很多内置的功能  </li>
+<li>5.<code>scrapy</code>内置的<code>css</code>和<code>xpath selector</code>非常方便，<code>beautifulsoup</code>最大的缺点就是慢</li>
+</ul>
+<h1 id="爬虫能做什么"><a href="#爬虫能做什么" class="headerlink" title="爬虫能做什么"></a>爬虫能做什么</h1><ul>
+<li>1.搜索引擎：百度、Google  </li>
+<li>2.推荐引擎：今日头条  </li>
+<li>3.机器学习的数据样本  </li>
+<li>4.数据分析、舆情分析等</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnCrawler</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>Scrapy</tag>
+        <tag>requests</tag>
+        <tag>beautifulsoup</tag>
       </tags>
   </entry>
   <entry>
@@ -1478,48 +1505,6 @@
       </tags>
   </entry>
   <entry>
-    <title>设计原则三：里式替换</title>
-    <url>/2021/12/18/design-principle-liskov-substitution/</url>
-    <content><![CDATA[<h1 id="如何理解“里式替换原则”？"><a href="#如何理解“里式替换原则”？" class="headerlink" title="如何理解“里式替换原则”？"></a>如何理解“里式替换原则”？</h1><p>里式替换原则的英文翻译是：Liskov Substitution Principle，缩写为 LSP。<br>这个原则最早是在 1986 年由 Barbara Liskov 提出，他是这么描述这条原则的：  </p>
-<blockquote>
-<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program。  </p>
-</blockquote>
-<p>在 1996 年，Robert Martin 在他的 SOLID 原则中，重新描述了这个原则，英文原话是这样的：  </p>
-<blockquote>
-<p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it。  </p>
-</blockquote>
-<p>因此，中文描述即为：<strong>子类对象（object of subtype&#x2F;derived class）能够替换程序（program）中父类对象（object of base&#x2F;parent class）出现的任何地方，并且保证原来程序的逻辑行为（behavior）不变及正确性不被破坏。</strong>  </p>
-<p>例如，如下代码中，父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken 安全认证信息。  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> HttpClient httpClient;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transporter</span><span class="params">(HttpClient httpClient)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.httpClient = httpClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// ...use httpClient to send request</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String appId;</span><br><span class="line">    <span class="keyword">private</span> String appToken;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SecurityTransporter</span><span class="params">(HttpClient httpClient, String appId, String appToken)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(httpClient);</span><br><span class="line">        <span class="built_in">this</span>.appId = appId;</span><br><span class="line">        <span class="built_in">this</span>.appToken = appToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">demoFunction</span><span class="params">(Transporter transporter)</span> &#123;</span><br><span class="line">        <span class="type">Reuqest</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>();</span><br><span class="line">        <span class="comment">//... 省略设置 request 中数据值的代码...</span></span><br><span class="line">        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> transporter.sendRequest(request);</span><br><span class="line">        <span class="comment">//... 省略其他逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 里式替换原则</span></span><br><span class="line"><span class="type">Demo</span> <span class="variable">demo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Demo</span>();</span><br><span class="line">demo.demofunction(<span class="keyword">new</span> <span class="title class_">SecurityTransporter</span>(<span class="comment">/* 省略参数 */</span>););</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，子类 SecurityTransporter 的设计完全符合里式替换原则，可以替换父类出现的任何位置，并且原来代码的逻辑行为不变且正确性也没有被破坏。  </p>
-<p>疑问：刚刚的代码设计不就是简单利用了面向对象的多态特性吗？多态和里式替换原则说的是不是一回事呢？从刚刚的例子和定义描述来看，里式替换原则跟多态看起来确实有点类似，但实际上它们完全是两回事。为什么这么说呢？  </p>
-<p>我们还是通过刚才这个例子来解释一下：对 SecurityTransporter 类中sendRequest() 函数稍加改造一下。改造前，如果 appId 或者 appToken 没有设置，我们就不做校验；改造后，如果 appId 或者 appToken 没有设置，则直接抛出NoAuthorizationRuntimeException 未授权异常。  </p>
-<p>改造前后的代码对比如下所示：  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 改造前：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改造后：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(appId) || StringUtils.isBlank(appToken)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NoAuthorizationRuntimeException</span>(...);</span><br><span class="line">        &#125;</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在改造之后的代码中，如果传递进 demoFunction() 函数的是父类 Transporter 对象，那demoFunction() 函数并不会有异常抛出，但如果传递给 demoFunction() 函数的是子类<br>SecurityTransporter 对象，那 demoFunction() 有可能会有异常抛出。<br>尽管代码中抛出的是运行时异常（Runtime Exception），我们可以不在代码中显式地捕获处理，但子类替换父类传递进 demoFunction 函数之后，整个程序的逻辑行为有了改变。  </p>
-<p>虽然改造之后的代码仍然可以通过 Java 的多态语法，动态地用子类 SecurityTransporter来替换父类 Transporter，也并不会导致程序编译或者运行报错。但是，从设计思路上来讲，SecurityTransporter 的设计是不符合里式替换原则的。  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然从定义描述和代码实现上来看，多态和里式替换有点类似，但它们关注的角度是不一样的。<br>多态是面向对象编程的一大特性，也是面向对象编程语言的一种语法。它是一种代码实现的思路。<br>里式替换是一种设计原则，是用来指导继承关系中子类该如何设计的，子类的设计要保证在替换父类的时候，不改变原有程序的逻辑以及不破坏原有程序的正确性。  </p>
-<h1 id="哪些代码明显违背了-LSP？"><a href="#哪些代码明显违背了-LSP？" class="headerlink" title="哪些代码明显违背了 LSP？"></a>哪些代码明显违背了 LSP？</h1><p>里式替换原则还有另外一个更加能落地、更有指导意义的描述，那就是“Design By Contract”，中文翻译就是“按照协议来设计”。  </p>
-<h2 id="进一步解读"><a href="#进一步解读" class="headerlink" title="进一步解读"></a>进一步解读</h2><p>子类在设计的时候，要遵守父类的行为约定（或者叫协议）。父类定义了函数的行为约定，那子类可以改变函数的内部实现逻辑，但不能改变函数原有的行为约定。这里的行为约定包括：函数声明要实现的功能；对输入、输出、异常的约定；甚至包括注释中所罗列的任何特殊说明。实际上，定义中父类和子类之间的关系，也可以替换成接口和实现类之间的关系。  </p>
-<p>为了更好地理解这句话，我举几个违反里式替换原则的例子来解释一下。  </p>
-<h2 id="子类违背父类声明要实现的功能"><a href="#子类违背父类声明要实现的功能" class="headerlink" title="子类违背父类声明要实现的功能"></a>子类违背父类声明要实现的功能</h2><p>父类中提供的 sortOrdersByAmount() 订单排序函数，是按照金额从小到大来给订单排序的，而子类重写这个 sortOrdersByAmount() 订单排序函数之后，是按照创建日期来给订单排序的。那子类的设计就违背里式替换原则。  </p>
-<h2 id="子类违背父类对输入、输出、异常的约定"><a href="#子类违背父类对输入、输出、异常的约定" class="headerlink" title="子类违背父类对输入、输出、异常的约定"></a>子类违背父类对输入、输出、异常的约定</h2><p>在父类中，某个函数约定：运行出错的时候返回 null；获取数据为空的时候返回空集合（empty collection）。而子类重载函数之后，实现变了，运行出错返回异常（exception），获取不到数据返回 null。那子类的设计就违背里式替换原则。  </p>
-<p>在父类中，某个函数约定，输入数据可以是任意整数，但子类实现的时候，只允许输入数据是正整数，负数就抛出，也就是说，子类对输入的数据的校验比父类更加严格，那子类的设计就违背了里式替换原则。  </p>
-<p>在父类中，某个函数约定，只会抛出 ArgumentNullException 异常，那子类的设计实现中只允许抛出 ArgumentNullException 异常，任何其他异常的抛出，都会导致子类违背里式替换原则。  </p>
-<h2 id="子类违背父类注释中所罗列的任何特殊说明"><a href="#子类违背父类注释中所罗列的任何特殊说明" class="headerlink" title="子类违背父类注释中所罗列的任何特殊说明"></a>子类违背父类注释中所罗列的任何特殊说明</h2><p>父类中定义的 withdraw() 提现函数的注释是这么写的：“用户的提现金额不得超过账户余额……”，而子类重写 withdraw() 函数之后，针对 VIP 账号实现了透支提现的功能，也就是提现金额可以大于账户余额，那这个子类的设计也是不符合里式替换原则的。  </p>
-<h2 id="判断子类的设计实现是否违背里式替换原则的小窍门"><a href="#判断子类的设计实现是否违背里式替换原则的小窍门" class="headerlink" title="判断子类的设计实现是否违背里式替换原则的小窍门"></a>判断子类的设计实现是否违背里式替换原则的小窍门</h2><p>拿父类的单元测试去验证子类的代码。如果某些单元测试运行失败，就有可能说明，子类的设计实现没有完全地遵守父类的约定，子类有可能违背了里式替换原则。  </p>
-]]></content>
-      <categories>
-        <category>Learn-DesignPattern</category>
-      </categories>
-      <tags>
-        <tag>设计原则</tag>
-        <tag>里式替换原则</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>设计原则二：开闭</title>
     <url>/2021/12/18/design-principle-open-close/</url>
     <content><![CDATA[<h1 id="如何理解“对扩展开放、修改关闭”？"><a href="#如何理解“对扩展开放、修改关闭”？" class="headerlink" title="如何理解“对扩展开放、修改关闭”？"></a>如何理解“对扩展开放、修改关闭”？</h1><p>开闭原则的英文全称是 Open Closed Principle，简写为 OCP。<br>它的英文描述是：software entities (modules, classes, functions, etc.) should be open for extension ,but closed for modification。我们把它翻译成中文就是：软件实体（模块、类、方法等）应该“对扩展开放、对修改关闭”。  </p>
@@ -1583,6 +1568,48 @@
       <tags>
         <tag>设计原则</tag>
         <tag>开闭原则</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计原则三：里式替换</title>
+    <url>/2021/12/18/design-principle-liskov-substitution/</url>
+    <content><![CDATA[<h1 id="如何理解“里式替换原则”？"><a href="#如何理解“里式替换原则”？" class="headerlink" title="如何理解“里式替换原则”？"></a>如何理解“里式替换原则”？</h1><p>里式替换原则的英文翻译是：Liskov Substitution Principle，缩写为 LSP。<br>这个原则最早是在 1986 年由 Barbara Liskov 提出，他是这么描述这条原则的：  </p>
+<blockquote>
+<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program。  </p>
+</blockquote>
+<p>在 1996 年，Robert Martin 在他的 SOLID 原则中，重新描述了这个原则，英文原话是这样的：  </p>
+<blockquote>
+<p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it。  </p>
+</blockquote>
+<p>因此，中文描述即为：<strong>子类对象（object of subtype&#x2F;derived class）能够替换程序（program）中父类对象（object of base&#x2F;parent class）出现的任何地方，并且保证原来程序的逻辑行为（behavior）不变及正确性不被破坏。</strong>  </p>
+<p>例如，如下代码中，父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken 安全认证信息。  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> HttpClient httpClient;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transporter</span><span class="params">(HttpClient httpClient)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.httpClient = httpClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// ...use httpClient to send request</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String appId;</span><br><span class="line">    <span class="keyword">private</span> String appToken;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SecurityTransporter</span><span class="params">(HttpClient httpClient, String appId, String appToken)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(httpClient);</span><br><span class="line">        <span class="built_in">this</span>.appId = appId;</span><br><span class="line">        <span class="built_in">this</span>.appToken = appToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">demoFunction</span><span class="params">(Transporter transporter)</span> &#123;</span><br><span class="line">        <span class="type">Reuqest</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>();</span><br><span class="line">        <span class="comment">//... 省略设置 request 中数据值的代码...</span></span><br><span class="line">        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> transporter.sendRequest(request);</span><br><span class="line">        <span class="comment">//... 省略其他逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 里式替换原则</span></span><br><span class="line"><span class="type">Demo</span> <span class="variable">demo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Demo</span>();</span><br><span class="line">demo.demofunction(<span class="keyword">new</span> <span class="title class_">SecurityTransporter</span>(<span class="comment">/* 省略参数 */</span>););</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，子类 SecurityTransporter 的设计完全符合里式替换原则，可以替换父类出现的任何位置，并且原来代码的逻辑行为不变且正确性也没有被破坏。  </p>
+<p>疑问：刚刚的代码设计不就是简单利用了面向对象的多态特性吗？多态和里式替换原则说的是不是一回事呢？从刚刚的例子和定义描述来看，里式替换原则跟多态看起来确实有点类似，但实际上它们完全是两回事。为什么这么说呢？  </p>
+<p>我们还是通过刚才这个例子来解释一下：对 SecurityTransporter 类中sendRequest() 函数稍加改造一下。改造前，如果 appId 或者 appToken 没有设置，我们就不做校验；改造后，如果 appId 或者 appToken 没有设置，则直接抛出NoAuthorizationRuntimeException 未授权异常。  </p>
+<p>改造前后的代码对比如下所示：  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 改造前：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改造后：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(appId) || StringUtils.isBlank(appToken)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NoAuthorizationRuntimeException</span>(...);</span><br><span class="line">        &#125;</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在改造之后的代码中，如果传递进 demoFunction() 函数的是父类 Transporter 对象，那demoFunction() 函数并不会有异常抛出，但如果传递给 demoFunction() 函数的是子类<br>SecurityTransporter 对象，那 demoFunction() 有可能会有异常抛出。<br>尽管代码中抛出的是运行时异常（Runtime Exception），我们可以不在代码中显式地捕获处理，但子类替换父类传递进 demoFunction 函数之后，整个程序的逻辑行为有了改变。  </p>
+<p>虽然改造之后的代码仍然可以通过 Java 的多态语法，动态地用子类 SecurityTransporter来替换父类 Transporter，也并不会导致程序编译或者运行报错。但是，从设计思路上来讲，SecurityTransporter 的设计是不符合里式替换原则的。  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然从定义描述和代码实现上来看，多态和里式替换有点类似，但它们关注的角度是不一样的。<br>多态是面向对象编程的一大特性，也是面向对象编程语言的一种语法。它是一种代码实现的思路。<br>里式替换是一种设计原则，是用来指导继承关系中子类该如何设计的，子类的设计要保证在替换父类的时候，不改变原有程序的逻辑以及不破坏原有程序的正确性。  </p>
+<h1 id="哪些代码明显违背了-LSP？"><a href="#哪些代码明显违背了-LSP？" class="headerlink" title="哪些代码明显违背了 LSP？"></a>哪些代码明显违背了 LSP？</h1><p>里式替换原则还有另外一个更加能落地、更有指导意义的描述，那就是“Design By Contract”，中文翻译就是“按照协议来设计”。  </p>
+<h2 id="进一步解读"><a href="#进一步解读" class="headerlink" title="进一步解读"></a>进一步解读</h2><p>子类在设计的时候，要遵守父类的行为约定（或者叫协议）。父类定义了函数的行为约定，那子类可以改变函数的内部实现逻辑，但不能改变函数原有的行为约定。这里的行为约定包括：函数声明要实现的功能；对输入、输出、异常的约定；甚至包括注释中所罗列的任何特殊说明。实际上，定义中父类和子类之间的关系，也可以替换成接口和实现类之间的关系。  </p>
+<p>为了更好地理解这句话，我举几个违反里式替换原则的例子来解释一下。  </p>
+<h2 id="子类违背父类声明要实现的功能"><a href="#子类违背父类声明要实现的功能" class="headerlink" title="子类违背父类声明要实现的功能"></a>子类违背父类声明要实现的功能</h2><p>父类中提供的 sortOrdersByAmount() 订单排序函数，是按照金额从小到大来给订单排序的，而子类重写这个 sortOrdersByAmount() 订单排序函数之后，是按照创建日期来给订单排序的。那子类的设计就违背里式替换原则。  </p>
+<h2 id="子类违背父类对输入、输出、异常的约定"><a href="#子类违背父类对输入、输出、异常的约定" class="headerlink" title="子类违背父类对输入、输出、异常的约定"></a>子类违背父类对输入、输出、异常的约定</h2><p>在父类中，某个函数约定：运行出错的时候返回 null；获取数据为空的时候返回空集合（empty collection）。而子类重载函数之后，实现变了，运行出错返回异常（exception），获取不到数据返回 null。那子类的设计就违背里式替换原则。  </p>
+<p>在父类中，某个函数约定，输入数据可以是任意整数，但子类实现的时候，只允许输入数据是正整数，负数就抛出，也就是说，子类对输入的数据的校验比父类更加严格，那子类的设计就违背了里式替换原则。  </p>
+<p>在父类中，某个函数约定，只会抛出 ArgumentNullException 异常，那子类的设计实现中只允许抛出 ArgumentNullException 异常，任何其他异常的抛出，都会导致子类违背里式替换原则。  </p>
+<h2 id="子类违背父类注释中所罗列的任何特殊说明"><a href="#子类违背父类注释中所罗列的任何特殊说明" class="headerlink" title="子类违背父类注释中所罗列的任何特殊说明"></a>子类违背父类注释中所罗列的任何特殊说明</h2><p>父类中定义的 withdraw() 提现函数的注释是这么写的：“用户的提现金额不得超过账户余额……”，而子类重写 withdraw() 函数之后，针对 VIP 账号实现了透支提现的功能，也就是提现金额可以大于账户余额，那这个子类的设计也是不符合里式替换原则的。  </p>
+<h2 id="判断子类的设计实现是否违背里式替换原则的小窍门"><a href="#判断子类的设计实现是否违背里式替换原则的小窍门" class="headerlink" title="判断子类的设计实现是否违背里式替换原则的小窍门"></a>判断子类的设计实现是否违背里式替换原则的小窍门</h2><p>拿父类的单元测试去验证子类的代码。如果某些单元测试运行失败，就有可能说明，子类的设计实现没有完全地遵守父类的约定，子类有可能违背了里式替换原则。  </p>
+]]></content>
+      <categories>
+        <category>Learn-DesignPattern</category>
+      </categories>
+      <tags>
+        <tag>设计原则</tag>
+        <tag>里式替换原则</tag>
       </tags>
   </entry>
   <entry>
@@ -5426,6 +5453,34 @@
         <tag>开发</tag>
         <tag>优点</tag>
         <tag>缺点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go微服务框架go-micro v3快速入门</title>
+    <url>/2023/03/07/go-micro-v3-quick-get-start/</url>
+    <content><![CDATA[<h1 id="go-micro-v3和micro-v3是什么关系？"><a href="#go-micro-v3和micro-v3是什么关系？" class="headerlink" title="go-micro v3和micro v3是什么关系？"></a>go-micro v3和micro v3是什么关系？</h1><h2 id="go-micro是什么？"><a href="#go-micro是什么？" class="headerlink" title="go-micro是什么？"></a>go-micro是什么？</h2><ul>
+<li>一个go微服务开放框架  </li>
+<li>Framework（程序开放框架）：用来方便编写微服务  </li>
+<li>Clients（多语言客户端）：支持多语言访问服务端</li>
+</ul>
+<h2 id="go-micro-v3与micro-v3的关系"><a href="#go-micro-v3与micro-v3的关系" class="headerlink" title="go-micro v3与micro v3的关系"></a>go-micro v3与micro v3的关系</h2><ul>
+<li>micro v3版本类似isito把基础设施抽象成能力  </li>
+<li>micro的技术体系和官方平台绑定较多  </li>
+<li>go-micro v3为微服务开发框架，自由度相对较高</li>
+</ul>
+<h1 id="go-micro-v3整体架构"><a href="#go-micro-v3整体架构" class="headerlink" title="go-micro v3整体架构"></a>go-micro v3整体架构</h1><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li>注册-Registry：提供了服务发现机制  </li>
+<li>选择器-Selector：能够实现负载均衡  </li>
+<li>传输-Transport：服务与服务之间通信接口  </li>
+<li>代理-Broker：提供异步通信的消息发布&#x2F;订阅接口  </li>
+<li>编码-Codec：消息传输到两端时进行编码与解码</li>
+</ul>
+]]></content>
+      <categories>
+        <category>LearnMicroservices</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -9579,7 +9634,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#x2e;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#46;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -10343,40 +10398,6 @@
       <tags>
         <tag>kubernetes</tag>
         <tag>wordpress</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kubernetes部署Prometheus+Grafana搭建可视化监控告警平台</title>
-    <url>/2022/10/13/kubernetes-deploy-prometheus-and-grafana/</url>
-    <content><![CDATA[<h1 id="Prometheus介绍"><a href="#Prometheus介绍" class="headerlink" title="Prometheus介绍"></a>Prometheus介绍</h1><h2 id="Prometheus-是什么"><a href="#Prometheus-是什么" class="headerlink" title="Prometheus 是什么"></a>Prometheus 是什么</h2><p>Prometheus（普罗米修斯）是一个最初在SoundCloud上构建的监控系统。自2012年成为社区开源项目，拥有非常活跃的开发人员和用户社区。为强调开源及独立维护，Prometheus于2016年加入云原生云计算基金会（CNCF），成为继Kubernetes之后的第二个托管项目。  </p>
-<h2 id="Prometheus-组成及架构"><a href="#Prometheus-组成及架构" class="headerlink" title="Prometheus 组成及架构"></a>Prometheus 组成及架构</h2><h1 id="部署Prometheus"><a href="#部署Prometheus" class="headerlink" title="部署Prometheus"></a>部署Prometheus</h1><h2 id="使用RBAC进行授权"><a href="#使用RBAC进行授权" class="headerlink" title="使用RBAC进行授权"></a>使用RBAC进行授权</h2><p>RBAC（Role-Based Access Control，基于角色的访问控制）：负责完成授权（Authorization）工作。<br>编写授权yaml：  </p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/10/13/kubernetes-deploy-prometheus-and-grafana/prometheus1.png">  </p>
-<ul>
-<li>Prometheus Server：收集指标和存储时间序列数据，并提供查询接口  </li>
-<li>ClientLibrary：客户端库  </li>
-<li>Push Gateway：短期存储指标数据。主要用于临时性的任务  </li>
-<li>Exporters：采集已有的第三方服务监控指标并暴露metrics  </li>
-<li>Alertmanager：告警  </li>
-<li>Web UI：简单的Web控制台</li>
-</ul>
-<h1 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h1><h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># git clone -b release-0.10 https://github.com/prometheus-operator/kube-prometheus.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="进入目录修改镜像地址和svc为NodePort"><a href="#进入目录修改镜像地址和svc为NodePort" class="headerlink" title="进入目录修改镜像地址和svc为NodePort"></a>进入目录修改镜像地址和svc为NodePort</h2><p>若访问Google畅通无阻即可无需修改，跳过此步骤。  </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> kube-prometheus/manifests</span><br><span class="line"><span class="comment"># 修改镜像地址</span></span><br><span class="line">sed -i <span class="string">&quot;s#quay.io/prometheus/#registry.cn-hangzhou.aliyuncs.com/chenby/#g&quot;</span> *.yaml</span><br><span class="line">sed -i <span class="string">&quot;s#quay.io/brancz/#registry.cn-hangzhou.aliyuncs.com/chenby/#g&quot;</span> *.yaml</span><br><span class="line">sed -i <span class="string">&quot;s#k8s.gcr.io/prometheus-adapter/#registry.cn-hangzhou.aliyuncs.com/chenby/#g&quot;</span> *.yaml</span><br><span class="line">sed -i <span class="string">&quot;s#quay.io/prometheus-operator/#registry.cn-hangzhou.aliyuncs.com/chenby/#g&quot;</span> *.yaml</span><br><span class="line">sed -i <span class="string">&quot;s#k8s.gcr.io/kube-state-metrics/#registry.cn-hangzhou.aliyuncs.com/chenby/#g&quot;</span> *.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改svc为NodePort</span></span><br><span class="line">sed -i  <span class="string">&quot;/ports:/i\  type: NodePort&quot;</span> grafana-service.yaml</span><br><span class="line">sed -i  <span class="string">&quot;/targetPort: http/i\    nodePort: 31100&quot;</span> grafana-service.yaml</span><br><span class="line"></span><br><span class="line">sed -i  <span class="string">&quot;/ports:/i\  type: NodePort&quot;</span> prometheus-service.yaml</span><br><span class="line">sed -i  <span class="string">&quot;/targetPort: web/i\    nodePort: 31200&quot;</span> prometheus-service.yaml</span><br><span class="line">sed -i  <span class="string">&quot;/targetPort: reloader-web/i\    nodePort: 31300&quot;</span> prometheus-service.yaml</span><br><span class="line"></span><br><span class="line">sed -i  <span class="string">&quot;/ports:/i\  type: NodePort&quot;</span> alertmanager-service.yaml</span><br><span class="line">sed -i  <span class="string">&quot;/targetPort: web/i\    nodePort: 31400&quot;</span> alertmanager-service.yaml</span><br><span class="line">sed -i  <span class="string">&quot;/targetPort: reloader-web/i\    nodePort: 31500&quot;</span> alertmanager-service.yaml</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl create -f /root/kube-prometheus/manifests/setup</span><br><span class="line"></span><br><span class="line">kubectl create -f /root/kube-prometheus/manifests/</span><br></pre></td></tr></table></figure>
-
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://prometheus.io/">Prometheus官网</a><br><a href="https://github.com/prometheus">Github-Prometheus</a><br><a href="https://zhuanlan.zhihu.com/p/456205833">知乎-如何部署 Prometheus 监控K8S</a><br><a href="https://cloud.tencent.com/developer/article/1986296">kubernetes（k8s）安装 Prometheus + Grafana</a></p>
-]]></content>
-      <categories>
-        <category>LearnKubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>prometheus</tag>
-        <tag>grafana</tag>
       </tags>
   </entry>
   <entry>
@@ -13253,6 +13274,69 @@
       </tags>
   </entry>
   <entry>
+    <title>网络编程基础</title>
+    <url>/2023/03/01/network-programming-base/</url>
+    <content><![CDATA[<h1 id="OSI七层网络协议"><a href="#OSI七层网络协议" class="headerlink" title="OSI七层网络协议"></a>OSI七层网络协议</h1><p><img src="/2023/03/01/network-programming-base/osi7.png">  </p>
+<h1 id="经典协议与数据包"><a href="#经典协议与数据包" class="headerlink" title="经典协议与数据包"></a>经典协议与数据包</h1><h2 id="TCP数据包构成"><a href="#TCP数据包构成" class="headerlink" title="TCP数据包构成"></a>TCP数据包构成</h2><p><img src="/2023/03/01/network-programming-base/TCP%E6%95%B0%E6%8D%AE%E5%8C%85%E7%BB%93%E6%9E%84.png">  </p>
+<p><img src="/2023/03/01/network-programming-base/TCP%E6%95%B0%E6%8D%AE%E5%8C%85%E7%BB%93%E6%9E%842.png">  </p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p><img src="/./network-programming-base/http%E5%8D%8F%E8%AE%AE.png">  </p>
+<h2 id="WebSocket握手协议"><a href="#WebSocket握手协议" class="headerlink" title="WebSocket握手协议"></a>WebSocket握手协议</h2><p><img src="/2023/03/01/network-programming-base/Webscoket%E5%8D%8F%E8%AE%AE.png">  </p>
+<h2 id="WebSocket-Data协议"><a href="#WebSocket-Data协议" class="headerlink" title="WebSocket Data协议"></a>WebSocket Data协议</h2><p><img src="/2023/03/01/network-programming-base/Webscoket-Data%E5%8D%8F%E8%AE%AE.png">  </p>
+<h1 id="TCP的三次握手与四次挥手"><a href="#TCP的三次握手与四次挥手" class="headerlink" title="TCP的三次握手与四次挥手"></a>TCP的三次握手与四次挥手</h1><ul>
+<li>三次握手的最主要目的是保证连接是双工（发送和接收可以同时执行）的，可靠更多的是通过重传机制来保证的。  </li>
+<li>因为连接是全双工的，双方必须都收到对方的<code>FIN</code>包及确认才可以关闭。</li>
+</ul>
+<h2 id="三次握手连接"><a href="#三次握手连接" class="headerlink" title="三次握手连接"></a>三次握手连接</h2><p><img src="/2023/03/01/network-programming-base/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">  </p>
+<h2 id="四次回收关闭"><a href="#四次回收关闭" class="headerlink" title="四次回收关闭"></a>四次回收关闭</h2><p><img src="/2023/03/01/network-programming-base/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%85%B3%E9%97%AD.png">  </p>
+<ul>
+<li>主动关闭方发送<code>FINISH</code>包请求关闭；  </li>
+<li>被动关闭方回复<code>ACK</code>包表示已经收到这个请求；  </li>
+<li>被动关闭方完成关闭操作后，回复<code>FINISH</code>包，表示可以关闭了；  </li>
+<li>主动关闭方再发送一次<code>ACK</code>包表示确认关闭；  </li>
+<li>两方都进入了<code>CLOSE</code>状态。</li>
+</ul>
+<h2 id="为什么time-wait需要等待2MSL？"><a href="#为什么time-wait需要等待2MSL？" class="headerlink" title="为什么time_wait需要等待2MSL？"></a>为什么time_wait需要等待2MSL？</h2><ul>
+<li>MSL：Maximum Segment Lifetime，30秒-1分钟  </li>
+<li>保证TCP协议的全双工连接能够可靠关闭  </li>
+<li>保证这次连接的重复数据段从网络中消失</li>
+</ul>
+<h2 id="为什么会出现大量close-wait？"><a href="#为什么会出现大量close-wait？" class="headerlink" title="为什么会出现大量close_wait？"></a>为什么会出现大量close_wait？</h2><ul>
+<li>首先<code>close_wait</code>一般出现在被动关闭方  </li>
+<li>并发请求太多导致  </li>
+<li>被动关闭方未及时释放端口资源导致</li>
+</ul>
+<p>代码  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1、监听端口</span></span><br><span class="line">	listener, err := net.Listen(<span class="string">&quot;tcp&quot;</span>, <span class="string">&quot;0.0.0.0:9090&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;listen fail, err: %v\n&quot;</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//2.建立套接字连接</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		conn, err := listener.Accept()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;accept fail, err: %v\n&quot;</span>, err)</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3. 创建处理协程</span></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(conn net.Conn)</span></span> &#123;</span><br><span class="line">			<span class="comment">//defer conn.Close() //<span class="doctag">TODO:</span>思考-这里不填写会有啥问题？</span></span><br><span class="line">			<span class="keyword">for</span> &#123;</span><br><span class="line">				<span class="keyword">var</span> buf [<span class="number">128</span>]<span class="type">byte</span></span><br><span class="line">				n, err := conn.Read(buf[:])</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					fmt.Printf(<span class="string">&quot;read from connect failed, err: %v\n&quot;</span>, err)</span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">				&#125;</span><br><span class="line">				str := <span class="type">string</span>(buf[:n])</span><br><span class="line">				fmt.Printf(<span class="string">&quot;receive from client, data: %v\n&quot;</span>, str)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(conn)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="TCP的拥塞控制和流量控制"><a href="#TCP的拥塞控制和流量控制" class="headerlink" title="TCP的拥塞控制和流量控制"></a>TCP的拥塞控制和流量控制</h1><h2 id="TCP为什么需要流量控制？"><a href="#TCP为什么需要流量控制？" class="headerlink" title="TCP为什么需要流量控制？"></a>TCP为什么需要流量控制？</h2><ul>
+<li>由于通讯双方网速不同，通讯任一方发送过快都会导致对方的消息处理不过来，所以就需要把数据放到缓冲区中；  </li>
+<li>如果缓冲区已经满了，发送方还在疯狂发送，那接收方只能把数据包丢弃。因此我们需要控制发送速率。  </li>
+<li>我们缓冲区剩余大小称之为接收窗口，用变量<code>win</code>表示。如果<code>win=0</code>，则发送方停止发送。</li>
+</ul>
+<p><img src="/2023/03/01/network-programming-base/TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6.png">  </p>
+<h2 id="TCP为什么需要拥塞控制？"><a href="#TCP为什么需要拥塞控制？" class="headerlink" title="TCP为什么需要拥塞控制？"></a>TCP为什么需要拥塞控制？</h2><ul>
+<li>流量控制与拥塞控制是两个概念，拥塞控制是调整网络的负载；  </li>
+<li>接收方网络资源繁忙，因未及时响应<code>ACK</code>导致发送方重传大量数据，这样将会导致网络更加拥堵  </li>
+<li>拥塞控制是动态调整<code>win</code>大小，不只是依赖缓冲区大小确定窗口大小。</li>
+</ul>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><ul>
+<li>慢开始和拥塞避免  </li>
+<li>快速重传和快速恢复</li>
+</ul>
+<p><img src="/2023/03/01/network-programming-base/%E6%85%A2%E5%BC%80%E5%A7%8B%E5%92%8C%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D.png">  </p>
+<p><img src="/2023/03/01/network-programming-base/%E6%85%A2%E5%BC%80%E5%A7%8B%E5%92%8C%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D2.png">  </p>
+<h2 id="优化：快重传和快恢复"><a href="#优化：快重传和快恢复" class="headerlink" title="优化：快重传和快恢复"></a>优化：快重传和快恢复</h2><p><img src="/2023/03/01/network-programming-base/%E5%BF%AB%E9%87%8D%E4%BC%A0%E5%92%8C%E5%BF%AB%E6%81%A2%E5%A4%8D.png">  </p>
+<h1 id="为什么会出现粘包、拆包，如何处理"><a href="#为什么会出现粘包、拆包，如何处理" class="headerlink" title="为什么会出现粘包、拆包，如何处理"></a>为什么会出现粘包、拆包，如何处理</h1><h1 id="基于Golang实现TCP、UDP、HTTP服务器与客户端"><a href="#基于Golang实现TCP、UDP、HTTP服务器与客户端" class="headerlink" title="基于Golang实现TCP、UDP、HTTP服务器与客户端"></a>基于Golang实现TCP、UDP、HTTP服务器与客户端</h1>]]></content>
+      <categories>
+        <category>LearnComputerNetwork</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>网络</tag>
+        <tag>计算机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>新的开始</title>
     <url>/2019/01/14/new-begin/</url>
     <content><![CDATA[<h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><p>大家好，我的网名叫不会飞的章鱼（Zoctopus Zhang），活跃在简书、豆瓣、博客园和Github上，之前在博客园上坚持写技术博客长达两年半，截止目前已发布了两百多篇文章共23万人+的访问量，同时在简书上写文章积累了有十二万余字。然而，我一直很想创建一个自己的Blog，记录一些平时工作和生活上的收获和心得。<br>今天这个愿望终于实现了，在此我很感谢我的好友冰水鉴心的远程帮助。  </p>
@@ -14640,6 +14724,60 @@
       </tags>
   </entry>
   <entry>
+    <title>时间的价值</title>
+    <url>/2020/05/21/the-value-of-time/</url>
+    <content><![CDATA[<p>今天，收到一位学弟发来的消息，他收到了北京字节的<code>offer</code>，薪资五位数，本科应届毕业生，看了他发的薪资，讲真我酸了&#x2F;(ㄒoㄒ)&#x2F;~~  </p>
+<p>让我不禁想起上个月顿悟出的一件事：<strong>时间的价值，到底怎么体现时间的价值呢？</strong>  </p>
+<p>我记得，我刚毕业入职一家公司，做图形学方面的研发，有一次下班，和我的导师并肩走向地铁站时，我说我多么喜欢这一份工作，他很好奇的问我：你真的喜欢做这个吗？别这么早下定论，至少我到现在还没有找到我喜欢做什么。  </p>
+<p>也许只是他随口一说，但此时此景，他的话又放佛在我耳边清晰的回响起来：你真的喜欢做这个吗…  </p>
+<p>在后面持续至少20个月的工作生涯里，我兴奋过，厌倦过，苦恼过，迷茫过，直到上个月我才突然顿悟出来：喜欢与不喜欢，无非就是觉得自己是否能体现其存在的价值，如果在他人眼来这份职业（或者是你正在做的事情）价值为0，但我自己却非常感兴趣，那它就是无价的；如果只是用来谋生，那么唯有<code>money</code>，才是检验你过的是否有价值的一个衡量标准。  </p>
+<p>最后，希望我可以早日找到————让自己不惜一切也要拼命守护的东西。  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>价值</tag>
+        <tag>时间</tag>
+        <tag>人生</tag>
+        <tag>守护</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>世界又少了一个单纯善良的人</title>
+    <url>/2019/11/14/the-world-has-lost-a-simple-and-kind-human/</url>
+    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前天女朋友回来告诉我，说她在下班途中碰到一个马来西亚的华人，来成都出差，在问路，于是她和那位华人多聊了几句，昨天回来后闷闷不乐，还流眼泪，我再三询问原因，她才告诉我说被骗了，自己怎么这么傻…被骗的过程我就不赘述了，网上搜关键字<strong>买烟骗局</strong>。  </p>
+<p>而我写下这篇文章，一是阐述这样的一种骗局，二是感慨，世界上又少了一位单纯善良的人。  </p>
+<h2 id="善良有错吗？"><a href="#善良有错吗？" class="headerlink" title="善良有错吗？"></a>善良有错吗？</h2><p>我记得，从小学，初中，高中这十二年的教育中，无论是从语文书，还是思想品德书上，都告诉我们要做一个正直善良的人，要孝敬父母，尊老爱幼，朋友有难要伸出援手，遇到困难学会忍受，相信雨过天晴这样大篇章的废话套话。  </p>
+<p>但是，要做到这些的前提，就是你要有资本。</p>
+<p>在这个星球上生活了二十三年，有一些本来需要遗忘又不经意回想的瞬间，让我不得不在此时此景下记录下来，例如  </p>
+<ul>
+<li>上高中时，在乌鲁木齐坐公交，碰到一个老头(这么称呼说明我并不尊重他)投了币，径直走向一个上面坐着小孩的座位，把他拉了起来，自己坐了下去，给老人让座没有错，但请对自己鲁莽的动作说一声抱歉，因为你确实吓到那位小孩了；  </li>
+<li>去上大学，坐十三个小时的火车，想上卫生间，在门口排队时，有些大人不顾其他人的感受，直接插队；  </li>
+<li>在大学里，帮助某些人，明明主动权在自己手上，却偏偏别人以为这是你必须帮我的义务(真是可笑)；  </li>
+<li>晚上休息时，舍友外放看直播，我吵得睡不着，但当我练习吹口琴时旁边人就不耐烦，那一刻，我有了脑子一热砍人的想法；  </li>
+<li>上大三时一位老师直接和我谈一笔和算法竞赛有关的交易，无奈我很讨厌他，委婉的拒绝了，结果那门科目我就挂了(当时我预测我的卷面分至少在80分以上)，原来，老师没有那么神圣，他们也是人，也有自己的七情六欲;  </li>
+<li>去济南玩时，一天内碰到两个乞讨者，追着我叫我给他and她一点钱；  </li>
+<li>大学毕业，独自去一座城市生活，在软件园遇到一个女子，问我借20元坐地铁，说明天给我，转账后第二天微信被拉黑；</li>
+</ul>
+<p>所以，善良有错吗？  </p>
+<p>善良没有错，但是你要有资本，有承受贡献善良后的风险。  </p>
+<p>如果没有资本，即使被所谓的社会道德谴责，我也会无动于衷。  </p>
+<p>由于女朋友被骗的金额够不到2000，不构成诈骗罪，所以到公安局只是立案，不会调查，具体进展我会及时更新，而我只能在下班时在诈骗地点附近转悠，期待都找到骗女友钱的骗子，如果真能找到，我一定要给上一拳头，顺便补上几脚。  </p>
+<p><strong>我可以一直保持善良，在心里立一尊佛，但是当佛倒了，我就会变成魔。</strong>  </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/278929215/answer/404243094">知乎_被骗买两条中华烟？</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>社会</tag>
+        <tag>骗局</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>代码之丑</title>
     <url>/2022/01/04/the-ugly-code/</url>
     <content><![CDATA[<h1 id="坏味道"><a href="#坏味道" class="headerlink" title="坏味道"></a>坏味道</h1><h2 id="缺乏业务含义的命名"><a href="#缺乏业务含义的命名" class="headerlink" title="缺乏业务含义的命名"></a>缺乏业务含义的命名</h2><h3 id="错误命名"><a href="#错误命名" class="headerlink" title="错误命名"></a>错误命名</h3><ul>
@@ -14803,60 +14941,6 @@
       <tags>
         <tag>规范</tag>
         <tag>代码风格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>时间的价值</title>
-    <url>/2020/05/21/the-value-of-time/</url>
-    <content><![CDATA[<p>今天，收到一位学弟发来的消息，他收到了北京字节的<code>offer</code>，薪资五位数，本科应届毕业生，看了他发的薪资，讲真我酸了&#x2F;(ㄒoㄒ)&#x2F;~~  </p>
-<p>让我不禁想起上个月顿悟出的一件事：<strong>时间的价值，到底怎么体现时间的价值呢？</strong>  </p>
-<p>我记得，我刚毕业入职一家公司，做图形学方面的研发，有一次下班，和我的导师并肩走向地铁站时，我说我多么喜欢这一份工作，他很好奇的问我：你真的喜欢做这个吗？别这么早下定论，至少我到现在还没有找到我喜欢做什么。  </p>
-<p>也许只是他随口一说，但此时此景，他的话又放佛在我耳边清晰的回响起来：你真的喜欢做这个吗…  </p>
-<p>在后面持续至少20个月的工作生涯里，我兴奋过，厌倦过，苦恼过，迷茫过，直到上个月我才突然顿悟出来：喜欢与不喜欢，无非就是觉得自己是否能体现其存在的价值，如果在他人眼来这份职业（或者是你正在做的事情）价值为0，但我自己却非常感兴趣，那它就是无价的；如果只是用来谋生，那么唯有<code>money</code>，才是检验你过的是否有价值的一个衡量标准。  </p>
-<p>最后，希望我可以早日找到————让自己不惜一切也要拼命守护的东西。  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>价值</tag>
-        <tag>时间</tag>
-        <tag>人生</tag>
-        <tag>守护</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>世界又少了一个单纯善良的人</title>
-    <url>/2019/11/14/the-world-has-lost-a-simple-and-kind-human/</url>
-    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前天女朋友回来告诉我，说她在下班途中碰到一个马来西亚的华人，来成都出差，在问路，于是她和那位华人多聊了几句，昨天回来后闷闷不乐，还流眼泪，我再三询问原因，她才告诉我说被骗了，自己怎么这么傻…被骗的过程我就不赘述了，网上搜关键字<strong>买烟骗局</strong>。  </p>
-<p>而我写下这篇文章，一是阐述这样的一种骗局，二是感慨，世界上又少了一位单纯善良的人。  </p>
-<h2 id="善良有错吗？"><a href="#善良有错吗？" class="headerlink" title="善良有错吗？"></a>善良有错吗？</h2><p>我记得，从小学，初中，高中这十二年的教育中，无论是从语文书，还是思想品德书上，都告诉我们要做一个正直善良的人，要孝敬父母，尊老爱幼，朋友有难要伸出援手，遇到困难学会忍受，相信雨过天晴这样大篇章的废话套话。  </p>
-<p>但是，要做到这些的前提，就是你要有资本。</p>
-<p>在这个星球上生活了二十三年，有一些本来需要遗忘又不经意回想的瞬间，让我不得不在此时此景下记录下来，例如  </p>
-<ul>
-<li>上高中时，在乌鲁木齐坐公交，碰到一个老头(这么称呼说明我并不尊重他)投了币，径直走向一个上面坐着小孩的座位，把他拉了起来，自己坐了下去，给老人让座没有错，但请对自己鲁莽的动作说一声抱歉，因为你确实吓到那位小孩了；  </li>
-<li>去上大学，坐十三个小时的火车，想上卫生间，在门口排队时，有些大人不顾其他人的感受，直接插队；  </li>
-<li>在大学里，帮助某些人，明明主动权在自己手上，却偏偏别人以为这是你必须帮我的义务(真是可笑)；  </li>
-<li>晚上休息时，舍友外放看直播，我吵得睡不着，但当我练习吹口琴时旁边人就不耐烦，那一刻，我有了脑子一热砍人的想法；  </li>
-<li>上大三时一位老师直接和我谈一笔和算法竞赛有关的交易，无奈我很讨厌他，委婉的拒绝了，结果那门科目我就挂了(当时我预测我的卷面分至少在80分以上)，原来，老师没有那么神圣，他们也是人，也有自己的七情六欲;  </li>
-<li>去济南玩时，一天内碰到两个乞讨者，追着我叫我给他and她一点钱；  </li>
-<li>大学毕业，独自去一座城市生活，在软件园遇到一个女子，问我借20元坐地铁，说明天给我，转账后第二天微信被拉黑；</li>
-</ul>
-<p>所以，善良有错吗？  </p>
-<p>善良没有错，但是你要有资本，有承受贡献善良后的风险。  </p>
-<p>如果没有资本，即使被所谓的社会道德谴责，我也会无动于衷。  </p>
-<p>由于女朋友被骗的金额够不到2000，不构成诈骗罪，所以到公安局只是立案，不会调查，具体进展我会及时更新，而我只能在下班时在诈骗地点附近转悠，期待都找到骗女友钱的骗子，如果真能找到，我一定要给上一拳头，顺便补上几脚。  </p>
-<p><strong>我可以一直保持善良，在心里立一尊佛，但是当佛倒了，我就会变成魔。</strong>  </p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.zhihu.com/question/278929215/answer/404243094">知乎_被骗买两条中华烟？</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>社会</tag>
-        <tag>骗局</tag>
       </tags>
   </entry>
   <entry>
@@ -17432,7 +17516,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Learn-CloudNative</category>
+        <category>LearnKubernetes</category>
       </categories>
       <tags>
         <tag>Kubernetes</tag>
