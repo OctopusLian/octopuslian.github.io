@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-05-27T12:05:24.169Z</updated>
+  <updated>2023-05-29T15:59:55.706Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github开源项目crawlergo介绍</title>
+    <link href="https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/"/>
+    <id>https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/</id>
+    <published>2023-05-27T14:13:46.000Z</published>
+    <updated>2023-05-29T15:59:55.706Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;整体介绍&quot;&gt;&lt;a href=&quot;#整体介绍&quot; class=&quot;headerlink&quot; title=&quot;整体介绍&quot;&gt;&lt;/a&gt;整体介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;是一个使用&lt;code&gt;chrome headless&lt;/code&gt;模式进行URL收集的浏览器爬虫。它对整个网页的关键位置与DOM渲染阶段进行HOOK，自动进行表单填充并提交，配合智能的JS事件触发，&lt;br&gt;尽可能的收集网站暴露出的入口。内置URL去重模块，过滤掉了大量伪静态URL，对于大型网站仍保持较快的解析与抓取速度，最后得到高质量的请求结果集合。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;目前支持以下特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原生浏览器环境，协程池调度任务  &lt;/li&gt;
+&lt;li&gt;表单智能填充、自动化提交  &lt;/li&gt;
+&lt;li&gt;完整DOM事件收集，自动化触发  &lt;/li&gt;
+&lt;li&gt;智能URL去重，去掉大部分的重复请求  &lt;/li&gt;
+&lt;li&gt;全面分析收集，包括javascript文件内容、页面注释、robots.txt文件和常见路径Fuzz  &lt;/li&gt;
+&lt;li&gt;支持Host绑定，自动添加Referer  &lt;/li&gt;
+&lt;li&gt;支持请求代理，支持爬虫结果主动推送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目整体结构：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnCrawler" scheme="https://octopuslian.github.io/categories/LearnCrawler/"/>
+    
+    
+    <category term="crawler" scheme="https://octopuslian.github.io/tags/crawler/"/>
+    
+  </entry>
   
   <entry>
     <title>爬虫基础-技术选型</title>
@@ -511,30 +541,6 @@
     <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
     
     <category term="wordpress" scheme="https://octopuslian.github.io/tags/wordpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker搭建私有镜像仓库-registry</title>
-    <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-private-image-repository-registry/"/>
-    <id>https://octopuslian.github.io/2022/10/04/docker-deploy-private-image-repository-registry/</id>
-    <published>2022-10-04T03:14:52.000Z</published>
-    <updated>2022-10-04T06:53:44.380Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文将介绍如何搭建最简单的私有镜像仓库——&lt;code&gt;Docker Registry&lt;/code&gt;。  &lt;/p&gt;
-&lt;p&gt;首先，你需要使用 docker pull 命令拉取镜像：  &lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# docker pull registry&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;然后，我们需要做一个端口映射，对外暴露端口，这样 Docker Registry 才能提供服务。它的容器内端口是 5000，简单起见，我们在外面也使用同样的 5000 端口，所以运行命令：  &lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# docker run -d -p 5000:5000 registry&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
-    
-    
-    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
     
   </entry>
   

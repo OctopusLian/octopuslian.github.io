@@ -1505,6 +1505,48 @@
       </tags>
   </entry>
   <entry>
+    <title>设计原则三：里式替换</title>
+    <url>/2021/12/18/design-principle-liskov-substitution/</url>
+    <content><![CDATA[<h1 id="如何理解“里式替换原则”？"><a href="#如何理解“里式替换原则”？" class="headerlink" title="如何理解“里式替换原则”？"></a>如何理解“里式替换原则”？</h1><p>里式替换原则的英文翻译是：Liskov Substitution Principle，缩写为 LSP。<br>这个原则最早是在 1986 年由 Barbara Liskov 提出，他是这么描述这条原则的：  </p>
+<blockquote>
+<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program。  </p>
+</blockquote>
+<p>在 1996 年，Robert Martin 在他的 SOLID 原则中，重新描述了这个原则，英文原话是这样的：  </p>
+<blockquote>
+<p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it。  </p>
+</blockquote>
+<p>因此，中文描述即为：<strong>子类对象（object of subtype&#x2F;derived class）能够替换程序（program）中父类对象（object of base&#x2F;parent class）出现的任何地方，并且保证原来程序的逻辑行为（behavior）不变及正确性不被破坏。</strong>  </p>
+<p>例如，如下代码中，父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken 安全认证信息。  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> HttpClient httpClient;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transporter</span><span class="params">(HttpClient httpClient)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.httpClient = httpClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// ...use httpClient to send request</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String appId;</span><br><span class="line">    <span class="keyword">private</span> String appToken;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SecurityTransporter</span><span class="params">(HttpClient httpClient, String appId, String appToken)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(httpClient);</span><br><span class="line">        <span class="built_in">this</span>.appId = appId;</span><br><span class="line">        <span class="built_in">this</span>.appToken = appToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">demoFunction</span><span class="params">(Transporter transporter)</span> &#123;</span><br><span class="line">        <span class="type">Reuqest</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>();</span><br><span class="line">        <span class="comment">//... 省略设置 request 中数据值的代码...</span></span><br><span class="line">        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> transporter.sendRequest(request);</span><br><span class="line">        <span class="comment">//... 省略其他逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 里式替换原则</span></span><br><span class="line"><span class="type">Demo</span> <span class="variable">demo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Demo</span>();</span><br><span class="line">demo.demofunction(<span class="keyword">new</span> <span class="title class_">SecurityTransporter</span>(<span class="comment">/* 省略参数 */</span>););</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，子类 SecurityTransporter 的设计完全符合里式替换原则，可以替换父类出现的任何位置，并且原来代码的逻辑行为不变且正确性也没有被破坏。  </p>
+<p>疑问：刚刚的代码设计不就是简单利用了面向对象的多态特性吗？多态和里式替换原则说的是不是一回事呢？从刚刚的例子和定义描述来看，里式替换原则跟多态看起来确实有点类似，但实际上它们完全是两回事。为什么这么说呢？  </p>
+<p>我们还是通过刚才这个例子来解释一下：对 SecurityTransporter 类中sendRequest() 函数稍加改造一下。改造前，如果 appId 或者 appToken 没有设置，我们就不做校验；改造后，如果 appId 或者 appToken 没有设置，则直接抛出NoAuthorizationRuntimeException 未授权异常。  </p>
+<p>改造前后的代码对比如下所示：  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 改造前：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改造后：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(appId) || StringUtils.isBlank(appToken)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NoAuthorizationRuntimeException</span>(...);</span><br><span class="line">        &#125;</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在改造之后的代码中，如果传递进 demoFunction() 函数的是父类 Transporter 对象，那demoFunction() 函数并不会有异常抛出，但如果传递给 demoFunction() 函数的是子类<br>SecurityTransporter 对象，那 demoFunction() 有可能会有异常抛出。<br>尽管代码中抛出的是运行时异常（Runtime Exception），我们可以不在代码中显式地捕获处理，但子类替换父类传递进 demoFunction 函数之后，整个程序的逻辑行为有了改变。  </p>
+<p>虽然改造之后的代码仍然可以通过 Java 的多态语法，动态地用子类 SecurityTransporter来替换父类 Transporter，也并不会导致程序编译或者运行报错。但是，从设计思路上来讲，SecurityTransporter 的设计是不符合里式替换原则的。  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然从定义描述和代码实现上来看，多态和里式替换有点类似，但它们关注的角度是不一样的。<br>多态是面向对象编程的一大特性，也是面向对象编程语言的一种语法。它是一种代码实现的思路。<br>里式替换是一种设计原则，是用来指导继承关系中子类该如何设计的，子类的设计要保证在替换父类的时候，不改变原有程序的逻辑以及不破坏原有程序的正确性。  </p>
+<h1 id="哪些代码明显违背了-LSP？"><a href="#哪些代码明显违背了-LSP？" class="headerlink" title="哪些代码明显违背了 LSP？"></a>哪些代码明显违背了 LSP？</h1><p>里式替换原则还有另外一个更加能落地、更有指导意义的描述，那就是“Design By Contract”，中文翻译就是“按照协议来设计”。  </p>
+<h2 id="进一步解读"><a href="#进一步解读" class="headerlink" title="进一步解读"></a>进一步解读</h2><p>子类在设计的时候，要遵守父类的行为约定（或者叫协议）。父类定义了函数的行为约定，那子类可以改变函数的内部实现逻辑，但不能改变函数原有的行为约定。这里的行为约定包括：函数声明要实现的功能；对输入、输出、异常的约定；甚至包括注释中所罗列的任何特殊说明。实际上，定义中父类和子类之间的关系，也可以替换成接口和实现类之间的关系。  </p>
+<p>为了更好地理解这句话，我举几个违反里式替换原则的例子来解释一下。  </p>
+<h2 id="子类违背父类声明要实现的功能"><a href="#子类违背父类声明要实现的功能" class="headerlink" title="子类违背父类声明要实现的功能"></a>子类违背父类声明要实现的功能</h2><p>父类中提供的 sortOrdersByAmount() 订单排序函数，是按照金额从小到大来给订单排序的，而子类重写这个 sortOrdersByAmount() 订单排序函数之后，是按照创建日期来给订单排序的。那子类的设计就违背里式替换原则。  </p>
+<h2 id="子类违背父类对输入、输出、异常的约定"><a href="#子类违背父类对输入、输出、异常的约定" class="headerlink" title="子类违背父类对输入、输出、异常的约定"></a>子类违背父类对输入、输出、异常的约定</h2><p>在父类中，某个函数约定：运行出错的时候返回 null；获取数据为空的时候返回空集合（empty collection）。而子类重载函数之后，实现变了，运行出错返回异常（exception），获取不到数据返回 null。那子类的设计就违背里式替换原则。  </p>
+<p>在父类中，某个函数约定，输入数据可以是任意整数，但子类实现的时候，只允许输入数据是正整数，负数就抛出，也就是说，子类对输入的数据的校验比父类更加严格，那子类的设计就违背了里式替换原则。  </p>
+<p>在父类中，某个函数约定，只会抛出 ArgumentNullException 异常，那子类的设计实现中只允许抛出 ArgumentNullException 异常，任何其他异常的抛出，都会导致子类违背里式替换原则。  </p>
+<h2 id="子类违背父类注释中所罗列的任何特殊说明"><a href="#子类违背父类注释中所罗列的任何特殊说明" class="headerlink" title="子类违背父类注释中所罗列的任何特殊说明"></a>子类违背父类注释中所罗列的任何特殊说明</h2><p>父类中定义的 withdraw() 提现函数的注释是这么写的：“用户的提现金额不得超过账户余额……”，而子类重写 withdraw() 函数之后，针对 VIP 账号实现了透支提现的功能，也就是提现金额可以大于账户余额，那这个子类的设计也是不符合里式替换原则的。  </p>
+<h2 id="判断子类的设计实现是否违背里式替换原则的小窍门"><a href="#判断子类的设计实现是否违背里式替换原则的小窍门" class="headerlink" title="判断子类的设计实现是否违背里式替换原则的小窍门"></a>判断子类的设计实现是否违背里式替换原则的小窍门</h2><p>拿父类的单元测试去验证子类的代码。如果某些单元测试运行失败，就有可能说明，子类的设计实现没有完全地遵守父类的约定，子类有可能违背了里式替换原则。  </p>
+]]></content>
+      <categories>
+        <category>Learn-DesignPattern</category>
+      </categories>
+      <tags>
+        <tag>设计原则</tag>
+        <tag>里式替换原则</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计原则二：开闭</title>
     <url>/2021/12/18/design-principle-open-close/</url>
     <content><![CDATA[<h1 id="如何理解“对扩展开放、修改关闭”？"><a href="#如何理解“对扩展开放、修改关闭”？" class="headerlink" title="如何理解“对扩展开放、修改关闭”？"></a>如何理解“对扩展开放、修改关闭”？</h1><p>开闭原则的英文全称是 Open Closed Principle，简写为 OCP。<br>它的英文描述是：software entities (modules, classes, functions, etc.) should be open for extension ,but closed for modification。我们把它翻译成中文就是：软件实体（模块、类、方法等）应该“对扩展开放、对修改关闭”。  </p>
@@ -1568,48 +1610,6 @@
       <tags>
         <tag>设计原则</tag>
         <tag>开闭原则</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计原则三：里式替换</title>
-    <url>/2021/12/18/design-principle-liskov-substitution/</url>
-    <content><![CDATA[<h1 id="如何理解“里式替换原则”？"><a href="#如何理解“里式替换原则”？" class="headerlink" title="如何理解“里式替换原则”？"></a>如何理解“里式替换原则”？</h1><p>里式替换原则的英文翻译是：Liskov Substitution Principle，缩写为 LSP。<br>这个原则最早是在 1986 年由 Barbara Liskov 提出，他是这么描述这条原则的：  </p>
-<blockquote>
-<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program。  </p>
-</blockquote>
-<p>在 1996 年，Robert Martin 在他的 SOLID 原则中，重新描述了这个原则，英文原话是这样的：  </p>
-<blockquote>
-<p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it。  </p>
-</blockquote>
-<p>因此，中文描述即为：<strong>子类对象（object of subtype&#x2F;derived class）能够替换程序（program）中父类对象（object of base&#x2F;parent class）出现的任何地方，并且保证原来程序的逻辑行为（behavior）不变及正确性不被破坏。</strong>  </p>
-<p>例如，如下代码中，父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken 安全认证信息。  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> HttpClient httpClient;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transporter</span><span class="params">(HttpClient httpClient)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.httpClient = httpClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// ...use httpClient to send request</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String appId;</span><br><span class="line">    <span class="keyword">private</span> String appToken;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SecurityTransporter</span><span class="params">(HttpClient httpClient, String appId, String appToken)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(httpClient);</span><br><span class="line">        <span class="built_in">this</span>.appId = appId;</span><br><span class="line">        <span class="built_in">this</span>.appToken = appToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">            request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">demoFunction</span><span class="params">(Transporter transporter)</span> &#123;</span><br><span class="line">        <span class="type">Reuqest</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>();</span><br><span class="line">        <span class="comment">//... 省略设置 request 中数据值的代码...</span></span><br><span class="line">        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> transporter.sendRequest(request);</span><br><span class="line">        <span class="comment">//... 省略其他逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 里式替换原则</span></span><br><span class="line"><span class="type">Demo</span> <span class="variable">demo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Demo</span>();</span><br><span class="line">demo.demofunction(<span class="keyword">new</span> <span class="title class_">SecurityTransporter</span>(<span class="comment">/* 省略参数 */</span>););</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，子类 SecurityTransporter 的设计完全符合里式替换原则，可以替换父类出现的任何位置，并且原来代码的逻辑行为不变且正确性也没有被破坏。  </p>
-<p>疑问：刚刚的代码设计不就是简单利用了面向对象的多态特性吗？多态和里式替换原则说的是不是一回事呢？从刚刚的例子和定义描述来看，里式替换原则跟多态看起来确实有点类似，但实际上它们完全是两回事。为什么这么说呢？  </p>
-<p>我们还是通过刚才这个例子来解释一下：对 SecurityTransporter 类中sendRequest() 函数稍加改造一下。改造前，如果 appId 或者 appToken 没有设置，我们就不做校验；改造后，如果 appId 或者 appToken 没有设置，则直接抛出NoAuthorizationRuntimeException 未授权异常。  </p>
-<p>改造前后的代码对比如下所示：  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 改造前：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isNotBlank(appId) &amp;&amp; StringUtils.isNotBlank(appToken)) &#123;</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">        request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改造后：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityTransporter</span> <span class="keyword">extends</span> <span class="title class_">Transporter</span> &#123;</span><br><span class="line">    <span class="comment">//... 省略其他代码..</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">sendRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(appId) || StringUtils.isBlank(appToken)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NoAuthorizationRuntimeException</span>(...);</span><br><span class="line">        &#125;</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-id&quot;</span>, appId);</span><br><span class="line">    request.addPayload(<span class="string">&quot;app-token&quot;</span>, appToken);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.sendRequest(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在改造之后的代码中，如果传递进 demoFunction() 函数的是父类 Transporter 对象，那demoFunction() 函数并不会有异常抛出，但如果传递给 demoFunction() 函数的是子类<br>SecurityTransporter 对象，那 demoFunction() 有可能会有异常抛出。<br>尽管代码中抛出的是运行时异常（Runtime Exception），我们可以不在代码中显式地捕获处理，但子类替换父类传递进 demoFunction 函数之后，整个程序的逻辑行为有了改变。  </p>
-<p>虽然改造之后的代码仍然可以通过 Java 的多态语法，动态地用子类 SecurityTransporter来替换父类 Transporter，也并不会导致程序编译或者运行报错。但是，从设计思路上来讲，SecurityTransporter 的设计是不符合里式替换原则的。  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然从定义描述和代码实现上来看，多态和里式替换有点类似，但它们关注的角度是不一样的。<br>多态是面向对象编程的一大特性，也是面向对象编程语言的一种语法。它是一种代码实现的思路。<br>里式替换是一种设计原则，是用来指导继承关系中子类该如何设计的，子类的设计要保证在替换父类的时候，不改变原有程序的逻辑以及不破坏原有程序的正确性。  </p>
-<h1 id="哪些代码明显违背了-LSP？"><a href="#哪些代码明显违背了-LSP？" class="headerlink" title="哪些代码明显违背了 LSP？"></a>哪些代码明显违背了 LSP？</h1><p>里式替换原则还有另外一个更加能落地、更有指导意义的描述，那就是“Design By Contract”，中文翻译就是“按照协议来设计”。  </p>
-<h2 id="进一步解读"><a href="#进一步解读" class="headerlink" title="进一步解读"></a>进一步解读</h2><p>子类在设计的时候，要遵守父类的行为约定（或者叫协议）。父类定义了函数的行为约定，那子类可以改变函数的内部实现逻辑，但不能改变函数原有的行为约定。这里的行为约定包括：函数声明要实现的功能；对输入、输出、异常的约定；甚至包括注释中所罗列的任何特殊说明。实际上，定义中父类和子类之间的关系，也可以替换成接口和实现类之间的关系。  </p>
-<p>为了更好地理解这句话，我举几个违反里式替换原则的例子来解释一下。  </p>
-<h2 id="子类违背父类声明要实现的功能"><a href="#子类违背父类声明要实现的功能" class="headerlink" title="子类违背父类声明要实现的功能"></a>子类违背父类声明要实现的功能</h2><p>父类中提供的 sortOrdersByAmount() 订单排序函数，是按照金额从小到大来给订单排序的，而子类重写这个 sortOrdersByAmount() 订单排序函数之后，是按照创建日期来给订单排序的。那子类的设计就违背里式替换原则。  </p>
-<h2 id="子类违背父类对输入、输出、异常的约定"><a href="#子类违背父类对输入、输出、异常的约定" class="headerlink" title="子类违背父类对输入、输出、异常的约定"></a>子类违背父类对输入、输出、异常的约定</h2><p>在父类中，某个函数约定：运行出错的时候返回 null；获取数据为空的时候返回空集合（empty collection）。而子类重载函数之后，实现变了，运行出错返回异常（exception），获取不到数据返回 null。那子类的设计就违背里式替换原则。  </p>
-<p>在父类中，某个函数约定，输入数据可以是任意整数，但子类实现的时候，只允许输入数据是正整数，负数就抛出，也就是说，子类对输入的数据的校验比父类更加严格，那子类的设计就违背了里式替换原则。  </p>
-<p>在父类中，某个函数约定，只会抛出 ArgumentNullException 异常，那子类的设计实现中只允许抛出 ArgumentNullException 异常，任何其他异常的抛出，都会导致子类违背里式替换原则。  </p>
-<h2 id="子类违背父类注释中所罗列的任何特殊说明"><a href="#子类违背父类注释中所罗列的任何特殊说明" class="headerlink" title="子类违背父类注释中所罗列的任何特殊说明"></a>子类违背父类注释中所罗列的任何特殊说明</h2><p>父类中定义的 withdraw() 提现函数的注释是这么写的：“用户的提现金额不得超过账户余额……”，而子类重写 withdraw() 函数之后，针对 VIP 账号实现了透支提现的功能，也就是提现金额可以大于账户余额，那这个子类的设计也是不符合里式替换原则的。  </p>
-<h2 id="判断子类的设计实现是否违背里式替换原则的小窍门"><a href="#判断子类的设计实现是否违背里式替换原则的小窍门" class="headerlink" title="判断子类的设计实现是否违背里式替换原则的小窍门"></a>判断子类的设计实现是否违背里式替换原则的小窍门</h2><p>拿父类的单元测试去验证子类的代码。如果某些单元测试运行失败，就有可能说明，子类的设计实现没有完全地遵守父类的约定，子类有可能违背了里式替换原则。  </p>
-]]></content>
-      <categories>
-        <category>Learn-DesignPattern</category>
-      </categories>
-      <tags>
-        <tag>设计原则</tag>
-        <tag>里式替换原则</tag>
       </tags>
   </entry>
   <entry>
@@ -2638,6 +2638,38 @@
       </tags>
   </entry>
   <entry>
+    <title>程序设计原则：把计算过程交给计算机</title>
+    <url>/2020/05/24/geekbang-column-give-the-calculation-process-to-the-computer/</url>
+    <content><![CDATA[<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>求出 1000 以内所有 3 或 5 倍数的数字的和。  </p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><h3 id="一份合格的程序实现"><a href="#一份合格的程序实现" class="headerlink" title="一份合格的程序实现"></a>一份合格的程序实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; <span class="number">1000</span>; i++) &#123;  <span class="comment">//循环遍历 1000 以内的所有整数</span></span><br><span class="line">        sum += i * (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>);  <span class="comment">//把 3 或 5 的倍数累加到变量 sum 中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);  <span class="comment">//最后输出 sum 变量的值，就是 1000 以内，所有 3 或 5 的倍数和。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="提升计算效率"><a href="#提升计算效率" class="headerlink" title="提升计算效率"></a>提升计算效率</h3><p>利用等差数列求和公式：<br><img src="/2020/05/24/geekbang-column-give-the-calculation-process-to-the-computer/gongshi.jpg">  </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum3 = (<span class="number">3</span> + <span class="number">999</span> / <span class="number">3</span> * <span class="number">3</span>) * (<span class="number">999</span> / <span class="number">3</span>) / <span class="number">2</span>;  <span class="comment">//1000 以内所有 3 的倍数的和 sum3</span></span><br><span class="line">    <span class="type">int</span> sum5 = (<span class="number">5</span> + <span class="number">999</span> / <span class="number">5</span> * <span class="number">5</span>) * (<span class="number">999</span> / <span class="number">5</span>) / <span class="number">2</span>;  <span class="comment">//1000 以内所有 5 的倍数的和 sum5</span></span><br><span class="line">    <span class="type">int</span> sum15 = (<span class="number">15</span> + <span class="number">999</span> / <span class="number">15</span> * <span class="number">15</span>) * (<span class="number">999</span> / <span class="number">15</span>) / <span class="number">2</span>; <span class="comment">//1000 以内所有 15 的倍数的和 sum15</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum3 + sum5 - sum15);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="1，和的平方减平方和"><a href="#1，和的平方减平方和" class="headerlink" title="1，和的平方减平方和"></a>1，和的平方减平方和</h3><blockquote>
+<ol>
+<li>请编写一个程序，计算 100 以内自然数“和的平方”与“平方和”的差。  </li>
+<li>能否通过查阅资料，推导得到等差数列的平方和公式呢？</li>
+</ol>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">hepingfang</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> + n) * (<span class="number">1</span> + n) * n / <span class="number">4</span> + n * (n * n - <span class="number">1</span>) / <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">pingfanghe</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> + n) * (<span class="number">1</span> + n) * n / <span class="number">4</span> + n * (n * n - <span class="number">1</span>) / <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//计算 100 以内自然数“和的平方”与“平方和”的差</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d - %d = %d\n&quot;</span>,hepingfang(n),pingfanghe(n),hepingfang(n)-pingfanghe(n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>具体的计算过程，计算机比你更擅长，所以请把具体的计算过程，留给计算机。  </li>
+<li>编写程序，其实是在描述和规定计算过程，而描述的方式不同，效率也不同。  </li>
+<li>不同的效率过程，就是我们所谓的不同的算法过程，记住：算法很重要。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Intro-programming</category>
+      </categories>
+      <tags>
+        <tag>数字</tag>
+        <tag>数列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>框架思维：将素数筛算法写成框架算法</title>
     <url>/2020/05/24/geekbang-column-frame-thinking-write-the-prime-sieve-algo-as-a-frame-algo/</url>
     <content><![CDATA[<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>求 1 万以内所有素数的和。  </p>
@@ -2674,38 +2706,6 @@
         <tag>框架</tag>
         <tag>素数</tag>
         <tag>合数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序设计原则：把计算过程交给计算机</title>
-    <url>/2020/05/24/geekbang-column-give-the-calculation-process-to-the-computer/</url>
-    <content><![CDATA[<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>求出 1000 以内所有 3 或 5 倍数的数字的和。  </p>
-<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><h3 id="一份合格的程序实现"><a href="#一份合格的程序实现" class="headerlink" title="一份合格的程序实现"></a>一份合格的程序实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; <span class="number">1000</span>; i++) &#123;  <span class="comment">//循环遍历 1000 以内的所有整数</span></span><br><span class="line">        sum += i * (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span>);  <span class="comment">//把 3 或 5 的倍数累加到变量 sum 中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);  <span class="comment">//最后输出 sum 变量的值，就是 1000 以内，所有 3 或 5 的倍数和。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="提升计算效率"><a href="#提升计算效率" class="headerlink" title="提升计算效率"></a>提升计算效率</h3><p>利用等差数列求和公式：<br><img src="/2020/05/24/geekbang-column-give-the-calculation-process-to-the-computer/gongshi.jpg">  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> sum3 = (<span class="number">3</span> + <span class="number">999</span> / <span class="number">3</span> * <span class="number">3</span>) * (<span class="number">999</span> / <span class="number">3</span>) / <span class="number">2</span>;  <span class="comment">//1000 以内所有 3 的倍数的和 sum3</span></span><br><span class="line">    <span class="type">int</span> sum5 = (<span class="number">5</span> + <span class="number">999</span> / <span class="number">5</span> * <span class="number">5</span>) * (<span class="number">999</span> / <span class="number">5</span>) / <span class="number">2</span>;  <span class="comment">//1000 以内所有 5 的倍数的和 sum5</span></span><br><span class="line">    <span class="type">int</span> sum15 = (<span class="number">15</span> + <span class="number">999</span> / <span class="number">15</span> * <span class="number">15</span>) * (<span class="number">999</span> / <span class="number">15</span>) / <span class="number">2</span>; <span class="comment">//1000 以内所有 15 的倍数的和 sum15</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum3 + sum5 - sum15);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="1，和的平方减平方和"><a href="#1，和的平方减平方和" class="headerlink" title="1，和的平方减平方和"></a>1，和的平方减平方和</h3><blockquote>
-<ol>
-<li>请编写一个程序，计算 100 以内自然数“和的平方”与“平方和”的差。  </li>
-<li>能否通过查阅资料，推导得到等差数列的平方和公式呢？</li>
-</ol>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">hepingfang</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> + n) * (<span class="number">1</span> + n) * n / <span class="number">4</span> + n * (n * n - <span class="number">1</span>) / <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">pingfanghe</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> + n) * (<span class="number">1</span> + n) * n / <span class="number">4</span> + n * (n * n - <span class="number">1</span>) / <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//计算 100 以内自然数“和的平方”与“平方和”的差</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d - %d = %d\n&quot;</span>,hepingfang(n),pingfanghe(n),hepingfang(n)-pingfanghe(n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>具体的计算过程，计算机比你更擅长，所以请把具体的计算过程，留给计算机。  </li>
-<li>编写程序，其实是在描述和规定计算过程，而描述的方式不同，效率也不同。  </li>
-<li>不同的效率过程，就是我们所谓的不同的算法过程，记住：算法很重要。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Intro-programming</category>
-      </categories>
-      <tags>
-        <tag>数字</tag>
-        <tag>数列</tag>
       </tags>
   </entry>
   <entry>
@@ -5348,6 +5348,50 @@
       <tags>
         <tag>Git</tag>
         <tag>push</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github开源项目crawlergo介绍</title>
+    <url>/2023/05/27/github-crawlergo-introduction/</url>
+    <content><![CDATA[<h1 id="整体介绍"><a href="#整体介绍" class="headerlink" title="整体介绍"></a>整体介绍</h1><p><code>crawlergo</code>是一个使用<code>chrome headless</code>模式进行URL收集的浏览器爬虫。它对整个网页的关键位置与DOM渲染阶段进行HOOK，自动进行表单填充并提交，配合智能的JS事件触发，<br>尽可能的收集网站暴露出的入口。内置URL去重模块，过滤掉了大量伪静态URL，对于大型网站仍保持较快的解析与抓取速度，最后得到高质量的请求结果集合。</p>
+<p><code>crawlergo</code>目前支持以下特性：</p>
+<ul>
+<li>原生浏览器环境，协程池调度任务  </li>
+<li>表单智能填充、自动化提交  </li>
+<li>完整DOM事件收集，自动化触发  </li>
+<li>智能URL去重，去掉大部分的重复请求  </li>
+<li>全面分析收集，包括javascript文件内容、页面注释、robots.txt文件和常见路径Fuzz  </li>
+<li>支持Host绑定，自动添加Referer  </li>
+<li>支持请求代理，支持爬虫结果主动推送</li>
+</ul>
+<p>项目整体结构：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── [4.0K]  cmd</span><br><span class="line">│   └── [4.0K]  crawlergo</span><br><span class="line">│       ├── [7.4K]  flag.go</span><br><span class="line">│       └── [8.5K]  main.go</span><br><span class="line">├── [ 941]  Disclaimer.md</span><br><span class="line">├── [ 858]  dockerfile</span><br><span class="line">├── [4.0K]  examples</span><br><span class="line">│   ├── [1.2K]  host_binding.py</span><br><span class="line">│   ├── [1.2K]  request_with_cookie.py</span><br><span class="line">│   ├── [ 513]  subprocess_call.py</span><br><span class="line">│   └── [1.6K]  zombie_clean.py</span><br><span class="line">├── [ 690]  get_chrome.sh</span><br><span class="line">├── [ 588]  go.mod</span><br><span class="line">├── [9.6K]  go.sum</span><br><span class="line">├── [4.0K]  imgs</span><br><span class="line">│   ├── [ 36K]  bypass.png</span><br><span class="line">│   ├── [ 15K]  chrome_path.png</span><br><span class="line">│   ├── [1.1M]  demo.gif</span><br><span class="line">│   └── [220K]  skp.png</span><br><span class="line">├── [ 34K]  LICENSE</span><br><span class="line">├── [ 925]  Makefile</span><br><span class="line">├── [4.0K]  pkg</span><br><span class="line">│   ├── [4.0K]  config</span><br><span class="line">│   │   ├── [4.5K]  config.go</span><br><span class="line">│   │   └── [ 424]  config_test.go</span><br><span class="line">│   ├── [ 861]  domain_collect.go</span><br><span class="line">│   ├── [4.0K]  engine</span><br><span class="line">│   │   ├── [6.0K]  after_dom_tasks.go</span><br><span class="line">│   │   ├── [5.4K]  after_loaded_tasks.go</span><br><span class="line">│   │   ├── [2.8K]  browser.go</span><br><span class="line">│   │   ├── [2.0K]  collect_links.go</span><br><span class="line">│   │   ├── [8.8K]  intercept_request.go</span><br><span class="line">│   │   ├── [ 11K]  tab.go</span><br><span class="line">│   │   └── [ 525]  tab_test.go</span><br><span class="line">│   ├── [4.0K]  filter</span><br><span class="line">│   │   ├── [1.9K]  simple_filter.go</span><br><span class="line">│   │   ├── [ 20K]  smart_filter.go</span><br><span class="line">│   │   └── [1.7K]  smart_filter_test.go</span><br><span class="line">│   ├── [4.0K]  js</span><br><span class="line">│   │   └── [ 16K]  javascript.go</span><br><span class="line">│   ├── [4.0K]  logger</span><br><span class="line">│   │   └── [ 449]  logger.go</span><br><span class="line">│   ├── [4.0K]  model</span><br><span class="line">│   │   ├── [4.0K]  request.go</span><br><span class="line">│   │   ├── [3.6K]  url.go</span><br><span class="line">│   │   └── [2.0K]  url_test.go</span><br><span class="line">│   ├── [5.3K]  path_expansion.go</span><br><span class="line">│   ├── [5.3K]  taskconfig.go</span><br><span class="line">│   ├── [1.7K]  taskconfig_test.go</span><br><span class="line">│   ├── [7.5K]  task_main.go</span><br><span class="line">│   └── [4.0K]  tools</span><br><span class="line">│       ├── [1.4K]  common.go</span><br><span class="line">│       ├── [1.3K]  random.go</span><br><span class="line">│       └── [4.0K]  requests</span><br><span class="line">│           ├── [5.7K]  requests.go</span><br><span class="line">│           ├── [ 581]  response.go</span><br><span class="line">│           └── [ 510]  utils.go</span><br><span class="line">├── [ 11K]  README.md</span><br><span class="line">└── [9.6K]  README_zh-cn.md</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>首先确保已经安装了Go语言环境。</p>
+<p>执行<code>make build</code>，会在当前目录下生成一个<code>bin</code>目录的文件夹。</p>
+<p>假设你的chromium安装在 <code>/tmp/chromium/</code> ，开启最大10标签页，爬取AWVS靶场：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ bin/crawlergo -c /home/neo/Downloads/chrome-linux/chrome -t 10 http://testphp.vulnweb.com/</span><br><span class="line">INFO[0000] Init crawler task, host: testphp.vulnweb.com, max tab count: 10, max crawl count: 200. </span><br><span class="line">INFO[0000] filter mode: smart                           </span><br><span class="line">INFO[0000] If no matches, default form input text: Crawlergo </span><br><span class="line">INFO[0000] Start crawling.                              </span><br><span class="line">INFO[0000] filter repeat, target count: 2               </span><br><span class="line">INFO[0000] Crawling GET https://testphp.vulnweb.com/    </span><br><span class="line">INFO[0000] Crawling GET http://testphp.vulnweb.com/     </span><br><span class="line">WARN[0005] navigate <span class="built_in">timeout</span> https://testphp.vulnweb.com/ </span><br><span class="line">INFO[0007] Crawling GET http://testphp.vulnweb.com/index.php </span><br><span class="line">INFO[0007] Crawling GET http://testphp.vulnweb.com/artists.php </span><br><span class="line">INFO[0007] Crawling GET http://testphp.vulnweb.com/AJAX/index.php </span><br><span class="line">INFO[0007] Crawling GET http://testphp.vulnweb.com/guestbook.php </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><h2 id="初始化，声明作者，项目名称等信息"><a href="#初始化，声明作者，项目名称等信息" class="headerlink" title="初始化，声明作者，项目名称等信息"></a>初始化，声明作者，项目名称等信息</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">author := cli.Author&#123;</span><br><span class="line">  Name:  <span class="string">&quot;9ian1i&quot;</span>,</span><br><span class="line">  Email: <span class="string">&quot;9ian1itp@gmail.com&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app := &amp;cli.App&#123;</span><br><span class="line">  Name:      <span class="string">&quot;crawlergo&quot;</span>,</span><br><span class="line">  Usage:     <span class="string">&quot;A powerful browser crawler for web vulnerability scanners&quot;</span>,</span><br><span class="line">  UsageText: <span class="string">&quot;crawlergo [global options] url1 url2 url3 ... (must be same host)&quot;</span>,</span><br><span class="line">  Version:   Version,</span><br><span class="line">  Authors:   []*cli.Author&#123;&amp;author&#125;,</span><br><span class="line">  Flags:     cliFlags,</span><br><span class="line">  Action:    run,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">err := app.Run(os.Args)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  logger.Logger.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">run</span><span class="params">(c *cli.Context)</span></span> <span class="type">error</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>使用channel来等待信号的到来，从而达到等待程序退出的目的。如果程序需要在接收到信号时进行一些特定的处理，可以在程序中添加对应的处理逻辑。  </p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">signalChan = <span class="built_in">make</span>(<span class="keyword">chan</span> os.Signal, <span class="number">1</span>)  <span class="comment">// 创建一个带缓冲的channel signalChan</span></span><br><span class="line">signal.Notify(signalChan, syscall.SIGTERM, syscall.SIGQUIT, syscall.SIGINT)  <span class="comment">//注册3个系统信号SIGTERM、SIGQUIT、SIGINT。这些信号可以被操作系统或者其他程序发送给本程序，表示一些事件的发生，比如程序需要退出、用户按下了键盘上的 CTRL+C 等。</span></span><br><span class="line"><span class="keyword">if</span> c.Args().Len() == <span class="number">0</span> &#123;</span><br><span class="line">  <span class="comment">// 如果在运行程序时未设置 url ，则会记录日志并返回一个错误，提示用户必须设置 url。</span></span><br><span class="line">  logger.Logger.Error(<span class="string">&quot;url must be set&quot;</span>)</span><br><span class="line">  <span class="keyword">return</span> errors.New(<span class="string">&quot;url must be set&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置日志输出级别"><a href="#设置日志输出级别" class="headerlink" title="设置日志输出级别"></a>设置日志输出级别</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">level, err := logrus.ParseLevel(logLevel)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  logger.Logger.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">logger.Logger.SetLevel(level)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="检查自定义的表单参数配置"><a href="#检查自定义的表单参数配置" class="headerlink" title="检查自定义的表单参数配置"></a>检查自定义的表单参数配置</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">taskConfig.CustomFormValues, err = parseCustomFormValues(customFormTypeValues.Value())</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  logger.Logger.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">taskConfig.CustomFormKeywordValues, err = keywordStringToMap(customFormKeywordValues.Value())</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  logger.Logger.Fatal(err)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="开始爬虫任务"><a href="#开始爬虫任务" class="headerlink" title="开始爬虫任务"></a>开始爬虫任务</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">task, err := pkg.NewCrawlerTask(targets, taskConfig)  <span class="comment">// 新建爬虫任务</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  logger.Logger.Error(<span class="string">&quot;create crawler task failed.&quot;</span>)</span><br><span class="line">  os.Exit(<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(targets) != <span class="number">0</span> &#123;</span><br><span class="line">  logger.Logger.Info(fmt.Sprintf(<span class="string">&quot;Init crawler task, host: %s, max tab count: %d, max crawl count: %d.&quot;</span>,</span><br><span class="line">  targets[<span class="number">0</span>].URL.Host, taskConfig.MaxTabsCount, taskConfig.MaxCrawlCount))</span><br><span class="line">  logger.Logger.Info(<span class="string">&quot;filter mode: &quot;</span>, taskConfig.FilterMode)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 提示自定义表单填充参数</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(taskConfig.CustomFormValues) &gt; <span class="number">0</span> &#123;</span><br><span class="line">  logger.Logger.Info(<span class="string">&quot;Custom form values, &quot;</span> + tools.MapStringFormat(taskConfig.CustomFormValues))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 提示自定义表单填充参数</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(taskConfig.CustomFormKeywordValues) &gt; <span class="number">0</span> &#123;</span><br><span class="line">  logger.Logger.Info(<span class="string">&quot;Custom form keyword values, &quot;</span> + tools.MapStringFormat(taskConfig.CustomFormKeywordValues))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> _, ok := taskConfig.CustomFormValues[<span class="string">&quot;default&quot;</span>]; !ok &#123;</span><br><span class="line">  logger.Logger.Info(<span class="string">&quot;If no matches, default form input text: &quot;</span> + config.DefaultInputText)</span><br><span class="line">  taskConfig.CustomFormValues[<span class="string">&quot;default&quot;</span>] = config.DefaultInputText</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> handleExit(task)  <span class="comment">// 等待系统信号，并在接收到信号时关闭程序</span></span><br><span class="line">logger.Logger.Info(<span class="string">&quot;Start crawling.&quot;</span>)</span><br><span class="line">task.Run()  <span class="comment">// 核心逻辑</span></span><br><span class="line">result := task.Result</span><br><span class="line"></span><br><span class="line"><span class="comment">// 内置请求代理</span></span><br><span class="line"><span class="keyword">if</span> pushAddress != <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">  logger.Logger.Info(<span class="string">&quot;pushing results to &quot;</span>, pushAddress, <span class="string">&quot;, max pool number:&quot;</span>, pushProxyPoolMax)</span><br><span class="line">  Push2Proxy(result.ReqList)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果输出"><a href="#结果输出" class="headerlink" title="结果输出"></a>结果输出</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">outputResult</span><span class="params">(result *pkg.Result)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 输出结果</span></span><br><span class="line">  <span class="keyword">if</span> outputMode == <span class="string">&quot;json&quot;</span> &#123;</span><br><span class="line">    <span class="comment">// 将 result 对象以 JSON 格式序列化并输出</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;--[Mission Complete]--&quot;</span>)</span><br><span class="line">    resBytes := getJsonSerialize(result)</span><br><span class="line">    fmt.Println(<span class="type">string</span>(resBytes))</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> outputMode == <span class="string">&quot;console&quot;</span> &#123;</span><br><span class="line">    <span class="comment">// 逐个打印 result 中抓取到的所有请求和它们的响应</span></span><br><span class="line">    <span class="keyword">for</span> _, req := <span class="keyword">range</span> result.ReqList &#123;</span><br><span class="line">      req.FormatPrint()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(outputJsonPath) != <span class="number">0</span> &#123;</span><br><span class="line">    <span class="comment">// 如果在命令行输入了可选参数 outputJsonPath ，那么将结果以 JSON 格式序列化并保存到指定的文件中。</span></span><br><span class="line">    resBytes := getJsonSerialize(result)</span><br><span class="line">    tools.WriteFile(outputJsonPath, resBytes)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LearnCrawler</category>
+      </categories>
+      <tags>
+        <tag>crawler</tag>
       </tags>
   </entry>
   <entry>
@@ -9634,7 +9678,7 @@
 <p>但是需要注意，kindle连电脑完全看数据线心情。  </p>
 <h2 id="方法三，（推荐）用邮箱推送"><a href="#方法三，（推荐）用邮箱推送" class="headerlink" title="方法三，（推荐）用邮箱推送"></a>方法三，（推荐）用邮箱推送</h2><ul>
 <li>先登录亚马逊官方账号，在我的设备里找到一个***kindle.cn的邮箱地址，复制下来；  </li>
-<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#46;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#46;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
+<li>在设置里将自己的邮箱，比如我的***<a href="mailto:&#x2e;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x2e;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;</a>设置为可以信任的邮箱；  </li>
 <li>打开邮件发送页面，将要下载的书籍添加到邮件附件里，点击发送，然后kindle连上wifi，一分钟左右新的书籍就出来了。</li>
 </ul>
 <p><a href="https://jingyan.baidu.com/article/656db918c1f032e381249c16.html">Kindle 推送教程：教你用电子邮箱推送电子书</a><br><a href="https://jingyan.baidu.com/article/656db918b2cf47a281249cee.html">Kindle如何添加认可的发件人电子邮箱？</a></p>
@@ -10940,20 +10984,6 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode 141-linked-list-cycle | 环形链表</title>
-    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
-    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
-<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
-<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode-Solutions</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_1480_running-sum-of-1d-array | 一维数组的动态和</title>
     <url>/2020/07/03/leetcode-1480-running-sum-of-1d-array/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://leetcode-cn.com/problems/running-sum-of-1d-array/">leetcode中国</a>  </p>
@@ -10969,6 +10999,20 @@
         <tag>leetcode</tag>
         <tag>数组</tag>
         <tag>暴力</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode 141-linked-list-cycle | 环形链表</title>
+    <url>/2020/12/04/leetcode-141-linked-list-cycle/</url>
+    <content><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/">https://leetcode-cn.com/problems/linked-list-cycle/</a>  </p>
+<h2 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h2><p>该题是面试常考题型，以前好友面字节游戏引擎岗的时候专门考过。  </p>
+<h3 id="快慢指针Golang"><a href="#快慢指针Golang" class="headerlink" title="快慢指针Golang"></a>快慢指针Golang</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> || head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    slow := head  <span class="comment">//慢指针</span></span><br><span class="line">    fast := head.Next  <span class="comment">//快指针</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="comment">//一块一慢，如果两个指针指向同一个值，说明链表有环</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode-Solutions</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -12681,6 +12725,27 @@
       </tags>
   </entry>
   <entry>
+    <title>LintCode Java教程 练习题答案</title>
+    <url>/2022/01/07/lintcode-learn-java/</url>
+    <content><![CDATA[<h1 id="LEVEL-1"><a href="#LEVEL-1" class="headerlink" title="LEVEL 1"></a>LEVEL 1</h1><ul>
+<li>2814.ASCII码对应的字符（Java 版）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">// write your code here</span></span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(num&lt;<span class="number">128</span> &amp;&amp; num &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(num&gt;<span class="number">0</span>?(<span class="type">char</span>)num:<span class="string">&quot;error&quot;</span>);	</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">        sc.close();</span><br><span class="line">        </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2759 · Integer 的取值范围  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equivalence</span><span class="params">(Integer a, Integer b)</span> &#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">return</span> a.equals(b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2817 · 浮点数与字符串的相互转换  </p>
+]]></content>
+      <categories>
+        <category>LearnJava</category>
+      </categories>
+      <tags>
+        <tag>lintcode</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LintCode 406 · Minimum Size Subarray Sum | 和大于S的最小子数组</title>
     <url>/2021/12/27/lintcode-406-minimum-size-subarray-sum/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://www.lintcode.com/problem/406/">406 · 和大于S的最小子数组</a>  </p>
@@ -12716,27 +12781,6 @@
       <categories>
         <category>LintCode-Solutions</category>
       </categories>
-  </entry>
-  <entry>
-    <title>LintCode Java教程 练习题答案</title>
-    <url>/2022/01/07/lintcode-learn-java/</url>
-    <content><![CDATA[<h1 id="LEVEL-1"><a href="#LEVEL-1" class="headerlink" title="LEVEL 1"></a>LEVEL 1</h1><ul>
-<li>2814.ASCII码对应的字符（Java 版）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">// write your code here</span></span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(num&lt;<span class="number">128</span> &amp;&amp; num &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(num&gt;<span class="number">0</span>?(<span class="type">char</span>)num:<span class="string">&quot;error&quot;</span>);	</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">        sc.close();</span><br><span class="line">        </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2759 · Integer 的取值范围  </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equivalence</span><span class="params">(Integer a, Integer b)</span> &#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">return</span> a.equals(b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2817 · 浮点数与字符串的相互转换  </p>
-]]></content>
-      <categories>
-        <category>LearnJava</category>
-      </categories>
-      <tags>
-        <tag>lintcode</tag>
-        <tag>java</tag>
-      </tags>
   </entry>
   <entry>
     <title>LintCode Python教程 练习题答案</title>
@@ -14724,60 +14768,6 @@
       </tags>
   </entry>
   <entry>
-    <title>时间的价值</title>
-    <url>/2020/05/21/the-value-of-time/</url>
-    <content><![CDATA[<p>今天，收到一位学弟发来的消息，他收到了北京字节的<code>offer</code>，薪资五位数，本科应届毕业生，看了他发的薪资，讲真我酸了&#x2F;(ㄒoㄒ)&#x2F;~~  </p>
-<p>让我不禁想起上个月顿悟出的一件事：<strong>时间的价值，到底怎么体现时间的价值呢？</strong>  </p>
-<p>我记得，我刚毕业入职一家公司，做图形学方面的研发，有一次下班，和我的导师并肩走向地铁站时，我说我多么喜欢这一份工作，他很好奇的问我：你真的喜欢做这个吗？别这么早下定论，至少我到现在还没有找到我喜欢做什么。  </p>
-<p>也许只是他随口一说，但此时此景，他的话又放佛在我耳边清晰的回响起来：你真的喜欢做这个吗…  </p>
-<p>在后面持续至少20个月的工作生涯里，我兴奋过，厌倦过，苦恼过，迷茫过，直到上个月我才突然顿悟出来：喜欢与不喜欢，无非就是觉得自己是否能体现其存在的价值，如果在他人眼来这份职业（或者是你正在做的事情）价值为0，但我自己却非常感兴趣，那它就是无价的；如果只是用来谋生，那么唯有<code>money</code>，才是检验你过的是否有价值的一个衡量标准。  </p>
-<p>最后，希望我可以早日找到————让自己不惜一切也要拼命守护的东西。  </p>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>价值</tag>
-        <tag>时间</tag>
-        <tag>人生</tag>
-        <tag>守护</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>世界又少了一个单纯善良的人</title>
-    <url>/2019/11/14/the-world-has-lost-a-simple-and-kind-human/</url>
-    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前天女朋友回来告诉我，说她在下班途中碰到一个马来西亚的华人，来成都出差，在问路，于是她和那位华人多聊了几句，昨天回来后闷闷不乐，还流眼泪，我再三询问原因，她才告诉我说被骗了，自己怎么这么傻…被骗的过程我就不赘述了，网上搜关键字<strong>买烟骗局</strong>。  </p>
-<p>而我写下这篇文章，一是阐述这样的一种骗局，二是感慨，世界上又少了一位单纯善良的人。  </p>
-<h2 id="善良有错吗？"><a href="#善良有错吗？" class="headerlink" title="善良有错吗？"></a>善良有错吗？</h2><p>我记得，从小学，初中，高中这十二年的教育中，无论是从语文书，还是思想品德书上，都告诉我们要做一个正直善良的人，要孝敬父母，尊老爱幼，朋友有难要伸出援手，遇到困难学会忍受，相信雨过天晴这样大篇章的废话套话。  </p>
-<p>但是，要做到这些的前提，就是你要有资本。</p>
-<p>在这个星球上生活了二十三年，有一些本来需要遗忘又不经意回想的瞬间，让我不得不在此时此景下记录下来，例如  </p>
-<ul>
-<li>上高中时，在乌鲁木齐坐公交，碰到一个老头(这么称呼说明我并不尊重他)投了币，径直走向一个上面坐着小孩的座位，把他拉了起来，自己坐了下去，给老人让座没有错，但请对自己鲁莽的动作说一声抱歉，因为你确实吓到那位小孩了；  </li>
-<li>去上大学，坐十三个小时的火车，想上卫生间，在门口排队时，有些大人不顾其他人的感受，直接插队；  </li>
-<li>在大学里，帮助某些人，明明主动权在自己手上，却偏偏别人以为这是你必须帮我的义务(真是可笑)；  </li>
-<li>晚上休息时，舍友外放看直播，我吵得睡不着，但当我练习吹口琴时旁边人就不耐烦，那一刻，我有了脑子一热砍人的想法；  </li>
-<li>上大三时一位老师直接和我谈一笔和算法竞赛有关的交易，无奈我很讨厌他，委婉的拒绝了，结果那门科目我就挂了(当时我预测我的卷面分至少在80分以上)，原来，老师没有那么神圣，他们也是人，也有自己的七情六欲;  </li>
-<li>去济南玩时，一天内碰到两个乞讨者，追着我叫我给他and她一点钱；  </li>
-<li>大学毕业，独自去一座城市生活，在软件园遇到一个女子，问我借20元坐地铁，说明天给我，转账后第二天微信被拉黑；</li>
-</ul>
-<p>所以，善良有错吗？  </p>
-<p>善良没有错，但是你要有资本，有承受贡献善良后的风险。  </p>
-<p>如果没有资本，即使被所谓的社会道德谴责，我也会无动于衷。  </p>
-<p>由于女朋友被骗的金额够不到2000，不构成诈骗罪，所以到公安局只是立案，不会调查，具体进展我会及时更新，而我只能在下班时在诈骗地点附近转悠，期待都找到骗女友钱的骗子，如果真能找到，我一定要给上一拳头，顺便补上几脚。  </p>
-<p><strong>我可以一直保持善良，在心里立一尊佛，但是当佛倒了，我就会变成魔。</strong>  </p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://www.zhihu.com/question/278929215/answer/404243094">知乎_被骗买两条中华烟？</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Essay</category>
-      </categories>
-      <tags>
-        <tag>社会</tag>
-        <tag>骗局</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>代码之丑</title>
     <url>/2022/01/04/the-ugly-code/</url>
     <content><![CDATA[<h1 id="坏味道"><a href="#坏味道" class="headerlink" title="坏味道"></a>坏味道</h1><h2 id="缺乏业务含义的命名"><a href="#缺乏业务含义的命名" class="headerlink" title="缺乏业务含义的命名"></a>缺乏业务含义的命名</h2><h3 id="错误命名"><a href="#错误命名" class="headerlink" title="错误命名"></a>错误命名</h3><ul>
@@ -14941,6 +14931,60 @@
       <tags>
         <tag>规范</tag>
         <tag>代码风格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间的价值</title>
+    <url>/2020/05/21/the-value-of-time/</url>
+    <content><![CDATA[<p>今天，收到一位学弟发来的消息，他收到了北京字节的<code>offer</code>，薪资五位数，本科应届毕业生，看了他发的薪资，讲真我酸了&#x2F;(ㄒoㄒ)&#x2F;~~  </p>
+<p>让我不禁想起上个月顿悟出的一件事：<strong>时间的价值，到底怎么体现时间的价值呢？</strong>  </p>
+<p>我记得，我刚毕业入职一家公司，做图形学方面的研发，有一次下班，和我的导师并肩走向地铁站时，我说我多么喜欢这一份工作，他很好奇的问我：你真的喜欢做这个吗？别这么早下定论，至少我到现在还没有找到我喜欢做什么。  </p>
+<p>也许只是他随口一说，但此时此景，他的话又放佛在我耳边清晰的回响起来：你真的喜欢做这个吗…  </p>
+<p>在后面持续至少20个月的工作生涯里，我兴奋过，厌倦过，苦恼过，迷茫过，直到上个月我才突然顿悟出来：喜欢与不喜欢，无非就是觉得自己是否能体现其存在的价值，如果在他人眼来这份职业（或者是你正在做的事情）价值为0，但我自己却非常感兴趣，那它就是无价的；如果只是用来谋生，那么唯有<code>money</code>，才是检验你过的是否有价值的一个衡量标准。  </p>
+<p>最后，希望我可以早日找到————让自己不惜一切也要拼命守护的东西。  </p>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>价值</tag>
+        <tag>时间</tag>
+        <tag>人生</tag>
+        <tag>守护</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>世界又少了一个单纯善良的人</title>
+    <url>/2019/11/14/the-world-has-lost-a-simple-and-kind-human/</url>
+    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前天女朋友回来告诉我，说她在下班途中碰到一个马来西亚的华人，来成都出差，在问路，于是她和那位华人多聊了几句，昨天回来后闷闷不乐，还流眼泪，我再三询问原因，她才告诉我说被骗了，自己怎么这么傻…被骗的过程我就不赘述了，网上搜关键字<strong>买烟骗局</strong>。  </p>
+<p>而我写下这篇文章，一是阐述这样的一种骗局，二是感慨，世界上又少了一位单纯善良的人。  </p>
+<h2 id="善良有错吗？"><a href="#善良有错吗？" class="headerlink" title="善良有错吗？"></a>善良有错吗？</h2><p>我记得，从小学，初中，高中这十二年的教育中，无论是从语文书，还是思想品德书上，都告诉我们要做一个正直善良的人，要孝敬父母，尊老爱幼，朋友有难要伸出援手，遇到困难学会忍受，相信雨过天晴这样大篇章的废话套话。  </p>
+<p>但是，要做到这些的前提，就是你要有资本。</p>
+<p>在这个星球上生活了二十三年，有一些本来需要遗忘又不经意回想的瞬间，让我不得不在此时此景下记录下来，例如  </p>
+<ul>
+<li>上高中时，在乌鲁木齐坐公交，碰到一个老头(这么称呼说明我并不尊重他)投了币，径直走向一个上面坐着小孩的座位，把他拉了起来，自己坐了下去，给老人让座没有错，但请对自己鲁莽的动作说一声抱歉，因为你确实吓到那位小孩了；  </li>
+<li>去上大学，坐十三个小时的火车，想上卫生间，在门口排队时，有些大人不顾其他人的感受，直接插队；  </li>
+<li>在大学里，帮助某些人，明明主动权在自己手上，却偏偏别人以为这是你必须帮我的义务(真是可笑)；  </li>
+<li>晚上休息时，舍友外放看直播，我吵得睡不着，但当我练习吹口琴时旁边人就不耐烦，那一刻，我有了脑子一热砍人的想法；  </li>
+<li>上大三时一位老师直接和我谈一笔和算法竞赛有关的交易，无奈我很讨厌他，委婉的拒绝了，结果那门科目我就挂了(当时我预测我的卷面分至少在80分以上)，原来，老师没有那么神圣，他们也是人，也有自己的七情六欲;  </li>
+<li>去济南玩时，一天内碰到两个乞讨者，追着我叫我给他and她一点钱；  </li>
+<li>大学毕业，独自去一座城市生活，在软件园遇到一个女子，问我借20元坐地铁，说明天给我，转账后第二天微信被拉黑；</li>
+</ul>
+<p>所以，善良有错吗？  </p>
+<p>善良没有错，但是你要有资本，有承受贡献善良后的风险。  </p>
+<p>如果没有资本，即使被所谓的社会道德谴责，我也会无动于衷。  </p>
+<p>由于女朋友被骗的金额够不到2000，不构成诈骗罪，所以到公安局只是立案，不会调查，具体进展我会及时更新，而我只能在下班时在诈骗地点附近转悠，期待都找到骗女友钱的骗子，如果真能找到，我一定要给上一拳头，顺便补上几脚。  </p>
+<p><strong>我可以一直保持善良，在心里立一尊佛，但是当佛倒了，我就会变成魔。</strong>  </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/278929215/answer/404243094">知乎_被骗买两条中华烟？</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Essay</category>
+      </categories>
+      <tags>
+        <tag>社会</tag>
+        <tag>骗局</tag>
       </tags>
   </entry>
   <entry>
