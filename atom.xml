@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-05-29T15:59:55.706Z</updated>
+  <updated>2023-07-23T06:42:41.172Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,104 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mac 安装 Kubernetes</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-kubernetes/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-kubernetes/</id>
+    <published>2023-07-20T05:49:08.000Z</published>
+    <updated>2023-07-23T06:42:41.172Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;首先安装Docker-for-Mac&quot;&gt;&lt;a href=&quot;#首先安装Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;首先安装Docker for Mac&quot;&gt;&lt;/a&gt;首先安装Docker for Mac&lt;/h1&gt;&lt;h1 id=&quot;Enable-Kubernetes&quot;&gt;&lt;a href=&quot;#Enable-Kubernetes&quot; class=&quot;headerlink&quot; title=&quot;Enable Kubernetes&quot;&gt;&lt;/a&gt;Enable Kubernetes&lt;/h1&gt;&lt;p&gt;设置里打开Kubernetes，下载会持续一段时间：&lt;br&gt;&lt;img src=&quot;/2023/07/20/mac-install-kubernetes/enable-k8s.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;验证&quot;&gt;&lt;a href=&quot;#验证&quot; class=&quot;headerlink&quot; title=&quot;验证&quot;&gt;&lt;/a&gt;验证&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get nodes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME             STATUS   ROLES           AGE   VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker-desktop   Ready    control-plane   46h   v1.27.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get ns&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME              STATUS   AGE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;default           Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-node-lease   Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-public       Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-system       Active   46h&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 Docker</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-docker/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-docker/</id>
+    <published>2023-07-20T05:49:01.000Z</published>
+    <updated>2023-07-23T06:38:48.871Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安装-Docker-for-Mac&quot;&gt;&lt;a href=&quot;#安装-Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker for Mac&quot;&gt;&lt;/a&gt;安装 Docker for Mac&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://docs.docker.com/desktop/install/mac-install/&quot;&gt;https://docs.docker.com/desktop/install/mac-install/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载.dmg文件后，拖拽到应用文件夹里即可。&lt;/p&gt;
+&lt;h1 id=&quot;安装成功&quot;&gt;&lt;a href=&quot;#安装成功&quot; class=&quot;headerlink&quot; title=&quot;安装成功&quot;&gt;&lt;/a&gt;安装成功&lt;/h1&gt;&lt;p&gt;命令行输入&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 Redis</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-redis/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-redis/</id>
+    <published>2023-07-20T05:13:35.000Z</published>
+    <updated>2023-07-23T06:31:37.795Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;brew安装&quot;&gt;&lt;a href=&quot;#brew安装&quot; class=&quot;headerlink&quot; title=&quot;brew安装&quot;&gt;&lt;/a&gt;brew安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install redis&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot;&gt;&lt;a href=&quot;#Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot; class=&quot;headerlink&quot; title=&quot;Could not connect to Redis at 127.0.0.1:6379: Connection refused&quot;&gt;&lt;/a&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-cli&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused not connected&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="redis" scheme="https://octopuslian.github.io/tags/redis/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 MySQL</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-mysql/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-mysql/</id>
+    <published>2023-07-20T04:12:22.000Z</published>
+    <updated>2023-07-20T05:12:40.500Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;brew命令安装&quot;&gt;&lt;a href=&quot;#brew命令安装&quot; class=&quot;headerlink&quot; title=&quot;brew命令安装&quot;&gt;&lt;/a&gt;brew命令安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install mysql&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot;&gt;&lt;a href=&quot;#The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot; class=&quot;headerlink&quot; title=&quot;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&quot;&gt;&lt;/a&gt;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo mysql.server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting MySQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.Logging to &amp;#x27;/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.err&amp;#x27;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ERROR! The server quit without updating PID file (/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.pid).&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+    <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Github开源项目crawlergo介绍</title>
     <link href="https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/"/>
     <id>https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/</id>
     <published>2023-05-27T14:13:46.000Z</published>
-    <updated>2023-05-29T15:59:55.706Z</updated>
+    <updated>2023-05-29T07:59:54.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;整体介绍&quot;&gt;&lt;a href=&quot;#整体介绍&quot; class=&quot;headerlink&quot; title=&quot;整体介绍&quot;&gt;&lt;/a&gt;整体介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;是一个使用&lt;code&gt;chrome headless&lt;/code&gt;模式进行URL收集的浏览器爬虫。它对整个网页的关键位置与DOM渲染阶段进行HOOK，自动进行表单填充并提交，配合智能的JS事件触发，&lt;br&gt;尽可能的收集网站暴露出的入口。内置URL去重模块，过滤掉了大量伪静态URL，对于大型网站仍保持较快的解析与抓取速度，最后得到高质量的请求结果集合。&lt;/p&gt;
@@ -51,7 +144,7 @@
     <link href="https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/"/>
     <id>https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/</id>
     <published>2023-05-19T15:11:03.000Z</published>
-    <updated>2023-05-27T12:05:24.169Z</updated>
+    <updated>2023-05-27T04:05:24.000Z</updated>
     
     
       
@@ -82,7 +175,7 @@
     <link href="https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/"/>
     <id>https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/</id>
     <published>2023-03-07T07:41:27.000Z</published>
-    <updated>2023-05-27T13:31:07.371Z</updated>
+    <updated>2023-05-27T05:31:06.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;go-micro-v3和micro-v3是什么关系？&quot;&gt;&lt;a href=&quot;#go-micro-v3和micro-v3是什么关系？&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3和micro v3是什么关系？&quot;&gt;&lt;/a&gt;go-micro v3和micro v3是什么关系？&lt;/h1&gt;&lt;h2 id=&quot;go-micro是什么？&quot;&gt;&lt;a href=&quot;#go-micro是什么？&quot; class=&quot;headerlink&quot; title=&quot;go-micro是什么？&quot;&gt;&lt;/a&gt;go-micro是什么？&lt;/h2&gt;&lt;ul&gt;
@@ -110,7 +203,7 @@
     <link href="https://octopuslian.github.io/2023/03/01/network-programming-base/"/>
     <id>https://octopuslian.github.io/2023/03/01/network-programming-base/</id>
     <published>2023-03-01T07:59:10.000Z</published>
-    <updated>2023-05-27T12:05:24.173Z</updated>
+    <updated>2023-05-27T04:05:24.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;OSI七层网络协议&quot;&gt;&lt;a href=&quot;#OSI七层网络协议&quot; class=&quot;headerlink&quot; title=&quot;OSI七层网络协议&quot;&gt;&lt;/a&gt;OSI七层网络协议&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/osi7.png&quot;&gt;  &lt;/p&gt;
@@ -134,7 +227,7 @@
     <link href="https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/"/>
     <id>https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/</id>
     <published>2023-01-01T14:04:42.000Z</published>
-    <updated>2023-01-01T14:08:37.456Z</updated>
+    <updated>2023-01-01T06:08:36.000Z</updated>
     
     
     <summary type="html">&lt;!-- markdown=&quot;1&quot; is required for GitHub Pages to render the TOC properly. --&gt;
@@ -194,7 +287,7 @@
     <link href="https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/"/>
     <id>https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/</id>
     <published>2022-10-09T07:49:34.000Z</published>
-    <updated>2023-01-01T14:08:37.452Z</updated>
+    <updated>2023-01-01T06:08:36.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cs = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 模拟临界区要保护的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; mu sync.Mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Lock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Unlock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	c &amp;lt;- &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;-c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByMutex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByChan()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByMutex-8   	76766581	        15.41 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByChan-8   	    32243965	        37.59 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -218,7 +311,7 @@
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/</id>
     <published>2022-10-08T06:12:18.000Z</published>
-    <updated>2022-10-08T12:31:12.583Z</updated>
+    <updated>2022-10-08T04:31:12.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;并发与并行&quot;&gt;&lt;a href=&quot;#并发与并行&quot; class=&quot;headerlink&quot; title=&quot;并发与并行&quot;&gt;&lt;/a&gt;并发与并行&lt;/h1&gt;&lt;h2 id=&quot;并行方案&quot;&gt;&lt;a href=&quot;#并行方案&quot; class=&quot;headerlink&quot; title=&quot;并行方案&quot;&gt;&lt;/a&gt;并行方案&lt;/h2&gt;&lt;p&gt;在处理器核数充足的情况下启动多个单线程应用的实例，这样每个实例运行在一个核上，尽可能多地利用多核计算资源。  &lt;/p&gt;
@@ -241,7 +334,7 @@
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/</id>
     <published>2022-10-08T05:10:26.000Z</published>
-    <updated>2022-10-08T12:31:12.583Z</updated>
+    <updated>2022-10-08T04:31:12.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;defer的运作机制&quot;&gt;&lt;a href=&quot;#defer的运作机制&quot; class=&quot;headerlink&quot; title=&quot;defer的运作机制&quot;&gt;&lt;/a&gt;defer的运作机制&lt;/h1&gt;&lt;ul&gt;
@@ -266,7 +359,7 @@
     <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/"/>
     <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/</id>
     <published>2022-10-08T04:35:31.000Z</published>
-    <updated>2022-10-08T12:31:12.583Z</updated>
+    <updated>2022-10-08T04:31:12.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Go语言的字符串类型&quot;&gt;&lt;a href=&quot;#Go语言的字符串类型&quot; class=&quot;headerlink&quot; title=&quot;Go语言的字符串类型&quot;&gt;&lt;/a&gt;Go语言的字符串类型&lt;/h1&gt;&lt;p&gt;统一设置为&lt;code&gt;string&lt;/code&gt;：  &lt;/p&gt;
@@ -301,7 +394,7 @@
     <link href="https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/"/>
     <id>https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/</id>
     <published>2022-10-07T14:51:12.000Z</published>
-    <updated>2022-10-07T04:13:29.815Z</updated>
+    <updated>2022-10-06T20:13:28.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是Map&quot;&gt;&lt;a href=&quot;#什么是Map&quot; class=&quot;headerlink&quot; title=&quot;什么是Map&quot;&gt;&lt;/a&gt;什么是Map&lt;/h1&gt;&lt;p&gt;map 是 Go 语言提供的一种抽象数据类型，它表示一组无序的键值对。  &lt;/p&gt;
@@ -314,9 +407,9 @@
     <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
     
     
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
     <category term="map" scheme="https://octopuslian.github.io/tags/map/"/>
+    
+    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
     
   </entry>
   
@@ -325,7 +418,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/"/>
     <id>https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/</id>
     <published>2022-10-06T14:51:07.000Z</published>
-    <updated>2022-10-07T04:13:29.811Z</updated>
+    <updated>2022-10-06T20:13:28.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是数组&quot;&gt;&lt;a href=&quot;#什么是数组&quot; class=&quot;headerlink&quot; title=&quot;什么是数组&quot;&gt;&lt;/a&gt;什么是数组&lt;/h1&gt;&lt;h2 id=&quot;数组有哪些基本特性&quot;&gt;&lt;a href=&quot;#数组有哪些基本特性&quot; class=&quot;headerlink&quot; title=&quot;数组有哪些基本特性&quot;&gt;&lt;/a&gt;数组有哪些基本特性&lt;/h2&gt;&lt;p&gt;Go 语言的数组是一个长度固定的、由同构类型元素组成的连续序列。&lt;br&gt;因此Go 的数组类型包含两个重要属性：元素的类型和数组长度（元素的个数）。&lt;br&gt;所以，Go 语言中数组类型变量的声明：  &lt;/p&gt;
@@ -338,9 +431,9 @@
     <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
     
     
-    <category term="切片" scheme="https://octopuslian.github.io/tags/%E5%88%87%E7%89%87/"/>
-    
     <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
+    
+    <category term="切片" scheme="https://octopuslian.github.io/tags/%E5%88%87%E7%89%87/"/>
     
   </entry>
   
@@ -349,7 +442,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-34/"/>
     <id>https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-34/</id>
     <published>2022-10-06T14:01:37.000Z</published>
-    <updated>2022-10-08T07:51:00.649Z</updated>
+    <updated>2022-10-07T23:51:00.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是channel&quot;&gt;&lt;a href=&quot;#什么是channel&quot; class=&quot;headerlink&quot; title=&quot;什么是channel&quot;&gt;&lt;/a&gt;什么是channel&lt;/h1&gt;&lt;p&gt;&lt;code&gt;channel&lt;/code&gt;是Go语言提供的一种重要的并发原语。它在Go语言的&lt;code&gt;CSP&lt;/code&gt;模型中扮演者重要的角色：  &lt;/p&gt;
@@ -376,7 +469,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-32/"/>
     <id>https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-32/</id>
     <published>2022-10-06T13:45:16.000Z</published>
-    <updated>2022-10-08T07:22:21.506Z</updated>
+    <updated>2022-10-07T23:22:20.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是goroutine&quot;&gt;&lt;a href=&quot;#什么是goroutine&quot; class=&quot;headerlink&quot; title=&quot;什么是goroutine&quot;&gt;&lt;/a&gt;什么是goroutine&lt;/h1&gt;&lt;p&gt;&lt;code&gt;goroutine&lt;/code&gt;是由Go运行时管理的用户层轻量级线程。  &lt;/p&gt;
@@ -399,7 +492,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/leetcode-lcof-52-liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian/"/>
     <id>https://octopuslian.github.io/2022/10/06/leetcode-lcof-52-liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian/</id>
     <published>2022-10-06T07:52:21.000Z</published>
-    <updated>2022-10-06T08:02:44.094Z</updated>
+    <updated>2022-10-06T00:02:44.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/&quot;&gt;剑指 Offer 52. 两个链表的第一个公共节点&lt;/a&gt;  &lt;/p&gt;
@@ -420,7 +513,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/leetcode-lcof-45-ba-shu-zu-pai-cheng-zui-xiao-de-shu/"/>
     <id>https://octopuslian.github.io/2022/10/06/leetcode-lcof-45-ba-shu-zu-pai-cheng-zui-xiao-de-shu/</id>
     <published>2022-10-06T07:23:55.000Z</published>
-    <updated>2022-10-06T08:02:44.094Z</updated>
+    <updated>2022-10-06T00:02:44.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/&quot;&gt;剑指 Offer 45. 把数组排成最小的数&lt;/a&gt;  &lt;/p&gt;
@@ -444,7 +537,7 @@
     <link href="https://octopuslian.github.io/2022/10/06/leetcode-lcof-42-lian-xu-zi-shu-zu-de-zui-da-he/"/>
     <id>https://octopuslian.github.io/2022/10/06/leetcode-lcof-42-lian-xu-zi-shu-zu-de-zui-da-he/</id>
     <published>2022-10-06T07:11:07.000Z</published>
-    <updated>2022-10-06T08:02:44.090Z</updated>
+    <updated>2022-10-06T00:02:44.000Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/&quot;&gt;剑指 Offer 42. 连续子数组的最大和&lt;/a&gt;  &lt;/p&gt;
@@ -456,91 +549,6 @@
     
     
     <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes集群部署WordPress网站-版本3</title>
-    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/"/>
-    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/</id>
-    <published>2022-10-04T11:26:31.000Z</published>
-    <updated>2022-10-04T16:10:48.395Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;版本更新描述&quot;&gt;&lt;a href=&quot;#版本更新描述&quot; class=&quot;headerlink&quot; title=&quot;版本更新描述&quot;&gt;&lt;/a&gt;版本更新描述&lt;/h1&gt;&lt;p&gt;在基于&lt;a href=&quot;https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2&quot;&gt;版本2&lt;/a&gt;的基础上继续优化 WordPress 网站的部署，其中的关键是&lt;strong&gt;让数据库 MariaDB 实现数据持久化。&lt;/strong&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;网站的整体架构图变化不大，前面的 Nginx、WordPress 还是原样，只需要修改 MariaDB：  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress-v3/%E6%9E%B6%E6%9E%84%E5%9B%BE.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes集群部署WordPress网站-版本2</title>
-    <link href="https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/"/>
-    <id>https://octopuslian.github.io/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/</id>
-    <published>2022-10-04T11:09:14.000Z</published>
-    <updated>2022-10-12T06:27:17.659Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;版本更新描述&quot;&gt;&lt;a href=&quot;#版本更新描述&quot; class=&quot;headerlink&quot; title=&quot;版本更新描述&quot;&gt;&lt;/a&gt;版本更新描述&lt;/h1&gt;&lt;p&gt;完全舍弃了 Docker，把所有的应用都放在 Kubernetes 集群里运行，部署方式也不再是裸 Pod，&lt;strong&gt;而是使用 Deployment，稳定性大幅度提升。&lt;/strong&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/kubernetes-cluster-deploy-wordpress-v2/%E6%9E%B6%E6%9E%84%E5%9B%BE.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;原来的 Nginx 的作用是反向代理，那么在 Kubernetes 里它就升级成了具有相同功能的 Ingress Controller。WordPress 原来只有一个实例，现在变成了两个实例（你也可以任意横向扩容），可用性也就因此提高了不少。而 MariaDB 数据库因为要保证数据的一致性，暂时还是一个实例。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnKubernetes" scheme="https://octopuslian.github.io/categories/LearnKubernetes/"/>
-    
-    
-    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 40. 最小的k个数</title>
-    <link href="https://octopuslian.github.io/2022/10/04/leetcode-lcof-40-zui-xiao-de-kge-shu/"/>
-    <id>https://octopuslian.github.io/2022/10/04/leetcode-lcof-40-zui-xiao-de-kge-shu/</id>
-    <published>2022-10-04T08:23:01.000Z</published>
-    <updated>2022-10-06T07:00:11.621Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/&quot;&gt;剑指 Offer 40. 最小的k个数&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;题意就是从一个整数数组中，取出前k个最小的数。  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;简单直接&quot;&gt;&lt;a href=&quot;#简单直接&quot; class=&quot;headerlink&quot; title=&quot;简单直接&quot;&gt;&lt;/a&gt;简单直接&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 搭建 WordPress 网站</title>
-    <link href="https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/"/>
-    <id>https://octopuslian.github.io/2022/10/04/docker-deploy-wordpress/</id>
-    <published>2022-10-04T03:28:39.000Z</published>
-    <updated>2022-10-07T07:44:37.442Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;架构图&quot;&gt;&lt;a href=&quot;#架构图&quot; class=&quot;headerlink&quot; title=&quot;架构图&quot;&gt;&lt;/a&gt;架构图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2022/10/04/docker-deploy-wordpress/1.png&quot;&gt;&lt;br&gt;MariaDB 作为后面的关系型数据库，端口号是 3306；WordPress 是中间的应用服务器，使用 MariaDB 来存储数据，它的端口是 80；Nginx 是前面的反向代理，它对外暴露 80 端口，然后把请求转发给 WordPress。  &lt;/p&gt;
-&lt;h1 id=&quot;使用-docker-pull-拉取镜像&quot;&gt;&lt;a href=&quot;#使用-docker-pull-拉取镜像&quot; class=&quot;headerlink&quot; title=&quot;使用 docker pull 拉取镜像&quot;&gt;&lt;/a&gt;使用 docker pull 拉取镜像&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull wordpress:5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull mariadb:10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull nginx:alpine&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;启动-MariaDB&quot;&gt;&lt;a href=&quot;#启动-MariaDB&quot; class=&quot;headerlink&quot; title=&quot;启动 MariaDB&quot;&gt;&lt;/a&gt;启动 MariaDB&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
-    
-    
-    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
-    
-    <category term="wordpress" scheme="https://octopuslian.github.io/tags/wordpress/"/>
     
   </entry>
   
