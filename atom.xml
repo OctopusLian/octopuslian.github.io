@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-07-23T06:42:41.172Z</updated>
+  <updated>2023-07-25T03:09:48.046Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>程前朋友圈：程序员的一天是怎么样的？</title>
+    <link href="https://octopuslian.github.io/2023/07/25/chengqian-programmer-a-day/"/>
+    <id>https://octopuslian.github.io/2023/07/25/chengqian-programmer-a-day/</id>
+    <published>2023-07-25T02:47:10.000Z</published>
+    <updated>2023-07-25T03:09:48.046Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;采访了一位哈尔滨工业大学毕业的程序员，在上海工作三年，与两位合伙人一起创业做了一个长达十年的项目，有着十几个人的公司，年收入300~400万，相对来说算成功。&lt;/p&gt;
+&lt;h1 id=&quot;采访&quot;&gt;&lt;a href=&quot;#采访&quot; class=&quot;headerlink&quot; title=&quot;采访&quot;&gt;&lt;/a&gt;采访&lt;/h1&gt;&lt;h2 id=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;a href=&quot;#你觉得你处在这个年龄层的程序员里面算什么水平？&quot; class=&quot;headerlink&quot; title=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;/a&gt;你觉得你处在这个年龄层的程序员里面算什么水平？&lt;/h2&gt;&lt;p&gt;中等吧，顶多能算中等。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Essay" scheme="https://octopuslian.github.io/categories/Essay/"/>
+    
+    
+    <category term="程前朋友圈" scheme="https://octopuslian.github.io/tags/%E7%A8%8B%E5%89%8D%E6%9C%8B%E5%8F%8B%E5%9C%88/"/>
+    
+    <category term="采访" scheme="https://octopuslian.github.io/tags/%E9%87%87%E8%AE%BF/"/>
+    
+    <category term="程序员" scheme="https://octopuslian.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 安装 Kubernetes</title>
@@ -106,6 +130,36 @@
     <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
     
     <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一款MacBook Pro</title>
+    <link href="https://octopuslian.github.io/2023/07/20/my-first-mbp/"/>
+    <id>https://octopuslian.github.io/2023/07/20/my-first-mbp/</id>
+    <published>2023-07-20T02:47:33.000Z</published>
+    <updated>2023-07-20T04:12:03.569Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;7月，终于下定决心给自己买一台MacBook Pro，购买的原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 + Mac皮肤，编码没问题，但有时需要微信、Office办公套件的时候，会很麻烦，各种中转；&lt;/li&gt;
+&lt;li&gt;Mac一直想买，但也一直下不定决心，有的人买来很实在，有的人买来是为了装逼 hhh；&lt;/li&gt;
+&lt;li&gt;尝试做自媒体剪一些视频；  &lt;/li&gt;
+&lt;li&gt;苹果软件生态丰富…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;于是乎，开始看各种测评，官网看报价，最终决定上一款 M1 Max + 64G + 2T的配置，当然保险起见买了AC+。&lt;/p&gt;
+&lt;p&gt;上手3天，觉得MacOS做的还是很细心的，运行软件基本都是秒开，硬件方面给我最大的感触就是屏幕+音响效果，非常棒，看视频有一种在电影院的感觉呢。&lt;/p&gt;
+&lt;p&gt;软件的话我全部选择了JetBrains系列。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="电脑" scheme="https://octopuslian.github.io/tags/%E7%94%B5%E8%84%91/"/>
+    
+    <category term="mbp" scheme="https://octopuslian.github.io/tags/mbp/"/>
     
   </entry>
   
@@ -505,50 +559,6 @@
     
     
     <category term="链表" scheme="https://octopuslian.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 45. 把数组排成最小的数</title>
-    <link href="https://octopuslian.github.io/2022/10/06/leetcode-lcof-45-ba-shu-zu-pai-cheng-zui-xiao-de-shu/"/>
-    <id>https://octopuslian.github.io/2022/10/06/leetcode-lcof-45-ba-shu-zu-pai-cheng-zui-xiao-de-shu/</id>
-    <published>2022-10-06T07:23:55.000Z</published>
-    <updated>2022-10-06T00:02:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/&quot;&gt;剑指 Offer 45. 把数组排成最小的数&lt;/a&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;注意：&quot;&gt;&lt;a href=&quot;#注意：&quot; class=&quot;headerlink&quot; title=&quot;注意：&quot;&gt;&lt;/a&gt;注意：&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;输出结果可能非常大，所以你需要返回一个字符串而不是整数  &lt;/li&gt;
-&lt;li&gt;拼接起来的数字可能会有前导 0，最后结果不需要去掉前导0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指 Offer 42. 连续子数组的最大和</title>
-    <link href="https://octopuslian.github.io/2022/10/06/leetcode-lcof-42-lian-xu-zi-shu-zu-de-zui-da-he/"/>
-    <id>https://octopuslian.github.io/2022/10/06/leetcode-lcof-42-lian-xu-zi-shu-zu-de-zui-da-he/</id>
-    <published>2022-10-06T07:11:07.000Z</published>
-    <updated>2022-10-06T00:02:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/&quot;&gt;剑指 Offer 42. 连续子数组的最大和&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;h2 id=&quot;暴力求解&quot;&gt;&lt;a href=&quot;#暴力求解&quot; class=&quot;headerlink&quot; title=&quot;暴力求解&quot;&gt;&lt;/a&gt;暴力求解&lt;/h2&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;maxSubArray&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(nums []&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//一个临时值，和一个最大值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    temp,max := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,nums[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i:=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(nums);i++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (temp + nums[i]) &amp;gt; nums[i] &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            temp = temp + nums[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            temp = nums[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; temp &amp;gt; max &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            max = temp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; max  &lt;span class=&quot;comment&quot;&gt;//返回最大值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="SwordToOffer" scheme="https://octopuslian.github.io/categories/SwordToOffer/"/>
-    
-    
-    <category term="数组" scheme="https://octopuslian.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
