@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-09-18T03:33:50.019Z</updated>
+  <updated>2023-12-23T04:31:24.540Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,21 +17,122 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>EdgeX 入门</title>
-    <link href="https://octopuslian.github.io/2023/09/18/how-edgex-works/"/>
-    <id>https://octopuslian.github.io/2023/09/18/how-edgex-works/</id>
+    <title>CS50 Lab 1_Population Growth</title>
+    <link href="https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/"/>
+    <id>https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/</id>
+    <published>2023-12-20T11:57:47.000Z</published>
+    <updated>2023-12-23T04:31:24.540Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;获取&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;do while&lt;/code&gt;做好范围限制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n = get_int(&lt;span class=&quot;string&quot;&gt;&amp;quot;Positive Integer: &amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (n &amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;if&lt;/code&gt;语句判断&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;是否相等  &lt;/li&gt;
+&lt;li&gt;如果相等，输出&lt;code&gt;Years&lt;/code&gt;为0  &lt;/li&gt;
+&lt;li&gt;如果不相等，根据出生人数➗3，死亡人数➗4，每计算一次&lt;code&gt;Years&lt;/code&gt;加1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="cs-self-learning" scheme="https://octopuslian.github.io/categories/cs-self-learning/"/>
+    
+    
+    <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
+    
+    <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 MQTT</title>
+    <link href="https://octopuslian.github.io/2023/10/10/mac-install-mqtt/"/>
+    <id>https://octopuslian.github.io/2023/10/10/mac-install-mqtt/</id>
+    <published>2023-10-10T03:06:32.000Z</published>
+    <updated>2023-12-23T04:30:09.602Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装MQTT服务器&quot;&gt;&lt;a href=&quot;#安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT服务器&quot;&gt;&lt;/a&gt;安装MQTT服务器&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="LearnMQTT" scheme="https://octopuslian.github.io/categories/LearnMQTT/"/>
+    
+    
+    <category term="MQTT" scheme="https://octopuslian.github.io/tags/MQTT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>edgex 快速开始</title>
+    <link href="https://octopuslian.github.io/2023/09/22/edgex-quick-start/"/>
+    <id>https://octopuslian.github.io/2023/09/22/edgex-quick-start/</id>
+    <published>2023-09-22T09:33:23.000Z</published>
+    <updated>2023-12-23T04:30:09.600Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;运行-EdgeX&quot;&gt;&lt;a href=&quot;#运行-EdgeX&quot; class=&quot;headerlink&quot; title=&quot;运行 EdgeX&quot;&gt;&lt;/a&gt;运行 EdgeX&lt;/h1&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# ARM 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty-arm64.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# x86 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;访问&lt;code&gt;localhost:4000&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/09/22/edgex-quick-start/edgex-run.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;运行成功！  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnEdgeX" scheme="https://octopuslian.github.io/categories/LearnEdgeX/"/>
+    
+    
+    <category term="edgex" scheme="https://octopuslian.github.io/tags/edgex/"/>
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ASU Intro to Cybersecurity Talking Web</title>
+    <link href="https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/"/>
+    <id>https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/</id>
+    <published>2023-09-21T13:30:13.000Z</published>
+    <updated>2023-12-23T04:30:09.597Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;level-1&quot;&gt;&lt;a href=&quot;#level-1&quot; class=&quot;headerlink&quot; title=&quot;level 1&quot;&gt;&lt;/a&gt;level 1&lt;/h1&gt;&lt;p&gt;Send an HTTP request using curl  &lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ curl http://127.0.0.1:80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pwn.college&amp;#123;sc9zRb7KF1lZSGtDWOxSGGTAeYp.dhjNyMDL3ATN3MzW&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;level-2&quot;&gt;&lt;a href=&quot;#level-2&quot; class=&quot;headerlink&quot; title=&quot;level 2&quot;&gt;&lt;/a&gt;level 2&lt;/h1&gt;&lt;p&gt;Send an HTTP request using nc  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="ASU-CSE365" scheme="https://octopuslian.github.io/categories/ASU-CSE365/"/>
+    
+    
+    <category term="cybersecurity" scheme="https://octopuslian.github.io/tags/cybersecurity/"/>
+    
+    <category term="web" scheme="https://octopuslian.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EdgeX 工作原理</title>
+    <link href="https://octopuslian.github.io/2023/09/18/edgex-works/"/>
+    <id>https://octopuslian.github.io/2023/09/18/edgex-works/</id>
     <published>2023-09-18T03:15:56.000Z</published>
-    <updated>2023-09-18T03:33:50.019Z</updated>
+    <updated>2023-09-22T09:51:57.608Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1 id=&quot;什么是EdgeX&quot;&gt;&lt;a href=&quot;#什么是EdgeX&quot; class=&quot;headerlink&quot; title=&quot;什么是EdgeX&quot;&gt;&lt;/a&gt;什么是EdgeX&lt;/h1&gt;&lt;p&gt;边缘中间件，服务于物理传感和执行“事物”和我们的信息技术(IT)系统之间。&lt;/p&gt;
-&lt;h1</summary>
-        
-      
+&lt;h1 id=&quot;EdgeX架构&quot;&gt;&lt;a href=&quot;#EdgeX架构&quot; class=&quot;headerlink&quot; title=&quot;EdgeX架构&quot;&gt;&lt;/a&gt;EdgeX架构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/09/18/edgex-works/EdgeX_architecture.png&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;设备服务&quot;&gt;&lt;a href=&quot;#设备服务&quot; class=&quot;headerlink&quot; title=&quot;设备服务&quot;&gt;&lt;/a&gt;设备服务&lt;/h2&gt;</summary>
     
     
     
@@ -50,13 +151,8 @@
     <updated>2023-09-18T03:36:14.047Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;什么是-docker-compose&quot;&gt;&lt;a href=&quot;#什么是-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;什么是 docker-compose&quot;&gt;&lt;/a&gt;什么是 docker-compose&lt;/h1&gt;&lt;p&gt;在</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;什么是-docker-compose&quot;&gt;&lt;a href=&quot;#什么是-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;什么是 docker-compose&quot;&gt;&lt;/a&gt;什么是 docker-compose&lt;/h1&gt;&lt;p&gt;在 Docker 把容器技术大众化之后，Docker 周边涌现出了数不胜数的扩展、增强产品，其中有一个名字叫“Fig”的小项目格外令人瞩目。&lt;br&gt;Fig 为 Docker 引入了“容器编排”的概念，使用 YAML 来定义容器的启动参数、先后顺序和依赖关系，让用户不再有 Docker 冗长命令行的烦恼，第一次见识到了“声明式”的威力。&lt;br&gt;Docker 公司也很快意识到了 Fig 这个小工具的价值，于是就在 2014 年 7 月把它买了下来，集成进 Docker 内部，然后改名成了&lt;code&gt;docker-compose&lt;/code&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;如何使用-docker-compose&quot;&gt;&lt;a href=&quot;#如何使用-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;如何使用 docker-compose&quot;&gt;&lt;/a&gt;如何使用 docker-compose&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;intel x86_64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;apple m1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-aarch64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -79,13 +175,14 @@
     <updated>2023-09-18T03:11:13.765Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;熟悉Docker的使用&quot;&gt;&lt;a href=&quot;#熟悉Docker的使用&quot; class=&quot;headerlink&quot; title=&quot;熟悉Docker的使用&quot;&gt;&lt;/a&gt;熟悉Docker的使用&lt;/h1&gt;&lt;h2 id=&quot;查看版本&quot;&gt;&lt;a href=&quot;#查看版本&quot;</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;熟悉Docker的使用&quot;&gt;&lt;a href=&quot;#熟悉Docker的使用&quot; class=&quot;headerlink&quot; title=&quot;熟悉Docker的使用&quot;&gt;&lt;/a&gt;熟悉Docker的使用&lt;/h1&gt;&lt;h2 id=&quot;查看版本&quot;&gt;&lt;a href=&quot;#查看版本&quot; class=&quot;headerlink&quot; title=&quot;查看版本&quot;&gt;&lt;/a&gt;查看版本&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Client:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Cloud integration: v1.0.35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Version:           24.0.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; API version:       1.43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Go version:        go1.20.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Git commit:        cb74dfc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Built:             Thu May 25 21:51:16 2023&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; OS/Arch:           darwin/arm64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Context:           desktop-linux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Server: Docker Desktop 4.21.1 (114176)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Engine:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          24.0.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  API version:      1.43 (minimum version 1.12)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Go version:       go1.20.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Git commit:       659604f&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Built:            Thu May 25 21:50:59 2023&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  OS/Arch:          linux/arm64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Experimental:     false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; containerd:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          1.6.21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; runc:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          1.1.7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        v1.1.7-0-g860f061&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; docker-init:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          0.19.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        de40ad0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker engine&lt;/code&gt;版本号 24.0.2  &lt;/li&gt;
+&lt;li&gt;系统是&lt;code&gt;linux&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;硬件架构是&lt;code&gt;arm64&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;查看信息&quot;&gt;&lt;a href=&quot;#查看信息&quot; class=&quot;headerlink&quot; title=&quot;查看信息&quot;&gt;&lt;/a&gt;查看信息&lt;/h2&gt;</summary>
     
     
     
@@ -106,13 +203,8 @@
     <updated>2023-07-25T03:09:48.046Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;采访了一位哈尔滨工业大学毕业的程序员，在上海工作三年，与两位合伙人一起创业做了一个长达十年的项目，有着十几个人的公司，年收入300~400万，相对来说算成功。&lt;/p&gt;
+&lt;h1 id=&quot;采访&quot;&gt;&lt;a href=&quot;#采访&quot; class=&quot;headerlink&quot; title=&quot;采访&quot;&gt;&lt;/a&gt;采访&lt;/h1&gt;&lt;h2 id=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;a href=&quot;#你觉得你处在这个年龄层的程序员里面算什么水平？&quot; class=&quot;headerlink&quot; title=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;/a&gt;你觉得你处在这个年龄层的程序员里面算什么水平？&lt;/h2&gt;&lt;p&gt;中等吧，顶多能算中等。&lt;/p&gt;</summary>
     
     
     
@@ -135,13 +227,8 @@
     <updated>2023-07-23T06:42:41.172Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;首先安装Docker-for-Mac&quot;&gt;&lt;a href=&quot;#首先安装Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;首先安装Docker for Mac&quot;&gt;&lt;/a&gt;首先安装Docker for Mac&lt;/h1&gt;&lt;h1</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;首先安装Docker-for-Mac&quot;&gt;&lt;a href=&quot;#首先安装Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;首先安装Docker for Mac&quot;&gt;&lt;/a&gt;首先安装Docker for Mac&lt;/h1&gt;&lt;h1 id=&quot;Enable-Kubernetes&quot;&gt;&lt;a href=&quot;#Enable-Kubernetes&quot; class=&quot;headerlink&quot; title=&quot;Enable Kubernetes&quot;&gt;&lt;/a&gt;Enable Kubernetes&lt;/h1&gt;&lt;p&gt;设置里打开Kubernetes，下载会持续一段时间：&lt;br&gt;&lt;img src=&quot;/2023/07/20/mac-install-kubernetes/enable-k8s.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;验证&quot;&gt;&lt;a href=&quot;#验证&quot; class=&quot;headerlink&quot; title=&quot;验证&quot;&gt;&lt;/a&gt;验证&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get nodes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME             STATUS   ROLES           AGE   VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker-desktop   Ready    control-plane   46h   v1.27.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get ns&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME              STATUS   AGE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;default           Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-node-lease   Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-public       Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-system       Active   46h&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -162,13 +249,9 @@
     <updated>2023-07-23T06:38:48.871Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;安装-Docker-for-Mac&quot;&gt;&lt;a href=&quot;#安装-Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker for Mac&quot;&gt;&lt;/a&gt;安装 Docker for Mac&lt;/h1&gt;&lt;p&gt;访问&lt;a</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;安装-Docker-for-Mac&quot;&gt;&lt;a href=&quot;#安装-Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker for Mac&quot;&gt;&lt;/a&gt;安装 Docker for Mac&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://docs.docker.com/desktop/install/mac-install/&quot;&gt;https://docs.docker.com/desktop/install/mac-install/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载.dmg文件后，拖拽到应用文件夹里即可。&lt;/p&gt;
+&lt;h1 id=&quot;安装成功&quot;&gt;&lt;a href=&quot;#安装成功&quot; class=&quot;headerlink&quot; title=&quot;安装成功&quot;&gt;&lt;/a&gt;安装成功&lt;/h1&gt;&lt;p&gt;命令行输入&lt;/p&gt;</summary>
     
     
     
@@ -189,13 +272,10 @@
     <updated>2023-07-23T06:31:37.795Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;brew安装&quot;&gt;&lt;a href=&quot;#brew安装&quot; class=&quot;headerlink&quot; title=&quot;brew安装&quot;&gt;&lt;/a&gt;brew安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;brew安装&quot;&gt;&lt;a href=&quot;#brew安装&quot; class=&quot;headerlink&quot; title=&quot;brew安装&quot;&gt;&lt;/a&gt;brew安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install redis&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot;&gt;&lt;a href=&quot;#Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot; class=&quot;headerlink&quot; title=&quot;Could not connect to Redis at 127.0.0.1:6379: Connection refused&quot;&gt;&lt;/a&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-cli&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused not connected&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -216,13 +296,10 @@
     <updated>2023-07-20T05:12:40.500Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;brew命令安装&quot;&gt;&lt;a href=&quot;#brew命令安装&quot; class=&quot;headerlink&quot; title=&quot;brew命令安装&quot;&gt;&lt;/a&gt;brew命令安装&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;brew命令安装&quot;&gt;&lt;a href=&quot;#brew命令安装&quot; class=&quot;headerlink&quot; title=&quot;brew命令安装&quot;&gt;&lt;/a&gt;brew命令安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install mysql&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot;&gt;&lt;a href=&quot;#The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot; class=&quot;headerlink&quot; title=&quot;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&quot;&gt;&lt;/a&gt;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo mysql.server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting MySQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.Logging to &amp;#x27;/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.err&amp;#x27;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ERROR! The server quit without updating PID file (/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.pid).&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -243,15 +320,16 @@
     <updated>2023-07-20T04:12:03.569Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;7月，终于下定决心给自己买一台MacBook Pro，购买的原因如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 +</summary>
-        
-      
+&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 + Mac皮肤，编码没问题，但有时需要微信、Office办公套件的时候，会很麻烦，各种中转；&lt;/li&gt;
+&lt;li&gt;Mac一直想买，但也一直下不定决心，有的人买来很实在，有的人买来是为了装逼 hhh；&lt;/li&gt;
+&lt;li&gt;尝试做自媒体剪一些视频；  &lt;/li&gt;
+&lt;li&gt;苹果软件生态丰富…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;于是乎，开始看各种测评，官网看报价，最终决定上一款 M1 Max + 64G + 2T的配置，当然保险起见买了AC+。&lt;/p&gt;
+&lt;p&gt;上手3天，觉得MacOS做的还是很细心的，运行软件基本都是秒开，硬件方面给我最大的感触就是屏幕+音响效果，非常棒，看视频有一种在电影院的感觉呢。&lt;/p&gt;
+&lt;p&gt;软件的话我全部选择了JetBrains系列。&lt;/p&gt;</summary>
     
     
     
@@ -272,13 +350,18 @@
     <updated>2023-05-29T07:59:54.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;整体介绍&quot;&gt;&lt;a href=&quot;#整体介绍&quot; class=&quot;headerlink&quot; title=&quot;整体介绍&quot;&gt;&lt;/a&gt;整体介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;是一个使用&lt;code&gt;chrome</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;整体介绍&quot;&gt;&lt;a href=&quot;#整体介绍&quot; class=&quot;headerlink&quot; title=&quot;整体介绍&quot;&gt;&lt;/a&gt;整体介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;是一个使用&lt;code&gt;chrome headless&lt;/code&gt;模式进行URL收集的浏览器爬虫。它对整个网页的关键位置与DOM渲染阶段进行HOOK，自动进行表单填充并提交，配合智能的JS事件触发，&lt;br&gt;尽可能的收集网站暴露出的入口。内置URL去重模块，过滤掉了大量伪静态URL，对于大型网站仍保持较快的解析与抓取速度，最后得到高质量的请求结果集合。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;目前支持以下特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原生浏览器环境，协程池调度任务  &lt;/li&gt;
+&lt;li&gt;表单智能填充、自动化提交  &lt;/li&gt;
+&lt;li&gt;完整DOM事件收集，自动化触发  &lt;/li&gt;
+&lt;li&gt;智能URL去重，去掉大部分的重复请求  &lt;/li&gt;
+&lt;li&gt;全面分析收集，包括javascript文件内容、页面注释、robots.txt文件和常见路径Fuzz  &lt;/li&gt;
+&lt;li&gt;支持Host绑定，自动添加Referer  &lt;/li&gt;
+&lt;li&gt;支持请求代理，支持爬虫结果主动推送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目整体结构：&lt;/p&gt;</summary>
     
     
     
@@ -328,13 +411,16 @@
     <updated>2023-05-27T05:31:06.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;go-micro-v3和micro-v3是什么关系？&quot;&gt;&lt;a href=&quot;#go-micro-v3和micro-v3是什么关系？&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3和micro</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;go-micro-v3和micro-v3是什么关系？&quot;&gt;&lt;a href=&quot;#go-micro-v3和micro-v3是什么关系？&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3和micro v3是什么关系？&quot;&gt;&lt;/a&gt;go-micro v3和micro v3是什么关系？&lt;/h1&gt;&lt;h2 id=&quot;go-micro是什么？&quot;&gt;&lt;a href=&quot;#go-micro是什么？&quot; class=&quot;headerlink&quot; title=&quot;go-micro是什么？&quot;&gt;&lt;/a&gt;go-micro是什么？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一个go微服务开放框架  &lt;/li&gt;
+&lt;li&gt;Framework（程序开放框架）：用来方便编写微服务  &lt;/li&gt;
+&lt;li&gt;Clients（多语言客户端）：支持多语言访问服务端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;go-micro-v3与micro-v3的关系&quot;&gt;&lt;a href=&quot;#go-micro-v3与micro-v3的关系&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3与micro v3的关系&quot;&gt;&lt;/a&gt;go-micro v3与micro v3的关系&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;micro v3版本类似isito把基础设施抽象成能力  &lt;/li&gt;
+&lt;li&gt;micro的技术体系和官方平台绑定较多  &lt;/li&gt;
+&lt;li&gt;go-micro v3为微服务开发框架，自由度相对较高&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -353,13 +439,8 @@
     <updated>2023-05-27T04:05:24.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;OSI七层网络协议&quot;&gt;&lt;a href=&quot;#OSI七层网络协议&quot; class=&quot;headerlink&quot; title=&quot;OSI七层网络协议&quot;&gt;&lt;/a&gt;OSI七层网络协议&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;OSI七层网络协议&quot;&gt;&lt;a href=&quot;#OSI七层网络协议&quot; class=&quot;headerlink&quot; title=&quot;OSI七层网络协议&quot;&gt;&lt;/a&gt;OSI七层网络协议&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/osi7.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;经典协议与数据包&quot;&gt;&lt;a href=&quot;#经典协议与数据包&quot; class=&quot;headerlink&quot; title=&quot;经典协议与数据包&quot;&gt;&lt;/a&gt;经典协议与数据包&lt;/h1&gt;&lt;h2 id=&quot;TCP数据包构成&quot;&gt;&lt;a href=&quot;#TCP数据包构成&quot; class=&quot;headerlink&quot; title=&quot;TCP数据包构成&quot;&gt;&lt;/a&gt;TCP数据包构成&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/TCP%E6%95%B0%E6%8D%AE%E5%8C%85%E7%BB%93%E6%9E%84.png&quot;&gt;  &lt;/p&gt;</summary>
     
     
     
@@ -382,16 +463,46 @@
     <updated>2023-01-01T06:08:36.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;!-- markdown=&quot;1&quot; is required for GitHub Pages to render the TOC properly. --&gt;
 
 &lt;details markdown=&quot;1&quot;&gt;
- </summary>
-        
-      
+  &lt;summary&gt;目录&lt;/summary&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#1&quot;&gt;1 通用类&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.1&quot;&gt;1.1 内存管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.2&quot;&gt;1.2 文件操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.3&quot;&gt;1.3 系统接口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.4&quot;&gt;1.4 通信安全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.5&quot;&gt;1.5 敏感数据保护&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.6&quot;&gt;1.6 加密解密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#1.1.7&quot;&gt;1.7 正则表达式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#2&quot;&gt;2 后台类&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.1&quot;&gt;1.1 输入校验&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.2&quot;&gt;1.2 SQL操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.3&quot;&gt;1.3 网络请求&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.4&quot;&gt;1.4 服务器端渲染&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.5&quot;&gt;1.5 Web跨域&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.6&quot;&gt;1.6 响应输出&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.7&quot;&gt;1.7 会话管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.8&quot;&gt;1.8 访问控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2.1.9&quot;&gt;1.9 并发保护&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/details&gt;
+
+
+
+
+
+&lt;p&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;通用类&quot;&gt;&lt;a href=&quot;#通用类&quot; class=&quot;headerlink&quot; title=&quot;通用类&quot;&gt;&lt;/a&gt;通用类&lt;/h1&gt;&lt;p&gt;&lt;a id=&quot;1.1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-代码实现类&quot;&gt;&lt;a href=&quot;#1-代码实现类&quot; class=&quot;headerlink&quot; title=&quot;1. 代码实现类&quot;&gt;&lt;/a&gt;1. 代码实现类&lt;/h2&gt;</summary>
     
     
     
@@ -412,13 +523,10 @@
     <updated>2023-01-01T06:08:36.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cs = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 模拟临界区要保护的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; mu sync.Mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Lock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Unlock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	c &amp;lt;- &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;-c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByMutex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByChan()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByMutex-8   	76766581	        15.41 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByChan-8   	    32243965	        37.59 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;使用sync包的注意事项&quot;&gt;&lt;a href=&quot;#使用sync包的注意事项&quot; class=&quot;headerlink&quot; title=&quot;使用sync包的注意事项&quot;&gt;&lt;/a&gt;使用sync包的注意事项&lt;/h1&gt;&lt;p&gt;在&lt;code&gt;sync&lt;/code&gt;包源文件中，我们看到以下注释：  &lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Mutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A RWMutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Cond must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -439,13 +547,9 @@
     <updated>2022-10-08T04:31:12.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;并发与并行&quot;&gt;&lt;a href=&quot;#并发与并行&quot; class=&quot;headerlink&quot; title=&quot;并发与并行&quot;&gt;&lt;/a&gt;并发与并行&lt;/h1&gt;&lt;h2 id=&quot;并行方案&quot;&gt;&lt;a href=&quot;#并行方案&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;并发与并行&quot;&gt;&lt;a href=&quot;#并发与并行&quot; class=&quot;headerlink&quot; title=&quot;并发与并行&quot;&gt;&lt;/a&gt;并发与并行&lt;/h1&gt;&lt;h2 id=&quot;并行方案&quot;&gt;&lt;a href=&quot;#并行方案&quot; class=&quot;headerlink&quot; title=&quot;并行方案&quot;&gt;&lt;/a&gt;并行方案&lt;/h2&gt;&lt;p&gt;在处理器核数充足的情况下启动多个单线程应用的实例，这样每个实例运行在一个核上，尽可能多地利用多核计算资源。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/10/08/book-go-programming-from-beginner-to-master-31/%E5%8D%95%E8%BF%9B%E7%A8%8B.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/10/08/book-go-programming-from-beginner-to-master-31/%E5%A4%9A%E8%BF%9B%E7%A8%8B.png&quot;&gt;  &lt;/p&gt;</summary>
     
     
     
@@ -455,118 +559,6 @@
     <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
     
     <category term="并发" scheme="https://octopuslian.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——使用defer让函数更简洁、更健壮</title>
-    <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/"/>
-    <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-22/</id>
-    <published>2022-10-08T05:10:26.000Z</published>
-    <updated>2022-10-08T04:31:12.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;defer的运作机制&quot;&gt;&lt;a href=&quot;#defer的运作机制&quot; class=&quot;headerlink&quot; title=&quot;defer的运作机制&quot;&gt;&lt;/a&gt;defer的运作机制&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;在 Go 中，只有在函数（和方法）内部才能使用 defer； </summary>
-        
-      
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
-    <category term="defer" scheme="https://octopuslian.github.io/tags/defer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——了解string实现原理并高效使用</title>
-    <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/"/>
-    <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-15/</id>
-    <published>2022-10-08T04:35:31.000Z</published>
-    <updated>2022-10-08T04:31:12.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Go语言的字符串类型&quot;&gt;&lt;a href=&quot;#Go语言的字符串类型&quot; class=&quot;headerlink&quot; title=&quot;Go语言的字符串类型&quot;&gt;&lt;/a&gt;Go语言的字符串类型&lt;/h1&gt;&lt;p&gt;统一设置为&lt;code&gt;string&lt;/code&gt;： </summary>
-        
-      
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
-    <category term="string" scheme="https://octopuslian.github.io/tags/string/"/>
-    
-    <category term="字符串" scheme="https://octopuslian.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——了解map原理并高效使用</title>
-    <link href="https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/"/>
-    <id>https://octopuslian.github.io/2022/10/07/book-go-programming-from-beginner-to-master-14/</id>
-    <published>2022-10-07T14:51:12.000Z</published>
-    <updated>2022-10-06T20:13:28.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;什么是Map&quot;&gt;&lt;a href=&quot;#什么是Map&quot; class=&quot;headerlink&quot; title=&quot;什么是Map&quot;&gt;&lt;/a&gt;什么是Map&lt;/h1&gt;&lt;p&gt;map 是 Go 语言提供的一种抽象数据类型，它表示一组无序的键值对。  &lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
-    <category term="map" scheme="https://octopuslian.github.io/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——了解切片原理并高效使用</title>
-    <link href="https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/"/>
-    <id>https://octopuslian.github.io/2022/10/06/book-go-programming-from-beginner-to-master-13/</id>
-    <published>2022-10-06T14:51:07.000Z</published>
-    <updated>2022-10-06T20:13:28.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;什么是数组&quot;&gt;&lt;a href=&quot;#什么是数组&quot; class=&quot;headerlink&quot; title=&quot;什么是数组&quot;&gt;&lt;/a&gt;什么是数组&lt;/h1&gt;&lt;h2 id=&quot;数组有哪些基本特性&quot;&gt;&lt;a href=&quot;#数组有哪些基本特性&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="切片" scheme="https://octopuslian.github.io/tags/%E5%88%87%E7%89%87/"/>
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
     
   </entry>
   
