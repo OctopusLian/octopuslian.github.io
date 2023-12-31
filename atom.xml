@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-12-23T04:31:24.540Z</updated>
+  <updated>2023-12-31T16:41:43.606Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人生剧本</title>
+    <link href="https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/"/>
+    <id>https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/</id>
+    <published>2023-12-31T14:07:06.000Z</published>
+    <updated>2023-12-31T16:41:43.606Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们登上并非我们所选择的舞台，演出并非我们所选择的剧本。    ——古希腊哲学家艾比克泰德&lt;/p&gt;
+&lt;h2 id=&quot;坏小孩的剧本&quot;&gt;&lt;a href=&quot;#坏小孩的剧本&quot; class=&quot;headerlink&quot; title=&quot;坏小孩的剧本&quot;&gt;&lt;/a&gt;坏小孩的剧本&lt;/h2&gt;&lt;p&gt;上初一前，我想我拿到的都是一个叫做坏小孩的剧本，剧本上说，我很聪明，活泼好动，广交朋友，爱打游戏，&lt;br&gt;所以学校作业其实可以不用写的，第二天早上早点去抄就行了。于是，游戏厅和台球桌成了我放学后经常光顾的场所&lt;br&gt;因为我家对面就是游戏厅，所以进出很方便，但我知道我没有钱去消费，于是就开始了白嫖，只要脸皮厚一些，其他人&lt;br&gt;玩得还剩十几分钟到期时，我就会接上，同时也充当起了免费的CS1.6游戏和台球陪练，由于机动性强，服务态度好，&lt;br&gt;演技真实 ，广受玩家好评。  &lt;/p&gt;
+&lt;p&gt;在学校时，我记得语数英外加班主任的课是不敢轻举妄动的，其他课随意，所以我当时非常期待的课程就是&lt;br&gt;副课和体育课了。  &lt;/p&gt;
+&lt;p&gt;中午吃完饭，可以和班里同学打球打到午休结束，甚至第一节课上课前经常迟到，到时编造一个理由就行。&lt;br&gt;这样美好的一天就已经过半了，放学了还有游戏厅和台球桌在召唤我。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Happy-Birthday" scheme="https://octopuslian.github.io/categories/Happy-Birthday/"/>
+    
+    
+    <category term="感悟" scheme="https://octopuslian.github.io/tags/%E6%84%9F%E6%82%9F/"/>
+    
+    <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
+    
+    <category term="人生" scheme="https://octopuslian.github.io/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="罗翔" scheme="https://octopuslian.github.io/tags/%E7%BD%97%E7%BF%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CS50 Lab 2_Scrabble</title>
+    <link href="https://octopuslian.github.io/2023/12/23/cs50-lab-2-scrabble/"/>
+    <id>https://octopuslian.github.io/2023/12/23/cs50-lab-2-scrabble/</id>
+    <published>2023-12-23T04:39:33.000Z</published>
+    <updated>2023-12-31T16:41:43.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs-self-learning" scheme="https://octopuslian.github.io/categories/cs-self-learning/"/>
+    
+    
+    <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
+    
+    <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
+    
+  </entry>
   
   <entry>
     <title>CS50 Lab 1_Population Growth</title>
@@ -512,53 +567,6 @@
     <category term="Go" scheme="https://octopuslian.github.io/tags/Go/"/>
     
     <category term="安全" scheme="https://octopuslian.github.io/tags/%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——了解sync包的正确用法</title>
-    <link href="https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/"/>
-    <id>https://octopuslian.github.io/2022/10/09/book-go-programming-from-beginner-to-master-35/</id>
-    <published>2022-10-09T07:49:34.000Z</published>
-    <updated>2023-01-01T06:08:36.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;sync包还是channel&quot;&gt;&lt;a href=&quot;#sync包还是channel&quot; class=&quot;headerlink&quot; title=&quot;sync包还是channel&quot;&gt;&lt;/a&gt;sync包还是channel&lt;/h1&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cs = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 模拟临界区要保护的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; mu sync.Mutex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;chan&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Lock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mu.Unlock()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;criticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	c &amp;lt;- &lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt;&amp;#123;&amp;#125;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cs++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;-c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByMutex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByMutex()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BenchmarkCriticalSectionSyncByChan&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(b *testing.B)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; n := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; n &amp;lt; b.N; n++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		criticalSectionSyncByChan()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByMutex-8   	76766581	        15.41 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;BenchmarkCriticalSectionSyncByChan-8   	    32243965	        37.59 ns/op&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;使用sync包的注意事项&quot;&gt;&lt;a href=&quot;#使用sync包的注意事项&quot; class=&quot;headerlink&quot; title=&quot;使用sync包的注意事项&quot;&gt;&lt;/a&gt;使用sync包的注意事项&lt;/h1&gt;&lt;p&gt;在&lt;code&gt;sync&lt;/code&gt;包源文件中，我们看到以下注释：  &lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Mutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A RWMutex must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A Cond must not be copied after first use.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
-    <category term="sync包" scheme="https://octopuslian.github.io/tags/sync%E5%8C%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言精进——优先考虑并发设计</title>
-    <link href="https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/"/>
-    <id>https://octopuslian.github.io/2022/10/08/book-go-programming-from-beginner-to-master-31/</id>
-    <published>2022-10-08T06:12:18.000Z</published>
-    <updated>2022-10-08T04:31:12.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;并发与并行&quot;&gt;&lt;a href=&quot;#并发与并行&quot; class=&quot;headerlink&quot; title=&quot;并发与并行&quot;&gt;&lt;/a&gt;并发与并行&lt;/h1&gt;&lt;h2 id=&quot;并行方案&quot;&gt;&lt;a href=&quot;#并行方案&quot; class=&quot;headerlink&quot; title=&quot;并行方案&quot;&gt;&lt;/a&gt;并行方案&lt;/h2&gt;&lt;p&gt;在处理器核数充足的情况下启动多个单线程应用的实例，这样每个实例运行在一个核上，尽可能多地利用多核计算资源。  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/10/08/book-go-programming-from-beginner-to-master-31/%E5%8D%95%E8%BF%9B%E7%A8%8B.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/10/08/book-go-programming-from-beginner-to-master-31/%E5%A4%9A%E8%BF%9B%E7%A8%8B.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Golang" scheme="https://octopuslian.github.io/tags/Golang/"/>
-    
-    <category term="并发" scheme="https://octopuslian.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
