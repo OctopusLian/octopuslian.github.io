@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2023-12-31T16:41:43.606Z</updated>
+  <updated>2024-03-04T14:09:06.355Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,112 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Open Horizon 快速入门</title>
+    <link href="https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/"/>
+    <id>https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/</id>
+    <published>2024-03-04T07:18:49.000Z</published>
+    <updated>2024-03-04T14:09:06.355Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;先决条件&quot;&gt;&lt;a href=&quot;#先决条件&quot; class=&quot;headerlink&quot; title=&quot;先决条件&quot;&gt;&lt;/a&gt;先决条件&lt;/h1&gt;&lt;p&gt;两台服务器，配置如下：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4GB以上的内存  &lt;/li&gt;
+&lt;li&gt;20GB以上的存储  &lt;/li&gt;
+&lt;li&gt;Ubuntu Server 18.04 LTS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;确保是&lt;code&gt;root&lt;/code&gt;权限  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnOpenHorizon" scheme="https://octopuslian.github.io/categories/LearnOpenHorizon/"/>
+    
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="OpenHorizon" scheme="https://octopuslian.github.io/tags/OpenHorizon/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker安装Kafka</title>
+    <link href="https://octopuslian.github.io/2024/01/17/docker-install-kafka/"/>
+    <id>https://octopuslian.github.io/2024/01/17/docker-install-kafka/</id>
+    <published>2024-01-17T08:22:11.000Z</published>
+    <updated>2024-03-04T14:09:06.346Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Docker安装Kafka服务&quot;&gt;&lt;a href=&quot;#Docker安装Kafka服务&quot; class=&quot;headerlink&quot; title=&quot;Docker安装Kafka服务&quot;&gt;&lt;/a&gt;Docker安装Kafka服务&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name zookeeper -p 2181:2181 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; --restart always wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&amp;lt;这里换成你的zookeeper地址和端口&amp;gt; -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&amp;lt;这里换成你的kafka地址和端口&amp;gt; -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt; wurstmeister/kafka&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=127.0.0.1:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=172.17.0.3:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;-e KAFKA_ZOOKEEPER_CONNECT&amp;#x3D;127.0.0.1:2181：指定 Zookeeper 的地址和端口，这里使用本地地址 127.0.0.1 和默认端口 2181。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_ADVERTISED_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;127.0.0.1:9092：将 Kafka 服务器的地址和端口设置为 127.0.0.1:9092。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;0.0.0.0:9092：指定 Kafka 监听的地址和端口为 0.0.0.0:9092，允许外部访问。&lt;/li&gt;
+&lt;li&gt;-p 9092:9092：将容器内部的 9092 端口映射到主机的 9092 端口，允许通过主机的 127.0.0.1:9092 访问 Kafka 服务器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;安装Kafka客户端&quot;&gt;&lt;a href=&quot;#安装Kafka客户端&quot; class=&quot;headerlink&quot; title=&quot;安装Kafka客户端&quot;&gt;&lt;/a&gt;安装Kafka客户端&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka-eagle -p 8048:8048 -e EFAK_CLUSTER_ZK_LIST=&amp;quot;172.17.0.3:2181&amp;quot; nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnKafka" scheme="https://octopuslian.github.io/categories/LearnKafka/"/>
+    
+    
+    <category term="kafka" scheme="https://octopuslian.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA配置Maven</title>
+    <link href="https://octopuslian.github.io/2024/01/15/idea-setting-maven/"/>
+    <id>https://octopuslian.github.io/2024/01/15/idea-setting-maven/</id>
+    <published>2024-01-15T03:05:56.000Z</published>
+    <updated>2024-03-04T14:09:06.349Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Maven设置&quot;&gt;&lt;a href=&quot;#Maven设置&quot; class=&quot;headerlink&quot; title=&quot;Maven设置&quot;&gt;&lt;/a&gt;Maven设置&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://maven.apache.org/download.cgi?.&quot;&gt;官方下载Maven&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;IDEA配置Maven&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/maven%E9%85%8D%E7%BD%AE.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;setting.xml&lt;/code&gt;中配置阿里云公共仓库镜像&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/aliyun.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnIDEA" scheme="https://octopuslian.github.io/categories/LearnIDEA/"/>
+    
+    
+    <category term="IDEA" scheme="https://octopuslian.github.io/tags/IDEA/"/>
+    
+    <category term="Maven" scheme="https://octopuslian.github.io/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac安装NiFi</title>
+    <link href="https://octopuslian.github.io/2024/01/12/mac-install-nifi/"/>
+    <id>https://octopuslian.github.io/2024/01/12/mac-install-nifi/</id>
+    <published>2024-01-12T01:32:18.000Z</published>
+    <updated>2024-03-04T14:09:06.351Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安装NiFi&quot;&gt;&lt;a href=&quot;#安装NiFi&quot; class=&quot;headerlink&quot; title=&quot;安装NiFi&quot;&gt;&lt;/a&gt;安装NiFi&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install nifi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;启动NiFi&quot;&gt;&lt;a href=&quot;#启动NiFi&quot; class=&quot;headerlink&quot; title=&quot;启动NiFi&quot;&gt;&lt;/a&gt;启动NiFi&lt;/h1&gt;&lt;h2 id=&quot;第一次登录&quot;&gt;&lt;a href=&quot;#第一次登录&quot; class=&quot;headerlink&quot; title=&quot;第一次登录&quot;&gt;&lt;/a&gt;第一次登录&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nifi start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnNiFi" scheme="https://octopuslian.github.io/categories/LearnNiFi/"/>
+    
+    
+    <category term="NiFi" scheme="https://octopuslian.github.io/tags/NiFi/"/>
+    
+    <category term="大数据" scheme="https://octopuslian.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>人生剧本</title>
     <link href="https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/"/>
     <id>https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/</id>
     <published>2023-12-31T14:07:06.000Z</published>
-    <updated>2023-12-31T16:41:43.606Z</updated>
+    <updated>2023-12-31T16:45:25.116Z</updated>
     
     
     <summary type="html">&lt;p&gt;我们登上并非我们所选择的舞台，演出并非我们所选择的剧本。    ——古希腊哲学家艾比克泰德&lt;/p&gt;
@@ -108,16 +209,13 @@
     <link href="https://octopuslian.github.io/2023/10/10/mac-install-mqtt/"/>
     <id>https://octopuslian.github.io/2023/10/10/mac-install-mqtt/</id>
     <published>2023-10-10T03:06:32.000Z</published>
-    <updated>2023-12-23T04:30:09.602Z</updated>
+    <updated>2024-01-17T07:43:00.831Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;安装MQTT服务器&quot;&gt;&lt;a href=&quot;#安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT服务器&quot;&gt;&lt;/a&gt;安装MQTT服务器&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;安装MQTT服务器&quot;&gt;&lt;a href=&quot;#安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT服务器&quot;&gt;&lt;/a&gt;安装MQTT服务器&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;安装 Mosquitto MQTT 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew install mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;启动 Mosquitto 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services start mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;==&amp;gt; Successfully started `mosquitto` (label: homebrew.mxcl.mosquitto)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;验证 Mosquitto 服务器是否正在运行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Name      Status  User     File&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mosquitto started  *        *&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;安装MQTT客户端&quot;&gt;&lt;a href=&quot;#安装MQTT客户端&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT客户端&quot;&gt;&lt;/a&gt;安装MQTT客户端&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://github.com/emqx/MQTTX&quot;&gt;github-MQTTX&lt;/a&gt;，找到&lt;code&gt;MQTTX-1.9.6-arm64.pkg&lt;/code&gt;下载安装即可。  &lt;/p&gt;
+&lt;p&gt;然后就可以看到有个&lt;code&gt;MQTTX&lt;/code&gt;的图标，表示&lt;code&gt;MQTT&lt;/code&gt;客户端安装成功。  &lt;/p&gt;</summary>
     
     
     
@@ -361,9 +459,9 @@
     <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
     
     
-    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
-    
     <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
     
   </entry>
   
@@ -424,149 +522,6 @@
     
     
     <category term="crawler" scheme="https://octopuslian.github.io/tags/crawler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫基础-技术选型</title>
-    <link href="https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/"/>
-    <id>https://octopuslian.github.io/2023/05/19/crawler-basic-technology-selection/</id>
-    <published>2023-05-19T15:11:03.000Z</published>
-    <updated>2023-05-27T04:05:24.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Scrapy-VS-requests-beautifulsoup&quot;&gt;&lt;a href=&quot;#Scrapy-VS-requests-beautifulsoup&quot; class=&quot;headerlink&quot; title=&quot;Scrapy VS</summary>
-        
-      
-    
-    
-    
-    <category term="LearnCrawler" scheme="https://octopuslian.github.io/categories/LearnCrawler/"/>
-    
-    
-    <category term="爬虫" scheme="https://octopuslian.github.io/tags/%E7%88%AC%E8%99%AB/"/>
-    
-    <category term="Scrapy" scheme="https://octopuslian.github.io/tags/Scrapy/"/>
-    
-    <category term="requests" scheme="https://octopuslian.github.io/tags/requests/"/>
-    
-    <category term="beautifulsoup" scheme="https://octopuslian.github.io/tags/beautifulsoup/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go微服务框架go-micro v3快速入门</title>
-    <link href="https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/"/>
-    <id>https://octopuslian.github.io/2023/03/07/go-micro-v3-quick-get-start/</id>
-    <published>2023-03-07T07:41:27.000Z</published>
-    <updated>2023-05-27T05:31:06.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;go-micro-v3和micro-v3是什么关系？&quot;&gt;&lt;a href=&quot;#go-micro-v3和micro-v3是什么关系？&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3和micro v3是什么关系？&quot;&gt;&lt;/a&gt;go-micro v3和micro v3是什么关系？&lt;/h1&gt;&lt;h2 id=&quot;go-micro是什么？&quot;&gt;&lt;a href=&quot;#go-micro是什么？&quot; class=&quot;headerlink&quot; title=&quot;go-micro是什么？&quot;&gt;&lt;/a&gt;go-micro是什么？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;一个go微服务开放框架  &lt;/li&gt;
-&lt;li&gt;Framework（程序开放框架）：用来方便编写微服务  &lt;/li&gt;
-&lt;li&gt;Clients（多语言客户端）：支持多语言访问服务端&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;go-micro-v3与micro-v3的关系&quot;&gt;&lt;a href=&quot;#go-micro-v3与micro-v3的关系&quot; class=&quot;headerlink&quot; title=&quot;go-micro v3与micro v3的关系&quot;&gt;&lt;/a&gt;go-micro v3与micro v3的关系&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;micro v3版本类似isito把基础设施抽象成能力  &lt;/li&gt;
-&lt;li&gt;micro的技术体系和官方平台绑定较多  &lt;/li&gt;
-&lt;li&gt;go-micro v3为微服务开发框架，自由度相对较高&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="LearnMicroservices" scheme="https://octopuslian.github.io/categories/LearnMicroservices/"/>
-    
-    
-    <category term="微服务" scheme="https://octopuslian.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络编程基础</title>
-    <link href="https://octopuslian.github.io/2023/03/01/network-programming-base/"/>
-    <id>https://octopuslian.github.io/2023/03/01/network-programming-base/</id>
-    <published>2023-03-01T07:59:10.000Z</published>
-    <updated>2023-05-27T04:05:24.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;OSI七层网络协议&quot;&gt;&lt;a href=&quot;#OSI七层网络协议&quot; class=&quot;headerlink&quot; title=&quot;OSI七层网络协议&quot;&gt;&lt;/a&gt;OSI七层网络协议&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/osi7.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;经典协议与数据包&quot;&gt;&lt;a href=&quot;#经典协议与数据包&quot; class=&quot;headerlink&quot; title=&quot;经典协议与数据包&quot;&gt;&lt;/a&gt;经典协议与数据包&lt;/h1&gt;&lt;h2 id=&quot;TCP数据包构成&quot;&gt;&lt;a href=&quot;#TCP数据包构成&quot; class=&quot;headerlink&quot; title=&quot;TCP数据包构成&quot;&gt;&lt;/a&gt;TCP数据包构成&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2023/03/01/network-programming-base/TCP%E6%95%B0%E6%8D%AE%E5%8C%85%E7%BB%93%E6%9E%84.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnComputerNetwork" scheme="https://octopuslian.github.io/categories/LearnComputerNetwork/"/>
-    
-    
-    <category term="编程" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="网络" scheme="https://octopuslian.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="计算机" scheme="https://octopuslian.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go代码安全指南</title>
-    <link href="https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/"/>
-    <id>https://octopuslian.github.io/2023/01/01/tencent-secguide-golang/</id>
-    <published>2023-01-01T14:04:42.000Z</published>
-    <updated>2023-01-01T06:08:36.000Z</updated>
-    
-    
-    <summary type="html">&lt;!-- markdown=&quot;1&quot; is required for GitHub Pages to render the TOC properly. --&gt;
-
-&lt;details markdown=&quot;1&quot;&gt;
-  &lt;summary&gt;目录&lt;/summary&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#1&quot;&gt;1 通用类&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.1&quot;&gt;1.1 内存管理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.2&quot;&gt;1.2 文件操作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.3&quot;&gt;1.3 系统接口&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.4&quot;&gt;1.4 通信安全&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.5&quot;&gt;1.5 敏感数据保护&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.6&quot;&gt;1.6 加密解密&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#1.1.7&quot;&gt;1.7 正则表达式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;#2&quot;&gt;2 后台类&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1&quot;&gt;I. 代码实现&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.1&quot;&gt;1.1 输入校验&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.2&quot;&gt;1.2 SQL操作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.3&quot;&gt;1.3 网络请求&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.4&quot;&gt;1.4 服务器端渲染&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.5&quot;&gt;1.5 Web跨域&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.6&quot;&gt;1.6 响应输出&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.7&quot;&gt;1.7 会话管理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.8&quot;&gt;1.8 访问控制&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#2.1.9&quot;&gt;1.9 并发保护&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/details&gt;
-
-
-
-
-
-&lt;p&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;通用类&quot;&gt;&lt;a href=&quot;#通用类&quot; class=&quot;headerlink&quot; title=&quot;通用类&quot;&gt;&lt;/a&gt;通用类&lt;/h1&gt;&lt;p&gt;&lt;a id=&quot;1.1&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-代码实现类&quot;&gt;&lt;a href=&quot;#1-代码实现类&quot; class=&quot;headerlink&quot; title=&quot;1. 代码实现类&quot;&gt;&lt;/a&gt;1. 代码实现类&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="Go" scheme="https://octopuslian.github.io/tags/Go/"/>
-    
-    <category term="安全" scheme="https://octopuslian.github.io/tags/%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
