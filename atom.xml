@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2024-03-04T14:09:06.355Z</updated>
+  <updated>2024-04-09T13:37:41.556Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>OneX部署</title>
+    <link href="https://octopuslian.github.io/2024/04/04/onex-deploy/"/>
+    <id>https://octopuslian.github.io/2024/04/04/onex-deploy/</id>
+    <published>2024-04-04T07:38:16.000Z</published>
+    <updated>2024-04-09T13:37:41.556Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;前置条件&quot;&gt;&lt;a href=&quot;#前置条件&quot; class=&quot;headerlink&quot; title=&quot;前置条件&quot;&gt;&lt;/a&gt;前置条件&lt;/h1&gt;&lt;p&gt;确定机器上已具备以下部署条件：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2c4g  &lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;容器化部署&quot;&gt;&lt;a href=&quot;#容器化部署&quot; class=&quot;headerlink&quot; title=&quot;容器化部署&quot;&gt;&lt;/a&gt;容器化部署&lt;/h1&gt;&lt;p&gt;在Debian 12环境下  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnOneX" scheme="https://octopuslian.github.io/categories/LearnOneX/"/>
+    
+    
+    <category term="onex" scheme="https://octopuslian.github.io/tags/onex/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Open Horizon 快速入门</title>
     <link href="https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/"/>
     <id>https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/</id>
     <published>2024-03-04T07:18:49.000Z</published>
-    <updated>2024-03-04T14:09:06.355Z</updated>
+    <updated>2024-03-12T03:30:12.693Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;先决条件&quot;&gt;&lt;a href=&quot;#先决条件&quot; class=&quot;headerlink&quot; title=&quot;先决条件&quot;&gt;&lt;/a&gt;先决条件&lt;/h1&gt;&lt;p&gt;两台服务器，配置如下：  &lt;/p&gt;
@@ -37,9 +61,9 @@
     <category term="LearnOpenHorizon" scheme="https://octopuslian.github.io/categories/LearnOpenHorizon/"/>
     
     
-    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
-    
     <category term="OpenHorizon" scheme="https://octopuslian.github.io/tags/OpenHorizon/"/>
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
     
   </entry>
   
@@ -231,7 +255,7 @@
     <link href="https://octopuslian.github.io/2023/09/22/edgex-quick-start/"/>
     <id>https://octopuslian.github.io/2023/09/22/edgex-quick-start/</id>
     <published>2023-09-22T09:33:23.000Z</published>
-    <updated>2023-12-23T04:30:09.600Z</updated>
+    <updated>2024-04-04T07:36:27.289Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;运行-EdgeX&quot;&gt;&lt;a href=&quot;#运行-EdgeX&quot; class=&quot;headerlink&quot; title=&quot;运行 EdgeX&quot;&gt;&lt;/a&gt;运行 EdgeX&lt;/h1&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# ARM 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty-arm64.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# x86 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -492,36 +516,6 @@
     <category term="电脑" scheme="https://octopuslian.github.io/tags/%E7%94%B5%E8%84%91/"/>
     
     <category term="mbp" scheme="https://octopuslian.github.io/tags/mbp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Github开源项目crawlergo介绍</title>
-    <link href="https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/"/>
-    <id>https://octopuslian.github.io/2023/05/27/github-crawlergo-introduction/</id>
-    <published>2023-05-27T14:13:46.000Z</published>
-    <updated>2023-05-29T07:59:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;整体介绍&quot;&gt;&lt;a href=&quot;#整体介绍&quot; class=&quot;headerlink&quot; title=&quot;整体介绍&quot;&gt;&lt;/a&gt;整体介绍&lt;/h1&gt;&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;是一个使用&lt;code&gt;chrome headless&lt;/code&gt;模式进行URL收集的浏览器爬虫。它对整个网页的关键位置与DOM渲染阶段进行HOOK，自动进行表单填充并提交，配合智能的JS事件触发，&lt;br&gt;尽可能的收集网站暴露出的入口。内置URL去重模块，过滤掉了大量伪静态URL，对于大型网站仍保持较快的解析与抓取速度，最后得到高质量的请求结果集合。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;crawlergo&lt;/code&gt;目前支持以下特性：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;原生浏览器环境，协程池调度任务  &lt;/li&gt;
-&lt;li&gt;表单智能填充、自动化提交  &lt;/li&gt;
-&lt;li&gt;完整DOM事件收集，自动化触发  &lt;/li&gt;
-&lt;li&gt;智能URL去重，去掉大部分的重复请求  &lt;/li&gt;
-&lt;li&gt;全面分析收集，包括javascript文件内容、页面注释、robots.txt文件和常见路径Fuzz  &lt;/li&gt;
-&lt;li&gt;支持Host绑定，自动添加Referer  &lt;/li&gt;
-&lt;li&gt;支持请求代理，支持爬虫结果主动推送&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;项目整体结构：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnCrawler" scheme="https://octopuslian.github.io/categories/LearnCrawler/"/>
-    
-    
-    <category term="crawler" scheme="https://octopuslian.github.io/tags/crawler/"/>
     
   </entry>
   
