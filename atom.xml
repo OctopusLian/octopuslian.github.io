@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>不会飞的章鱼</title>
+  <icon>https://octopuslian.github.io/icon.png</icon>
+  <subtitle>熟能生巧，勤能补拙；念念不忘，必有回响。</subtitle>
+  <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://octopuslian.github.io/"/>
+  <updated>2024-04-10T01:13:08.468Z</updated>
+  <id>https://octopuslian.github.io/</id>
+  
+  <author>
+    <name>Neo Zhang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OneX部署</title>
+    <link href="https://octopuslian.github.io/2024/04/04/onex-deploy/"/>
+    <id>https://octopuslian.github.io/2024/04/04/onex-deploy/</id>
+    <published>2024-04-04T07:38:16.000Z</published>
+    <updated>2024-04-10T01:13:08.468Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;前置条件&quot;&gt;&lt;a href=&quot;#前置条件&quot; class=&quot;headerlink&quot; title=&quot;前置条件&quot;&gt;&lt;/a&gt;前置条件&lt;/h1&gt;&lt;p&gt;确定机器上已具备以下部署条件：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2c4g  &lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;容器化部署&quot;&gt;&lt;a href=&quot;#容器化部署&quot; class=&quot;headerlink&quot; title=&quot;容器化部署&quot;&gt;&lt;/a&gt;容器化部署&lt;/h1&gt;&lt;p&gt;在Debian 12环境下  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnOneX" scheme="https://octopuslian.github.io/categories/LearnOneX/"/>
+    
+    
+    <category term="onex" scheme="https://octopuslian.github.io/tags/onex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Open Horizon 快速入门</title>
+    <link href="https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/"/>
+    <id>https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/</id>
+    <published>2024-03-04T07:18:49.000Z</published>
+    <updated>2024-03-12T03:30:12.693Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;先决条件&quot;&gt;&lt;a href=&quot;#先决条件&quot; class=&quot;headerlink&quot; title=&quot;先决条件&quot;&gt;&lt;/a&gt;先决条件&lt;/h1&gt;&lt;p&gt;两台服务器，配置如下：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4GB以上的内存  &lt;/li&gt;
+&lt;li&gt;20GB以上的存储  &lt;/li&gt;
+&lt;li&gt;Ubuntu Server 18.04 LTS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;确保是&lt;code&gt;root&lt;/code&gt;权限  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnOpenHorizon" scheme="https://octopuslian.github.io/categories/LearnOpenHorizon/"/>
+    
+    
+    <category term="OpenHorizon" scheme="https://octopuslian.github.io/tags/OpenHorizon/"/>
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker安装Kafka</title>
+    <link href="https://octopuslian.github.io/2024/01/17/docker-install-kafka/"/>
+    <id>https://octopuslian.github.io/2024/01/17/docker-install-kafka/</id>
+    <published>2024-01-17T08:22:11.000Z</published>
+    <updated>2024-03-04T14:09:06.346Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Docker安装Kafka服务&quot;&gt;&lt;a href=&quot;#Docker安装Kafka服务&quot; class=&quot;headerlink&quot; title=&quot;Docker安装Kafka服务&quot;&gt;&lt;/a&gt;Docker安装Kafka服务&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name zookeeper -p 2181:2181 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; --restart always wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&amp;lt;这里换成你的zookeeper地址和端口&amp;gt; -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&amp;lt;这里换成你的kafka地址和端口&amp;gt; -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt; wurstmeister/kafka&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=127.0.0.1:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=172.17.0.3:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;-e KAFKA_ZOOKEEPER_CONNECT&amp;#x3D;127.0.0.1:2181：指定 Zookeeper 的地址和端口，这里使用本地地址 127.0.0.1 和默认端口 2181。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_ADVERTISED_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;127.0.0.1:9092：将 Kafka 服务器的地址和端口设置为 127.0.0.1:9092。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;0.0.0.0:9092：指定 Kafka 监听的地址和端口为 0.0.0.0:9092，允许外部访问。&lt;/li&gt;
+&lt;li&gt;-p 9092:9092：将容器内部的 9092 端口映射到主机的 9092 端口，允许通过主机的 127.0.0.1:9092 访问 Kafka 服务器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;安装Kafka客户端&quot;&gt;&lt;a href=&quot;#安装Kafka客户端&quot; class=&quot;headerlink&quot; title=&quot;安装Kafka客户端&quot;&gt;&lt;/a&gt;安装Kafka客户端&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka-eagle -p 8048:8048 -e EFAK_CLUSTER_ZK_LIST=&amp;quot;172.17.0.3:2181&amp;quot; nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnKafka" scheme="https://octopuslian.github.io/categories/LearnKafka/"/>
+    
+    
+    <category term="kafka" scheme="https://octopuslian.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA配置Maven</title>
+    <link href="https://octopuslian.github.io/2024/01/15/idea-setting-maven/"/>
+    <id>https://octopuslian.github.io/2024/01/15/idea-setting-maven/</id>
+    <published>2024-01-15T03:05:56.000Z</published>
+    <updated>2024-03-04T14:09:06.349Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Maven设置&quot;&gt;&lt;a href=&quot;#Maven设置&quot; class=&quot;headerlink&quot; title=&quot;Maven设置&quot;&gt;&lt;/a&gt;Maven设置&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://maven.apache.org/download.cgi?.&quot;&gt;官方下载Maven&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;IDEA配置Maven&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/maven%E9%85%8D%E7%BD%AE.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;setting.xml&lt;/code&gt;中配置阿里云公共仓库镜像&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/aliyun.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnIDEA" scheme="https://octopuslian.github.io/categories/LearnIDEA/"/>
+    
+    
+    <category term="IDEA" scheme="https://octopuslian.github.io/tags/IDEA/"/>
+    
+    <category term="Maven" scheme="https://octopuslian.github.io/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac安装NiFi</title>
+    <link href="https://octopuslian.github.io/2024/01/12/mac-install-nifi/"/>
+    <id>https://octopuslian.github.io/2024/01/12/mac-install-nifi/</id>
+    <published>2024-01-12T01:32:18.000Z</published>
+    <updated>2024-03-04T14:09:06.351Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安装NiFi&quot;&gt;&lt;a href=&quot;#安装NiFi&quot; class=&quot;headerlink&quot; title=&quot;安装NiFi&quot;&gt;&lt;/a&gt;安装NiFi&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install nifi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;启动NiFi&quot;&gt;&lt;a href=&quot;#启动NiFi&quot; class=&quot;headerlink&quot; title=&quot;启动NiFi&quot;&gt;&lt;/a&gt;启动NiFi&lt;/h1&gt;&lt;h2 id=&quot;第一次登录&quot;&gt;&lt;a href=&quot;#第一次登录&quot; class=&quot;headerlink&quot; title=&quot;第一次登录&quot;&gt;&lt;/a&gt;第一次登录&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nifi start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnNiFi" scheme="https://octopuslian.github.io/categories/LearnNiFi/"/>
+    
+    
+    <category term="NiFi" scheme="https://octopuslian.github.io/tags/NiFi/"/>
+    
+    <category term="大数据" scheme="https://octopuslian.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人生剧本</title>
+    <link href="https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/"/>
+    <id>https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/</id>
+    <published>2023-12-31T14:07:06.000Z</published>
+    <updated>2023-12-31T16:45:25.116Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们登上并非我们所选择的舞台，演出并非我们所选择的剧本。    ——古希腊哲学家艾比克泰德&lt;/p&gt;
+&lt;h2 id=&quot;坏小孩的剧本&quot;&gt;&lt;a href=&quot;#坏小孩的剧本&quot; class=&quot;headerlink&quot; title=&quot;坏小孩的剧本&quot;&gt;&lt;/a&gt;坏小孩的剧本&lt;/h2&gt;&lt;p&gt;上初一前，我想我拿到的都是一个叫做坏小孩的剧本，剧本上说，我很聪明，活泼好动，广交朋友，爱打游戏，&lt;br&gt;所以学校作业其实可以不用写的，第二天早上早点去抄就行了。于是，游戏厅和台球桌成了我放学后经常光顾的场所&lt;br&gt;因为我家对面就是游戏厅，所以进出很方便，但我知道我没有钱去消费，于是就开始了白嫖，只要脸皮厚一些，其他人&lt;br&gt;玩得还剩十几分钟到期时，我就会接上，同时也充当起了免费的CS1.6游戏和台球陪练，由于机动性强，服务态度好，&lt;br&gt;演技真实 ，广受玩家好评。  &lt;/p&gt;
+&lt;p&gt;在学校时，我记得语数英外加班主任的课是不敢轻举妄动的，其他课随意，所以我当时非常期待的课程就是&lt;br&gt;副课和体育课了。  &lt;/p&gt;
+&lt;p&gt;中午吃完饭，可以和班里同学打球打到午休结束，甚至第一节课上课前经常迟到，到时编造一个理由就行。&lt;br&gt;这样美好的一天就已经过半了，放学了还有游戏厅和台球桌在召唤我。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Happy-Birthday" scheme="https://octopuslian.github.io/categories/Happy-Birthday/"/>
+    
+    
+    <category term="感悟" scheme="https://octopuslian.github.io/tags/%E6%84%9F%E6%82%9F/"/>
+    
+    <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
+    
+    <category term="人生" scheme="https://octopuslian.github.io/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="罗翔" scheme="https://octopuslian.github.io/tags/%E7%BD%97%E7%BF%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CS50 Lab 2_Scrabble</title>
+    <link href="https://octopuslian.github.io/2023/12/23/cs50-lab-2-scrabble/"/>
+    <id>https://octopuslian.github.io/2023/12/23/cs50-lab-2-scrabble/</id>
+    <published>2023-12-23T04:39:33.000Z</published>
+    <updated>2023-12-31T16:41:43.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs-self-learning" scheme="https://octopuslian.github.io/categories/cs-self-learning/"/>
+    
+    
+    <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
+    
+    <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CS50 Lab 1_Population Growth</title>
+    <link href="https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/"/>
+    <id>https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/</id>
+    <published>2023-12-20T11:57:47.000Z</published>
+    <updated>2023-12-23T04:31:24.540Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;获取&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;do while&lt;/code&gt;做好范围限制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n = get_int(&lt;span class=&quot;string&quot;&gt;&amp;quot;Positive Integer: &amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (n &amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;if&lt;/code&gt;语句判断&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;是否相等  &lt;/li&gt;
+&lt;li&gt;如果相等，输出&lt;code&gt;Years&lt;/code&gt;为0  &lt;/li&gt;
+&lt;li&gt;如果不相等，根据出生人数➗3，死亡人数➗4，每计算一次&lt;code&gt;Years&lt;/code&gt;加1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="cs-self-learning" scheme="https://octopuslian.github.io/categories/cs-self-learning/"/>
+    
+    
+    <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
+    
+    <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 MQTT</title>
+    <link href="https://octopuslian.github.io/2023/10/10/mac-install-mqtt/"/>
+    <id>https://octopuslian.github.io/2023/10/10/mac-install-mqtt/</id>
+    <published>2023-10-10T03:06:32.000Z</published>
+    <updated>2024-01-17T07:43:00.831Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安装MQTT服务器&quot;&gt;&lt;a href=&quot;#安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT服务器&quot;&gt;&lt;/a&gt;安装MQTT服务器&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;安装 Mosquitto MQTT 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew install mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;启动 Mosquitto 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services start mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;==&amp;gt; Successfully started `mosquitto` (label: homebrew.mxcl.mosquitto)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;验证 Mosquitto 服务器是否正在运行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Name      Status  User     File&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mosquitto started  *        *&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;安装MQTT客户端&quot;&gt;&lt;a href=&quot;#安装MQTT客户端&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT客户端&quot;&gt;&lt;/a&gt;安装MQTT客户端&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://github.com/emqx/MQTTX&quot;&gt;github-MQTTX&lt;/a&gt;，找到&lt;code&gt;MQTTX-1.9.6-arm64.pkg&lt;/code&gt;下载安装即可。  &lt;/p&gt;
+&lt;p&gt;然后就可以看到有个&lt;code&gt;MQTTX&lt;/code&gt;的图标，表示&lt;code&gt;MQTT&lt;/code&gt;客户端安装成功。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnMQTT" scheme="https://octopuslian.github.io/categories/LearnMQTT/"/>
+    
+    
+    <category term="MQTT" scheme="https://octopuslian.github.io/tags/MQTT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>edgex 快速开始</title>
+    <link href="https://octopuslian.github.io/2023/09/22/edgex-quick-start/"/>
+    <id>https://octopuslian.github.io/2023/09/22/edgex-quick-start/</id>
+    <published>2023-09-22T09:33:23.000Z</published>
+    <updated>2024-04-04T07:36:27.289Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;运行-EdgeX&quot;&gt;&lt;a href=&quot;#运行-EdgeX&quot; class=&quot;headerlink&quot; title=&quot;运行 EdgeX&quot;&gt;&lt;/a&gt;运行 EdgeX&lt;/h1&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# ARM 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty-arm64.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# x86 架构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.githubusercontent.com/edgexfoundry/edgex-compose/v3.0/docker-compose-no-secty.yml -o docker-compose.yml; docker compose up -d&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;访问&lt;code&gt;localhost:4000&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/09/22/edgex-quick-start/edgex-run.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;运行成功！  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnEdgeX" scheme="https://octopuslian.github.io/categories/LearnEdgeX/"/>
+    
+    
+    <category term="edgex" scheme="https://octopuslian.github.io/tags/edgex/"/>
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ASU Intro to Cybersecurity Talking Web</title>
+    <link href="https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/"/>
+    <id>https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/</id>
+    <published>2023-09-21T13:30:13.000Z</published>
+    <updated>2023-12-23T04:30:09.597Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;level-1&quot;&gt;&lt;a href=&quot;#level-1&quot; class=&quot;headerlink&quot; title=&quot;level 1&quot;&gt;&lt;/a&gt;level 1&lt;/h1&gt;&lt;p&gt;Send an HTTP request using curl  &lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ curl http://127.0.0.1:80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pwn.college&amp;#123;sc9zRb7KF1lZSGtDWOxSGGTAeYp.dhjNyMDL3ATN3MzW&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;level-2&quot;&gt;&lt;a href=&quot;#level-2&quot; class=&quot;headerlink&quot; title=&quot;level 2&quot;&gt;&lt;/a&gt;level 2&lt;/h1&gt;&lt;p&gt;Send an HTTP request using nc  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="ASU-CSE365" scheme="https://octopuslian.github.io/categories/ASU-CSE365/"/>
+    
+    
+    <category term="cybersecurity" scheme="https://octopuslian.github.io/tags/cybersecurity/"/>
+    
+    <category term="web" scheme="https://octopuslian.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EdgeX 工作原理</title>
+    <link href="https://octopuslian.github.io/2023/09/18/edgex-works/"/>
+    <id>https://octopuslian.github.io/2023/09/18/edgex-works/</id>
+    <published>2023-09-18T03:15:56.000Z</published>
+    <updated>2023-09-22T09:51:57.608Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是EdgeX&quot;&gt;&lt;a href=&quot;#什么是EdgeX&quot; class=&quot;headerlink&quot; title=&quot;什么是EdgeX&quot;&gt;&lt;/a&gt;什么是EdgeX&lt;/h1&gt;&lt;p&gt;边缘中间件，服务于物理传感和执行“事物”和我们的信息技术(IT)系统之间。&lt;/p&gt;
+&lt;h1 id=&quot;EdgeX架构&quot;&gt;&lt;a href=&quot;#EdgeX架构&quot; class=&quot;headerlink&quot; title=&quot;EdgeX架构&quot;&gt;&lt;/a&gt;EdgeX架构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/09/18/edgex-works/EdgeX_architecture.png&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;设备服务&quot;&gt;&lt;a href=&quot;#设备服务&quot; class=&quot;headerlink&quot; title=&quot;设备服务&quot;&gt;&lt;/a&gt;设备服务&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnEdgeX" scheme="https://octopuslian.github.io/categories/LearnEdgeX/"/>
+    
+    
+    <category term="edgex" scheme="https://octopuslian.github.io/tags/edgex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker Compose的使用</title>
+    <link href="https://octopuslian.github.io/2023/09/15/how-docker-compose-use/"/>
+    <id>https://octopuslian.github.io/2023/09/15/how-docker-compose-use/</id>
+    <published>2023-09-15T09:42:52.000Z</published>
+    <updated>2023-09-18T03:36:14.047Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是-docker-compose&quot;&gt;&lt;a href=&quot;#什么是-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;什么是 docker-compose&quot;&gt;&lt;/a&gt;什么是 docker-compose&lt;/h1&gt;&lt;p&gt;在 Docker 把容器技术大众化之后，Docker 周边涌现出了数不胜数的扩展、增强产品，其中有一个名字叫“Fig”的小项目格外令人瞩目。&lt;br&gt;Fig 为 Docker 引入了“容器编排”的概念，使用 YAML 来定义容器的启动参数、先后顺序和依赖关系，让用户不再有 Docker 冗长命令行的烦恼，第一次见识到了“声明式”的威力。&lt;br&gt;Docker 公司也很快意识到了 Fig 这个小工具的价值，于是就在 2014 年 7 月把它买了下来，集成进 Docker 内部，然后改名成了&lt;code&gt;docker-compose&lt;/code&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;如何使用-docker-compose&quot;&gt;&lt;a href=&quot;#如何使用-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;如何使用 docker-compose&quot;&gt;&lt;/a&gt;如何使用 docker-compose&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;intel x86_64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;apple m1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-aarch64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
+    
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+    <category term="编排" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92/"/>
+    
+    <category term="docker-compose" scheme="https://octopuslian.github.io/tags/docker-compose/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker的使用</title>
+    <link href="https://octopuslian.github.io/2023/09/15/how-docker-use/"/>
+    <id>https://octopuslian.github.io/2023/09/15/how-docker-use/</id>
+    <published>2023-09-15T08:50:45.000Z</published>
+    <updated>2023-09-18T03:11:13.765Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;熟悉Docker的使用&quot;&gt;&lt;a href=&quot;#熟悉Docker的使用&quot; class=&quot;headerlink&quot; title=&quot;熟悉Docker的使用&quot;&gt;&lt;/a&gt;熟悉Docker的使用&lt;/h1&gt;&lt;h2 id=&quot;查看版本&quot;&gt;&lt;a href=&quot;#查看版本&quot; class=&quot;headerlink&quot; title=&quot;查看版本&quot;&gt;&lt;/a&gt;查看版本&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Client:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Cloud integration: v1.0.35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Version:           24.0.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; API version:       1.43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Go version:        go1.20.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Git commit:        cb74dfc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Built:             Thu May 25 21:51:16 2023&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; OS/Arch:           darwin/arm64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Context:           desktop-linux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Server: Docker Desktop 4.21.1 (114176)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Engine:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          24.0.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  API version:      1.43 (minimum version 1.12)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Go version:       go1.20.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Git commit:       659604f&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Built:            Thu May 25 21:50:59 2023&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  OS/Arch:          linux/arm64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Experimental:     false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; containerd:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          1.6.21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; runc:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          1.1.7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        v1.1.7-0-g860f061&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; docker-init:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Version:          0.19.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GitCommit:        de40ad0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker engine&lt;/code&gt;版本号 24.0.2  &lt;/li&gt;
+&lt;li&gt;系统是&lt;code&gt;linux&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;硬件架构是&lt;code&gt;arm64&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;查看信息&quot;&gt;&lt;a href=&quot;#查看信息&quot; class=&quot;headerlink&quot; title=&quot;查看信息&quot;&gt;&lt;/a&gt;查看信息&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程前朋友圈：程序员的一天是怎么样的？</title>
+    <link href="https://octopuslian.github.io/2023/07/25/chengqian-programmer-a-day/"/>
+    <id>https://octopuslian.github.io/2023/07/25/chengqian-programmer-a-day/</id>
+    <published>2023-07-25T02:47:10.000Z</published>
+    <updated>2023-07-25T03:09:48.046Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;采访了一位哈尔滨工业大学毕业的程序员，在上海工作三年，与两位合伙人一起创业做了一个长达十年的项目，有着十几个人的公司，年收入300~400万，相对来说算成功。&lt;/p&gt;
+&lt;h1 id=&quot;采访&quot;&gt;&lt;a href=&quot;#采访&quot; class=&quot;headerlink&quot; title=&quot;采访&quot;&gt;&lt;/a&gt;采访&lt;/h1&gt;&lt;h2 id=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;a href=&quot;#你觉得你处在这个年龄层的程序员里面算什么水平？&quot; class=&quot;headerlink&quot; title=&quot;你觉得你处在这个年龄层的程序员里面算什么水平？&quot;&gt;&lt;/a&gt;你觉得你处在这个年龄层的程序员里面算什么水平？&lt;/h2&gt;&lt;p&gt;中等吧，顶多能算中等。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Essay" scheme="https://octopuslian.github.io/categories/Essay/"/>
+    
+    
+    <category term="程前朋友圈" scheme="https://octopuslian.github.io/tags/%E7%A8%8B%E5%89%8D%E6%9C%8B%E5%8F%8B%E5%9C%88/"/>
+    
+    <category term="采访" scheme="https://octopuslian.github.io/tags/%E9%87%87%E8%AE%BF/"/>
+    
+    <category term="程序员" scheme="https://octopuslian.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 Kubernetes</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-kubernetes/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-kubernetes/</id>
+    <published>2023-07-20T05:49:08.000Z</published>
+    <updated>2023-07-23T06:42:41.172Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;首先安装Docker-for-Mac&quot;&gt;&lt;a href=&quot;#首先安装Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;首先安装Docker for Mac&quot;&gt;&lt;/a&gt;首先安装Docker for Mac&lt;/h1&gt;&lt;h1 id=&quot;Enable-Kubernetes&quot;&gt;&lt;a href=&quot;#Enable-Kubernetes&quot; class=&quot;headerlink&quot; title=&quot;Enable Kubernetes&quot;&gt;&lt;/a&gt;Enable Kubernetes&lt;/h1&gt;&lt;p&gt;设置里打开Kubernetes，下载会持续一段时间：&lt;br&gt;&lt;img src=&quot;/2023/07/20/mac-install-kubernetes/enable-k8s.png&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;验证&quot;&gt;&lt;a href=&quot;#验证&quot; class=&quot;headerlink&quot; title=&quot;验证&quot;&gt;&lt;/a&gt;验证&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get nodes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME             STATUS   ROLES           AGE   VERSION&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker-desktop   Ready    control-plane   46h   v1.27.2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;~  kubectl get ns&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME              STATUS   AGE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;default           Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-node-lease   Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-public       Active   46h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kube-system       Active   46h&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="kubernetes" scheme="https://octopuslian.github.io/tags/kubernetes/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 Docker</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-docker/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-docker/</id>
+    <published>2023-07-20T05:49:01.000Z</published>
+    <updated>2023-07-23T06:38:48.871Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安装-Docker-for-Mac&quot;&gt;&lt;a href=&quot;#安装-Docker-for-Mac&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker for Mac&quot;&gt;&lt;/a&gt;安装 Docker for Mac&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://docs.docker.com/desktop/install/mac-install/&quot;&gt;https://docs.docker.com/desktop/install/mac-install/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载.dmg文件后，拖拽到应用文件夹里即可。&lt;/p&gt;
+&lt;h1 id=&quot;安装成功&quot;&gt;&lt;a href=&quot;#安装成功&quot; class=&quot;headerlink&quot; title=&quot;安装成功&quot;&gt;&lt;/a&gt;安装成功&lt;/h1&gt;&lt;p&gt;命令行输入&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 Redis</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-redis/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-redis/</id>
+    <published>2023-07-20T05:13:35.000Z</published>
+    <updated>2023-07-23T06:31:37.795Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;brew安装&quot;&gt;&lt;a href=&quot;#brew安装&quot; class=&quot;headerlink&quot; title=&quot;brew安装&quot;&gt;&lt;/a&gt;brew安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install redis&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot;&gt;&lt;a href=&quot;#Could-not-connect-to-Redis-at-127-0-0-1-6379-Connection-refused&quot; class=&quot;headerlink&quot; title=&quot;Could not connect to Redis at 127.0.0.1:6379: Connection refused&quot;&gt;&lt;/a&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-cli&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Could not connect to Redis at 127.0.0.1:6379: Connection refused not connected&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="redis" scheme="https://octopuslian.github.io/tags/redis/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 安装 MySQL</title>
+    <link href="https://octopuslian.github.io/2023/07/20/mac-install-mysql/"/>
+    <id>https://octopuslian.github.io/2023/07/20/mac-install-mysql/</id>
+    <published>2023-07-20T04:12:22.000Z</published>
+    <updated>2023-07-20T05:12:40.500Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;brew命令安装&quot;&gt;&lt;a href=&quot;#brew命令安装&quot; class=&quot;headerlink&quot; title=&quot;brew命令安装&quot;&gt;&lt;/a&gt;brew命令安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install mysql&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot;&gt;&lt;a href=&quot;#The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot; class=&quot;headerlink&quot; title=&quot;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&quot;&gt;&lt;/a&gt;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo mysql.server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting MySQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.Logging to &amp;#x27;/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.err&amp;#x27;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ERROR! The server quit without updating PID file (/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.pid).&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
+    
+    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一款MacBook Pro</title>
+    <link href="https://octopuslian.github.io/2023/07/20/my-first-mbp/"/>
+    <id>https://octopuslian.github.io/2023/07/20/my-first-mbp/</id>
+    <published>2023-07-20T02:47:33.000Z</published>
+    <updated>2023-07-20T04:12:03.569Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;7月，终于下定决心给自己买一台MacBook Pro，购买的原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 + Mac皮肤，编码没问题，但有时需要微信、Office办公套件的时候，会很麻烦，各种中转；&lt;/li&gt;
+&lt;li&gt;Mac一直想买，但也一直下不定决心，有的人买来很实在，有的人买来是为了装逼 hhh；&lt;/li&gt;
+&lt;li&gt;尝试做自媒体剪一些视频；  &lt;/li&gt;
+&lt;li&gt;苹果软件生态丰富…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;于是乎，开始看各种测评，官网看报价，最终决定上一款 M1 Max + 64G + 2T的配置，当然保险起见买了AC+。&lt;/p&gt;
+&lt;p&gt;上手3天，觉得MacOS做的还是很细心的，运行软件基本都是秒开，硬件方面给我最大的感触就是屏幕+音响效果，非常棒，看视频有一种在电影院的感觉呢。&lt;/p&gt;
+&lt;p&gt;软件的话我全部选择了JetBrains系列。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
+    
+    
+    <category term="电脑" scheme="https://octopuslian.github.io/tags/%E7%94%B5%E8%84%91/"/>
+    
+    <category term="mbp" scheme="https://octopuslian.github.io/tags/mbp/"/>
+    
+  </entry>
+  
+</feed>
