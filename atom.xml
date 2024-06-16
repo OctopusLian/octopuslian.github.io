@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2024-04-10T01:13:08.468Z</updated>
+  <updated>2024-06-16T11:49:27.383Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Docker Compose部署ThingsBoard物联网平台和边缘实例</title>
+    <link href="https://octopuslian.github.io/2024/04/25/docker-compose-deploy-thingsboard-edge/"/>
+    <id>https://octopuslian.github.io/2024/04/25/docker-compose-deploy-thingsboard-edge/</id>
+    <published>2024-04-25T01:33:44.000Z</published>
+    <updated>2024-06-16T11:49:27.383Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Docker Compose  &lt;/li&gt;
+&lt;li&gt;ThingsBoard 3.6.2  &lt;/li&gt;
+&lt;li&gt;ThingsBoard Edge 3.6.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;部署物联网平台&quot;&gt;&lt;a href=&quot;#部署物联网平台&quot; class=&quot;headerlink&quot; title=&quot;部署物联网平台&quot;&gt;&lt;/a&gt;部署物联网平台&lt;/h1&gt;&lt;p&gt;新建一个名称叫&lt;code&gt;thingsboard&lt;/code&gt;的文件夹，将以下内容保存到&lt;code&gt;docker-compose.yml&lt;/code&gt;  &lt;/p&gt;
+&lt;figure class=&quot;highlight yml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;version:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;#x27;3.0&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;services:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;mytbedge:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;restart:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;always&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;image:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;&amp;#123;image-repo&amp;#125;/tb-postgres:3.6.2&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;ports:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;9090:9090&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;1883:1883&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;7070:7070&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;environment:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;TB_QUEUE_TYPE:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;in-memory&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;volumes:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;./mytb-data:/data&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;./mytb-logs:/var/log/thingsboard&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;bullet&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;./extensions:/usr/share/thingsboard/extensions&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="LearnIot" scheme="https://octopuslian.github.io/categories/LearnIot/"/>
+    
+    
+    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="物联网" scheme="https://octopuslian.github.io/tags/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>OneX部署</title>
@@ -486,36 +513,6 @@
     <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
     
     <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的第一款MacBook Pro</title>
-    <link href="https://octopuslian.github.io/2023/07/20/my-first-mbp/"/>
-    <id>https://octopuslian.github.io/2023/07/20/my-first-mbp/</id>
-    <published>2023-07-20T02:47:33.000Z</published>
-    <updated>2023-07-20T04:12:03.569Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;7月，终于下定决心给自己买一台MacBook Pro，购买的原因如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 + Mac皮肤，编码没问题，但有时需要微信、Office办公套件的时候，会很麻烦，各种中转；&lt;/li&gt;
-&lt;li&gt;Mac一直想买，但也一直下不定决心，有的人买来很实在，有的人买来是为了装逼 hhh；&lt;/li&gt;
-&lt;li&gt;尝试做自媒体剪一些视频；  &lt;/li&gt;
-&lt;li&gt;苹果软件生态丰富…&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;于是乎，开始看各种测评，官网看报价，最终决定上一款 M1 Max + 64G + 2T的配置，当然保险起见买了AC+。&lt;/p&gt;
-&lt;p&gt;上手3天，觉得MacOS做的还是很细心的，运行软件基本都是秒开，硬件方面给我最大的感触就是屏幕+音响效果，非常棒，看视频有一种在电影院的感觉呢。&lt;/p&gt;
-&lt;p&gt;软件的话我全部选择了JetBrains系列。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
-    
-    
-    <category term="电脑" scheme="https://octopuslian.github.io/tags/%E7%94%B5%E8%84%91/"/>
-    
-    <category term="mbp" scheme="https://octopuslian.github.io/tags/mbp/"/>
     
   </entry>
   
