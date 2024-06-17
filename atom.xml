@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2024-04-10T01:13:08.468Z</updated>
+  <updated>2024-06-17T14:15:42.080Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Course UCI Programming with Google Go</title>
+    <link href="https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/"/>
+    <id>https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/</id>
+    <published>2024-06-17T13:56:32.000Z</published>
+    <updated>2024-06-17T14:15:42.080Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;课程简介&quot;&gt;&lt;a href=&quot;#课程简介&quot; class=&quot;headerlink&quot; title=&quot;课程简介&quot;&gt;&lt;/a&gt;课程简介&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;所属大学：UC Irvine&lt;/li&gt;
+&lt;li&gt;先修要求：无&lt;/li&gt;
+&lt;li&gt;编程语言：Go&lt;/li&gt;
+&lt;li&gt;课程难度：🌟🌟&lt;/li&gt;
+&lt;li&gt;预计学时：50小时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;UC Irvine在Coursera上出的Go语言入门课程，分成了三门课程来讲授Go语言的基础语法，特性和并发。&lt;br&gt;一门课程分四周，每周都会有测验，作业和学生互评。文档齐全，适合自学。  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/OctopusLian/uci-programming-with-google-go-specialization&quot;&gt;课程Github&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;学完感受&quot;&gt;&lt;a href=&quot;#学完感受&quot; class=&quot;headerlink&quot; title=&quot;学完感受&quot;&gt;&lt;/a&gt;学完感受&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="FamousSchool" scheme="https://octopuslian.github.io/categories/FamousSchool/"/>
+    
+    
+    <category term="coursera" scheme="https://octopuslian.github.io/tags/coursera/"/>
+    
+    <category term="go" scheme="https://octopuslian.github.io/tags/go/"/>
+    
+    <category term="UCI" scheme="https://octopuslian.github.io/tags/UCI/"/>
+    
+  </entry>
   
   <entry>
     <title>OneX部署</title>
@@ -486,36 +518,6 @@
     <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
     
     <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的第一款MacBook Pro</title>
-    <link href="https://octopuslian.github.io/2023/07/20/my-first-mbp/"/>
-    <id>https://octopuslian.github.io/2023/07/20/my-first-mbp/</id>
-    <published>2023-07-20T02:47:33.000Z</published>
-    <updated>2023-07-20T04:12:03.569Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;7月，终于下定决心给自己买一台MacBook Pro，购买的原因如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;之前笔记本电脑是装的Ubuntu 20.04 + Mac皮肤，编码没问题，但有时需要微信、Office办公套件的时候，会很麻烦，各种中转；&lt;/li&gt;
-&lt;li&gt;Mac一直想买，但也一直下不定决心，有的人买来很实在，有的人买来是为了装逼 hhh；&lt;/li&gt;
-&lt;li&gt;尝试做自媒体剪一些视频；  &lt;/li&gt;
-&lt;li&gt;苹果软件生态丰富…&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;于是乎，开始看各种测评，官网看报价，最终决定上一款 M1 Max + 64G + 2T的配置，当然保险起见买了AC+。&lt;/p&gt;
-&lt;p&gt;上手3天，觉得MacOS做的还是很细心的，运行软件基本都是秒开，硬件方面给我最大的感触就是屏幕+音响效果，非常棒，看视频有一种在电影院的感觉呢。&lt;/p&gt;
-&lt;p&gt;软件的话我全部选择了JetBrains系列。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
-    
-    
-    <category term="电脑" scheme="https://octopuslian.github.io/tags/%E7%94%B5%E8%84%91/"/>
-    
-    <category term="mbp" scheme="https://octopuslian.github.io/tags/mbp/"/>
     
   </entry>
   
