@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2024-06-17T14:26:22.088Z</updated>
+  <updated>2024-06-21T11:19:49.270Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Course MIT.6092 Introduction to Programming in Java</title>
+    <link href="https://octopuslian.github.io/2024/06/21/course-mit-6092-introduction-to-programming-in-java/"/>
+    <id>https://octopuslian.github.io/2024/06/21/course-mit-6092-introduction-to-programming-in-java/</id>
+    <published>2024-06-21T11:08:25.000Z</published>
+    <updated>2024-06-21T11:19:49.270Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;课程简介&quot;&gt;&lt;a href=&quot;#课程简介&quot; class=&quot;headerlink&quot; title=&quot;课程简介&quot;&gt;&lt;/a&gt;课程简介&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;所属大学：MIT&lt;/li&gt;
+&lt;li&gt;先修要求：无&lt;/li&gt;
+&lt;li&gt;编程语言：Java&lt;/li&gt;
+&lt;li&gt;课程语言：英语&lt;/li&gt;
+&lt;li&gt;课程难度：🌟&lt;/li&gt;
+&lt;li&gt;预计学时：20小时  &lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&quot;https://github.com/OctopusLian/mit-6092-introduction-to-programming-in-java&quot;&gt;MIT.6092 Introduction to Programming in Java&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MIT出的Java入门课程，总共7节课程，每节课大概一个小时。&lt;br&gt;课程包括入门&lt;code&gt;Java&lt;/code&gt;所需的基础知识概念，&lt;code&gt;Java&lt;/code&gt;代码风格，以及如何&lt;code&gt;Debug&lt;/code&gt;。&lt;br&gt;第五节和第六节会将结合所学知识做一个简单的绘图软件，很有趣。  &lt;/p&gt;
+&lt;h1 id=&quot;作业展示&quot;&gt;&lt;a href=&quot;#作业展示&quot; class=&quot;headerlink&quot; title=&quot;作业展示&quot;&gt;&lt;/a&gt;作业展示&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2024/06/21/course-mit-6092-introduction-to-programming-in-java/hw-book.png&quot;&gt;  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="CSelfLearning" scheme="https://octopuslian.github.io/categories/CSelfLearning/"/>
+    
+    
+    <category term="Java" scheme="https://octopuslian.github.io/tags/Java/"/>
+    
+    <category term="MIT" scheme="https://octopuslian.github.io/tags/MIT/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Course UCI Programming with Google Go</title>
     <link href="https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/"/>
     <id>https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/</id>
     <published>2024-06-17T13:56:32.000Z</published>
-    <updated>2024-06-17T14:26:22.088Z</updated>
+    <updated>2024-06-21T11:12:14.202Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;课程简介&quot;&gt;&lt;a href=&quot;#课程简介&quot; class=&quot;headerlink&quot; title=&quot;课程简介&quot;&gt;&lt;/a&gt;课程简介&lt;/h1&gt;&lt;ul&gt;
@@ -30,11 +61,11 @@
 &lt;li&gt;编程语言：Go  &lt;/li&gt;
 &lt;li&gt;课程语言：英语&lt;/li&gt;
 &lt;li&gt;课程难度：🌟🌟&lt;/li&gt;
-&lt;li&gt;预计学时：50小时&lt;/li&gt;
+&lt;li&gt;预计学时：50小时  &lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&quot;https://github.com/OctopusLian/uci-programming-with-google-go-specialization&quot;&gt;UCI Programming with Google Go&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;UC Irvine在Coursera上出的Go语言入门课程，分成了三门课程来讲授Go语言的基础语法，特性和并发。&lt;br&gt;一门课程分四周，每周都会有测验，作业和学生互评。文档齐全，适合自学。  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/OctopusLian/uci-programming-with-google-go-specialization&quot;&gt;课程Github&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;学完感受&quot;&gt;&lt;a href=&quot;#学完感受&quot; class=&quot;headerlink&quot; title=&quot;学完感受&quot;&gt;&lt;/a&gt;学完感受&lt;/h1&gt;</summary>
+&lt;h1 id=&quot;学完感受&quot;&gt;&lt;a href=&quot;#学完感受&quot; class=&quot;headerlink&quot; title=&quot;学完感受&quot;&gt;&lt;/a&gt;学完感受&lt;/h1&gt;&lt;p&gt;起因是受到一位大佬&lt;a href=&quot;https://github.com/PKUFlyingPig&quot;&gt;PKUFlyingPig&lt;/a&gt;的影响，他说  &lt;/p&gt;</summary>
     
     
     
@@ -493,30 +524,6 @@
     
     
     <category term="redis" scheme="https://octopuslian.github.io/tags/redis/"/>
-    
-    <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 安装 MySQL</title>
-    <link href="https://octopuslian.github.io/2023/07/20/mac-install-mysql/"/>
-    <id>https://octopuslian.github.io/2023/07/20/mac-install-mysql/</id>
-    <published>2023-07-20T04:12:22.000Z</published>
-    <updated>2023-07-20T05:12:40.500Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;brew命令安装&quot;&gt;&lt;a href=&quot;#brew命令安装&quot; class=&quot;headerlink&quot; title=&quot;brew命令安装&quot;&gt;&lt;/a&gt;brew命令安装&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install mysql&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot;&gt;&lt;a href=&quot;#The-server-quit-without-updating-PID-file-x2F-opt-x2F-homebrew-x2F-var-x2F-mysql-x2F-neozhangdeMacBook-Pro-local-pid&quot; class=&quot;headerlink&quot; title=&quot;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&quot;&gt;&lt;/a&gt;The server quit without updating PID file (&amp;#x2F;opt&amp;#x2F;homebrew&amp;#x2F;var&amp;#x2F;mysql&amp;#x2F;neozhangdeMacBook-Pro.local.pid)&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo mysql.server start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting MySQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.Logging to &amp;#x27;/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.err&amp;#x27;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ERROR! The server quit without updating PID file (/opt/homebrew/var/mysql/neozhangdeMacBook-Pro.local.pid).&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="MacNote" scheme="https://octopuslian.github.io/categories/MacNote/"/>
-    
-    
-    <category term="MySQL" scheme="https://octopuslian.github.io/tags/MySQL/"/>
     
     <category term="mac" scheme="https://octopuslian.github.io/tags/mac/"/>
     
