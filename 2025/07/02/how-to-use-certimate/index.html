@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://octopuslian.github.io/2025/07/02/how-to-use-certimate/%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86.png">
 <meta property="og:image" content="https://octopuslian.github.io/2025/07/02/how-to-use-certimate/%E9%AA%8C%E8%AF%81.png">
 <meta property="article:published_time" content="2025-07-02T06:37:48.000Z">
-<meta property="article:modified_time" content="2025-07-02T07:38:05.774Z">
+<meta property="article:modified_time" content="2025-07-28T06:16:07.518Z">
 <meta property="article:author" content="Neo Zhang">
 <meta property="article:tag" content="ssl">
 <meta name="twitter:card" content="summary">
@@ -252,10 +252,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-07-02 14:37:48 / 修改时间：15:38:05" itemprop="dateCreated datePublished" datetime="2025-07-02T14:37:48+08:00">2025-07-02</time>
+              <time title="创建时间：2025-07-02 14:37:48" itemprop="dateCreated datePublished" datetime="2025-07-02T14:37:48+08:00">2025-07-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-28 14:16:07" itemprop="dateModified" datetime="2025-07-28T14:16:07+08:00">2025-07-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -317,7 +323,7 @@
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="新建工作流，选择标准模板"><a href="#新建工作流，选择标准模板" class="headerlink" title="新建工作流，选择标准模板"></a>新建工作流，选择标准模板</h2><p><img src="/2025/07/02/how-to-use-certimate/%E6%96%B0%E5%BB%BA%E5%B7%A5%E4%BD%9C%E6%B5%81.png">  </p>
 <h2 id="开始节点，选择自动触发"><a href="#开始节点，选择自动触发" class="headerlink" title="开始节点，选择自动触发"></a>开始节点，选择自动触发</h2><p><img src="/2025/07/02/how-to-use-certimate/%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91.png">  </p>
 <h2 id="申请节点，选择对应的DNS提供商"><a href="#申请节点，选择对应的DNS提供商" class="headerlink" title="申请节点，选择对应的DNS提供商"></a>申请节点，选择对应的DNS提供商</h2><p><img src="/2025/07/02/how-to-use-certimate/%E7%94%B3%E8%AF%B7.png">  </p>
-<h2 id="部署节点，将申请的证书部署到指定的服务器"><a href="#部署节点，将申请的证书部署到指定的服务器" class="headerlink" title="部署节点，将申请的证书部署到指定的服务器"></a>部署节点，将申请的证书部署到指定的服务器</h2><p>这一步比较关键，尤其需要注意，如果你是用二进制启动的Certimate，就选择本地主机即可；如果你是用容器启动的Certimate，那么保存的证书是在容器内而不是宿主机，你需要做目录映射。  </p>
+<h2 id="部署节点，将申请的证书部署到指定的服务器"><a href="#部署节点，将申请的证书部署到指定的服务器" class="headerlink" title="部署节点，将申请的证书部署到指定的服务器"></a>部署节点，将申请的证书部署到指定的服务器</h2><p>这一步比较关键，尤其需要注意，如果你是用二进制启动的<code>Certimate</code>，就选择本地主机即可；如果你是用容器启动的Certimate，那么保存的证书是在容器内而不是宿主机，你需要做目录映射。  </p>
 <p><img src="/2025/07/02/how-to-use-certimate/%E9%83%A8%E7%BD%B2.png">  </p>
 <p><img src="/2025/07/02/how-to-use-certimate/%E6%8E%88%E6%9D%83_%E6%8F%90%E4%BE%9B%E5%95%86_%E4%B8%BB%E6%9C%BA.png">  </p>
 <h2 id="通知节点，如果失败了，需要通过各种方式通知，前提是需要设置好Webhook"><a href="#通知节点，如果失败了，需要通过各种方式通知，前提是需要设置好Webhook" class="headerlink" title="通知节点，如果失败了，需要通过各种方式通知，前提是需要设置好Webhook"></a>通知节点，如果失败了，需要通过各种方式通知，前提是需要设置好Webhook</h2><p>比如我这里用的是飞书的Webhook，需要上飞书的官方文档上找对应的设置指南：<a target="_blank" rel="noopener" href="https://www.feishu.cn/hc/zh-CN/articles/807992406756-webhook-%E8%A7%A6%E5%8F%91%E5%99%A8">Webhook 触发器</a></p>

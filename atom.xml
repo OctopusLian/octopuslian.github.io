@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2025-07-02T07:38:05.774Z</updated>
+  <updated>2025-07-28T06:16:07.518Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://octopuslian.github.io/2025/07/02/how-to-use-certimate/"/>
     <id>https://octopuslian.github.io/2025/07/02/how-to-use-certimate/</id>
     <published>2025-07-02T06:37:48.000Z</published>
-    <updated>2025-07-02T07:38:05.774Z</updated>
+    <updated>2025-07-28T06:16:07.518Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;Certimate是开源的 SSL 证书管理工具，可以帮助你自动申请、部署 SSL 证书，并在证书即将过期时自动续期。  &lt;/p&gt;
