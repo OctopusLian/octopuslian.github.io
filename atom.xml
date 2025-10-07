@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2025-09-24T08:40:26.993Z</updated>
+  <updated>2025-10-07T12:21:01.697Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,114 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设置加密钱包</title>
+    <link href="https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-setting-up-a-crypto-wallet/"/>
+    <id>https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-setting-up-a-crypto-wallet/</id>
+    <published>2025-10-07T12:09:39.000Z</published>
+    <updated>2025-10-07T12:21:01.697Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;要全面理解加密钱包，我们必须了解一些关于区块链的概念，这将有助于我们理解钱包如何帮助我们。让我们开始吧。  &lt;/p&gt;
+&lt;h1 id=&quot;什么是地址&quot;&gt;&lt;a href=&quot;#什么是地址&quot; class=&quot;headerlink&quot; title=&quot;什么是地址&quot;&gt;&lt;/a&gt;什么是地址&lt;/h1&gt;&lt;p&gt;地址是使用加密技术生成的一串文本，用于代表您在区块链上的账户。此地址可以公开分享，并且绝对安全。您可以从您的钱包地址收发资金。简单来说，地址是您在区块链上的唯一标识符，代表您的“账户”。  &lt;/p&gt;
+&lt;p&gt;以太坊地址的一个例子是: 0x01573Df433484fCBe6325a0c6E051Dc62Ab107D1  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnWeb3" scheme="https://octopuslian.github.io/categories/LearnWeb3/"/>
+    
+    
+    <category term="wallet" scheme="https://octopuslian.github.io/tags/wallet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是Ethereum</title>
+    <link href="https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-ethereum/"/>
+    <id>https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-ethereum/</id>
+    <published>2025-10-07T11:54:40.000Z</published>
+    <updated>2025-10-07T12:09:02.244Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;以太坊是一个支持智能合约的去中心化区块链。与仅支持比特币代币在网络中转移的比特币不同，以太坊的用途更为广泛。  &lt;/p&gt;
+&lt;p&gt;开发者可以构建 dApp，即去中心化应用程序，这些应用程序可以在以太坊虚拟机 (EVM) 上运行。因此，以太坊的全局状态不仅包含每个账户的余额，还包含每个 dApp 的状态。  &lt;/p&gt;
+&lt;p&gt;dApp 使用以太坊的编程语言 Solidity 构建。您可以使用 Solidity 编写智能合约，并将其部署到以太坊网络。  &lt;/p&gt;
+&lt;p&gt;它通过权益证明 (PoS) 机制在其网络中的所有计算机之间维持共识。2022 年 9 月发布的 Serenity 补丁使以太坊从工作量证明机制转换为权益证明机制。  &lt;/p&gt;
+&lt;h1 id=&quot;以太坊基础知识&quot;&gt;&lt;a href=&quot;#以太坊基础知识&quot; class=&quot;headerlink&quot; title=&quot;以太坊基础知识&quot;&gt;&lt;/a&gt;以太坊基础知识&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="LearnWeb3" scheme="https://octopuslian.github.io/categories/LearnWeb3/"/>
+    
+    
+    <category term="ethereum" scheme="https://octopuslian.github.io/tags/ethereum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是Web3</title>
+    <link href="https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-web3/"/>
+    <id>https://octopuslian.github.io/2025/10/07/ethereum-developer-degree-freshman-what-is-web3/</id>
+    <published>2025-10-07T11:38:31.000Z</published>
+    <updated>2025-10-07T11:51:39.968Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在本模块中，我们将探讨“Web3”的含义。在之前的互联网范式 Web1 和 Web2 的背景下思考 Web3 或许会更有帮助。  &lt;/p&gt;
+&lt;h1 id=&quot;Web1-1980’s-early-2000’s&quot;&gt;&lt;a href=&quot;#Web1-1980’s-early-2000’s&quot; class=&quot;headerlink&quot; title=&quot;Web1 (1980’s - early 2000’s)&quot;&gt;&lt;/a&gt;Web1 (1980’s - early 2000’s)&lt;/h1&gt;&lt;p&gt;互联网的第一阶段，即 Web1，主要致力于为日常消费者提供在线内容和信息。  &lt;/p&gt;
+&lt;p&gt;由于消费者只能在线阅读信息或内容，而无法与之互动，因此 Web1 极其静态。  &lt;/p&gt;
+&lt;p&gt;说到 Web1，不妨想想 Internet Explorer、Yahoo 或 Netscape。虽然 Web1 是只读的，但我们与 Web1 相关的公司却建立在开放协议之上（这意味着几乎任何个人或组织都可以在互联网上构建内容，并且知道他们与其他人或组织都遵守相同的规则）。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnWeb3" scheme="https://octopuslian.github.io/categories/LearnWeb3/"/>
+    
+    
+    <category term="web3" scheme="https://octopuslian.github.io/tags/web3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是区块链</title>
+    <link href="https://octopuslian.github.io/2025/10/04/ethereum-developer-degree-freshman-what-even-is-a-blockchain/"/>
+    <id>https://octopuslian.github.io/2025/10/04/ethereum-developer-degree-freshman-what-even-is-a-blockchain/</id>
+    <published>2025-10-04T14:22:31.000Z</published>
+    <updated>2025-10-07T11:36:38.795Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是区块链？&quot;&gt;&lt;a href=&quot;#什么是区块链？&quot; class=&quot;headerlink&quot; title=&quot;什么是区块链？&quot;&gt;&lt;/a&gt;什么是区块链？&lt;/h1&gt;&lt;p&gt;区块链是一种分布式、数字化、不可篡改的账本，用于安全透明地记录交易和存储数据。它基于去中心化的节点网络，这些节点共同维护单一事实来源，允许参与者无需中介机构即可与系统交互。  &lt;/p&gt;
+&lt;p&gt;区块是一种容器数据结构，用于聚合交易，并将其记录在公共账本（区块链）中。链中的每个区块都包含一组交易，这些交易已由节点网络通过共识机制进行验证和记录。区块一旦添加到链中，就无法更改或删除，从而创建了网络上所有交易的不可篡改记录。  &lt;/p&gt;
+&lt;p&gt;区块链的普及始于2009年，当时匿名人士（或团体）中本聪（Satoshi Nakamoto）发布了比特币网络。比特币是一个加密货币网络，它主要处理BTC资产在网络上的转移，无需任何可信的中间人或权威机构，同时确保网络本身的安全，不会被黑客入侵。（注：比特币网络很可能也是世界上最大的漏洞赏金项目——如果你能破解它，你就能立即成为万亿富翁）。  &lt;/p&gt;
+&lt;p&gt;随着时间的推移，比特币的这种设计启发了其他更强大的区块链网络的出现，例如以太坊。在接下来的课程中，我们将深入探讨以太坊。  &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnWeb3" scheme="https://octopuslian.github.io/categories/LearnWeb3/"/>
+    
+    
+    <category term="blockchain" scheme="https://octopuslian.github.io/tags/blockchain/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何开始Web3开发</title>
+    <link href="https://octopuslian.github.io/2025/09/25/ethereum-developer-degree-freshman-how-to-get-started-with-programming/"/>
+    <id>https://octopuslian.github.io/2025/09/25/ethereum-developer-degree-freshman-how-to-get-started-with-programming/</id>
+    <published>2025-09-25T02:30:44.000Z</published>
+    <updated>2025-10-05T06:17:55.647Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;要成为一名 Web3 开发者，我们需要一些 Web2 的背景知识。无论您对创建智能合约、开发工具、协议层开发、AI 图像生成还是其他任何内容感兴趣，都有很多已经存在数十年且至今仍然高度相关且实用的主题。如果您正在阅读本文，那么您今天想要做的很大一部分就是学习如何在 Web 技术（用户可以通过 Web 浏览器访问的技术）之上进行构建。&lt;/p&gt;
+&lt;p&gt;在本课中，我将讲解一些您在 Web 开发之旅中肯定会遇到的关键术语，但更重要的是，我将讨论作为一名刚刚踏上 Web 开发之旅的开发者，您应该具备的心态。&lt;/p&gt;
+&lt;h1 id=&quot;前端技术&quot;&gt;&lt;a href=&quot;#前端技术&quot; class=&quot;headerlink&quot; title=&quot;前端技术&quot;&gt;&lt;/a&gt;前端技术&lt;/h1&gt;&lt;p&gt;前端是用户交互的界面。在 Web 上，前端指的是一个可以浏览、点击甚至编写内容的网站。移动应用和桌面应用也是前端界面的有效示例。&lt;/p&gt;
+&lt;p&gt;在本课中，我们将重点介绍 Web 技术。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="LearnWeb3" scheme="https://octopuslian.github.io/categories/LearnWeb3/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>每隔六七年，人就会轮回一次：给身处逆境的你三个建议</title>
@@ -406,129 +514,6 @@
     <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
     
     <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS50 Lab 1_Population Growth</title>
-    <link href="https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/"/>
-    <id>https://octopuslian.github.io/2023/12/20/cs50-lab-1-population-growth/</id>
-    <published>2023-12-20T11:57:47.000Z</published>
-    <updated>2023-12-23T04:31:24.540Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;获取&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;  &lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;do while&lt;/code&gt;做好范围限制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n = get_int(&lt;span class=&quot;string&quot;&gt;&amp;quot;Positive Integer: &amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (n &amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-&lt;li&gt;使用&lt;code&gt;if&lt;/code&gt;语句判断&lt;code&gt;startSize&lt;/code&gt;和&lt;code&gt;endSize&lt;/code&gt;是否相等  &lt;/li&gt;
-&lt;li&gt;如果相等，输出&lt;code&gt;Years&lt;/code&gt;为0  &lt;/li&gt;
-&lt;li&gt;如果不相等，根据出生人数➗3，死亡人数➗4，每计算一次&lt;code&gt;Years&lt;/code&gt;加1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="cs-self-learning" scheme="https://octopuslian.github.io/categories/cs-self-learning/"/>
-    
-    
-    <category term="C" scheme="https://octopuslian.github.io/tags/C/"/>
-    
-    <category term="CS50" scheme="https://octopuslian.github.io/tags/CS50/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 安装 MQTT</title>
-    <link href="https://octopuslian.github.io/2023/10/10/mac-install-mqtt/"/>
-    <id>https://octopuslian.github.io/2023/10/10/mac-install-mqtt/</id>
-    <published>2023-10-10T03:06:32.000Z</published>
-    <updated>2024-01-17T07:43:00.831Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;安装MQTT服务器&quot;&gt;&lt;a href=&quot;#安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT服务器&quot;&gt;&lt;/a&gt;安装MQTT服务器&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;安装 Mosquitto MQTT 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew install mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;启动 Mosquitto 服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services start mosquitto&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;==&amp;gt; Successfully started `mosquitto` (label: homebrew.mxcl.mosquitto)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;验证 Mosquitto 服务器是否正在运行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;brew services list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Name      Status  User     File&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mosquitto started  *        *&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;安装MQTT客户端&quot;&gt;&lt;a href=&quot;#安装MQTT客户端&quot; class=&quot;headerlink&quot; title=&quot;安装MQTT客户端&quot;&gt;&lt;/a&gt;安装MQTT客户端&lt;/h1&gt;&lt;p&gt;访问&lt;a href=&quot;https://github.com/emqx/MQTTX&quot;&gt;github-MQTTX&lt;/a&gt;，找到&lt;code&gt;MQTTX-1.9.6-arm64.pkg&lt;/code&gt;下载安装即可。  &lt;/p&gt;
-&lt;p&gt;然后就可以看到有个&lt;code&gt;MQTTX&lt;/code&gt;的图标，表示&lt;code&gt;MQTT&lt;/code&gt;客户端安装成功。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnMQTT" scheme="https://octopuslian.github.io/categories/LearnMQTT/"/>
-    
-    
-    <category term="MQTT" scheme="https://octopuslian.github.io/tags/MQTT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ASU Intro to Cybersecurity Talking Web</title>
-    <link href="https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/"/>
-    <id>https://octopuslian.github.io/2023/09/21/asu-cse365-talking-web/</id>
-    <published>2023-09-21T13:30:13.000Z</published>
-    <updated>2023-12-23T04:30:09.597Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;level-1&quot;&gt;&lt;a href=&quot;#level-1&quot; class=&quot;headerlink&quot; title=&quot;level 1&quot;&gt;&lt;/a&gt;level 1&lt;/h1&gt;&lt;p&gt;Send an HTTP request using curl  &lt;/p&gt;
-&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ curl http://127.0.0.1:80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pwn.college&amp;#123;sc9zRb7KF1lZSGtDWOxSGGTAeYp.dhjNyMDL3ATN3MzW&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;level-2&quot;&gt;&lt;a href=&quot;#level-2&quot; class=&quot;headerlink&quot; title=&quot;level 2&quot;&gt;&lt;/a&gt;level 2&lt;/h1&gt;&lt;p&gt;Send an HTTP request using nc  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="ASU-CSE365" scheme="https://octopuslian.github.io/categories/ASU-CSE365/"/>
-    
-    
-    <category term="cybersecurity" scheme="https://octopuslian.github.io/tags/cybersecurity/"/>
-    
-    <category term="web" scheme="https://octopuslian.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EdgeX 工作原理</title>
-    <link href="https://octopuslian.github.io/2023/09/18/edgex-works/"/>
-    <id>https://octopuslian.github.io/2023/09/18/edgex-works/</id>
-    <published>2023-09-18T03:15:56.000Z</published>
-    <updated>2023-09-22T09:51:57.608Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;什么是EdgeX&quot;&gt;&lt;a href=&quot;#什么是EdgeX&quot; class=&quot;headerlink&quot; title=&quot;什么是EdgeX&quot;&gt;&lt;/a&gt;什么是EdgeX&lt;/h1&gt;&lt;p&gt;边缘中间件，服务于物理传感和执行“事物”和我们的信息技术(IT)系统之间。&lt;/p&gt;
-&lt;h1 id=&quot;EdgeX架构&quot;&gt;&lt;a href=&quot;#EdgeX架构&quot; class=&quot;headerlink&quot; title=&quot;EdgeX架构&quot;&gt;&lt;/a&gt;EdgeX架构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2023/09/18/edgex-works/EdgeX_architecture.png&quot;&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;设备服务&quot;&gt;&lt;a href=&quot;#设备服务&quot; class=&quot;headerlink&quot; title=&quot;设备服务&quot;&gt;&lt;/a&gt;设备服务&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="LearnEdgeX" scheme="https://octopuslian.github.io/categories/LearnEdgeX/"/>
-    
-    
-    <category term="edgex" scheme="https://octopuslian.github.io/tags/edgex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker Compose的使用</title>
-    <link href="https://octopuslian.github.io/2023/09/15/how-docker-compose-use/"/>
-    <id>https://octopuslian.github.io/2023/09/15/how-docker-compose-use/</id>
-    <published>2023-09-15T09:42:52.000Z</published>
-    <updated>2023-09-18T03:36:14.047Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;什么是-docker-compose&quot;&gt;&lt;a href=&quot;#什么是-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;什么是 docker-compose&quot;&gt;&lt;/a&gt;什么是 docker-compose&lt;/h1&gt;&lt;p&gt;在 Docker 把容器技术大众化之后，Docker 周边涌现出了数不胜数的扩展、增强产品，其中有一个名字叫“Fig”的小项目格外令人瞩目。&lt;br&gt;Fig 为 Docker 引入了“容器编排”的概念，使用 YAML 来定义容器的启动参数、先后顺序和依赖关系，让用户不再有 Docker 冗长命令行的烦恼，第一次见识到了“声明式”的威力。&lt;br&gt;Docker 公司也很快意识到了 Fig 这个小工具的价值，于是就在 2014 年 7 月把它买了下来，集成进 Docker 内部，然后改名成了&lt;code&gt;docker-compose&lt;/code&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;如何使用-docker-compose&quot;&gt;&lt;a href=&quot;#如何使用-docker-compose&quot; class=&quot;headerlink&quot; title=&quot;如何使用 docker-compose&quot;&gt;&lt;/a&gt;如何使用 docker-compose&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;intel x86_64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;apple m1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-aarch64 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          -o /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x /usr/local/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnDocker" scheme="https://octopuslian.github.io/categories/LearnDocker/"/>
-    
-    
-    <category term="容器" scheme="https://octopuslian.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-    <category term="编排" scheme="https://octopuslian.github.io/tags/%E7%BC%96%E6%8E%92/"/>
-    
-    <category term="docker-compose" scheme="https://octopuslian.github.io/tags/docker-compose/"/>
     
   </entry>
   
