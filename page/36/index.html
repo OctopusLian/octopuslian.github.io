@@ -811,105 +811,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://octopuslian.github.io/2019/06/30/go-test-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/neozhang.png">
-      <meta itemprop="name" content="Neo Zhang">
-      <meta itemprop="description" content="All is Well.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不会飞的章鱼">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/30/go-test-tips/" class="post-title-link" itemprop="url">Go test单元测试小技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-30 14:35:49" itemprop="dateCreated datePublished" datetime="2019-06-30T14:35:49+08:00">2019-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-27 13:15:14" itemprop="dateModified" datetime="2022-04-27T13:15:14+08:00">2022-04-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learn-go/" itemprop="url" rel="index"><span itemprop="name">Learn-go</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>538</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>周五在做<code>go test</code>测试时，碰到个问题，我要对一个<code>xxx</code>函数写测试样例，然而它的首字母是小写的，没有导出，单元测试过不去，而这个<code>xxx</code>函数外面还有一个<code>YYY</code>函数首字母是大写的，但要经过很长的逻辑才能到<code>xxx</code>函数。这时我又要完成对<code>xxx</code>函数进行测试，又不想经过<code>YYY</code>函数走逻辑，该怎么办呢？  </p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>首先，绝对不能做的事：  </p>
-<ul>
-<li>将<code>xxx</code>函数改为首字母大写的<code>Xxx</code>函数<br>原因：很多地方都在调这个函数，你改了这一处只满足你这次的测试，那其他基本业务流程也就崩了。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/30/go-test-tips/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://octopuslian.github.io/2019/06/30/golang-test-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -986,6 +887,105 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/06/30/golang-test-tips/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://octopuslian.github.io/2019/06/30/go-test-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/neozhang.png">
+      <meta itemprop="name" content="Neo Zhang">
+      <meta itemprop="description" content="All is Well.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不会飞的章鱼">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/30/go-test-tips/" class="post-title-link" itemprop="url">Go test单元测试小技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-30 14:35:49" itemprop="dateCreated datePublished" datetime="2019-06-30T14:35:49+08:00">2019-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 13:15:14" itemprop="dateModified" datetime="2022-04-27T13:15:14+08:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-go/" itemprop="url" rel="index"><span itemprop="name">Learn-go</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>538</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>周五在做<code>go test</code>测试时，碰到个问题，我要对一个<code>xxx</code>函数写测试样例，然而它的首字母是小写的，没有导出，单元测试过不去，而这个<code>xxx</code>函数外面还有一个<code>YYY</code>函数首字母是大写的，但要经过很长的逻辑才能到<code>xxx</code>函数。这时我又要完成对<code>xxx</code>函数进行测试，又不想经过<code>YYY</code>函数走逻辑，该怎么办呢？  </p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>首先，绝对不能做的事：  </p>
+<ul>
+<li>将<code>xxx</code>函数改为首字母大写的<code>Xxx</code>函数<br>原因：很多地方都在调这个函数，你改了这一处只满足你这次的测试，那其他基本业务流程也就崩了。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/30/go-test-tips/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
