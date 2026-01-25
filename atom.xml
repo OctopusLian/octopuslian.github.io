@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2025-11-25T05:52:56.790Z</updated>
+  <updated>2026-01-25T10:26:15.358Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【慕聘网】内网互通原则</title>
+    <link href="https://octopuslian.github.io/2026/01/25/java-senior-hire-project-2-internal-network-connectivity-rules/"/>
+    <id>https://octopuslian.github.io/2026/01/25/java-senior-hire-project-2-internal-network-connectivity-rules/</id>
+    <published>2026-01-25T10:18:02.000Z</published>
+    <updated>2026-01-25T10:26:15.358Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;内网互通原则&quot;&gt;&lt;a href=&quot;#内网互通原则&quot; class=&quot;headerlink&quot; title=&quot;内网互通原则&quot;&gt;&lt;/a&gt;内网互通原则&lt;/h1&gt;&lt;p&gt;在开发分布式或微服务架构时，确保各组件（虚拟机、数据库、中间件、移动端）能够相互访问是顺利进行开发的基础。以下是我们在开发环境中必须遵守的“内网互通原则”。&lt;/p&gt;
+&lt;h2 id=&quot;1-核心准则：打破网络壁垒&quot;&gt;&lt;a href=&quot;#1-核心准则：打破网络壁垒&quot; class=&quot;headerlink&quot; title=&quot;1. 核心准则：打破网络壁垒&quot;&gt;&lt;/a&gt;1. 核心准则：打破网络壁垒&lt;/h2&gt;&lt;p&gt;为了保证数据在不同设备间顺畅流转，需要从系统、云端及物理网络三个层面进行配置：&lt;/p&gt;
+&lt;h3 id=&quot;关闭本地防火墙&quot;&gt;&lt;a href=&quot;#关闭本地防火墙&quot; class=&quot;headerlink&quot; title=&quot;关闭本地防火墙&quot;&gt;&lt;/a&gt;关闭本地防火墙&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="network" scheme="https://octopuslian.github.io/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】开发工具和数据库选型</title>
+    <link href="https://octopuslian.github.io/2026/01/25/java-senior-hire-project-1-develop-tool/"/>
+    <id>https://octopuslian.github.io/2026/01/25/java-senior-hire-project-1-develop-tool/</id>
+    <published>2026-01-25T09:55:24.000Z</published>
+    <updated>2026-01-25T10:26:15.357Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;开发工具&quot;&gt;&lt;a href=&quot;#开发工具&quot; class=&quot;headerlink&quot; title=&quot;开发工具&quot;&gt;&lt;/a&gt;开发工具&lt;/h1&gt;&lt;p&gt;为了高效开发本项目，我们需要准备一系列涵盖 IDE、数据库管理、接口调试及运维相关的工具。&lt;/p&gt;
+&lt;h2 id=&quot;1-核心开发-IDE&quot;&gt;&lt;a href=&quot;#1-核心开发-IDE&quot; class=&quot;headerlink&quot; title=&quot;1. 核心开发 IDE&quot;&gt;&lt;/a&gt;1. 核心开发 IDE&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;后端开发&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IntelliJ IDEA&lt;/strong&gt; (首选，推荐使用 Ultimate 版本以获得更好的 Spring Cloud 支持)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eclipse &amp;#x2F; STS&lt;/strong&gt; (Spring Tool Suite, 经典的 Java 开发工具)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端&amp;#x2F;移动端开发&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;VS Code&lt;/strong&gt; (适用于前端 Web 及跨平台开发)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HBuilderX&lt;/strong&gt; (专为混合 APP 及 uni-app 开发优化)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2-数据库可视化工具&quot;&gt;&lt;a href=&quot;#2-数据库可视化工具&quot; class=&quot;headerlink&quot; title=&quot;2. 数据库可视化工具&quot;&gt;&lt;/a&gt;2. 数据库可视化工具&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】通过一个招聘网站项目，拥有Java高级开发的能力</title>
+    <link href="https://octopuslian.github.io/2026/01/25/java-senior-hire-project-start/"/>
+    <id>https://octopuslian.github.io/2026/01/25/java-senior-hire-project-start/</id>
+    <published>2026-01-25T09:01:00.000Z</published>
+    <updated>2026-01-25T10:26:15.359Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h1&gt;&lt;p&gt;拥有7年的Go开发经验，拥有架构设计和项目管理经验，准备做一些&lt;code&gt;Java&lt;/code&gt;相关的技术储备。在网上找了一些资料，发现&lt;code&gt;SpringCloud&lt;/code&gt;是一个不错的选择，于是就有了这个项目。  &lt;/p&gt;
+&lt;h1 id=&quot;项目介绍&quot;&gt;&lt;a href=&quot;#项目介绍&quot; class=&quot;headerlink&quot; title=&quot;项目介绍&quot;&gt;&lt;/a&gt;项目介绍&lt;/h1&gt;&lt;p&gt;项目是一个以SaaS为企业服务体系的系统化项目，项目包括运营管理系统和企业后台，用于招聘求职，用户端支持安卓下载体验，用于求职。  &lt;/p&gt;
+&lt;h2 id=&quot;APP功能&quot;&gt;&lt;a href=&quot;#APP功能&quot; class=&quot;headerlink&quot; title=&quot;APP功能&quot;&gt;&lt;/a&gt;APP功能&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="微服务" scheme="https://octopuslian.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
+    
+    <category term="SpringCloud" scheme="https://octopuslian.github.io/tags/SpringCloud/"/>
+    
+  </entry>
   
   <entry>
     <title>我的朋友-韩广辉</title>
@@ -437,81 +515,6 @@
     
     
     <category term="kafka" scheme="https://octopuslian.github.io/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA配置Maven</title>
-    <link href="https://octopuslian.github.io/2024/01/15/idea-setting-maven/"/>
-    <id>https://octopuslian.github.io/2024/01/15/idea-setting-maven/</id>
-    <published>2024-01-15T03:05:56.000Z</published>
-    <updated>2024-03-04T14:09:06.349Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Maven设置&quot;&gt;&lt;a href=&quot;#Maven设置&quot; class=&quot;headerlink&quot; title=&quot;Maven设置&quot;&gt;&lt;/a&gt;Maven设置&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://maven.apache.org/download.cgi?.&quot;&gt;官方下载Maven&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;IDEA配置Maven&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/maven%E9%85%8D%E7%BD%AE.png&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;code&gt;setting.xml&lt;/code&gt;中配置阿里云公共仓库镜像&lt;br&gt;&lt;img src=&quot;/2024/01/15/idea-setting-maven/aliyun.png&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnIDEA" scheme="https://octopuslian.github.io/categories/LearnIDEA/"/>
-    
-    
-    <category term="IDEA" scheme="https://octopuslian.github.io/tags/IDEA/"/>
-    
-    <category term="Maven" scheme="https://octopuslian.github.io/tags/Maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac安装NiFi</title>
-    <link href="https://octopuslian.github.io/2024/01/12/mac-install-nifi/"/>
-    <id>https://octopuslian.github.io/2024/01/12/mac-install-nifi/</id>
-    <published>2024-01-12T01:32:18.000Z</published>
-    <updated>2024-03-04T14:09:06.351Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;安装NiFi&quot;&gt;&lt;a href=&quot;#安装NiFi&quot; class=&quot;headerlink&quot; title=&quot;安装NiFi&quot;&gt;&lt;/a&gt;安装NiFi&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install nifi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;启动NiFi&quot;&gt;&lt;a href=&quot;#启动NiFi&quot; class=&quot;headerlink&quot; title=&quot;启动NiFi&quot;&gt;&lt;/a&gt;启动NiFi&lt;/h1&gt;&lt;h2 id=&quot;第一次登录&quot;&gt;&lt;a href=&quot;#第一次登录&quot; class=&quot;headerlink&quot; title=&quot;第一次登录&quot;&gt;&lt;/a&gt;第一次登录&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nifi start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnNiFi" scheme="https://octopuslian.github.io/categories/LearnNiFi/"/>
-    
-    
-    <category term="NiFi" scheme="https://octopuslian.github.io/tags/NiFi/"/>
-    
-    <category term="大数据" scheme="https://octopuslian.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人生剧本</title>
-    <link href="https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/"/>
-    <id>https://octopuslian.github.io/2023/12/31/happy-27-birthday-life-script/</id>
-    <published>2023-12-31T14:07:06.000Z</published>
-    <updated>2024-09-22T02:51:10.873Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们登上并非我们所选择的舞台，演出并非我们所选择的剧本。    ——古希腊哲学家艾比克泰德&lt;/p&gt;
-&lt;h2 id=&quot;坏小孩的剧本&quot;&gt;&lt;a href=&quot;#坏小孩的剧本&quot; class=&quot;headerlink&quot; title=&quot;坏小孩的剧本&quot;&gt;&lt;/a&gt;坏小孩的剧本&lt;/h2&gt;&lt;p&gt;上初一前，我想我拿到的都是一个叫做坏小孩的剧本，剧本上说，我很聪明，活泼好动，广交朋友，爱打游戏，&lt;br&gt;所以学校作业其实可以不用写的，第二天早上早点去抄就行了。于是，游戏厅和台球桌成了我放学后经常光顾的场所&lt;br&gt;因为我家对面就是游戏厅，所以进出很方便，但我知道我没有钱去消费，于是就开始了白嫖，只要脸皮厚一些，其他人&lt;br&gt;玩得还剩十几分钟到期时，我就会接上，同时也充当起了免费的CS1.6游戏和台球陪练，由于机动性强，服务态度好，&lt;br&gt;演技真实 ，广受玩家好评。  &lt;/p&gt;
-&lt;p&gt;在学校时，我记得语数英外加班主任的课是不敢轻举妄动的，其他课随意，所以我当时非常期待的课程就是&lt;br&gt;副课和体育课了。  &lt;/p&gt;
-&lt;p&gt;中午吃完饭，可以和班里同学打球打到午休结束，甚至第一节课上课前经常迟到，到时编造一个理由就行。&lt;br&gt;这样美好的一天就已经过半了，放学了还有游戏厅和台球桌在召唤我。  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Happy-Birthday" scheme="https://octopuslian.github.io/categories/Happy-Birthday/"/>
-    
-    
-    <category term="感悟" scheme="https://octopuslian.github.io/tags/%E6%84%9F%E6%82%9F/"/>
-    
-    <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
-    
-    <category term="人生" scheme="https://octopuslian.github.io/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-    <category term="罗翔" scheme="https://octopuslian.github.io/tags/%E7%BD%97%E7%BF%94/"/>
     
   </entry>
   
