@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>不会飞的章鱼</title>
   <icon>https://octopuslian.github.io/icon.png</icon>
-  <subtitle>熟能生巧，勤能补拙，静能生慧；念念不忘，必有回响。</subtitle>
+  <subtitle>熟能生巧，勤能补拙；静能生慧，为而不争；莫向外求，但求心觅；念念不忘，必有回响。</subtitle>
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2026-01-25T10:26:15.358Z</updated>
+  <updated>2026-01-26T03:46:01.982Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【慕聘网】虚拟化与容器化Docker环境搭建</title>
+    <link href="https://octopuslian.github.io/2026/01/25/java-senior-hire-project-3-docker-env/"/>
+    <id>https://octopuslian.github.io/2026/01/25/java-senior-hire-project-3-docker-env/</id>
+    <published>2026-01-25T14:43:06.000Z</published>
+    <updated>2026-01-26T03:46:01.982Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;虚拟化与容器化技术简介&quot;&gt;&lt;a href=&quot;#虚拟化与容器化技术简介&quot; class=&quot;headerlink&quot; title=&quot;虚拟化与容器化技术简介&quot;&gt;&lt;/a&gt;虚拟化与容器化技术简介&lt;/h1&gt;&lt;p&gt;在构建现代 Java 高级开发环境时，&lt;strong&gt;虚拟化 (Virtualization)&lt;/strong&gt; 和 &lt;strong&gt;容器化 (Containerization)&lt;/strong&gt; 是两项互补且核心的技术。理解它们的异同和联系，是掌握云原生及 DevOps 流程的第一步。&lt;/p&gt;
+&lt;h2 id=&quot;1-虚拟化技术-Virtualization&quot;&gt;&lt;a href=&quot;#1-虚拟化技术-Virtualization&quot; class=&quot;headerlink&quot; title=&quot;1. 虚拟化技术 (Virtualization)&quot;&gt;&lt;/a&gt;1. 虚拟化技术 (Virtualization)&lt;/h2&gt;&lt;p&gt;虚拟化技术通过在物理硬件上添加一个抽象层（Hypervisor），允许在一台物理机上运行多个相互隔离的操作系统实例（虚拟机 VMs）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心特征&lt;/strong&gt;：每个虚拟机都包含完整的操作系统（Guest OS）、相关的库和应用程序。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;典型软件&lt;/strong&gt;：VMware (本项目推荐用于搭建 Linux 开发底座)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;技术特点&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;隔离性强&lt;/strong&gt;：由于拥有独立内核，虚拟机之间的隔离非常彻底。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;启动速度慢&lt;/strong&gt;：启动一个完整的 OS 通常需要数分钟。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源占用高&lt;/strong&gt;：每个 Guest OS 都会预占大量的内存和磁盘容量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可移植性偏弱&lt;/strong&gt;：虚拟机镜像（如 &lt;code&gt;.ova&lt;/code&gt;, &lt;code&gt;.vmdk&lt;/code&gt;）通常达数 GB 甚至几十 GB，分发不便。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="docker" scheme="https://octopuslian.github.io/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>【慕聘网】内网互通原则</title>
@@ -488,33 +519,6 @@
     <category term="OpenHorizon" scheme="https://octopuslian.github.io/tags/OpenHorizon/"/>
     
     <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装Kafka</title>
-    <link href="https://octopuslian.github.io/2024/01/17/docker-install-kafka/"/>
-    <id>https://octopuslian.github.io/2024/01/17/docker-install-kafka/</id>
-    <published>2024-01-17T08:22:11.000Z</published>
-    <updated>2024-03-04T14:09:06.346Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Docker安装Kafka服务&quot;&gt;&lt;a href=&quot;#Docker安装Kafka服务&quot; class=&quot;headerlink&quot; title=&quot;Docker安装Kafka服务&quot;&gt;&lt;/a&gt;Docker安装Kafka服务&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name zookeeper -p 2181:2181 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; --restart always wurstmeister/zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&amp;lt;这里换成你的zookeeper地址和端口&amp;gt; -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&amp;lt;这里换成你的kafka地址和端口&amp;gt; -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt; wurstmeister/kafka&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=127.0.0.1:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e TZ=&amp;quot;Asia/Shanghai&amp;quot; wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=172.17.0.3:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-&lt;li&gt;-e KAFKA_ZOOKEEPER_CONNECT&amp;#x3D;127.0.0.1:2181：指定 Zookeeper 的地址和端口，这里使用本地地址 127.0.0.1 和默认端口 2181。&lt;/li&gt;
-&lt;li&gt;-e KAFKA_ADVERTISED_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;127.0.0.1:9092：将 Kafka 服务器的地址和端口设置为 127.0.0.1:9092。&lt;/li&gt;
-&lt;li&gt;-e KAFKA_LISTENERS&amp;#x3D;PLAINTEXT:&amp;#x2F;&amp;#x2F;0.0.0.0:9092：指定 Kafka 监听的地址和端口为 0.0.0.0:9092，允许外部访问。&lt;/li&gt;
-&lt;li&gt;-p 9092:9092：将容器内部的 9092 端口映射到主机的 9092 端口，允许通过主机的 127.0.0.1:9092 访问 Kafka 服务器。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;安装Kafka客户端&quot;&gt;&lt;a href=&quot;#安装Kafka客户端&quot; class=&quot;headerlink&quot; title=&quot;安装Kafka客户端&quot;&gt;&lt;/a&gt;安装Kafka客户端&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d --name kafka-eagle -p 8048:8048 -e EFAK_CLUSTER_ZK_LIST=&amp;quot;172.17.0.3:2181&amp;quot; nickzurich/efak:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnKafka" scheme="https://octopuslian.github.io/categories/LearnKafka/"/>
-    
-    
-    <category term="kafka" scheme="https://octopuslian.github.io/tags/kafka/"/>
     
   </entry>
   
