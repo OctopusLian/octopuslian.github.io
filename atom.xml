@@ -6,7 +6,7 @@
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2026-01-26T03:46:01.982Z</updated>
+  <updated>2026-01-27T03:13:26.553Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【慕聘网】后端项目初始化和基础框架设计</title>
+    <link href="https://octopuslian.github.io/2026/01/26/java-senior-hire-project-4-backend-base-framework-design/"/>
+    <id>https://octopuslian.github.io/2026/01/26/java-senior-hire-project-4-backend-base-framework-design/</id>
+    <published>2026-01-26T03:55:32.000Z</published>
+    <updated>2026-01-27T03:13:26.553Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;项目层次结构&quot;&gt;&lt;a href=&quot;#项目层次结构&quot; class=&quot;headerlink&quot; title=&quot;项目层次结构&quot;&gt;&lt;/a&gt;项目层次结构&lt;/h1&gt;&lt;p&gt;在分布式系统中，合理的工程结构是高内聚、低耦合的基础。本项目采用 &lt;strong&gt;Maven 多模块聚合工程（Aggregation Project）&lt;/strong&gt; 进行构建，确保代码的可复用性和版本管理的一致性。&lt;/p&gt;
+&lt;h2 id=&quot;1-整体架构图解&quot;&gt;&lt;a href=&quot;#1-整体架构图解&quot; class=&quot;headerlink&quot; title=&quot;1. 整体架构图解&quot;&gt;&lt;/a&gt;1. 整体架构图解&lt;/h2&gt;&lt;p&gt;下图展示了本项目核心模块之间的依赖关系和层次逻辑：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2026/01/26/java-senior-hire-project-4-backend-base-framework-design/project_hierarchy_final.png&quot; alt=&quot;项目层次结构图解&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="Java" scheme="https://octopuslian.github.io/tags/Java/"/>
+    
+    <category term="SpringCloud" scheme="https://octopuslian.github.io/tags/SpringCloud/"/>
+    
+    <category term="SpringBoot" scheme="https://octopuslian.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【慕聘网】虚拟化与容器化Docker环境搭建</title>
     <link href="https://octopuslian.github.io/2026/01/25/java-senior-hire-project-3-docker-env/"/>
     <id>https://octopuslian.github.io/2026/01/25/java-senior-hire-project-3-docker-env/</id>
     <published>2026-01-25T14:43:06.000Z</published>
-    <updated>2026-01-26T03:46:01.982Z</updated>
+    <updated>2026-01-26T03:46:23.784Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;虚拟化与容器化技术简介&quot;&gt;&lt;a href=&quot;#虚拟化与容器化技术简介&quot; class=&quot;headerlink&quot; title=&quot;虚拟化与容器化技术简介&quot;&gt;&lt;/a&gt;虚拟化与容器化技术简介&lt;/h1&gt;&lt;p&gt;在构建现代 Java 高级开发环境时，&lt;strong&gt;虚拟化 (Virtualization)&lt;/strong&gt; 和 &lt;strong&gt;容器化 (Containerization)&lt;/strong&gt; 是两项互补且核心的技术。理解它们的异同和联系，是掌握云原生及 DevOps 流程的第一步。&lt;/p&gt;
@@ -492,33 +517,6 @@
     
     
     <category term="onex" scheme="https://octopuslian.github.io/tags/onex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Open Horizon 快速入门</title>
-    <link href="https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/"/>
-    <id>https://octopuslian.github.io/2024/03/04/open-horizon-quick-start/</id>
-    <published>2024-03-04T07:18:49.000Z</published>
-    <updated>2024-03-12T03:30:12.693Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;先决条件&quot;&gt;&lt;a href=&quot;#先决条件&quot; class=&quot;headerlink&quot; title=&quot;先决条件&quot;&gt;&lt;/a&gt;先决条件&lt;/h1&gt;&lt;p&gt;两台服务器，配置如下：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;4GB以上的内存  &lt;/li&gt;
-&lt;li&gt;20GB以上的存储  &lt;/li&gt;
-&lt;li&gt;Ubuntu Server 18.04 LTS&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;确保是&lt;code&gt;root&lt;/code&gt;权限  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnOpenHorizon" scheme="https://octopuslian.github.io/categories/LearnOpenHorizon/"/>
-    
-    
-    <category term="OpenHorizon" scheme="https://octopuslian.github.io/tags/OpenHorizon/"/>
-    
-    <category term="边缘计算" scheme="https://octopuslian.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
     
   </entry>
   
