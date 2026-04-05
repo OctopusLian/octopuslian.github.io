@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>不会飞的章鱼</title>
   <icon>https://octopuslian.github.io/icon.png</icon>
-  <subtitle>熟能生巧，勤能补拙；静能生慧，为而不争；莫向外求，但求心觅；念念不忘，必有回响。</subtitle>
+  <subtitle>熟能生巧，勤能补拙，静能养慧；为而不争，莫向外求，反求诸己；念念不忘，必有回响</subtitle>
   <link href="https://octopuslian.github.io/atom.xml" rel="self"/>
   
   <link href="https://octopuslian.github.io/"/>
-  <updated>2026-01-27T03:13:26.553Z</updated>
+  <updated>2026-04-05T12:19:32.967Z</updated>
   <id>https://octopuslian.github.io/</id>
   
   <author>
@@ -17,11 +17,129 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【慕聘网】微服务网关Gateway</title>
+    <link href="https://octopuslian.github.io/2026/02/11/java-senior-hire-project-9-micro-service-gateway/"/>
+    <id>https://octopuslian.github.io/2026/02/11/java-senior-hire-project-9-micro-service-gateway/</id>
+    <published>2026-02-11T08:46:54.000Z</published>
+    <updated>2026-04-05T12:19:32.967Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;微服务网关介绍&quot;&gt;&lt;a href=&quot;#微服务网关介绍&quot; class=&quot;headerlink&quot; title=&quot;微服务网关介绍&quot;&gt;&lt;/a&gt;微服务网关介绍&lt;/h1&gt;&lt;p&gt;在单体应用时代，客户端（Client）直接与后端应用交互。但进入微服务架构后，系统被拆分为成百上千个微服务（如用户服务、订单服务、仓储服务…）。&lt;/p&gt;
+&lt;p&gt;如果让客户端直接与这些微服务通信，会带来巨大的问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;复杂性爆炸&lt;/strong&gt;：客户端需要记录所有微服务的地址（IP:Port），一旦后端重构或迁移，前端必须同步修改。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全隐患&lt;/strong&gt;：所有微服务直接暴露在公网，难以统一进行身份认证（Authentication）和鉴权（Authorization）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨域问题&lt;/strong&gt;：每个服务都需要单独处理 CORS。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这时候，我们需要一个**微服务网关 (API Gateway)**。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】微服务注册中心Nacos</title>
+    <link href="https://octopuslian.github.io/2026/02/10/java-senior-hire-project-8-reg-center-nacos/"/>
+    <id>https://octopuslian.github.io/2026/02/10/java-senior-hire-project-8-reg-center-nacos/</id>
+    <published>2026-02-10T15:03:16.000Z</published>
+    <updated>2026-04-05T12:19:32.966Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;微服务注册中心帮你上户口&quot;&gt;&lt;a href=&quot;#微服务注册中心帮你上户口&quot; class=&quot;headerlink&quot; title=&quot;微服务注册中心帮你上户口&quot;&gt;&lt;/a&gt;微服务注册中心帮你上户口&lt;/h1&gt;&lt;p&gt;在单体应用时代，所有服务都挤在一起，互相调用就像同一个屋檐下喊一声那么简单。但到了微服务时代，服务被拆分成了成百上千个独立的进程，分布在不同的服务器上。这时候，一个棘手的问题出现了：&lt;strong&gt;我怎么知道你要找的服务在哪里？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这就好比现实生活中的&lt;strong&gt;派出所上户口&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;1-形象理解：老王找老六&quot;&gt;&lt;a href=&quot;#1-形象理解：老王找老六&quot; class=&quot;headerlink&quot; title=&quot;1. 形象理解：老王找老六&quot;&gt;&lt;/a&gt;1. 形象理解：老王找老六&lt;/h3&gt;&lt;p&gt;为了讲清楚注册中心的作用，我们举个生动的例子：&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】前端技术选型</title>
+    <link href="https://octopuslian.github.io/2026/02/08/java-senior-hire-project-6-frontend-technology-selection/"/>
+    <id>https://octopuslian.github.io/2026/02/08/java-senior-hire-project-6-frontend-technology-selection/</id>
+    <published>2026-02-08T15:26:08.000Z</published>
+    <updated>2026-04-05T12:19:32.965Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h2&gt;&lt;p&gt;在确定了前后端分离的开发模式后，我面临的下一个重要决策就是：&lt;strong&gt;前端技术栈的具体选型&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;前端生态圈发展迅猛，框架和工具层出不穷。对于“慕聘网”这样一个既包含复杂的&lt;strong&gt;后台管理系统&lt;/strong&gt;，又需要支持多端（小程序、App、H5）&lt;strong&gt;用户端&lt;/strong&gt;的项目，选择一套稳定、高效且生态成熟的技术栈至关重要。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;一、后台管理系统技术栈&quot;&gt;&lt;a href=&quot;#一、后台管理系统技术栈&quot; class=&quot;headerlink&quot; title=&quot;一、后台管理系统技术栈&quot;&gt;&lt;/a&gt;一、后台管理系统技术栈&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="架构设计" scheme="https://octopuslian.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="前后端分离" scheme="https://octopuslian.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
+    
+    <category term="Vue" scheme="https://octopuslian.github.io/tags/Vue/"/>
+    
+    <category term="UniApp" scheme="https://octopuslian.github.io/tags/UniApp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】使用SpringCloud Alibaba构建微服务</title>
+    <link href="https://octopuslian.github.io/2026/02/08/java-senior-hire-project-7-java-senior-hire-project-7-springcloud-alibaba-build-micro-service/"/>
+    <id>https://octopuslian.github.io/2026/02/08/java-senior-hire-project-7-java-senior-hire-project-7-springcloud-alibaba-build-micro-service/</id>
+    <published>2026-02-08T12:22:29.000Z</published>
+    <updated>2026-04-05T12:19:32.967Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;单体、分布式、集群、SOA技术架构演变&quot;&gt;&lt;a href=&quot;#单体、分布式、集群、SOA技术架构演变&quot; class=&quot;headerlink&quot; title=&quot;单体、分布式、集群、SOA技术架构演变&quot;&gt;&lt;/a&gt;单体、分布式、集群、SOA技术架构演变&lt;/h1&gt;&lt;p&gt;软件架构并非一蹴而就，而是随着业务复杂度和用户量的增加，不断演进而来的。我们可以将其主要划分为以下几个阶段：&lt;/p&gt;
+&lt;h3 id=&quot;1-单体应用架构-All-in-One&quot;&gt;&lt;a href=&quot;#1-单体应用架构-All-in-One&quot; class=&quot;headerlink&quot; title=&quot;1. 单体应用架构 (All in One)&quot;&gt;&lt;/a&gt;1. 单体应用架构 (All in One)&lt;/h3&gt;&lt;p&gt;在互联网发展的早期，业务逻辑相对简单，我们将所有的功能模块（如用户、支付、订单、简历等）都打包在一个 &lt;code&gt;WAR&lt;/code&gt; 或 &lt;code&gt;JAR&lt;/code&gt; 包中，部署在同一台服务器上运行。这就是典型的&lt;strong&gt;单体应用架构&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;📌-架构示意图&quot;&gt;&lt;a href=&quot;#📌-架构示意图&quot; class=&quot;headerlink&quot; title=&quot;📌 架构示意图&quot;&gt;&lt;/a&gt;📌 架构示意图&lt;/h4&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="微服务" scheme="https://octopuslian.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="SpringCloud Alibaba" scheme="https://octopuslian.github.io/tags/SpringCloud-Alibaba/"/>
+    
+    <category term="架构演进" scheme="https://octopuslian.github.io/tags/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【慕聘网】前后端分离模式解析</title>
+    <link href="https://octopuslian.github.io/2026/02/04/java-senior-hire-project-5-frontend-and-backend-separation-model/"/>
+    <id>https://octopuslian.github.io/2026/02/04/java-senior-hire-project-5-frontend-and-backend-separation-model/</id>
+    <published>2026-02-04T15:19:07.000Z</published>
+    <updated>2026-04-05T12:19:32.963Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h2&gt;&lt;p&gt;在开启“慕聘网”这个项目的架构设计之初，我一直在思考一个最基础、也最核心的问题：&lt;strong&gt;我们该选择什么样的开发模式？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回顾我的开发生涯，Web 开发的模式经历了翻天覆地的变化。今天我想结合这个项目，和大家深入聊聊为什么在现代企业级应用中，&lt;strong&gt;前后端分离&lt;/strong&gt;不再是一个选项，而是一个必然。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;一、我眼中的架构演进：从耦合到拆解&quot;&gt;&lt;a href=&quot;#一、我眼中的架构演进：从耦合到拆解&quot; class=&quot;headerlink&quot; title=&quot;一、我眼中的架构演进：从耦合到拆解&quot;&gt;&lt;/a&gt;一、我眼中的架构演进：从耦合到拆解&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="JavaSenior" scheme="https://octopuslian.github.io/categories/JavaSenior/"/>
+    
+    
+    <category term="架构设计" scheme="https://octopuslian.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="前后端分离" scheme="https://octopuslian.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
+    
+    <category term="RESTful API" scheme="https://octopuslian.github.io/tags/RESTful-API/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【慕聘网】后端项目初始化和基础框架设计</title>
     <link href="https://octopuslian.github.io/2026/01/26/java-senior-hire-project-4-backend-base-framework-design/"/>
     <id>https://octopuslian.github.io/2026/01/26/java-senior-hire-project-4-backend-base-framework-design/</id>
     <published>2026-01-26T03:55:32.000Z</published>
-    <updated>2026-01-27T03:13:26.553Z</updated>
+    <updated>2026-01-27T08:00:56.082Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;项目层次结构&quot;&gt;&lt;a href=&quot;#项目层次结构&quot; class=&quot;headerlink&quot; title=&quot;项目层次结构&quot;&gt;&lt;/a&gt;项目层次结构&lt;/h1&gt;&lt;p&gt;在分布式系统中，合理的工程结构是高内聚、低耦合的基础。本项目采用 &lt;strong&gt;Maven 多模块聚合工程（Aggregation Project）&lt;/strong&gt; 进行构建，确保代码的可复用性和版本管理的一致性。&lt;/p&gt;
@@ -377,146 +495,6 @@
     <category term="生日祝福" scheme="https://octopuslian.github.io/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
     
     <category term="人生" scheme="https://octopuslian.github.io/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java编程入门：任务式学习指南-薪资转换工具</title>
-    <link href="https://octopuslian.github.io/2025/01/27/learn-java-task-guide-1-salary/"/>
-    <id>https://octopuslian.github.io/2025/01/27/learn-java-task-guide-1-salary/</id>
-    <published>2025-01-27T08:57:54.000Z</published>
-    <updated>2025-06-24T10:58:06.888Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;任务描述&quot;&gt;&lt;a href=&quot;#任务描述&quot; class=&quot;headerlink&quot; title=&quot;任务描述&quot;&gt;&lt;/a&gt;任务描述&lt;/h1&gt;&lt;p&gt;程序是如何帮助人类提高生产效率的？程序世界是由什么组成的？想在Java程序中如鱼得水，首先需要了解Java程序的基本语法。通过本次任务线索的学习，完成薪资转换工具。&lt;br&gt;需求如下：当用户输入月薪时，计算出对应的日薪（每月工作日22天）和年薪（1年13薪）并进行输出显示。  &lt;/p&gt;
-&lt;h1 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;掌握Java的基本输入输出。  &lt;/li&gt;
-&lt;li&gt;掌握Java的基本数据类型和变量。  &lt;/li&gt;
-&lt;li&gt;掌握Java运算符。  &lt;/li&gt;
-&lt;li&gt;掌握格式化输出。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;任务线索&quot;&gt;&lt;a href=&quot;#任务线索&quot; class=&quot;headerlink&quot; title=&quot;任务线索&quot;&gt;&lt;/a&gt;任务线索&lt;/h1&gt;</summary>
-    
-    
-    
-    <category term="LearnJava" scheme="https://octopuslian.github.io/categories/LearnJava/"/>
-    
-    
-    <category term="java" scheme="https://octopuslian.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go项目miniblog学习总结</title>
-    <link href="https://octopuslian.github.io/2024/08/02/go-project-miniblog/"/>
-    <id>https://octopuslian.github.io/2024/08/02/go-project-miniblog/</id>
-    <published>2024-08-02T03:39:31.000Z</published>
-    <updated>2024-08-02T08:10:41.020Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;miniblog-实现的功能&quot;&gt;&lt;a href=&quot;#miniblog-实现的功能&quot; class=&quot;headerlink&quot; title=&quot;miniblog 实现的功能&quot;&gt;&lt;/a&gt;miniblog 实现的功能&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;用户管理： 支持 用户注册、用户登录、获取用户列表、获取用户详情、更新用户信息、修改用户密码、注销用户 7 种用户操作；  &lt;/li&gt;
-&lt;li&gt;博客管理： 支持 创建博客、获取博客列表、获取博客详情、更新博客内容、删除博客、批量删除博客 6 种博客操作。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;涉及技术栈，点击&lt;a href=&quot;https://github.com/OctopusLian/miniblog&quot;&gt;github&lt;/a&gt;    &lt;/p&gt;
-&lt;h1 id=&quot;miniblog-目录结构&quot;&gt;&lt;a href=&quot;#miniblog-目录结构&quot; class=&quot;headerlink&quot; title=&quot;miniblog 目录结构&quot;&gt;&lt;/a&gt;miniblog 目录结构&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;105&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;├── api # Swagger / OpenAPI 文档存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── openapi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       └── openapi.yaml # OpenAPI 3.0 API 接口文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── cmd # main 文件存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── miniblog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       └── miniblog.go&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── configs # 配置文件存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── miniblog.sql # 数据库初始化 SQL&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── miniblog.yaml # miniblog 配置文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── nginx.conf # Nginx 配置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── docs # 项目文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── devel # 开发文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── en-US # 英文文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── zh-CN # 中文文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── architecture.md # miniblog 架构介绍&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── conversions # 规范文档存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── api.md # 接口规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── commit.md # Commit 规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── directory.md # 目录结构规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── error_code.md # 错误码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── go_code.md # 代码规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   ├── log.md # 日志规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       │   └── version.md # 版本规范&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       └── README.md&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── guide # 用户文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── en-US # 英文文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── zh-CN # 中文文档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── announcements.md # 动态与公告&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── best-practice # 最佳实践&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── faq # 常见问题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── installation # 安装指南&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── introduction # 产品介绍&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── operation-guide # 操作指南&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       ├── quickstart # 快速入门&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │       └── README.md&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── images # 项目图片存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── examples # 示例源码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── go.mod&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── go.sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── init # Systemd Unit 文件保存目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── miniblog.service # miniblog systemd unit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── internal # 内部代码保存目录，这里面的代码不能被外部程序引用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── miniblog # miniblog 代码实现目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── biz # biz 层代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── controller # controller 层代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │   └── v1 # API 接口版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       ├── post # 博客相关代码实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── create.go # 创建博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── delete_collection.go #批量删除博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── delete.go # 删除博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── get.go # 获取博客详情&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── list.go # 获取博客列表&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   ├── post.go # 博客 Controller 结构定义、创建&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       │   └── update.go # 更新博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │       └── user&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── change_password.go # 修改用户密码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── create.go #创建用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── delete.go # 删除用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── get.go # 获取用户详情&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── list.go # 获取用户列表&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── login.go # 用户登录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           ├── update.go  # 更新用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   │           └── user.go # 用户 Controller 结构定义、创建&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── helper.go # 工具类代码存放文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── miniblog.go # miniblog 主业务逻辑实现代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── router.go # Gin 路由加载代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── store # store 层代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── pkg # 内部包保存目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       ├── core # core 包，用来保存一些核心的函数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       ├── errno # errno 包，实现了 miniblog 的错误码功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   ├── code.go # 错误码定义文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   └── errno.go # errno 包功能函数文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       ├── known # 存放项目级的常量定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       ├── log # miniblog 自定义 log 包&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       ├── middleware # Gin 中间件包&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   ├── authn.go # 认证中间件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   ├── authz.go # 授权中间件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   ├── header.go # 指定 HTTP Response Header&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       │   └── requestid.go # 请求 / 返回头中添加 X-Request-ID&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│       └── model # GORM Model&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── LICENSE # 声明代码所遵循的开源协议&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── Makefile # Makefile 文件，一般大型软件系统都是采用 make 来作为编译工具&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── _output # 临时文件存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── pkg # 可供外部程序直接使用的 Go 包存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── api # REST API 接口定义存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── proto # Protobuf 接口定义存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── auth # auth 包，用来完成认证、授权功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── authn.go # 认证功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── authz.go # 授权功能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── db # db 包，用来完成 MySQL 数据库连接&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── token # JWT Token 的签发和解析&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── util # 工具类包存放目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── id # id 包，用来生成唯一短 ID&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── version # version 包，用来保存 / 输出版本信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── README-en.md # 英文 README&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── README.md # 中文 README&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── scripts # 脚本文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── boilerplate.txt # 指定版权头信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── coverage.awk # awk 脚本，用来计算覆盖率&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   ├── make-rules # 子 Makefile 保存目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── common.mk # 存放通用的 Makefile 变量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   ├── golang.mk # 用来编译源码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   │   └── tools.mk # 用来完成工具的安装&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── wrktest.sh # wrk 性能测试脚本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└── third_party # 第三方 Go 包存放目录&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="LearnGo" scheme="https://octopuslian.github.io/categories/LearnGo/"/>
-    
-    
-    <category term="go" scheme="https://octopuslian.github.io/tags/go/"/>
-    
-    <category term="项目总结" scheme="https://octopuslian.github.io/tags/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Course MIT.6092 Introduction to Programming in Java</title>
-    <link href="https://octopuslian.github.io/2024/06/21/course-mit-6092-introduction-to-programming-in-java/"/>
-    <id>https://octopuslian.github.io/2024/06/21/course-mit-6092-introduction-to-programming-in-java/</id>
-    <published>2024-06-21T11:08:25.000Z</published>
-    <updated>2024-06-21T11:19:49.270Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;课程简介&quot;&gt;&lt;a href=&quot;#课程简介&quot; class=&quot;headerlink&quot; title=&quot;课程简介&quot;&gt;&lt;/a&gt;课程简介&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;所属大学：MIT&lt;/li&gt;
-&lt;li&gt;先修要求：无&lt;/li&gt;
-&lt;li&gt;编程语言：Java&lt;/li&gt;
-&lt;li&gt;课程语言：英语&lt;/li&gt;
-&lt;li&gt;课程难度：🌟&lt;/li&gt;
-&lt;li&gt;预计学时：20小时  &lt;/li&gt;
-&lt;li&gt;Github: &lt;a href=&quot;https://github.com/OctopusLian/mit-6092-introduction-to-programming-in-java&quot;&gt;MIT.6092 Introduction to Programming in Java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;MIT出的Java入门课程，总共7节课程，每节课大概一个小时。&lt;br&gt;课程包括入门&lt;code&gt;Java&lt;/code&gt;所需的基础知识概念，&lt;code&gt;Java&lt;/code&gt;代码风格，以及如何&lt;code&gt;Debug&lt;/code&gt;。&lt;br&gt;第五节和第六节会将结合所学知识做一个简单的绘图软件，很有趣。  &lt;/p&gt;
-&lt;h1 id=&quot;作业展示&quot;&gt;&lt;a href=&quot;#作业展示&quot; class=&quot;headerlink&quot; title=&quot;作业展示&quot;&gt;&lt;/a&gt;作业展示&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2024/06/21/course-mit-6092-introduction-to-programming-in-java/hw-book.png&quot;&gt;  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="CSelfLearning" scheme="https://octopuslian.github.io/categories/CSelfLearning/"/>
-    
-    
-    <category term="Java" scheme="https://octopuslian.github.io/tags/Java/"/>
-    
-    <category term="MIT" scheme="https://octopuslian.github.io/tags/MIT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Course UCI Programming with Google Go</title>
-    <link href="https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/"/>
-    <id>https://octopuslian.github.io/2024/06/17/course-uci-programming-with-google-go/</id>
-    <published>2024-06-17T13:56:32.000Z</published>
-    <updated>2024-06-21T11:12:14.202Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;课程简介&quot;&gt;&lt;a href=&quot;#课程简介&quot; class=&quot;headerlink&quot; title=&quot;课程简介&quot;&gt;&lt;/a&gt;课程简介&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;所属大学：UC Irvine&lt;/li&gt;
-&lt;li&gt;先修要求：无&lt;/li&gt;
-&lt;li&gt;编程语言：Go  &lt;/li&gt;
-&lt;li&gt;课程语言：英语&lt;/li&gt;
-&lt;li&gt;课程难度：🌟🌟&lt;/li&gt;
-&lt;li&gt;预计学时：50小时  &lt;/li&gt;
-&lt;li&gt;Github: &lt;a href=&quot;https://github.com/OctopusLian/uci-programming-with-google-go-specialization&quot;&gt;UCI Programming with Google Go&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;UC Irvine在Coursera上出的Go语言入门课程，分成了三门课程来讲授Go语言的基础语法，特性和并发。&lt;br&gt;一门课程分四周，每周都会有测验，作业和学生互评。文档齐全，适合自学。  &lt;/p&gt;
-&lt;h1 id=&quot;学完感受&quot;&gt;&lt;a href=&quot;#学完感受&quot; class=&quot;headerlink&quot; title=&quot;学完感受&quot;&gt;&lt;/a&gt;学完感受&lt;/h1&gt;&lt;p&gt;起因是受到一位大佬&lt;a href=&quot;https://github.com/PKUFlyingPig&quot;&gt;PKUFlyingPig&lt;/a&gt;的影响，他说  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="CSelfLearning" scheme="https://octopuslian.github.io/categories/CSelfLearning/"/>
-    
-    
-    <category term="coursera" scheme="https://octopuslian.github.io/tags/coursera/"/>
-    
-    <category term="go" scheme="https://octopuslian.github.io/tags/go/"/>
-    
-    <category term="UCI" scheme="https://octopuslian.github.io/tags/UCI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OneX部署</title>
-    <link href="https://octopuslian.github.io/2024/04/04/onex-deploy/"/>
-    <id>https://octopuslian.github.io/2024/04/04/onex-deploy/</id>
-    <published>2024-04-04T07:38:16.000Z</published>
-    <updated>2024-04-10T01:13:08.468Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;前置条件&quot;&gt;&lt;a href=&quot;#前置条件&quot; class=&quot;headerlink&quot; title=&quot;前置条件&quot;&gt;&lt;/a&gt;前置条件&lt;/h1&gt;&lt;p&gt;确定机器上已具备以下部署条件：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2c4g  &lt;/li&gt;
-&lt;li&gt;Docker&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;容器化部署&quot;&gt;&lt;a href=&quot;#容器化部署&quot; class=&quot;headerlink&quot; title=&quot;容器化部署&quot;&gt;&lt;/a&gt;容器化部署&lt;/h1&gt;&lt;p&gt;在Debian 12环境下  &lt;/p&gt;</summary>
-    
-    
-    
-    <category term="LearnOneX" scheme="https://octopuslian.github.io/categories/LearnOneX/"/>
-    
-    
-    <category term="onex" scheme="https://octopuslian.github.io/tags/onex/"/>
     
   </entry>
   
